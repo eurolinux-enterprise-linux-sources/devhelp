@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DhCompletion: Devhelp Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Devhelp Reference Manual">
+<link rel="up" href="misc.html" title="Misc">
+<link rel="prev" href="misc.html" title="Misc">
+<link rel="next" href="api-breaks.html" title="Part II. API Breaks">
+<meta name="generator" content="GTK-Doc V1.28.1 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#DhCompletion.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#DhCompletion.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="misc.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="misc.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="api-breaks.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="DhCompletion"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="DhCompletion.top_of_page"></a>DhCompletion</span></h2>
+<p>DhCompletion — Support for automatic string completion</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="DhCompletion.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="DhCompletion.html" title="DhCompletion"><span class="returnvalue">DhCompletion</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhCompletion.html#dh-completion-new" title="dh_completion_new ()">dh_completion_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="DhCompletion.html#dh-completion-add-string" title="dh_completion_add_string ()">dh_completion_add_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="DhCompletion.html#dh-completion-sort" title="dh_completion_sort ()">dh_completion_sort</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhCompletion.html#dh-completion-complete" title="dh_completion_complete ()">dh_completion_complete</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhCompletion.html#dh-completion-aggregate-complete" title="dh_completion_aggregate_complete ()">dh_completion_aggregate_complete</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhCompletion.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="DhCompletion.html#DhCompletion-struct" title="struct DhCompletion">DhCompletion</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhCompletion.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <span class="lineart">╰──</span> DhCompletion
+</pre>
+</div>
+<div class="refsect1">
+<a name="DhCompletion.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;devhelp/devhelp.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="DhCompletion.description"></a><h2>Description</h2>
+<p><a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> is a basic replacement for <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Automatic-String-Completion.html#GCompletion"><span class="type">GCompletion</span></a>. <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Automatic-String-Completion.html#GCompletion"><span class="type">GCompletion</span></a> (part of
+GLib) is deprecated, and doesn't use a great data structure (a simple
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a>). <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> uses a <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Sequences.html#GSequence"><span class="type">GSequence</span></a> instead, so once the data is sorted
+it should be faster. <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> works only with UTF-8 strings, and copies
+the strings.</p>
+<p><a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> is add-only, strings cannot be removed. But with
+<a class="link" href="DhCompletion.html#dh-completion-aggregate-complete" title="dh_completion_aggregate_complete ()"><code class="function">dh_completion_aggregate_complete()</code></a>, a <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> object can be removed
+from the list.</p>
+</div>
+<div class="refsect1">
+<a name="DhCompletion.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="dh-completion-new"></a><h3>dh_completion_new ()</h3>
+<pre class="programlisting"><a class="link" href="DhCompletion.html" title="DhCompletion"><span class="returnvalue">DhCompletion</span></a> *
+dh_completion_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="refsect3">
+<a name="dh-completion-new.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> object.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3-28.html#api-index-3.28">3.28</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-completion-add-string"></a><h3>dh_completion_add_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+dh_completion_add_string (<em class="parameter"><code><a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> *completion</code></em>,
+                          <em class="parameter"><code>const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *str</code></em>);</pre>
+<p>Adds a string to the <em class="parameter"><code>completion</code></em>
+ object.</p>
+<p>After adding all the strings you need to call <a class="link" href="DhCompletion.html#dh-completion-sort" title="dh_completion_sort ()"><code class="function">dh_completion_sort()</code></a>.</p>
+<div class="refsect3">
+<a name="dh-completion-add-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>completion</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>str</p></td>
+<td class="parameter_description"><p>a string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3-28.html#api-index-3.28">3.28</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-completion-sort"></a><h3>dh_completion_sort ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+dh_completion_sort (<em class="parameter"><code><a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> *completion</code></em>);</pre>
+<p>Sorts all the strings. It is required to call this function after adding
+strings with <a class="link" href="DhCompletion.html#dh-completion-add-string" title="dh_completion_add_string ()"><code class="function">dh_completion_add_string()</code></a>.</p>
+<div class="refsect3">
+<a name="dh-completion-sort.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>completion</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3-28.html#api-index-3.28">3.28</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-completion-complete"></a><h3>dh_completion_complete ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+dh_completion_complete (<em class="parameter"><code><a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> *completion</code></em>,
+                        <em class="parameter"><code>const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prefix</code></em>);</pre>
+<p>This function does the equivalent of:</p>
+<div class="orderedlist"><ol class="orderedlist" type="1">
+<li class="listitem"><p>Searches the data structure of <em class="parameter"><code>completion</code></em>
+ to find all strings that have
+<em class="parameter"><code>prefix</code></em>
+ as prefix.</p></li>
+<li class="listitem"><p>From the list found at step 1, find the longest prefix that still matches
+all the strings in the list.</p></li>
+</ol></div>
+<p>This function assumes that <em class="parameter"><code>prefix</code></em>
+ and the strings contained in <em class="parameter"><code>completion</code></em>
+
+are in UTF-8. If all the strings are valid UTF-8, then the return value will
+also be valid UTF-8 (it won't return a partial multi-byte character).</p>
+<div class="refsect3">
+<a name="dh-completion-complete.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>completion</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>prefix</p></td>
+<td class="parameter_description"><p>the string to complete.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-completion-complete.returns"></a><h4>Returns</h4>
+<p>the completed prefix, or <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if a
+longer prefix has not been found. Free with <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> when no longer needed. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3-28.html#api-index-3.28">3.28</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-completion-aggregate-complete"></a><h3>dh_completion_aggregate_complete ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+dh_completion_aggregate_complete (<em class="parameter"><code><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> *completion_objects</code></em>,
+                                  <em class="parameter"><code>const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="type">gchar</span></a> *prefix</code></em>);</pre>
+<p>The same as <a class="link" href="DhCompletion.html#dh-completion-complete" title="dh_completion_complete ()"><code class="function">dh_completion_complete()</code></a>, but aggregated for several
+<a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> objects.</p>
+<div class="refsect3">
+<a name="dh-completion-aggregate-complete.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>completion_objects</p></td>
+<td class="parameter_description"><p>a <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="type">GList</span></a> of
+<a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> objects. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> DhCompletion][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>prefix</p></td>
+<td class="parameter_description"><p>the string to complete.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-completion-aggregate-complete.returns"></a><h4>Returns</h4>
+<p>the completed prefix, or <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if a
+longer prefix has not been found. Free with <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Memory-Allocation.html#g-free"><code class="function">g_free()</code></a> when no longer needed. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3-28.html#api-index-3.28">3.28</a></p>
+</div>
+</div>
+<div class="refsect1">
+<a name="DhCompletion.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="DhCompletion-struct"></a><h3>struct DhCompletion</h3>
+<pre class="programlisting">struct DhCompletion;</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.28.1</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="search" xml:lang="hr">
+
+<info>
+  <link type="guide" xref="index"/>
+</info>
+
+<title>Pretraži u bočnom panelu</title>
+
+<synopsis>
+  <p>Kako radi pretraga u bočnom panelu.</p>
+</synopsis>
+
+<section id="case-sensitivity">
+  <title>Osjetljivost na velika i mala slova</title>
+  <p>Pretraga je osjetljiva na mala i velika slova kada postoje velika slova. Ako izraz pretrage sadrži sva mala slova, pretraga je osjetljiva na velika i mala slova. To je poput "pametne" značajke prisutne u pojedinim uređivačima teksta.</p>
+</section>
+
+<section id="globs">
+  <title>Podudaranje uzoraka prema globalnom izgledu</title>
+  <p>Izraz pretrage može biti uzorak koji sadrži ‘*’ i ‘?’ zamjenske znakove. ‘*’ odgovara proizvoljnom, moguće praznom izrazu; a '?' odgovara proizvoljnom znaku.</p>
+</section>
+
+<section id="several-search-terms">
+  <title>Nekoliko izraza pretrage</title>
+  <p>Možete pretraživati s nekoliko izraza pretrage (odvojenim zarezom). Simbol će se samo podudarati ako se <em>svi</em> izrazi pretrage pojedinačno podudaraju (ne nužno u istom redoslijedu pojavljivanja).</p>
+  <p>Zapamtite da je drugačije od pretraživanja sa ‘*’ zamjenskim znakom: ‘*’ zamjenski znak prisiljuje ključnu riječ da bude u istom redoslijedu.</p>
+  <p>Na primjer pri pretraživanju “<input>gtk window application</input>”, podudara se oboje “<code>gtk_window_get_application()</code>” i “<code>GtkApplicationWindow</code>” (među ostalim simbolima).</p>
+  <p>U drugu ruku, pretraživanje “<input>gtk*window*application</input>” će se podudarati sa “<code>gtk_window_get_application()</code>” ali ne i sa “<code>GtkApplicationWindow</code>”.</p>
+</section>
+</page>

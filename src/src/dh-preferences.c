@@ -14,8 +14,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "config.h"
@@ -24,8 +24,8 @@
 #include <string.h>
 
 #include "dh-book.h"
+#include "dh-book-manager.h"
 #include "dh-util.h"
-#include "dh-app.h"
 #include "dh-settings.h"
 
 static GtkWidget *prefs_dialog = NULL;
@@ -40,14 +40,6 @@ enum {
 };
 
 typedef struct {
-        DhBookManager *book_manager;
-        DhSettings    *settings;
-
-        /* signals */
-        gulong book_created_id;
-        gulong book_deleted_id;
-        gulong group_by_language_id;
-
         /* Fonts tab */
         GtkCheckButton *system_fonts_button;
         GtkGrid *fonts_grid;
@@ -68,23 +60,6 @@ typedef struct {
 G_DEFINE_TYPE_WITH_PRIVATE (DhPreferences, dh_preferences, GTK_TYPE_DIALOG)
 
 static void
-dh_preferences_finalize (GObject *object)
-{
-        DhPreferencesPrivate *priv;
-
-        priv = dh_preferences_get_instance_private (DH_PREFERENCES (object));
-
-        g_clear_object (&priv->settings);
-
-        g_signal_handler_disconnect (priv->book_manager, priv->book_created_id);
-        g_signal_handler_disconnect (priv->book_manager, priv->book_deleted_id);
-        g_signal_handler_disconnect (priv->book_manager, priv->group_by_language_id);
-        g_clear_object (&priv->book_manager);
-
-        G_OBJECT_CLASS (dh_preferences_parent_class)->finalize (object);
-}
-
-static void
 dh_preferences_response (GtkDialog *dlg,
                          gint       response_id)
 {
@@ -94,11 +69,8 @@ dh_preferences_response (GtkDialog *dlg,
 static void
 dh_preferences_class_init (DhPreferencesClass *klass)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
         GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
-
-        object_class->finalize = dh_preferences_finalize;
 
         dialog_class->response = dh_preferences_response;
 
@@ -420,14 +392,15 @@ preferences_bookshelf_add_book_to_store (DhPreferences *prefs,
 static void
 preferences_bookshelf_populate_store (DhPreferences *prefs)
 {
-        DhPreferencesPrivate *priv = dh_preferences_get_instance_private (prefs);
+        DhBookManager *book_manager;
         GList *l;
         gboolean group_by_language;
 
-        group_by_language = dh_book_manager_get_group_by_language (priv->book_manager);
+        book_manager = dh_book_manager_get_singleton ();
+        group_by_language = dh_book_manager_get_group_by_language (book_manager);
 
         /* This list already comes ordered, but we don't care */
-        for (l = dh_book_manager_get_books (priv->book_manager);
+        for (l = dh_book_manager_get_books (book_manager);
              l;
              l = g_list_next (l)) {
                 preferences_bookshelf_add_book_to_store (prefs,
@@ -509,11 +482,10 @@ preferences_bookshelf_set_language_inconsistent (DhPreferences *prefs,
 
 static void
 preferences_bookshelf_book_deleted_cb (DhBookManager *book_manager,
-                                       GObject       *book_object,
+                                       DhBook        *book,
                                        DhPreferences *prefs)
 {
         DhPreferencesPrivate *priv = dh_preferences_get_instance_private (prefs);
-        DhBook      *book = DH_BOOK (book_object);
         GtkTreeIter  exact_iter;
         gboolean     exact_iter_found;
 
@@ -532,14 +504,13 @@ preferences_bookshelf_book_deleted_cb (DhBookManager *book_manager,
 
 static void
 preferences_bookshelf_book_created_cb (DhBookManager *book_manager,
-                                       GObject       *book_object,
+                                       DhBook        *book,
                                        DhPreferences *prefs)
 {
-        DhPreferencesPrivate *priv = dh_preferences_get_instance_private (prefs);
+        gboolean group_by_language;
 
-        preferences_bookshelf_add_book_to_store (prefs,
-                                                 DH_BOOK (book_object),
-                                                 dh_book_manager_get_group_by_language (priv->book_manager));
+        group_by_language = dh_book_manager_get_group_by_language (book_manager);
+        preferences_bookshelf_add_book_to_store (prefs, book, group_by_language);
 }
 
 static void
@@ -548,7 +519,10 @@ preferences_bookshelf_tree_selection_toggled_cb (GtkCellRendererToggle *cell_ren
                                                  DhPreferences         *prefs)
 {
         DhPreferencesPrivate *priv = dh_preferences_get_instance_private (prefs);
+        DhBookManager *book_manager;
         GtkTreeIter iter;
+
+        book_manager = dh_book_manager_get_singleton ();
 
         if (gtk_tree_model_get_iter_from_string (GTK_TREE_MODEL (priv->bookshelf_store),
                                                  &iter,
@@ -571,7 +545,7 @@ preferences_bookshelf_tree_selection_toggled_cb (GtkCellRendererToggle *cell_ren
                                             -1);
                         /* Now we need to look for the language group of this item,
                          * in order to set the inconsistent state if applies */
-                        if (dh_book_manager_get_group_by_language (priv->book_manager)) {
+                        if (dh_book_manager_get_group_by_language (book_manager)) {
                                 preferences_bookshelf_set_language_inconsistent (prefs, dh_book_get_language (book));
                         }
 
@@ -579,7 +553,7 @@ preferences_bookshelf_tree_selection_toggled_cb (GtkCellRendererToggle *cell_ren
                         GtkTreeIter loop_iter;
 
                         /* We should only reach this if we are grouping by language */
-                        g_assert (dh_book_manager_get_group_by_language (priv->book_manager) == TRUE);
+                        g_assert (dh_book_manager_get_group_by_language (book_manager) == TRUE);
 
                         /* Set new status in the language group item */
                         gtk_list_store_set (priv->bookshelf_store, &iter,
@@ -616,7 +590,8 @@ static void
 dh_preferences_init (DhPreferences *prefs)
 {
         DhPreferencesPrivate *priv;
-        GApplication *app;
+        DhBookManager *book_manager;
+        DhSettings *settings;
         GSettings *settings_fonts;
         GSettings *settings_contents;
 
@@ -624,43 +599,46 @@ dh_preferences_init (DhPreferences *prefs)
 
         gtk_widget_init_template (GTK_WIDGET (prefs));
 
-        app = g_application_get_default ();
+        book_manager = dh_book_manager_get_singleton ();
 
-        priv->settings = dh_settings_get ();
-        priv->book_manager = g_object_ref (dh_app_peek_book_manager (DH_APP (app)));
-        priv->book_created_id = g_signal_connect (priv->book_manager,
-                                                  "book-created",
-                                                  G_CALLBACK (preferences_bookshelf_book_created_cb),
-                                                  prefs);
-        priv->book_deleted_id = g_signal_connect (priv->book_manager,
-                                                  "book-deleted",
-                                                  G_CALLBACK (preferences_bookshelf_book_deleted_cb),
-                                                  prefs);
-        priv->group_by_language_id = g_signal_connect (priv->book_manager,
-                                                       "notify::group-by-language",
-                                                       G_CALLBACK (preferences_bookshelf_group_by_language_cb),
-                                                       prefs);
+        g_signal_connect_object (book_manager,
+                                 "book-created",
+                                 G_CALLBACK (preferences_bookshelf_book_created_cb),
+                                 prefs,
+                                 0);
+
+        g_signal_connect_object (book_manager,
+                                 "book-deleted",
+                                 G_CALLBACK (preferences_bookshelf_book_deleted_cb),
+                                 prefs,
+                                 0);
+
+        g_signal_connect_object (book_manager,
+                                 "notify::group-by-language",
+                                 G_CALLBACK (preferences_bookshelf_group_by_language_cb),
+                                 prefs,
+                                 0);
 
         /* setup GSettings bindings */
-        settings_fonts = dh_settings_peek_fonts_settings (priv->settings);
-        settings_contents = dh_settings_peek_contents_settings (priv->settings);
+        settings = dh_settings_get_singleton ();
+        settings_fonts = dh_settings_peek_fonts_settings (settings);
+        settings_contents = dh_settings_peek_contents_settings (settings);
         g_settings_bind (settings_fonts, "use-system-fonts",
-                         priv->system_fonts_button,
-                         "active", G_SETTINGS_BIND_DEFAULT);
+                         priv->system_fonts_button, "active",
+                         G_SETTINGS_BIND_DEFAULT);
         g_settings_bind (settings_fonts, "use-system-fonts",
-                         priv->fonts_grid,
-                         "sensitive", G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN);
+                         priv->fonts_grid, "sensitive",
+                         G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN);
         g_settings_bind (settings_fonts, "fixed-font",
-                         priv->fixed_font_button,
-                         "font-name", G_SETTINGS_BIND_DEFAULT);
+                         priv->fixed_font_button, "font-name",
+                         G_SETTINGS_BIND_DEFAULT);
         g_settings_bind (settings_fonts, "variable-font",
-                         priv->variable_font_button,
-                         "font-name", G_SETTINGS_BIND_DEFAULT);
+                         priv->variable_font_button, "font-name",
+                         G_SETTINGS_BIND_DEFAULT);
 
-        g_settings_bind (settings_contents,
-                         "group-books-by-language",
-                         priv->bookshelf_group_by_language_button,
-                         "active", G_SETTINGS_BIND_DEFAULT);
+        g_settings_bind (settings_contents, "group-books-by-language",
+                         priv->bookshelf_group_by_language_button, "active",
+                         G_SETTINGS_BIND_DEFAULT);
 
         g_signal_connect (priv->bookshelf_enabled_toggle,
                           "toggled",
@@ -688,6 +666,7 @@ dh_preferences_show_dialog (GtkWindow *parent)
         if (parent != gtk_window_get_transient_for (GTK_WINDOW (prefs_dialog))) {
                 gtk_window_set_transient_for (GTK_WINDOW (prefs_dialog),
                                               parent);
+                gtk_window_set_destroy_with_parent (GTK_WINDOW (prefs_dialog), TRUE);
         }
 
         gtk_window_present (GTK_WINDOW (prefs_dialog));

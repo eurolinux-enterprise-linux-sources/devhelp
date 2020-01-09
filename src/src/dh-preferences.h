@@ -13,12 +13,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_PREFERENCES_H__
-#define __DH_PREFERENCES_H__
+#ifndef DH_PREFERENCES_H
+#define DH_PREFERENCES_H
 
 #include <gtk/gtk.h>
 
@@ -51,4 +51,4 @@ void dh_preferences_show_dialog (GtkWindow *parent);
 
 G_END_DECLS
 
-#endif /* __DH_PREFERENCES_H__ */
+#endif /* DH_PREFERENCES_H */

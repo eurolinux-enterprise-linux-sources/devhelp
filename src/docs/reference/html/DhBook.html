@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DhBook: Devhelp Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Devhelp Reference Manual">
+<link rel="up" href="data.html" title="The Data">
+<link rel="prev" href="DhBookManager.html" title="DhBookManager">
+<link rel="next" href="DhLink.html" title="DhLink">
+<meta name="generator" content="GTK-Doc V1.28.1 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#DhBook.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#DhBook.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#DhBook.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="data.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="DhBookManager.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="DhLink.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="DhBook"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="DhBook.top_of_page"></a>DhBook</span></h2>
+<p>DhBook — A book, usually the documentation for one library</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="DhBook.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="DhBook.html" title="DhBook"><span class="returnvalue">DhBook</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-new" title="dh_book_new ()">dh_book_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/gio/GFile.html#GFile-struct"><span class="returnvalue">GFile</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-index-file" title="dh_book_get_index_file ()">dh_book_get_index_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-id" title="dh_book_get_id ()">dh_book_get_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-title" title="dh_book_get_title ()">dh_book_get_title</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-language" title="dh_book_get_language ()">dh_book_get_language</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-links" title="dh_book_get_links ()">dh_book_get_links</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-N-ary-Trees.html#GNode"><span class="returnvalue">GNode</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-tree" title="dh_book_get_tree ()">dh_book_get_tree</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="DhCompletion.html" title="DhCompletion"><span class="returnvalue">DhCompletion</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-completion" title="dh_book_get_completion ()">dh_book_get_completion</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-get-enabled" title="dh_book_get_enabled ()">dh_book_get_enabled</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-set-enabled" title="dh_book_set_enabled ()">dh_book_set_enabled</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-cmp-by-id" title="dh_book_cmp_by_id ()">dh_book_cmp_by_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="DhBook.html#dh-book-cmp-by-title" title="dh_book_cmp_by_title ()">dh_book_cmp_by_title</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhBook.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBook.html#DhBook-deleted" title="The “deleted” signal">deleted</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBook.html#DhBook-disabled" title="The “disabled” signal">disabled</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBook.html#DhBook-enabled" title="The “enabled” signal">enabled</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBook.html#DhBook-updated" title="The “updated” signal">updated</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhBook.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="DhBook.html#DhBook-struct" title="struct DhBook">DhBook</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhBook.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <span class="lineart">╰──</span> DhBook
+</pre>
+</div>
+<div class="refsect1">
+<a name="DhBook.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;devhelp/devhelp.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="DhBook.description"></a><h2>Description</h2>
+<p>A <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> usually contains the documentation for one library (or
+application), for example GLib or GTK+. A <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> corresponds to one index
+file. An index file is a file with the extension <code class="literal">*.devhelp</code>, <code class="literal">*.devhelp2</code>,
+<code class="literal">*.devhelp.gz</code> or <code class="literal">*.devhelp2.gz</code>.</p>
+<p><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> creates a <a href="/home/seb/jhbuild/share/gtk-doc/html/gio/GFileMonitor.html#GFileMonitor-struct"><span class="type">GFileMonitor</span></a> on the index file, and emits the
+<a class="link" href="DhBook.html#DhBook-updated" title="The “updated” signal"><span class="type">“updated”</span></a> or <a class="link" href="DhBook.html#DhBook-deleted" title="The “deleted” signal"><span class="type">“deleted”</span></a> signal in case the index file has
+changed on the filesystem. <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> listens to those <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> signals,
+and emits in turn the <a class="link" href="DhBookManager.html#DhBookManager-book-deleted" title="The “book-deleted” signal"><span class="type">“book-deleted”</span></a> and
+<a class="link" href="DhBookManager.html#DhBookManager-book-created" title="The “book-created” signal"><span class="type">“book-created”</span></a> signals.</p>
+</div>
+<div class="refsect1">
+<a name="DhBook.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="dh-book-new"></a><h3>dh_book_new ()</h3>
+<pre class="programlisting"><a class="link" href="DhBook.html" title="DhBook"><span class="returnvalue">DhBook</span></a> *
+dh_book_new (<em class="parameter"><code><a href="/home/seb/jhbuild/share/gtk-doc/html/gio/GFile.html#GFile-struct"><span class="type">GFile</span></a> *index_file</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-new.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>index_file</p></td>
+<td class="parameter_description"><p>the index file.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-new.returns"></a><h4>Returns</h4>
+<p>a new <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> object, or <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if parsing the index file
+failed. </p>
+<p><span class="annotation">[<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-index-file"></a><h3>dh_book_get_index_file ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/gio/GFile.html#GFile-struct"><span class="returnvalue">GFile</span></a> *
+dh_book_get_index_file (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-get-index-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-index-file.returns"></a><h4>Returns</h4>
+<p>the index file. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-id"></a><h3>dh_book_get_id ()</h3>
+<pre class="programlisting">const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+dh_book_get_id (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<p>Gets the book ID. In the Devhelp index file format version 2, it is actually
+the “name”, not the ID, but “book ID” is clearer, “book name” can be confused
+with the title.</p>
+<div class="refsect3">
+<a name="dh-book-get-id.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-id.returns"></a><h4>Returns</h4>
+<p> the book ID.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-title"></a><h3>dh_book_get_title ()</h3>
+<pre class="programlisting">const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+dh_book_get_title (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-get-title.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-title.returns"></a><h4>Returns</h4>
+<p> the book title.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-language"></a><h3>dh_book_get_language ()</h3>
+<pre class="programlisting">const <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"><span class="returnvalue">gchar</span></a> *
+dh_book_get_language (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-get-language.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-language.returns"></a><h4>Returns</h4>
+<p> the programming language used in <em class="parameter"><code>book</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-links"></a><h3>dh_book_get_links ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+dh_book_get_links (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-get-links.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-links.returns"></a><h4>Returns</h4>
+<p>the list of
+<span class="emphasis"><em>all</em></span> <a class="link" href="DhLink.html" title="DhLink"><span class="type">DhLink</span></a>'s part of <em class="parameter"><code>book</code></em>
+, or <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the book is
+disabled. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> DhLink][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-tree"></a><h3>dh_book_get_tree ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-N-ary-Trees.html#GNode"><span class="returnvalue">GNode</span></a> *
+dh_book_get_tree (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<p>Gets the general structure of the book, as a tree. The tree contains only
+<a class="link" href="DhLink.html" title="DhLink"><span class="type">DhLink</span></a>'s of type <a class="link" href="DhLink.html#DH-LINK-TYPE-BOOK:CAPS"><code class="literal">DH_LINK_TYPE_BOOK</code></a> or <a class="link" href="DhLink.html#DH-LINK-TYPE-PAGE:CAPS"><code class="literal">DH_LINK_TYPE_PAGE</code></a>. The other
+<a class="link" href="DhLink.html" title="DhLink"><span class="type">DhLink</span></a>'s are not contained in the tree. To have a list of
+<span class="emphasis"><em>all</em></span> <a class="link" href="DhLink.html" title="DhLink"><span class="type">DhLink</span></a>'s part of the book, you need to call
+<a class="link" href="DhBook.html#dh-book-get-links" title="dh_book_get_links ()"><code class="function">dh_book_get_links()</code></a>.</p>
+<div class="refsect3">
+<a name="dh-book-get-tree.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-tree.returns"></a><h4>Returns</h4>
+<p>the tree of <a class="link" href="DhLink.html" title="DhLink"><span class="type">DhLink</span></a>'s part of the <em class="parameter"><code>book</code></em>
+,
+or <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if the book is disabled. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-completion"></a><h3>dh_book_get_completion ()</h3>
+<pre class="programlisting"><a class="link" href="DhCompletion.html" title="DhCompletion"><span class="returnvalue">DhCompletion</span></a> *
+dh_book_get_completion (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-get-completion.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-completion.returns"></a><h4>Returns</h4>
+<p>the <a class="link" href="DhCompletion.html" title="DhCompletion"><span class="type">DhCompletion</span></a> of <em class="parameter"><code>book</code></em>
+. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3-28.html#api-index-3.28">3.28</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-get-enabled"></a><h3>dh_book_get_enabled ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+dh_book_get_enabled (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-get-enabled.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-get-enabled.returns"></a><h4>Returns</h4>
+<p> whether the book is enabled.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-set-enabled"></a><h3>dh_book_set_enabled ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+dh_book_set_enabled (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *book</code></em>,
+                     <em class="parameter"><code><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> enabled</code></em>);</pre>
+<p>Enables or disables the book.</p>
+<div class="refsect3">
+<a name="dh-book-set-enabled.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>enabled</p></td>
+<td class="parameter_description"><p>the new value.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-cmp-by-id"></a><h3>dh_book_cmp_by_id ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+dh_book_cmp_by_id (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *a</code></em>,
+                   <em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *b</code></em>);</pre>
+<p>Compares the <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>'s by their IDs, with <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-String-Utility-Functions.html#g-ascii-strcasecmp"><code class="function">g_ascii_strcasecmp()</code></a>.</p>
+<div class="refsect3">
+<a name="dh-book-cmp-by-id.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>a</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>b</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-cmp-by-id.returns"></a><h4>Returns</h4>
+<p> an integer less than, equal to, or greater than zero, if <em class="parameter"><code>a</code></em>
+is &lt;, ==
+or &gt; than <em class="parameter"><code>b</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-cmp-by-title"></a><h3>dh_book_cmp_by_title ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="returnvalue">gint</span></a>
+dh_book_cmp_by_title (<em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *a</code></em>,
+                      <em class="parameter"><code><a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> *b</code></em>);</pre>
+<p>Compares the <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>'s by their title.</p>
+<div class="refsect3">
+<a name="dh-book-cmp-by-title.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>a</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>b</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-cmp-by-title.returns"></a><h4>Returns</h4>
+<p> an integer less than, equal to, or greater than zero, if <em class="parameter"><code>a</code></em>
+is &lt;, ==
+or &gt; than <em class="parameter"><code>b</code></em>
+.</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="DhBook.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="DhBook-struct"></a><h3>struct DhBook</h3>
+<pre class="programlisting">struct DhBook;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="DhBook.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="DhBook-deleted"></a><h3>The <code class="literal">“deleted”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>  *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)</pre>
+<p>The ::deleted signal is emitted when the index file has been deleted
+from the filesystem.</p>
+<div class="refsect3">
+<a name="DhBook-deleted.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> emitting the signal.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DhBook-disabled"></a><h3>The <code class="literal">“disabled”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>  *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)</pre>
+<div class="refsect3">
+<a name="DhBook-disabled.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> emitting the signal.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DhBook-enabled"></a><h3>The <code class="literal">“enabled”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>  *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)</pre>
+<div class="refsect3">
+<a name="DhBook-enabled.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> emitting the signal.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DhBook-updated"></a><h3>The <code class="literal">“updated”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>  *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data)</pre>
+<p>The ::updated signal is emitted when the index file has been
+modified (but the file still exists).</p>
+<div class="refsect3">
+<a name="DhBook-updated.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a> emitting the signal.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.28.1</div>
+</body>
+</html>

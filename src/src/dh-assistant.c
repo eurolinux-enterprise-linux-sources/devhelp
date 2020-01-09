@@ -12,8 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "config.h"
@@ -24,8 +24,7 @@
 #include "dh-settings.h"
 
 typedef struct {
-        GtkWidget     *view;
-        DhSettings    *settings;
+        GtkWidget *view;
 } DhAssistantPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (DhAssistant, dh_assistant, GTK_TYPE_APPLICATION_WINDOW);
@@ -36,20 +35,22 @@ assistant_view_open_uri_cb (DhAssistantView *view,
                             DhAssistant     *assistant)
 {
         DhApp *app;
-        GtkWindow *window;
+        DhWindow *window;
 
         app = DH_APP (gtk_window_get_application (GTK_WINDOW (assistant)));
 
-        window = dh_app_peek_first_window (app);
-        _dh_window_display_uri (DH_WINDOW (window), uri);
+        window = dh_app_get_active_main_window (app, TRUE);
+        _dh_window_display_uri (window, uri);
 }
 
 static gboolean
 dh_assistant_key_press_event (GtkWidget   *widget,
                               GdkEventKey *event)
 {
+        DhAssistant *assistant = DH_ASSISTANT (widget);
+
         if (event->keyval == GDK_KEY_Escape) {
-                gtk_widget_destroy (widget);
+                gtk_window_close (GTK_WINDOW (assistant));
                 return GDK_EVENT_STOP;
         }
 
@@ -57,39 +58,28 @@ dh_assistant_key_press_event (GtkWidget   *widget,
 }
 
 static gboolean
-dh_assistant_configure_event (GtkWidget         *widget,
-                              GdkEventConfigure *event)
+dh_assistant_delete_event (GtkWidget   *widget,
+                           GdkEventAny *event)
 {
-        DhAssistant *assistant = DH_ASSISTANT (widget);
-        DhAssistantPrivate *priv = dh_assistant_get_instance_private (assistant);
+        DhSettings *settings;
 
+        settings = dh_settings_get_singleton ();
         dh_util_window_settings_save (GTK_WINDOW (widget),
-                                      dh_settings_peek_assistant_settings (priv->settings),
-                                      FALSE);
-        return GTK_WIDGET_CLASS (dh_assistant_parent_class)->configure_event (widget, event);
-}
+                                      dh_settings_peek_assistant_settings (settings));
 
-static void
-dh_assistant_dispose (GObject *object)
-{
-        DhAssistant *assistant = DH_ASSISTANT (object);
-        DhAssistantPrivate *priv = dh_assistant_get_instance_private (assistant);
+        if (GTK_WIDGET_CLASS (dh_assistant_parent_class)->delete_event == NULL)
+                return GDK_EVENT_PROPAGATE;
 
-        g_clear_object (&priv->settings);
-
-        G_OBJECT_CLASS (dh_assistant_parent_class)->dispose (object);
+        return GTK_WIDGET_CLASS (dh_assistant_parent_class)->delete_event (widget, event);
 }
 
 static void
 dh_assistant_class_init (DhAssistantClass *klass)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-        object_class->dispose = dh_assistant_dispose;
-
         widget_class->key_press_event = dh_assistant_key_press_event;
-        widget_class->configure_event = dh_assistant_configure_event;
+        widget_class->delete_event = dh_assistant_delete_event;
 
         /* Bind class to template */
         gtk_widget_class_set_template_from_resource (widget_class,
@@ -104,28 +94,25 @@ dh_assistant_init (DhAssistant *assistant)
 
         gtk_widget_init_template (GTK_WIDGET (assistant));
 
-        priv->settings = dh_settings_get ();
-
         g_signal_connect (priv->view, "open-uri",
                           G_CALLBACK (assistant_view_open_uri_cb),
                           assistant);
-
-        dh_util_window_settings_restore (GTK_WINDOW (assistant),
-                                         dh_settings_peek_assistant_settings (priv->settings),
-                                         FALSE);
 }
 
-GtkWidget *
+DhAssistant *
 dh_assistant_new (DhApp *application)
 {
-        GtkWidget          *assistant;
-        DhAssistantPrivate *priv;
+        DhAssistant *assistant;
+        DhSettings *settings;
 
-        assistant = g_object_new (DH_TYPE_ASSISTANT, "application", application, NULL);
+        assistant = g_object_new (DH_TYPE_ASSISTANT,
+                                  "application", application,
+                                  NULL);
 
-        priv = dh_assistant_get_instance_private (DH_ASSISTANT (assistant));
-        dh_assistant_view_set_book_manager (DH_ASSISTANT_VIEW (priv->view),
-                                            dh_app_peek_book_manager (application));
+        settings = dh_settings_get_singleton ();
+        gtk_widget_realize (GTK_WIDGET (assistant));
+        dh_util_window_settings_restore (GTK_WINDOW (assistant),
+                                         dh_settings_peek_assistant_settings (settings));
 
         return assistant;
 }

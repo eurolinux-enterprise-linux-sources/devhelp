@@ -2,6 +2,7 @@
 /*
  * Copyright (C) 2001-2002 Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2004,2008 Imendio AB
+ * Copyright (C) 2015, 2017 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -13,16 +14,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_UTIL_H__
-#define __DH_UTIL_H__
+#ifndef DH_UTIL_H
+#define DH_UTIL_H
 
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
-#include "dh-link.h"
 
 G_BEGIN_DECLS
 
@@ -39,16 +39,20 @@ void         dh_util_view_set_font                (WebKitWebView *view,
                                                    const gchar *font_name_variable);
 
 void         dh_util_window_settings_save         (GtkWindow *window,
-                                                   GSettings *settings,
-                                                   gboolean has_maximize);
+                                                   GSettings *settings);
 
-void         dh_util_window_settings_restore      (GtkWindow *window,
-                                                   GSettings *settings,
-                                                   gboolean has_maximize);
+void         dh_util_window_settings_restore      (GtkWindow *gtk_window,
+                                                   GSettings *settings);
 
 void         dh_util_queue_concat                 (GQueue *q1,
                                                    GQueue *q2);
 
+G_GNUC_INTERNAL
+void         _dh_util_free_book_tree              (GNode *book_tree);
+
+G_GNUC_INTERNAL
+GSList *     _dh_util_get_possible_index_files    (GFile *book_directory);
+
 G_END_DECLS
 
-#endif /* __DH_UTIL_H__ */
+#endif /* DH_UTIL_H */

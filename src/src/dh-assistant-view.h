@@ -18,8 +18,8 @@
  * USA
  */
 
-#ifndef __DH_ASSISTANT_VIEW_H__
-#define __DH_ASSISTANT_VIEW_H__
+#ifndef DH_ASSISTANT_VIEW_H
+#define DH_ASSISTANT_VIEW_H
 
 #include <webkit2/webkit2.h>
 #include "dh-book-manager.h"
@@ -43,16 +43,21 @@ struct _DhAssistantView {
 
 struct _DhAssistantViewClass {
         WebKitWebViewClass parent_class;
+
+        /* Padding for future expansion */
+        gpointer padding[12];
 };
 
-GType      dh_assistant_view_get_type (void) G_GNUC_CONST;
-GtkWidget* dh_assistant_view_new      (void);
-gboolean   dh_assistant_view_search   (DhAssistantView *view,
-                                       const gchar     *str);
-void       dh_assistant_view_set_book_manager  (DhAssistantView *view,
-                                                DhBookManager   *book_manager);
-gboolean   dh_assistant_view_set_link (DhAssistantView *view,
-                                       DhLink          *link);
+GType           dh_assistant_view_get_type              (void) G_GNUC_CONST;
+
+GtkWidget *     dh_assistant_view_new                   (void);
+
+gboolean        dh_assistant_view_set_link              (DhAssistantView *view,
+                                                         DhLink          *link);
+
+gboolean        dh_assistant_view_search                (DhAssistantView *view,
+                                                         const gchar     *str);
+
 G_END_DECLS
 
-#endif /* __DH_ASSISTANT_VIEW_H__ */
+#endif /* DH_ASSISTANT_VIEW_H */

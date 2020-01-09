@@ -13,16 +13,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_KEYWORD_MODEL_H__
-#define __DH_KEYWORD_MODEL_H__
+#ifndef DH_KEYWORD_MODEL_H
+#define DH_KEYWORD_MODEL_H
 
 #include <glib-object.h>
 #include "dh-link.h"
-#include "dh-book-manager.h"
 
 G_BEGIN_DECLS
 
@@ -36,14 +35,15 @@ G_BEGIN_DECLS
 typedef struct _DhKeywordModel      DhKeywordModel;
 typedef struct _DhKeywordModelClass DhKeywordModelClass;
 
-struct _DhKeywordModel
-{
+struct _DhKeywordModel {
         GObject parent_instance;
 };
 
-struct _DhKeywordModelClass
-{
+struct _DhKeywordModelClass {
         GObjectClass parent_class;
+
+        /* Padding for future expansion */
+        gpointer padding[12];
 };
 
 enum {
@@ -54,14 +54,14 @@ enum {
 };
 
 GType           dh_keyword_model_get_type  (void);
+
 DhKeywordModel *dh_keyword_model_new       (void);
-void            dh_keyword_model_set_words (DhKeywordModel *model,
-                                            DhBookManager  *book_manager);
+
 DhLink *        dh_keyword_model_filter    (DhKeywordModel *model,
-                                            const gchar    *string,
-                                            const gchar    *book_id,
+                                            const gchar    *search_string,
+                                            const gchar    *current_book_id,
                                             const gchar    *language);
 
 G_END_DECLS
 
-#endif /* __DH_KEYWORD_MODEL_H__ */
+#endif /* DH_KEYWORD_MODEL_H */

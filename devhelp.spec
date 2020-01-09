@@ -1,12 +1,12 @@
 Name: devhelp
-Version: 3.22.0
-Release: 1%{?dist}
 Epoch: 1
+Version: 3.28.1
+Release: 1%{?dist}
 Summary: API documentation browser
 
 License: GPLv2+
 URL: https://wiki.gnome.org/Apps/Devhelp
-Source0: https://download.gnome.org/sources/%{name}/3.22/%{name}-%{version}.tar.xz
+Source0: https://download.gnome.org/sources/%{name}/3.28/%{name}-%{version}.tar.xz
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1235584
 Patch1: devhelp-3.22.0-python2.patch
@@ -14,7 +14,9 @@ Patch1: devhelp-3.22.0-python2.patch
 BuildRequires: chrpath
 BuildRequires: desktop-file-utils >= 0.3
 BuildRequires: gettext
-BuildRequires: intltool
+BuildRequires: gobject-introspection-devel
+BuildRequires: itstool
+BuildRequires: pkgconfig(gsettings-desktop-schemas)
 BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: pkgconfig(webkit2gtk-4.0)
 BuildRequires: libappstream-glib
@@ -45,7 +47,7 @@ for embedding devhelp into other applications such as IDEs.
 %patch1 -p1
 
 %build
-%configure --disable-static
+%configure --disable-static --disable-Werror
 make %{?_smp_mflags} CFLAGS="$CFLAGS -fno-strict-aliasing"
 
 %install
@@ -57,7 +59,7 @@ make %{?_smp_mflags} CFLAGS="$CFLAGS -fno-strict-aliasing"
 #
 # See http://people.freedesktop.org/~hughsient/appdata/#screenshots for more details.
 #
-appstream-util replace-screenshots $RPM_BUILD_ROOT%{_datadir}/appdata/org.gnome.Devhelp.appdata.xml \
+appstream-util replace-screenshots $RPM_BUILD_ROOT%{_datadir}/metainfo/org.gnome.Devhelp.appdata.xml \
   https://raw.githubusercontent.com/hughsie/fedora-appstream/master/screenshots-extra/devhelp/a.png 
 
 find ${RPM_BUILD_ROOT} -type f -name "*.la" -exec rm -f {} ';'
@@ -66,11 +68,13 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/devhelp/books
 
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/devhelp
 
-%find_lang devhelp
+rm -rf ${RPM_BUILD_ROOT}%{_libdir}/gedit/plugins/__pycache__
+
+%find_lang devhelp --with-gnome
 
 
 %check
-appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_datadir}/appdata/org.gnome.Devhelp.appdata.xml
+appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_datadir}/metainfo/org.gnome.Devhelp.appdata.xml
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.gnome.Devhelp.desktop
 
 %post
@@ -98,12 +102,11 @@ fi
 glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 
 %files
-%doc AUTHORS NEWS README misc/devhelp.{el,vim}
+%doc AUTHORS NEWS README
 %license COPYING
 
 %{_bindir}/devhelp
 
-%{_datadir}/appdata/org.gnome.Devhelp.appdata.xml
 %{_datadir}/applications/org.gnome.Devhelp.desktop
 %{_datadir}/dbus-1/services/org.gnome.Devhelp.service
 %{_datadir}/devhelp
@@ -114,6 +117,7 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 %{_datadir}/icons/hicolor/48x48/apps/devhelp.png
 %{_datadir}/icons/hicolor/256x256/apps/devhelp.png
 %{_datadir}/icons/hicolor/symbolic/apps/devhelp-symbolic.svg
+%{_datadir}/metainfo/org.gnome.Devhelp.appdata.xml
 
 %dir %{_libdir}/gedit
 %dir %{_libdir}/gedit/plugins
@@ -121,16 +125,22 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >&/dev/null || :
 %{_mandir}/man1/devhelp.1*
 
 %files libs -f devhelp.lang
-%{_libdir}/libdevhelp*.so.*
-%{_datadir}/GConf/gsettings/devhelp.convert
+%{_libdir}/libdevhelp-3.so.5*
+%{_libdir}/girepository-1.0/Devhelp-3.0.typelib
 %{_datadir}/glib-2.0/schemas/org.gnome.devhelp.gschema.xml
 
 %files devel
 %{_includedir}/devhelp-3.0/
-%{_libdir}/libdevhelp*.so
+%{_libdir}/libdevhelp-3.so
 %{_libdir}/pkgconfig/*
+%{_datadir}/gtk-doc/*
+%{_datadir}/gir-1.0/Devhelp-3.0.gir
 
 %changelog
+* Wed Jun 06 2018 Richard Hughes <rhughes@redhat.com> - 1:3.28.1-1
+- Update to 3.28.1
+- Resolves: #1569719
+
 * Mon Sep 19 2016 Kalev Lember <klember@redhat.com> - 1:3.22.0-1
 - Update to 3.22.0
 - Resolves: #1386845

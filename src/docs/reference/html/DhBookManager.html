@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DhBookManager: Devhelp Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Devhelp Reference Manual">
+<link rel="up" href="data.html" title="The Data">
+<link rel="prev" href="data.html" title="The Data">
+<link rel="next" href="DhBook.html" title="DhBook">
+<meta name="generator" content="GTK-Doc V1.28.1 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#DhBookManager.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#DhBookManager.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#DhBookManager.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#DhBookManager.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="data.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="data.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="DhBook.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="DhBookManager"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="DhBookManager.top_of_page"></a>DhBookManager</span></h2>
+<p>DhBookManager — Aggregation of all <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>'s</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="DhBookManager.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="DhBookManager.html" title="DhBookManager"><span class="returnvalue">DhBookManager</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBookManager.html#dh-book-manager-new" title="dh_book_manager_new ()">dh_book_manager_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="DhBookManager.html" title="DhBookManager"><span class="returnvalue">DhBookManager</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBookManager.html#dh-book-manager-get-singleton" title="dh_book_manager_get_singleton ()">dh_book_manager_get_singleton</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="DhBookManager.html#dh-book-manager-populate" title="dh_book_manager_populate ()">dh_book_manager_populate</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="DhBookManager.html#dh-book-manager-get-books" title="dh_book_manager_get_books ()">dh_book_manager_get_books</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="DhBookManager.html#dh-book-manager-get-group-by-language" title="dh_book_manager_get_group_by_language ()">dh_book_manager_get_group_by_language</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="DhBookManager.html#dh-book-manager-set-group-by-language" title="dh_book_manager_set_group_by_language ()">dh_book_manager_set_group_by_language</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></td>
+<td class="property_name"><a class="link" href="DhBookManager.html#DhBookManager--group-by-language" title="The “group-by-language” property">group-by-language</a></td>
+<td class="property_flags">Read / Write</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="signals_return">
+<col width="300px" class="signals_name">
+<col width="200px" class="signals_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBookManager.html#DhBookManager-book-created" title="The “book-created” signal">book-created</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBookManager.html#DhBookManager-book-deleted" title="The “book-deleted” signal">book-deleted</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBookManager.html#DhBookManager-book-disabled" title="The “book-disabled” signal">book-disabled</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="DhBookManager.html#DhBookManager-book-enabled" title="The “book-enabled” signal">book-enabled</a></td>
+<td class="signal_flags"><a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="DhBookManager.html#DhBookManager-struct" title="struct DhBookManager">DhBookManager</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <span class="lineart">╰──</span> DhBookManager
+</pre>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;devhelp/devhelp.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.description"></a><h2>Description</h2>
+<p><a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> is a singleton class containing all the <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>'s.</p>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="dh-book-manager-new"></a><h3>dh_book_manager_new ()</h3>
+<pre class="programlisting"><a class="link" href="DhBookManager.html" title="DhBookManager"><span class="returnvalue">DhBookManager</span></a> *
+dh_book_manager_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="warning">
+<p><code class="literal">dh_book_manager_new</code> has been deprecated since version 3.26 and should not be used in newly-written code.</p>
+<p>Call <a class="link" href="DhBookManager.html#dh-book-manager-get-singleton" title="dh_book_manager_get_singleton ()"><code class="function">dh_book_manager_get_singleton()</code></a> instead.</p>
+</div>
+<div class="refsect3">
+<a name="dh-book-manager-new.returns"></a><h4>Returns</h4>
+<p>the <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> singleton instance. You need to
+unref it when no longer needed. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-manager-get-singleton"></a><h3>dh_book_manager_get_singleton ()</h3>
+<pre class="programlisting"><a class="link" href="DhBookManager.html" title="DhBookManager"><span class="returnvalue">DhBookManager</span></a> *
+dh_book_manager_get_singleton (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-manager-get-singleton.returns"></a><h4>Returns</h4>
+<p>the <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> singleton instance. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-3-26.html#api-index-3.26">3.26</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-manager-populate"></a><h3>dh_book_manager_populate ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+dh_book_manager_populate (<em class="parameter"><code><a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">dh_book_manager_populate</code> has been deprecated since version 3.26 and should not be used in newly-written code.</p>
+<p>The <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> is now automatically populated when the
+object is created, there is no need to call this function anymore.</p>
+</div>
+<p>Populates the <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> with all books found on the system and user
+directories.</p>
+<div class="refsect3">
+<a name="dh-book-manager-populate.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-manager-get-books"></a><h3>dh_book_manager_get_books ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *
+dh_book_manager_get_books (<em class="parameter"><code><a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-manager-get-books.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-manager-get-books.returns"></a><h4>Returns</h4>
+<p>the list of all <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>'s
+found. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> DhBook][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-manager-get-group-by-language"></a><h3>dh_book_manager_get_group_by_language ()</h3>
+<pre class="programlisting"><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+dh_book_manager_get_group_by_language (<em class="parameter"><code><a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager</code></em>);</pre>
+<div class="refsect3">
+<a name="dh-book-manager-get-group-by-language.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="dh-book-manager-get-group-by-language.returns"></a><h4>Returns</h4>
+<p> whether the books should be grouped by programming language.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="dh-book-manager-set-group-by-language"></a><h3>dh_book_manager_set_group_by_language ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+dh_book_manager_set_group_by_language (<em class="parameter"><code><a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager</code></em>,
+                                       <em class="parameter"><code><a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> group_by_language</code></em>);</pre>
+<p>Sets whether the books should be grouped by programming language.</p>
+<div class="refsect3">
+<a name="dh-book-manager-set-group-by-language.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>a <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>group_by_language</p></td>
+<td class="parameter_description"><p>the new value.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="DhBookManager-struct"></a><h3>struct DhBookManager</h3>
+<pre class="programlisting">struct DhBookManager;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="DhBookManager--group-by-language"></a><h3>The <code class="literal">“group-by-language”</code> property</h3>
+<pre class="programlisting">  “group-by-language”        <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a></pre>
+<p>Whether books should be grouped by programming language.</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="DhBookManager.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="DhBookManager-book-created"></a><h3>The <code class="literal">“book-created”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager,
+               <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>        *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>       user_data)</pre>
+<div class="refsect3">
+<a name="DhBookManager-book-created.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the created <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DhBookManager-book-deleted"></a><h3>The <code class="literal">“book-deleted”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager,
+               <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>        *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>       user_data)</pre>
+<div class="refsect3">
+<a name="DhBookManager-book-deleted.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the deleted <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DhBookManager-book-disabled"></a><h3>The <code class="literal">“book-disabled”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager,
+               <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>        *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>       user_data)</pre>
+<div class="refsect3">
+<a name="DhBookManager-book-disabled.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the disabled <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="DhBookManager-book-enabled"></a><h3>The <code class="literal">“book-enabled”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a> *book_manager,
+               <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>        *book,
+               <a href="/home/seb/jhbuild/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a>       user_data)</pre>
+<div class="refsect3">
+<a name="DhBookManager-book-enabled.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>book_manager</p></td>
+<td class="parameter_description"><p>the <a class="link" href="DhBookManager.html" title="DhBookManager"><span class="type">DhBookManager</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>book</p></td>
+<td class="parameter_description"><p>the enabled <a class="link" href="DhBook.html" title="DhBook"><span class="type">DhBook</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: <a href="/home/seb/jhbuild/share/gtk-doc/html/gobject/gobject-Signals.html#G-SIGNAL-RUN-LAST:CAPS">Run Last</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.28.1</div>
+</body>
+</html>

@@ -1,3 +1,241 @@
+News in 3.28.1, 2018-04-08
+--------------------------
+* AppData: update screenshots.
+* Translation updates.
+
+News in 3.28.0, 2018-03-10
+--------------------------
+* Improve default GSettings values.
+* A few other small improvements.
+* Translation updates.
+
+===============
+Version 3.27.90
+===============
+
+- Flatpak: see books installed on the host (usually installed by traditional
+  Linux distribution packages). The Flatpak needs to be built with the new
+  --enable-flatpak-build configure flag.
+- Lots of code refactorings, fixing various bugs along the way. Have more
+  classes, but smaller: from DhKeywordModel extract DhSearchContext; from
+  DhWindow extract DhWebView, DhTab and DhTabLabel.
+- All bugs in bugzilla fixed (only enhancement bugs remaining).
+- Write more unit tests.
+- Write first page of *user* documentation (in Mallard), to explain some
+  features of the search in the side panel.
+- Fix and document a feature useful for integration with other developer tools:
+  filtering by book and page when doing a search, see the README.
+- Improve error info bar (shown on top of the HTML page), use the TeplInfoBar
+  utility class, copied from the Tepl library.
+
+Fixed bugs:
+
+ - #696905, press Escape to cancel search
+ - #790902, writes window state settings on each configure event
+ - #792068, Make it work with Flatpak
+ - #792443, Missing emacs/vim plugins in 3.27.2 tarball
+
+Updated translations: de, fi, fur, hu, id, pl
+
+Many thanks to all contributors: Balázs Úr, Fabio Tomat, Tim Sabsch,
+Sébastien Wilmet, Mario Blättermann, Piotr Drąg, Kukuh Syafaat, Christian
+Kirbach, Jiri Grönroos
+
+==============
+Version 3.27.2
+==============
+
+- Deprecate Devhelp index file format version 1 (with file extension *.devhelp
+  or *.devhelp.gz), print warning when loading such index files.
+- Lots of code refactorings.
+- Do not use deprecated GCompletion API, implement re-usable DhCompletion class
+  based on GSequence with an API better suited for Devhelp.
+- Do not use deprecated GdkScreen API, use GdkMonitor.
+- Use WebKit's new font size functionality.
+- Increase number of maximum search results (100 -> 1000).
+- Use the GtkSearchEntry::search-changed signal, adding a small delay to show
+  search results.
+- Make right-click menu work in the WebKitWebView.
+- Do not save/restore GtkWindows x/y positions.
+- Improve application description and documentation.
+- Some cleanup and file reorganisation in the git repository.
+- Fix several bugs.
+
+Fixed bugs:
+
+ - #606831, Devhelp applications lacks right-click context menu
+ - #668978, Add timeout to search entry.
+ - #784652, Searching "GFile" doesn't return an exact match (too many
+            results)
+ - #789862, dh-sidebar: Crashes when interacting with the GCompletion
+ - #790680, Start using WebKit's new font size functionality
+ - #791127, Assertion failed in DhBookManager
+
+Updated translations: cs, sr
+
+Many thanks to all contributors: Милош Поповић, Sébastien
+Wilmet, Marek Černocký, Gabriel Ivascu
+
+==============
+Version 3.27.1
+==============
+
+- Lots of code refactorings.
+- Write first unit test.
+- DhLink: use a union inside the struct to use less memory.
+- Improve API documentation.
+- Some minor bug fixes.
+- Translation updates.
+
+==============
+Version 3.26.1
+==============
+
+- Move New Tab button on the right side of the headerbar.
+
+Updated translations: ca, ca@valencia, da, el, nb, nl
+
+Many thanks to all contributors: Sébastien Wilmet, Ask Hjorth Larsen,
+Efstathios Iosifidis, Nathan Follens, Kjartan Maraas, Xavi Ivars
+
+==============
+Version 3.26.0
+==============
+
+Updated translations: be, da, eu, fi, hu, it, ko, lt, lv, ne, pt_BR,
+sk, tr
+
+Many thanks to all contributors: Balázs Úr, Changwoo Ryu, Osman Karagöz,
+Yuras Shumovich, Piotr Drąg, Milo Casagrande, Ask Hjorth Larsen, Inaki
+Larranaga Murgoitio, Enrico Nicoletto, Rūdolfs Mazurs, Jiri Grönroos,
+Dušan Kazik
+
+===============
+Version 3.25.91
+===============
+
+- Bump Libtool version.
+
+Fixed bugs:
+
+ - #786008, Constant updating of window positions causing high CPU load
+   Fixed by adding a timeout to save the GSettings for the window state.
+
+Updated translations: ca, gl, ne, pl, sr@latin, sr
+
+Many thanks to all contributors: Fran Dieguez, Мирослав
+Николић, Sébastien Wilmet, Pawan Chitrakar, Jordi Mas, Debarshi Ray
+
+==============
+Version 3.25.2
+==============
+
+- Move New Tab action as a button in the headerbar (it's no longer in the
+  hamburger menu).
+- Refactorings in DhLink.
+- Rename dh_free_resources() to dh_finalize().
+
+Fixed bugs:
+
+ - #721082, a couple of scripts to add javadocs as Devhelp books
+ - #779386, Consider moving contents of "hamburger" menu elsewhere
+ - #783964, [PATCH] mouse forward/back buttons don't work
+
+Updated translations: cs, de, es, fr, fur, id, kk, sl, sv, vi
+
+Many thanks to all contributors: Fabio Tomat, Anders Jonsson, Sébastien
+Wilmet, Mario Blättermann, Piotr Drąg, Kukuh Syafaat, Matej Urbančič,
+Trần Ngọc Quân, Claude Paroz, Daniel Mustieles, Lubomir Rintel,
+Baurzhan Muftakhidinov, Marek Cernocky
+
+==============
+Version 3.25.1
+==============
+
+- Book tree in the side panel: add context menu with Collapse All action.
+- Update GUI when system fonts change.
+- Lots of code clean-up and refactorings.
+- Clean up the GSettings schema.
+- Use GIO to load the index files.
+- Several bug fixes in the parser.
+- Build system:
+	- Disable -Werror by default.
+	- Use git.mk.
+	- Check for gsettings-desktop-schemas with pkg-config.
+
+API:
+- There has been some API breaks documented in the reference manual, but both
+  Anjuta and gnome-builder should still compile and work fine.
+- Several fixes in the GTK-Doc comments and GObject Introspection annotations.
+- Improve documentation, write class descriptions for public classes.
+- DhBookManager is now a singleton.
+- Deprecate dh_link_get_page_name().
+- dh_init() now initializes the i18n.
+- New function: dh_free_resources().
+
+Fixed bugs:
+
+ - #761292, Book tree in sidebar: add right click -> collapse all
+ - #775175, Problems with back/forward buttons sensitivity
+ - #776596, devhelp --search sometimes doesn't jump to symbol
+ - #782511, Take advantage of Unicode
+
+Updated translations: be, de, el, hu, id, pl
+
+Many thanks to all contributors: Balázs Úr, Andika Triwidada, Tom
+Tryfonidis, Yuras Shumovich, Sébastien Wilmet, Mario Blättermann, Piotr
+Drąg, Kukuh Syafaat, Rico Tzschichholz
+
+==============
+Version 3.24.0
+==============
+
+Updated translations: lv
+
+Many thanks to all contributors: Rūdolfs Mazurs
+
+
+===============
+Version 3.23.92
+===============
+
+Fixed bugs:
+
+ - #779378, devhelp 3.23.91 fails to build because of -Werror
+ - #779563, Add Flatpak build manifest
+
+Updated translations: da, fr, gl, id, ko, lt, zh_TW
+
+Many thanks to all contributors: Changwoo Ryu, Kukuh Syafaat, Fran Dieguez,
+Sébastien Wilmet, Ask Hjorth Larsen, Aurimas Černius, Chao-Hsiung Liao,
+Charles Monzat
+
+
+===============
+Version 3.23.91
+===============
+
+Fixed bugs:
+
+ - #763518, Add sidebar toggler to the menu
+ - #770785, Add GTK-Doc API reference and GObject Introspection support
+ - #771503, fix warning in finalize of sidebar
+ - #773900, Small build system update
+ - #774069, unable to build devhelp by jhbuild
+ - #775261, Make DhLanguage a GObject subclass
+
+Updated translations: cs, de, es, eu, fi, fur, hr, hu, it, kk, nb, pl,
+pt_BR, sk, sl, sr@latin, sr, sv
+
+Many thanks to all contributors: Balázs Meskó, Мирослав
+Николић, Corentin Noël, Mario Blättermann, Milo Casagrande, Kjartan
+Maraas, Enrico Nicoletto, Balázs Úr, Piotr Drąg, Marek Černocký,
+Christian Hergert, Fabio Tomat, Sébastien Wilmet, gogo, Matej Urbančič,
+Michael Catanzaro, Fábio Nogueira, Anders Jonsson, Rafael Fontenelle,
+Miguel Vaello Martínez, Inaki Larranaga Murgoitio, Daniel Mustieles,
+Baurzhan Muftakhidinov, Jiri Grönroos, Dušan Kazik
+
+
 ==============
 Version 3.22.0
 ==============

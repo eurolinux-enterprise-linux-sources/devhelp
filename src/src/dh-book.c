@@ -4,6 +4,7 @@
  * Copyright (C) 2002 Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2004-2008 Imendio AB
  * Copyright (C) 2010 Lanedo GmbH
+ * Copyright (C) 2017, 2018 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -15,77 +16,84 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "config.h"
 #include "dh-book.h"
-
 #include <glib/gi18n-lib.h>
-
 #include "dh-link.h"
 #include "dh-parser.h"
 #include "dh-util.h"
 
-/* Timeout to wait for new events in the book so that
- * they are merged and we don't spam unneeded signals */
-#define EVENT_MERGE_TIMEOUT_SECS 2
+/**
+ * SECTION:dh-book
+ * @Title: DhBook
+ * @Short_description: A book, usually the documentation for one library
+ *
+ * A #DhBook usually contains the documentation for one library (or
+ * application), for example GLib or GTK+. A #DhBook corresponds to one index
+ * file. An index file is a file with the extension `*.devhelp`, `*.devhelp2`,
+ * `*.devhelp.gz` or `*.devhelp2.gz`.
+ *
+ * #DhBook creates a #GFileMonitor on the index file, and emits the
+ * #DhBook::updated or #DhBook::deleted signal in case the index file has
+ * changed on the filesystem. #DhBookManager listens to those #DhBook signals,
+ * and emits in turn the #DhBookManager::book-deleted and
+ * #DhBookManager::book-created signals.
+ */
 
-/* Signals managed by the DhBook */
+/* Timeout to wait for new events on the index file so that they are merged and
+ * we don't spam unneeded signals.
+ */
+#define EVENT_MERGE_TIMEOUT_SECS (2)
+
 enum {
-        BOOK_ENABLED,
-        BOOK_DISABLED,
-        BOOK_UPDATED,
-        BOOK_DELETED,
-        BOOK_LAST_SIGNAL
+        /* FIXME: a boolean property would be a better API instead of the
+         * ::enabled and ::disabled signals. Or this whole concept can be
+         * removed from DhBook, by introducing DhBookSelection, see:
+         * https://bugzilla.gnome.org/show_bug.cgi?id=784491#c3
+         */
+        SIGNAL_ENABLED,
+        SIGNAL_DISABLED,
+
+        SIGNAL_UPDATED,
+        SIGNAL_DELETED,
+        N_SIGNALS
 };
 
 typedef enum {
         BOOK_MONITOR_EVENT_NONE,
         BOOK_MONITOR_EVENT_UPDATED,
         BOOK_MONITOR_EVENT_DELETED
-} DhBookMonitorEvent;
+} BookMonitorEvent;
 
-/* Structure defining basic contents to store about every book */
 typedef struct {
-        gchar        *path;
-        gchar        *name;
-        gchar        *title;
-        gchar        *language;
+        GFile *index_file;
 
-        /* The book tree of DhLink* */
-        GNode        *tree;
+        gchar *id;
+        gchar *title;
+        gchar *language;
 
-        /* List of DhLink* */
-        GList        *keywords;
+        /* The book tree of DhLink*. */
+        GNode *tree;
 
-        /* Generated list of keyword completions (gchar*) in the book */
-        GList        *completions;
+        /* List of DhLink*. */
+        GList *links;
 
-        /* Monitor of this specific book */
-        GFileMonitor *monitor;
+        DhCompletion *completion;
 
-        /* Last received event */
-        DhBookMonitorEvent monitor_event;
+        GFileMonitor *index_file_monitor;
+        BookMonitorEvent last_monitor_event;
+        guint monitor_event_timeout_id;
 
-        /* ID of the event source */
-        guint         monitor_event_timeout_id;
-
-        guint         enabled : 1;
+        guint enabled : 1;
 } DhBookPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (DhBook, dh_book, G_TYPE_OBJECT);
 
-static void    book_monitor_event_cb (GFileMonitor      *file_monitor,
-                                      GFile             *file,
-                                      GFile             *other_file,
-                                      GFileMonitorEvent  event_type,
-                                      gpointer           user_data);
-static void    unref_node_link       (GNode             *node,
-                                      gpointer           data);
-
-static guint signals[BOOK_LAST_SIGNAL] = { 0 };
+static guint signals[N_SIGNALS] = { 0 };
 
 static void
 dh_book_dispose (GObject *object)
@@ -94,7 +102,8 @@ dh_book_dispose (GObject *object)
 
         priv = dh_book_get_instance_private (DH_BOOK (object));
 
-        g_clear_object (&priv->monitor);
+        g_clear_object (&priv->completion);
+        g_clear_object (&priv->index_file_monitor);
 
         if (priv->monitor_event_timeout_id != 0) {
                 g_source_remove (priv->monitor_event_timeout_id);
@@ -111,27 +120,12 @@ dh_book_finalize (GObject *object)
 
         priv = dh_book_get_instance_private (DH_BOOK (object));
 
-        if (priv->tree) {
-                g_node_traverse (priv->tree,
-                                 G_IN_ORDER,
-                                 G_TRAVERSE_ALL,
-                                 -1,
-                                 (GNodeTraverseFunc)unref_node_link,
-                                 NULL);
-                g_node_destroy (priv->tree);
-        }
-
-        g_list_free_full (priv->keywords, (GDestroyNotify)dh_link_unref);
-
-        g_list_free_full (priv->completions, g_free);
-
-        g_free (priv->language);
-
+        g_clear_object (&priv->index_file);
+        g_free (priv->id);
         g_free (priv->title);
-
-        g_free (priv->name);
-
-        g_free (priv->path);
+        g_free (priv->language);
+        _dh_util_free_book_tree (priv->tree);
+        g_list_free_full (priv->links, (GDestroyNotify)dh_link_unref);
 
         G_OBJECT_CLASS (dh_book_parent_class)->finalize (object);
 }
@@ -144,44 +138,61 @@ dh_book_class_init (DhBookClass *klass)
         object_class->dispose = dh_book_dispose;
         object_class->finalize = dh_book_finalize;
 
-        signals[BOOK_ENABLED] =
+        /**
+         * DhBook::enabled:
+         * @book: the #DhBook emitting the signal.
+         */
+        signals[SIGNAL_ENABLED] =
                 g_signal_new ("enabled",
                               G_TYPE_FROM_CLASS (klass),
                               G_SIGNAL_RUN_LAST,
                               0,
-                              NULL, NULL,
-                              g_cclosure_marshal_VOID__VOID,
+                              NULL, NULL, NULL,
                               G_TYPE_NONE,
                               0);
 
-        signals[BOOK_DISABLED] =
+        /**
+         * DhBook::disabled:
+         * @book: the #DhBook emitting the signal.
+         */
+        signals[SIGNAL_DISABLED] =
                 g_signal_new ("disabled",
                               G_TYPE_FROM_CLASS (klass),
                               G_SIGNAL_RUN_LAST,
                               0,
-                              NULL, NULL,
-                              g_cclosure_marshal_VOID__VOID,
+                              NULL, NULL, NULL,
                               G_TYPE_NONE,
                               0);
 
-
-        signals[BOOK_UPDATED] =
+        /**
+         * DhBook::updated:
+         * @book: the #DhBook emitting the signal.
+         *
+         * The ::updated signal is emitted when the index file has been
+         * modified (but the file still exists).
+         */
+        signals[SIGNAL_UPDATED] =
                 g_signal_new ("updated",
                               G_TYPE_FROM_CLASS (klass),
                               G_SIGNAL_RUN_LAST,
                               0,
-                              NULL, NULL,
-                              g_cclosure_marshal_VOID__VOID,
+                              NULL, NULL, NULL,
                               G_TYPE_NONE,
                               0);
 
-        signals[BOOK_DELETED] =
+        /**
+         * DhBook::deleted:
+         * @book: the #DhBook emitting the signal.
+         *
+         * The ::deleted signal is emitted when the index file has been deleted
+         * from the filesystem.
+         */
+        signals[SIGNAL_DELETED] =
                 g_signal_new ("deleted",
                               G_TYPE_FROM_CLASS (klass),
                               G_SIGNAL_RUN_LAST,
                               0,
-                              NULL, NULL,
-                              g_cclosure_marshal_VOID__VOID,
+                              NULL, NULL, NULL,
                               G_TYPE_NONE,
                               0);
 }
@@ -191,223 +202,192 @@ dh_book_init (DhBook *book)
 {
         DhBookPrivate *priv = dh_book_get_instance_private (book);
 
-        priv->name = NULL;
-        priv->path = NULL;
-        priv->title = NULL;
         priv->enabled = TRUE;
-        priv->tree = NULL;
-        priv->keywords = NULL;
-        priv->completions = NULL;
-        priv->monitor = NULL;
-        priv->monitor_event = BOOK_MONITOR_EVENT_NONE;
-        priv->monitor_event_timeout_id = 0;
-}
-
-static void
-unref_node_link (GNode    *node,
-                 gpointer  data)
-{
-        dh_link_unref (node->data);
-}
-
-DhBook *
-dh_book_new (const gchar *book_path)
-{
-        DhBookPrivate *priv;
-        DhBook     *book;
-        GError     *error = NULL;
-        GFile      *book_path_file;
-        gchar      *language;
-
-        g_return_val_if_fail (book_path, NULL);
-
-        book = g_object_new (DH_TYPE_BOOK, NULL);
-        priv = dh_book_get_instance_private (book);
-
-        /* Parse file storing contents in the book struct */
-        if (!dh_parser_read_file  (book_path,
-                                   &priv->title,
-                                   &priv->name,
-                                   &language,
-                                   &priv->tree,
-                                   &priv->keywords,
-                                   &error)) {
-                g_warning ("Failed to read '%s': %s",
-                           book_path, error->message);
-                g_error_free (error);
-
-                /* Deallocate the book, as we are not going to add it
-                 *  in the manager */
-                g_object_unref (book);
-                return NULL;
-        }
-
-        /* Store path */
-        priv->path = g_strdup (book_path);
-
-        /* Rewrite language, if any, including the prefix we want
-         * to use when seeing it. It is pretty ugly to do it here,
-         * but it's the only way of making sure we standarize how
-         * the language group is shown */
-        dh_util_ascii_strtitle (language);
-        priv->language = (language ?
-                          g_strdup_printf (_("Language: %s"), language) :
-                          g_strdup (_("Language: Undefined")));
-        g_free (language);
-
-        /* Setup monitor for changes */
-        book_path_file = g_file_new_for_path (book_path);
-        priv->monitor = g_file_monitor_file (book_path_file,
-                                             G_FILE_MONITOR_NONE,
-                                             NULL,
-                                             NULL);
-        if (priv->monitor) {
-                /* Setup changed signal callback */
-                g_signal_connect (priv->monitor,
-                                  "changed",
-                                  G_CALLBACK (book_monitor_event_cb),
-                                  book);
-        } else {
-                g_warning ("Couldn't setup monitoring of changes in book '%s'",
-                           priv->title);
-        }
-        g_object_unref (book_path_file);
-
-        return book;
+        priv->last_monitor_event = BOOK_MONITOR_EVENT_NONE;
 }
 
 static gboolean
-book_monitor_event_timeout_cb (gpointer data)
+monitor_event_timeout_cb (gpointer data)
 {
-        DhBook *book = data;
+        DhBook *book = DH_BOOK (data);
         DhBookPrivate *priv = dh_book_get_instance_private (book);
-        DhBookMonitorEvent monitor_event = priv->monitor_event;
+        BookMonitorEvent last_monitor_event = priv->last_monitor_event;
 
         /* Reset event */
-        priv->monitor_event = BOOK_MONITOR_EVENT_NONE;
+        priv->last_monitor_event = BOOK_MONITOR_EVENT_NONE;
         priv->monitor_event_timeout_id = 0;
 
-        /* We'll get either is_deleted OR is_updated,
-         * not possible to have both or none */
-        switch (monitor_event)
+        /* We'll get either is_deleted OR is_updated, not possible to have both
+         * or none.
+         */
+        switch (last_monitor_event)
         {
         case BOOK_MONITOR_EVENT_DELETED:
-                /* Emit the signal, but make sure we hold a reference
-                 * while doing it */
+                /* Emit the signal, but make sure we hold a reference while
+                 * doing it.
+                 */
                 g_object_ref (book);
-                g_signal_emit (book, signals[BOOK_DELETED], 0);
+                g_signal_emit (book, signals[SIGNAL_DELETED], 0);
                 g_object_unref (book);
                 break;
+
         case BOOK_MONITOR_EVENT_UPDATED:
-                /* Emit the signal, but make sure we hold a reference
-                 * while doing it */
+                /* Emit the signal, but make sure we hold a reference while
+                 * doing it.
+                 */
                 g_object_ref (book);
-                g_signal_emit (book, signals[BOOK_UPDATED], 0);
+                g_signal_emit (book, signals[SIGNAL_UPDATED], 0);
                 g_object_unref (book);
                 break;
+
+        case BOOK_MONITOR_EVENT_NONE:
         default:
                 break;
         }
 
-        /* book can be destroyed here */
+        /* book can be destroyed here. */
 
         return G_SOURCE_REMOVE;
 }
 
 static void
-book_monitor_event_cb (GFileMonitor      *file_monitor,
+index_file_changed_cb (GFileMonitor      *file_monitor,
                        GFile             *file,
                        GFile             *other_file,
                        GFileMonitorEvent  event_type,
-                       gpointer           user_data)
+                       DhBook            *book)
 {
-        DhBook     *book = user_data;
         DhBookPrivate *priv = dh_book_get_instance_private (book);
-        gboolean    reset_timer = FALSE;
+        gboolean reset_timeout = FALSE;
 
-        switch (event_type) {
-        case G_FILE_MONITOR_EVENT_CREATED:
-                /* This may happen if the file is deleted and then
-                 * created right away, as we're merging events.
-                 * Treat in the same way as a CHANGES_DONE_HINT, so
-                 * fall through the case.  */
-        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
-                priv->monitor_event = BOOK_MONITOR_EVENT_UPDATED;
-                reset_timer = TRUE;
-                break;
-        case G_FILE_MONITOR_EVENT_DELETED:
-                priv->monitor_event = BOOK_MONITOR_EVENT_DELETED;
-                reset_timer = TRUE;
-                break;
-        default:
-                /* Ignore all the other events */
-                break;
+        /* CREATED may happen if the file is deleted and then created right
+         * away, as we're merging events.
+         */
+        if (event_type == G_FILE_MONITOR_EVENT_CHANGED ||
+            event_type == G_FILE_MONITOR_EVENT_CREATED) {
+                priv->last_monitor_event = BOOK_MONITOR_EVENT_UPDATED;
+                reset_timeout = TRUE;
+        } else if (event_type == G_FILE_MONITOR_EVENT_DELETED) {
+                priv->last_monitor_event = BOOK_MONITOR_EVENT_DELETED;
+                reset_timeout = TRUE;
         }
 
-        /* Reset timer if any of the flags changed */
-        if (reset_timer) {
-                if (priv->monitor_event_timeout_id != 0) {
+        if (reset_timeout) {
+                if (priv->monitor_event_timeout_id != 0)
                         g_source_remove (priv->monitor_event_timeout_id);
-                }
+
                 priv->monitor_event_timeout_id = g_timeout_add_seconds (EVENT_MERGE_TIMEOUT_SECS,
-                                                                        book_monitor_event_timeout_cb,
+                                                                        monitor_event_timeout_cb,
                                                                         book);
         }
 }
 
-GList *
-dh_book_get_keywords (DhBook *book)
+/**
+ * dh_book_new:
+ * @index_file: the index file.
+ *
+ * Returns: (nullable): a new #DhBook object, or %NULL if parsing the index file
+ * failed.
+ */
+DhBook *
+dh_book_new (GFile *index_file)
 {
         DhBookPrivate *priv;
+        DhBook *book;
+        gchar *language = NULL;
+        GError *error = NULL;
 
-        g_return_val_if_fail (DH_IS_BOOK (book), NULL);
+        g_return_val_if_fail (G_IS_FILE (index_file), NULL);
 
+        book = g_object_new (DH_TYPE_BOOK, NULL);
         priv = dh_book_get_instance_private (book);
 
-        return priv->enabled ? priv->keywords : NULL;
-}
+        priv->index_file = g_object_ref (index_file);
 
-GList *
-dh_book_get_completions (DhBook *book)
-{
-        DhBookPrivate *priv;
+        /* Parse file storing contents in the book struct. */
+        if (!dh_parser_read_file (priv->index_file,
+                                  &priv->title,
+                                  &priv->id,
+                                  &language,
+                                  &priv->tree,
+                                  &priv->links,
+                                  &error)) {
+                /* It's fine if the file doesn't exist, as DhBookManager tries
+                 * to create a DhBook for each possible index file in a certain
+                 * book directory.
+                 */
+                if (error != NULL &&
+                    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
+                        gchar *parse_name;
 
-        g_return_val_if_fail (DH_IS_BOOK (book), NULL);
+                        parse_name = g_file_get_parse_name (priv->index_file);
 
-        priv = dh_book_get_instance_private (book);
+                        g_warning ("Failed to read “%s”: %s",
+                                   parse_name,
+                                   error->message);
 
-        if (!priv->enabled)
-                return NULL;
-
-        if (!priv->completions) {
-                GList *l;
-                for (l = priv->keywords; l; l = g_list_next (l)) {
-                        DhLink *link = l->data;
-
-                        /* Add additional "page:" and "book:" completions */
-                        if (dh_link_get_link_type (link) == DH_LINK_TYPE_BOOK) {
-                                priv->completions =
-                                        g_list_prepend (priv->completions,
-                                                        g_strdup_printf ("book:%s",
-                                                                         dh_link_get_name (link)));
-                        }
-                        else if (dh_link_get_link_type (link) == DH_LINK_TYPE_PAGE) {
-                                priv->completions =
-                                        g_list_prepend (priv->completions,
-                                                        g_strdup_printf ("page:%s",
-                                                                         dh_link_get_name (link)));
-                        }
-
-                        priv->completions =  g_list_prepend (priv->completions,
-                                                          g_strdup (dh_link_get_name (link)));
+                        g_free (parse_name);
                 }
+
+                g_clear_error (&error);
+
+                /* Deallocate the book, as we are not going to add it in the
+                 * manager.
+                 */
+                g_object_unref (book);
+                return NULL;
         }
 
-        return priv->completions;
+        /* Rewrite language, if any, including the prefix we want to use when
+         * seeing it, to standarize how the language group is shown.
+         * FIXME: maybe instead of a string, have a DhLanguage object which
+         * canonicalizes the string.
+         */
+        dh_util_ascii_strtitle (language);
+        priv->language = (language != NULL ?
+                          g_strdup_printf (_("Language: %s"), language) :
+                          g_strdup (_("Language: Undefined")));
+        g_free (language);
+
+        /* Setup monitor for changes */
+
+        priv->index_file_monitor = g_file_monitor_file (priv->index_file,
+                                                        G_FILE_MONITOR_NONE,
+                                                        NULL,
+                                                        &error);
+
+        if (error != NULL) {
+                gchar *parse_name;
+
+                parse_name = g_file_get_parse_name (priv->index_file);
+
+                g_warning ("Failed to create file monitor for file “%s”: %s",
+                           parse_name,
+                           error->message);
+
+                g_free (parse_name);
+                g_clear_error (&error);
+        }
+
+        if (priv->index_file_monitor != NULL) {
+                g_signal_connect_object (priv->index_file_monitor,
+                                         "changed",
+                                         G_CALLBACK (index_file_changed_cb),
+                                         book,
+                                         0);
+        }
+
+        return book;
 }
 
-GNode *
-dh_book_get_tree (DhBook *book)
+/**
+ * dh_book_get_index_file:
+ * @book: a #DhBook.
+ *
+ * Returns: (transfer none): the index file.
+ */
+GFile *
+dh_book_get_index_file (DhBook *book)
 {
         DhBookPrivate *priv;
 
@@ -415,11 +395,21 @@ dh_book_get_tree (DhBook *book)
 
         priv = dh_book_get_instance_private (book);
 
-        return priv->enabled ? priv->tree : NULL;
+        return priv->index_file;
 }
 
+/**
+ * dh_book_get_id:
+ * @book: a #DhBook.
+ *
+ * Gets the book ID. In the Devhelp index file format version 2, it is actually
+ * the “name”, not the ID, but “book ID” is clearer, “book name” can be confused
+ * with the title.
+ *
+ * Returns: the book ID.
+ */
 const gchar *
-dh_book_get_name (DhBook *book)
+dh_book_get_id (DhBook *book)
 {
         DhBookPrivate *priv;
 
@@ -427,9 +417,15 @@ dh_book_get_name (DhBook *book)
 
         priv = dh_book_get_instance_private (book);
 
-        return priv->name;
+        return priv->id;
 }
 
+/**
+ * dh_book_get_title:
+ * @book: a #DhBook.
+ *
+ * Returns: the book title.
+ */
 const gchar *
 dh_book_get_title (DhBook *book)
 {
@@ -442,6 +438,12 @@ dh_book_get_title (DhBook *book)
         return priv->title;
 }
 
+/**
+ * dh_book_get_language:
+ * @book: a #DhBook.
+ *
+ * Returns: the programming language used in @book.
+ */
 const gchar *
 dh_book_get_language (DhBook *book)
 {
@@ -454,8 +456,16 @@ dh_book_get_language (DhBook *book)
         return priv->language;
 }
 
-const gchar *
-dh_book_get_path (DhBook *book)
+/**
+ * dh_book_get_links:
+ * @book: a #DhBook.
+ *
+ * Returns: (element-type DhLink) (transfer none) (nullable): the list of
+ * <emphasis>all</emphasis> #DhLink's part of @book, or %NULL if the book is
+ * disabled.
+ */
+GList *
+dh_book_get_links (DhBook *book)
 {
         DhBookPrivate *priv;
 
@@ -463,9 +473,82 @@ dh_book_get_path (DhBook *book)
 
         priv = dh_book_get_instance_private (book);
 
-        return priv->path;
+        return priv->enabled ? priv->links : NULL;
 }
 
+/**
+ * dh_book_get_tree:
+ * @book: a #DhBook.
+ *
+ * Gets the general structure of the book, as a tree. The tree contains only
+ * #DhLink's of type %DH_LINK_TYPE_BOOK or %DH_LINK_TYPE_PAGE. The other
+ * #DhLink's are not contained in the tree. To have a list of
+ * <emphasis>all</emphasis> #DhLink's part of the book, you need to call
+ * dh_book_get_links().
+ *
+ * Returns: (transfer none) (nullable): the tree of #DhLink's part of the @book,
+ * or %NULL if the book is disabled.
+ */
+GNode *
+dh_book_get_tree (DhBook *book)
+{
+        DhBookPrivate *priv;
+
+        g_return_val_if_fail (DH_IS_BOOK (book), NULL);
+
+        priv = dh_book_get_instance_private (book);
+
+        return priv->enabled ? priv->tree : NULL;
+}
+
+/**
+ * dh_book_get_completion:
+ * @book: a #DhBook.
+ *
+ * Returns: (transfer none): the #DhCompletion of @book.
+ * Since: 3.28
+ */
+DhCompletion *
+dh_book_get_completion (DhBook *book)
+{
+        DhBookPrivate *priv;
+
+        g_return_val_if_fail (DH_IS_BOOK (book), NULL);
+
+        priv = dh_book_get_instance_private (book);
+
+        if (priv->completion == NULL) {
+                GList *l;
+
+                priv->completion = dh_completion_new ();
+
+                for (l = priv->links; l != NULL; l = l->next) {
+                        DhLink *link = l->data;
+                        const gchar *str;
+
+                        /* Do not provide completion for book titles. Normally
+                         * the user doesn't need it, it's more convenient to
+                         * choose a book with the DhBookTree.
+                         */
+                        if (dh_link_get_link_type (link) == DH_LINK_TYPE_BOOK)
+                                continue;
+
+                        str = dh_link_get_name (link);
+                        dh_completion_add_string (priv->completion, str);
+                }
+
+                dh_completion_sort (priv->completion);
+        }
+
+        return priv->completion;
+}
+
+/**
+ * dh_book_get_enabled:
+ * @book: a #DhBook.
+ *
+ * Returns: whether the book is enabled.
+ */
 gboolean
 dh_book_get_enabled (DhBook *book)
 {
@@ -478,6 +561,13 @@ dh_book_get_enabled (DhBook *book)
         return priv->enabled;
 }
 
+/**
+ * dh_book_set_enabled:
+ * @book: a #DhBook.
+ * @enabled: the new value.
+ *
+ * Enables or disables the book.
+ */
 void
 dh_book_set_enabled (DhBook   *book,
                      gboolean  enabled)
@@ -487,17 +577,39 @@ dh_book_set_enabled (DhBook   *book,
         g_return_if_fail (DH_IS_BOOK (book));
 
         priv = dh_book_get_instance_private (book);
+
+        enabled = enabled != FALSE;
+
+        /* Create DhCompletion, because if all the DhCompletion objects need to
+         * be created (synchronously) at the time of the first completion, it
+         * can make the GUI not responsive (measured time was for example 40ms
+         * to create the DhCompletion's for 17 books, which is not a lot of
+         * books). On application startup it is less a problem.
+         */
+        if (enabled)
+                dh_book_get_completion (book);
+
         if (priv->enabled != enabled) {
                 priv->enabled = enabled;
                 g_signal_emit (book,
-                               enabled ? signals[BOOK_ENABLED] : signals[BOOK_DISABLED],
+                               enabled ? signals[SIGNAL_ENABLED] : signals[SIGNAL_DISABLED],
                                0);
         }
 }
 
+/**
+ * dh_book_cmp_by_id:
+ * @a: a #DhBook.
+ * @b: a #DhBook.
+ *
+ * Compares the #DhBook's by their IDs, with g_ascii_strcasecmp().
+ *
+ * Returns: an integer less than, equal to, or greater than zero, if @a is <, ==
+ * or > than @b.
+ */
 gint
-dh_book_cmp_by_path (DhBook *a,
-                     DhBook *b)
+dh_book_cmp_by_id (DhBook *a,
+                   DhBook *b)
 {
         DhBookPrivate *priv_a;
         DhBookPrivate *priv_b;
@@ -508,59 +620,22 @@ dh_book_cmp_by_path (DhBook *a,
         priv_a = dh_book_get_instance_private (a);
         priv_b = dh_book_get_instance_private (b);
 
-        return g_strcmp0 (priv_a->path, priv_b->path);
+        if (priv_a->id == NULL || priv_b->id == NULL)
+                return -1;
+
+        return g_ascii_strcasecmp (priv_a->id, priv_b->id);
 }
 
-gint
-dh_book_cmp_by_path_str (DhBook      *a,
-                         const gchar *b_path)
-{
-        DhBookPrivate *priv_a;
-
-        if (a == NULL)
-                return -1;
-
-        priv_a = dh_book_get_instance_private (a);
-
-        return g_strcmp0 (priv_a->path, b_path);
-}
-
-gint
-dh_book_cmp_by_name (DhBook *a,
-                     DhBook *b)
-{
-        DhBookPrivate *priv_a;
-        DhBookPrivate *priv_b;
-
-        if (a == NULL || b == NULL)
-                return -1;
-
-        priv_a = dh_book_get_instance_private (a);
-        priv_b = dh_book_get_instance_private (b);
-
-        if (priv_a->name == NULL || priv_b->name == NULL)
-                return -1;
-
-        return g_ascii_strcasecmp (priv_a->name, priv_b->name);
-}
-
-gint
-dh_book_cmp_by_name_str (DhBook      *a,
-                         const gchar *b_name)
-{
-        DhBookPrivate *priv_a;
-
-        if (a == NULL)
-                return -1;
-
-        priv_a = dh_book_get_instance_private (a);
-
-        if (priv_a->name == NULL || b_name == NULL)
-                return -1;
-
-        return g_ascii_strcasecmp (priv_a->name, b_name);
-}
-
+/**
+ * dh_book_cmp_by_title:
+ * @a: a #DhBook.
+ * @b: a #DhBook.
+ *
+ * Compares the #DhBook's by their title.
+ *
+ * Returns: an integer less than, equal to, or greater than zero, if @a is <, ==
+ * or > than @b.
+ */
 gint
 dh_book_cmp_by_title (DhBook *a,
                       DhBook *b)

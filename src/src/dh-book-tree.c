@@ -1,10 +1,10 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*- */
 /*
  * Copyright (C) 2001-2003 Mikael Hallendal <micke@imendio.com>
- * Copyright (C) 2003      CodeFactory AB
- * Copyright (C) 2008      Imendio AB
- * Copyright (C) 2010      Lanedo GmbH
- * Copyright (C) 2015      Sébastien Wilmet <swilmet@gnome.org>
+ * Copyright (C) 2003 CodeFactory AB
+ * Copyright (C) 2008 Imendio AB
+ * Copyright (C) 2010 Lanedo GmbH
+ * Copyright (C) 2015, 2017 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -16,13 +16,32 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "config.h"
 #include "dh-book-tree.h"
+#include <glib/gi18n-lib.h>
+#include "dh-book-manager.h"
 #include "dh-book.h"
+
+/**
+ * SECTION:dh-book-tree
+ * @Title: DhBookTree
+ * @Short_description: A #GtkTreeView containing the tree structure of all
+ * enabled #DhBook's
+ *
+ * #DhBookTree is a #GtkTreeView (showing a tree, not a list) containing the
+ * general tree structure of all enabled #DhBook's.
+ *
+ * The dh_book_get_tree() function is called to get the tree structure of a
+ * #DhBook. As such the tree contains only #DhLink's of type %DH_LINK_TYPE_BOOK
+ * or %DH_LINK_TYPE_PAGE.
+ *
+ * When an element is selected, the #DhBookTree::link-selected signal is
+ * emitted. Only one element can be selected at a time.
+ */
 
 typedef struct {
         const gchar *uri;
@@ -32,14 +51,14 @@ typedef struct {
 } FindURIData;
 
 typedef struct {
-        GtkTreeStore  *store;
-        DhBookManager *book_manager;
-        DhLink        *selected_link;
+        GtkTreeStore *store;
+        DhLink *selected_link;
+        GtkMenu *context_menu;
 } DhBookTreePrivate;
 
 enum {
         LINK_SELECTED,
-        LAST_SIGNAL
+        N_SIGNALS
 };
 
 enum {
@@ -51,14 +70,9 @@ enum {
         N_COLUMNS
 };
 
-enum {
-        PROP_0,
-        PROP_BOOK_MANAGER
-};
-
 G_DEFINE_TYPE_WITH_PRIVATE (DhBookTree, dh_book_tree, GTK_TYPE_TREE_VIEW);
 
-static gint signals[LAST_SIGNAL] = { 0 };
+static guint signals[N_SIGNALS] = { 0 };
 
 static void
 book_tree_selection_changed_cb (GtkTreeSelection *selection,
@@ -77,9 +91,13 @@ book_tree_selection_changed_cb (GtkTreeSelection *selection,
 
                 if (link != NULL &&
                     link != priv->selected_link) {
-                        priv->selected_link = link;
+                        g_clear_pointer (&priv->selected_link, (GDestroyNotify)dh_link_unref);
+                        priv->selected_link = dh_link_ref (link);
                         g_signal_emit (tree, signals[LINK_SELECTED], 0, link);
                 }
+
+                if (link != NULL)
+                        dh_link_unref (link);
         }
 }
 
@@ -103,6 +121,10 @@ book_tree_setup_selection (DhBookTree *tree)
  *  - An exact match of the language group
  *  - Or the language group which should be just after our given language group.
  *  - Or both.
+ *
+ * FIXME: not great code. Maybe add a new column in the GtkTreeModel storing a
+ * DhLanguage object. Instead of @language as a string, it would be a
+ * DhLanguage.
  */
 static void
 book_tree_find_language_group (DhBookTree  *tree,
@@ -113,7 +135,8 @@ book_tree_find_language_group (DhBookTree  *tree,
                                gboolean    *next_found)
 {
         DhBookTreePrivate *priv = dh_book_tree_get_instance_private (tree);
-        GtkTreeIter     loop_iter;
+        DhBookManager *book_manager;
+        GtkTreeIter loop_iter;
 
         g_assert ((exact_iter != NULL && exact_found != NULL) ||
                   (next_iter != NULL && next_found != NULL));
@@ -125,7 +148,8 @@ book_tree_find_language_group (DhBookTree  *tree,
                 *next_found = FALSE;
 
         /* If we're not doing language grouping, return not found */
-        if (!dh_book_manager_get_group_by_language (priv->book_manager))
+        book_manager = dh_book_manager_get_singleton ();
+        if (!dh_book_manager_get_group_by_language (book_manager))
                 return;
 
         if (!gtk_tree_model_get_iter_first (GTK_TREE_MODEL (priv->store),
@@ -149,6 +173,7 @@ book_tree_find_language_group (DhBookTree  *tree,
                 if (link != NULL) {
                         /* Not a language */
                         g_free (title);
+                        dh_link_unref (link);
                         g_return_if_reached ();
                 }
 
@@ -295,10 +320,12 @@ book_tree_add_book_to_store (DhBookTree *tree,
                              DhBook     *book)
 {
         DhBookTreePrivate *priv = dh_book_tree_get_instance_private (tree);
-        GtkTreeIter     book_iter;
+        DhBookManager *book_manager;
+        GtkTreeIter book_iter;
 
         /* If grouping by language we need to add the language categories */
-        if (dh_book_manager_get_group_by_language (priv->book_manager)) {
+        book_manager = dh_book_manager_get_singleton ();
+        if (dh_book_manager_get_group_by_language (book_manager)) {
                 GtkTreeIter  language_iter;
                 gboolean     language_iter_found;
                 GtkTreeIter  next_language_iter;
@@ -420,11 +447,9 @@ book_tree_add_book_to_store (DhBookTree *tree,
 
 static void
 book_tree_book_created_or_enabled_cb (DhBookManager *book_manager,
-                                      GObject       *book_object,
+                                      DhBook        *book,
                                       DhBookTree    *tree)
 {
-        DhBook *book = DH_BOOK (book_object);
-
         if (!dh_book_get_enabled (book))
                 return;
 
@@ -433,11 +458,10 @@ book_tree_book_created_or_enabled_cb (DhBookManager *book_manager,
 
 static void
 book_tree_book_deleted_or_disabled_cb (DhBookManager *book_manager,
-                                       GObject       *book_object,
+                                       DhBook        *book,
                                        DhBookTree    *tree)
 {
         DhBookTreePrivate *priv = dh_book_tree_get_instance_private (tree);
-        DhBook         *book = DH_BOOK (book_object);
         GtkTreeIter     exact_iter;
         gboolean        exact_iter_found = FALSE;
         GtkTreeIter     language_iter;
@@ -497,6 +521,7 @@ static void
 book_tree_init_selection (DhBookTree *tree)
 {
         DhBookTreePrivate   *priv;
+        DhBookManager    *book_manager;
         GtkTreeSelection *selection;
         GtkTreeIter       iter;
         gboolean          iter_found = FALSE;
@@ -516,7 +541,8 @@ book_tree_init_selection (DhBookTree *tree)
                                          tree);
 
         /* If grouping by languages, get first book in the first language */
-        if (dh_book_manager_get_group_by_language (priv->book_manager)) {
+        book_manager = dh_book_manager_get_singleton ();
+        if (dh_book_manager_get_group_by_language (book_manager)) {
                 GtkTreeIter language_iter;
 
                 if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (priv->store),
@@ -538,6 +564,7 @@ book_tree_init_selection (DhBookTree *tree)
                                     COL_LINK, &link,
                                     -1);
 
+                g_clear_pointer (&priv->selected_link, (GDestroyNotify)dh_link_unref);
                 priv->selected_link = link;
                 gtk_tree_selection_select_iter (selection, &iter);
 
@@ -554,6 +581,7 @@ static void
 book_tree_populate_tree (DhBookTree *tree)
 {
         DhBookTreePrivate *priv = dh_book_tree_get_instance_private (tree);
+        DhBookManager *book_manager;
         GList *l;
 
         gtk_tree_view_set_model (GTK_TREE_VIEW (tree), NULL);
@@ -562,7 +590,8 @@ book_tree_populate_tree (DhBookTree *tree)
                                  GTK_TREE_MODEL (priv->store));
 
         /* This list comes in order, but we don't really mind */
-        for (l = dh_book_manager_get_books (priv->book_manager);
+        book_manager = dh_book_manager_get_singleton ();
+        for (l = dh_book_manager_get_books (book_manager);
              l != NULL;
              l = l->next) {
                 DhBook *book = DH_BOOK (l->data);
@@ -584,124 +613,119 @@ book_tree_group_by_language_cb (GObject    *object,
 }
 
 static void
-dh_book_tree_get_property (GObject    *object,
-                           guint       prop_id,
-                           GValue     *value,
-                           GParamSpec *pspec)
-{
-        DhBookTreePrivate *priv = dh_book_tree_get_instance_private (DH_BOOK_TREE (object));
-
-        switch (prop_id) {
-                case PROP_BOOK_MANAGER:
-                        g_value_set_object (value, priv->book_manager);
-                        break;
-
-                default:
-                        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-                        break;
-        }
-}
-
-static void
-dh_book_tree_set_property (GObject      *object,
-                           guint         prop_id,
-                           const GValue *value,
-                           GParamSpec   *pspec)
-{
-        DhBookTreePrivate *priv = dh_book_tree_get_instance_private (DH_BOOK_TREE (object));
-
-        switch (prop_id) {
-                case PROP_BOOK_MANAGER:
-                        g_return_if_fail (priv->book_manager == NULL);
-                        priv->book_manager = g_value_dup_object (value);
-                        break;
-
-                default:
-                        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-                        break;
-        }
-}
-
-static void
-dh_book_tree_constructed (GObject *object)
-{
-        DhBookTree *tree = DH_BOOK_TREE (object);
-        DhBookTreePrivate *priv = dh_book_tree_get_instance_private (tree);
-
-        g_signal_connect_object (priv->book_manager,
-                                 "book-created",
-                                 G_CALLBACK (book_tree_book_created_or_enabled_cb),
-                                 tree,
-                                 0);
-
-        g_signal_connect_object (priv->book_manager,
-                                 "book-enabled",
-                                 G_CALLBACK (book_tree_book_created_or_enabled_cb),
-                                 tree,
-                                 0);
-
-        g_signal_connect_object (priv->book_manager,
-                                 "book-deleted",
-                                 G_CALLBACK (book_tree_book_deleted_or_disabled_cb),
-                                 tree,
-                                 0);
-
-        g_signal_connect_object (priv->book_manager,
-                                 "book-disabled",
-                                 G_CALLBACK (book_tree_book_deleted_or_disabled_cb),
-                                 tree,
-                                 0);
-
-        g_signal_connect_object (priv->book_manager,
-                                 "notify::group-by-language",
-                                 G_CALLBACK (book_tree_group_by_language_cb),
-                                 tree,
-                                 0);
-
-        book_tree_populate_tree (tree);
-
-        G_OBJECT_CLASS (dh_book_tree_parent_class)->constructed (object);
-}
-
-static void
 dh_book_tree_dispose (GObject *object)
 {
         DhBookTreePrivate *priv = dh_book_tree_get_instance_private (DH_BOOK_TREE (object));
 
         g_clear_object (&priv->store);
-        g_clear_object (&priv->book_manager);
+        g_clear_pointer (&priv->selected_link, (GDestroyNotify)dh_link_unref);
+        priv->context_menu = NULL;
 
         G_OBJECT_CLASS (dh_book_tree_parent_class)->dispose (object);
+}
+
+static void
+collapse_all_activate_cb (GtkMenuItem *menu_item,
+                          DhBookTree  *tree)
+{
+        gtk_tree_view_collapse_all (GTK_TREE_VIEW (tree));
+}
+
+static void
+do_popup_menu (DhBookTree     *tree,
+               GdkEventButton *event)
+{
+        DhBookTreePrivate *priv = dh_book_tree_get_instance_private (tree);
+
+        if (priv->context_menu == NULL) {
+                GtkWidget *menu_item;
+
+                /* Create the menu only once. At first I wanted to create a new
+                 * menu each time this function is called, connect to the
+                 * GtkMenuShell::deactivate signal to call gtk_widget_destroy().
+                 * But GtkMenuShell::deactivate is emitted before
+                 * collapse_all_activate_cb(), so collapse_all_activate_cb() was
+                 * never called... It's maybe a GTK+ bug.
+                 */
+                priv->context_menu = GTK_MENU (gtk_menu_new ());
+
+                /* When tree is destroyed, the context menu is destroyed too. */
+                gtk_menu_attach_to_widget (priv->context_menu, GTK_WIDGET (tree), NULL);
+
+                menu_item = gtk_menu_item_new_with_mnemonic (_("_Collapse All"));
+                gtk_menu_shell_append (GTK_MENU_SHELL (priv->context_menu), menu_item);
+                gtk_widget_show (menu_item);
+
+                g_signal_connect_object (menu_item,
+                                         "activate",
+                                         G_CALLBACK (collapse_all_activate_cb),
+                                         tree,
+                                         0);
+        }
+
+        if (event != NULL) {
+                gtk_menu_popup_at_pointer (priv->context_menu, (GdkEvent *) event);
+        } else {
+                gtk_menu_popup_at_widget (priv->context_menu,
+                                          GTK_WIDGET (tree),
+                                          GDK_GRAVITY_NORTH_EAST,
+                                          GDK_GRAVITY_NORTH_WEST,
+                                          NULL);
+        }
+}
+
+static gboolean
+dh_book_tree_button_press_event (GtkWidget      *widget,
+                                 GdkEventButton *event)
+{
+        DhBookTree *tree = DH_BOOK_TREE (widget);
+
+        if (gdk_event_triggers_context_menu ((GdkEvent *) event) &&
+            event->type == GDK_BUTTON_PRESS) {
+                do_popup_menu (tree, event);
+                return GDK_EVENT_STOP;
+        }
+
+        if (GTK_WIDGET_CLASS (dh_book_tree_parent_class)->button_press_event != NULL)
+                return GTK_WIDGET_CLASS (dh_book_tree_parent_class)->button_press_event (widget, event);
+
+        return GDK_EVENT_PROPAGATE;
+}
+
+static gboolean
+dh_book_tree_popup_menu (GtkWidget *widget)
+{
+        if (GTK_WIDGET_CLASS (dh_book_tree_parent_class)->popup_menu != NULL)
+                g_warning ("%s(): chain-up?", G_STRFUNC);
+
+        do_popup_menu (DH_BOOK_TREE (widget), NULL);
+        return TRUE;
 }
 
 static void
 dh_book_tree_class_init (DhBookTreeClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-        object_class->get_property = dh_book_tree_get_property;
-        object_class->set_property = dh_book_tree_set_property;
-        object_class->constructed = dh_book_tree_constructed;
         object_class->dispose = dh_book_tree_dispose;
 
-        g_object_class_install_property (object_class,
-                                         PROP_BOOK_MANAGER,
-                                         g_param_spec_object ("book-manager",
-                                                              "Book Manager",
-                                                              "The book manager",
-                                                              DH_TYPE_BOOK_MANAGER,
-                                                              G_PARAM_READWRITE |
-                                                              G_PARAM_CONSTRUCT_ONLY));
+        widget_class->button_press_event = dh_book_tree_button_press_event;
+        widget_class->popup_menu = dh_book_tree_popup_menu;
 
+        /**
+         * DhBookTree::link-selected:
+         * @tree: the #DhBookTree.
+         * @link: the selected #DhLink.
+         */
         signals[LINK_SELECTED] =
                 g_signal_new ("link-selected",
                               G_TYPE_FROM_CLASS (klass),
                               G_SIGNAL_RUN_LAST,
                               0,
-                              NULL, NULL,
-                              g_cclosure_marshal_VOID__POINTER,
+                              NULL, NULL, NULL,
                               G_TYPE_NONE,
-                              1, G_TYPE_POINTER);
+                              1, DH_TYPE_LINK);
 }
 
 static void
@@ -730,32 +754,70 @@ static void
 dh_book_tree_init (DhBookTree *tree)
 {
         DhBookTreePrivate *priv;
+        DhBookManager *book_manager;
 
         priv = dh_book_tree_get_instance_private (tree);
 
+        gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
+        gtk_tree_view_set_enable_search (GTK_TREE_VIEW (tree), FALSE);
+
         priv->store = gtk_tree_store_new (N_COLUMNS,
-                                          G_TYPE_STRING,
-                                          G_TYPE_POINTER,
-                                          G_TYPE_OBJECT,
+                                          G_TYPE_STRING, /* Title */
+                                          DH_TYPE_LINK,
+                                          DH_TYPE_BOOK,
                                           PANGO_TYPE_WEIGHT,
                                           PANGO_TYPE_UNDERLINE);
         priv->selected_link = NULL;
         gtk_tree_view_set_model (GTK_TREE_VIEW (tree),
                                  GTK_TREE_MODEL (priv->store));
 
-        gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
-
         book_tree_add_columns (tree);
         book_tree_setup_selection (tree);
+
+        book_manager = dh_book_manager_get_singleton ();
+
+        g_signal_connect_object (book_manager,
+                                 "book-created",
+                                 G_CALLBACK (book_tree_book_created_or_enabled_cb),
+                                 tree,
+                                 0);
+
+        g_signal_connect_object (book_manager,
+                                 "book-enabled",
+                                 G_CALLBACK (book_tree_book_created_or_enabled_cb),
+                                 tree,
+                                 0);
+
+        g_signal_connect_object (book_manager,
+                                 "book-deleted",
+                                 G_CALLBACK (book_tree_book_deleted_or_disabled_cb),
+                                 tree,
+                                 0);
+
+        g_signal_connect_object (book_manager,
+                                 "book-disabled",
+                                 G_CALLBACK (book_tree_book_deleted_or_disabled_cb),
+                                 tree,
+                                 0);
+
+        g_signal_connect_object (book_manager,
+                                 "notify::group-by-language",
+                                 G_CALLBACK (book_tree_group_by_language_cb),
+                                 tree,
+                                 0);
+
+        book_tree_populate_tree (tree);
 }
 
-GtkWidget *
-dh_book_tree_new (DhBookManager *book_manager)
+/**
+ * dh_book_tree_new:
+ *
+ * Returns: (transfer floating): a new #DhBookTree widget.
+ */
+DhBookTree *
+dh_book_tree_new (void)
 {
-        return GTK_WIDGET (g_object_new (DH_TYPE_BOOK_TREE,
-                                         "book-manager", book_manager,
-                                         "enable-search", FALSE,
-                                         NULL));
+        return g_object_new (DH_TYPE_BOOK_TREE, NULL);
 }
 
 static gboolean
@@ -783,11 +845,19 @@ book_tree_find_uri_foreach (GtkTreeModel *model,
                 }
 
                 g_free (link_uri);
+                dh_link_unref (link);
         }
 
         return data->found;
 }
 
+/**
+ * dh_book_tree_select_uri:
+ * @tree: a #DhBookTree.
+ * @uri: the URI to select.
+ *
+ * Selects the given @uri.
+ */
 void
 dh_book_tree_select_uri (DhBookTree  *tree,
                          const gchar *uri)
@@ -804,17 +874,19 @@ dh_book_tree_select_uri (DhBookTree  *tree,
                                 (GtkTreeModelForeachFunc) book_tree_find_uri_foreach,
                                 &data);
 
-        if (!data.found) {
+        if (!data.found)
                 return;
-        }
 
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
 
         /* Do not re-select (which will expand current additionally) if already
          * there. */
         if (gtk_tree_selection_iter_is_selected (selection, &data.iter))
-                return;
+                goto out;
 
+        /* FIXME: it's strange to block the signal here. The signal handler
+         * should probably be blocked in DhWindow instead.
+         */
         g_signal_handlers_block_by_func (selection,
                                          book_tree_selection_changed_cb,
                                          tree);
@@ -825,6 +897,7 @@ dh_book_tree_select_uri (DhBookTree  *tree,
                             &data.iter,
                             COL_LINK, &link,
                             -1);
+        g_clear_pointer (&priv->selected_link, (GDestroyNotify)dh_link_unref);
         priv->selected_link = link;
         gtk_tree_selection_select_iter (selection, &data.iter);
 
@@ -834,9 +907,18 @@ dh_book_tree_select_uri (DhBookTree  *tree,
                                            book_tree_selection_changed_cb,
                                            tree);
 
+out:
         gtk_tree_path_free (data.path);
 }
 
+/**
+ * dh_book_tree_get_selected_book:
+ * @tree: a #DhBookTree.
+ *
+ * Returns: (nullable) (transfer full): the #DhLink of the selected book, or
+ * %NULL if there is no selection. Unref with dh_link_unref() when no longer
+ * needed.
+ */
 DhLink *
 dh_book_tree_get_selected_book (DhBookTree *tree)
 {
@@ -862,6 +944,8 @@ dh_book_tree_get_selected_book (DhBookTree *tree)
 
                 if (dh_link_get_link_type (link) == DH_LINK_TYPE_BOOK)
                         return link;
+
+                dh_link_unref (link);
 
                 if (!gtk_tree_model_iter_parent (model, &parent, &iter))
                         break;

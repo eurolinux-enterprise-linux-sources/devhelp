@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="search" xml:lang="sv">
+
+<info>
+  <link type="guide" xref="index"/>
+</info>
+
+<title>Sök inuti sidopanelen</title>
+
+<synopsis>
+  <p>Hur sökning i sidopanelen fungerar.</p>
+</synopsis>
+
+<section id="case-sensitivity">
+  <title>Skiftlägeskänslighet</title>
+  <p>Sökningen är skiftlägeskänslig när det finns ett versalt tecken. Om söktermerna endast använder gemener är sökningen skiftlägesokänslig. Det fungerar som funktionen ”smartskiftläge” som finns i vissa textredigerare.</p>
+</section>
+
+<section id="globs">
+  <title>Mönstermatchning med jokertecken</title>
+  <p>En sökterm kan vara ett mönster som innehåller jokertecknen ”*” och ”?”. ”*" matchar en godtycklig, eventuellt tom, sträng; och ”?” matchar ett godtyckligt tecken.</p>
+</section>
+
+<section id="several-search-terms">
+  <title>Flera söktermer</title>
+  <p>Du kan söka med flera söktermer (separerade av blanksteg). En symbol kommer endast att matcha om <em>alla</em> söktermerna matchar individuellt (inte nödvändigtvis i samma ordning som de förekommer).</p>
+  <p>Notera att detta är annorlunda än att söka med jokertecknet ”*”: med jokertecknet ”*” tvingas nyckelorden att vara i samma ordning.</p>
+  <p>När du till exempel söker efter ”<input>gtk window application</input>” matchar detta både ”<code>gtk_window_get_application()</code>” och ”<code>GtkApplicationWindow</code>” (bland andra symboler).</p>
+  <p>Om du å andra sidan söker efter ”<input>gtk*window*application</input>” kommer ”<code>gtk_window_get_application()</code>” att matcha, men ”<code>GtkApplicationWindow</code>” kommer inte att göra det.</p>
+</section>
+</page>

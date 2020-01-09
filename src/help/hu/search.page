@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="search" xml:lang="hu">
+
+<info>
+  <link type="guide" xref="index"/>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Úr Balázs</mal:name>
+      <mal:email>urbalazs at gmail dot com</mal:email>
+      <mal:years>2018.</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Keresés az oldalpanelen</title>
+
+<synopsis>
+  <p>Hogyan működik a keresés az oldalpanelen.</p>
+</synopsis>
+
+<section id="case-sensitivity">
+  <title>Kis- és nagybetű érzékenység</title>
+  <p>A keresés érzékeny a kis- és nagybetűkre, amikor nagybetű található. Ha a keresési kifejezés teljesen kisbetűs, akkor a keresés nem érzékeny a kis- és nagybetűkre. Ez olyan mint az „okos betűegyezés” funkció, amely megtalálható néhány szövegszerkesztőben.</p>
+</section>
+
+<section id="globs">
+  <title>Glob-stílusú mintaillesztés</title>
+  <p>Egy keresési kifejezés lehet „*” és „?” helyettesítő karaktereket tartalmazó minta is. A „*” egy tetszőleges, akár üres karakterláncra, a „?” egy tetszőleges karakterre illeszkedik.</p>
+</section>
+
+<section id="several-search-terms">
+  <title>Több keresési kifejezés</title>
+  <p>Kereshet több keresési kifejezéssel is (szóközökkel elválasztva). Egy szimbólum csak akkor illeszkedik, ha az <em>összes</em> keresési kifejezés egyénileg illeszkedik (nem szükséges, hogy azonos sorrendű megjelenésük legyen).</p>
+  <p>Ne feledje, hogy ez eltérő a „*” helyettesítő karakterrel való kereséstől: a „*” helyettesítő karakterrel arra kényszeríti a kulcsszavakat, hogy ugyanolyan sorrendben legyenek.</p>
+  <p>Például amikor a „<input>gtk window application</input>” kifejezésre keres rá, akkor az illeszkedik mind a „<code>gtk_window_get_application()</code>”, mind a „<code>GtkApplicationWindow</code>” szövegre (egyéb szimbólumok mellett).</p>
+  <p>Másrészről a „<input>gtk*window*application</input>” keresése illeszkedni fog a „<code>gtk_window_get_application()</code>” szövegre, de nem illeszkedik a „<code>GtkApplicationWindow</code>” szövegre.</p>
+</section>
+</page>

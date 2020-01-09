@@ -13,12 +13,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_ERROR_H__
-#define __DH_ERROR_H__
+#ifndef DH_ERROR_H
+#define DH_ERROR_H
 
 #include <glib.h>
 
@@ -27,14 +27,11 @@ G_BEGIN_DECLS
 #define DH_ERROR dh_error_quark ()
 
 typedef enum {
-        DH_ERROR_FILE_NOT_FOUND,
-        DH_ERROR_MALFORMED_BOOK,
-        DH_ERROR_INVALID_BOOK_TYPE,
-        DH_ERROR_INTERNAL_ERROR
+        DH_ERROR_MALFORMED_BOOK
 } DhError;
 
 GQuark dh_error_quark (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __DH_ERROR_H__ */
+#endif /* DH_ERROR_H */

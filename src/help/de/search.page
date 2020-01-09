@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="search" xml:lang="de">
+
+<info>
+  <link type="guide" xref="index"/>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Mario Blättermann</mal:name>
+      <mal:email>mario.blaettermann@gmail.com</mal:email>
+      <mal:years>2018.</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Suchen in der Seitenleiste</title>
+
+<synopsis>
+  <p>So funktioniert die Suche in der Seitenleiste.</p>
+</synopsis>
+
+<section id="case-sensitivity">
+  <title>Berücksichtigung von Groß- und Kleinschreibung</title>
+  <p>Bei der Suche werden Groß- oder Kleinschreibung berücksichtigt, wenn ein Großbuchstabe angegeben wird. Besteht der Suchbegriff nur aus Kleinbuchstaben, wird die Groß- oder Kleinschreibung ignoriert. Dies entspricht dem Verhalten des aus einigen Texteditoren bekannten »Smartcase«-Funktionsmerkmals.</p>
+</section>
+
+<section id="globs">
+  <title>Treffersuche im Glob-Stil</title>
+  <p>Ein Suchbegriff kann ein Muster sein, das die Platzhalter »*« und »?« enthält. Das »*« entspricht einer willkürlichen, auch leeren Zeichenkette, während das »?« für ein einzelnes, willkürliches Zeichen steht.</p>
+</section>
+
+<section id="several-search-terms">
+  <title>Mehrere Suchbegriffe</title>
+  <p>Sie können nach mehreren Begriffen suchen (durch Leerzeichen getrennt). Ein Symbol wird nur dann angezeigt, wenn <em>alle</em> Suchbegriffe gefunden werden (nicht zwangsläufig in der gleichen Reihenfolge des Auftretens).</p>
+  <p>Beachten Sie den Unterschied bei der Suche mit dem Platzhalter »*«: Dadurch wird erzwungen, dass die Schlüsselwörter in der gleichen Reihenfolge auftreten.</p>
+  <p>Wenn Sie beispielsweise nach <input>gtk window application</input> suchen, werden sowohl <code>gtk_window_get_application()</code> als auch <code>GtkApplicationWindow</code> gefunden (und weitere Symbole).</p>
+  <p>Andererseits liefert die Suche nach <input>gtk*window*application</input> auch <code>gtk_window_get_application()</code> als Ergebnis, aber nicht <code>GtkApplicationWindow</code>.</p>
+</section>
+</page>

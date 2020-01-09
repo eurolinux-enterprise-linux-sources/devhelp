@@ -12,12 +12,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_ASSISTANT_H__
-#define __DH_ASSISTANT_H__
+#ifndef DH_ASSISTANT_H
+#define DH_ASSISTANT_H
 
 #include <gtk/gtk.h>
 #include "dh-app.h"
@@ -42,11 +42,13 @@ struct _DhAssistantClass {
         GtkApplicationWindowClass parent_class;
 };
 
-GType      dh_assistant_get_type  (void) G_GNUC_CONST;
-GtkWidget *dh_assistant_new       (DhApp       *application);
-gboolean   dh_assistant_search    (DhAssistant *assistant,
-                                   const gchar *str);
+GType           dh_assistant_get_type   (void) G_GNUC_CONST;
+
+DhAssistant *   dh_assistant_new        (DhApp *application);
+
+gboolean        dh_assistant_search     (DhAssistant *assistant,
+                                         const gchar *str);
 
 G_END_DECLS
 
-#endif /* __DH_ASSISTANT_H__ */
+#endif /* DH_ASSISTANT_H */

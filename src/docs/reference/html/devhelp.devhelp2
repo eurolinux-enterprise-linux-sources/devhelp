@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title="Devhelp Reference Manual" link="index.html" author="" name="devhelp" version="2" language="c" online="https://developer.gnome.org/devhelp/">
+  <chapters>
+    <sub name="API Reference" link="api-reference.html">
+      <sub name="General" link="general.html">
+        <sub name="Initialization and Finalization" link="devhelp-Initialization-and-Finalization.html"/>
+      </sub>
+      <sub name="The Data" link="data.html">
+        <sub name="DhBookManager" link="DhBookManager.html"/>
+        <sub name="DhBook" link="DhBook.html"/>
+        <sub name="DhLink" link="DhLink.html"/>
+      </sub>
+      <sub name="Side Panel" link="side-panel.html">
+        <sub name="DhSidebar" link="DhSidebar.html"/>
+        <sub name="DhBookTree" link="DhBookTree.html"/>
+        <sub name="DhKeywordModel" link="DhKeywordModel.html"/>
+      </sub>
+      <sub name="Assistant" link="assistant.html">
+        <sub name="DhAssistantView" link="DhAssistantView.html"/>
+      </sub>
+      <sub name="Misc" link="misc.html">
+        <sub name="DhCompletion" link="DhCompletion.html"/>
+      </sub>
+    </sub>
+    <sub name="API Breaks" link="api-breaks.html"/>
+    <sub name="Annexes" link="annexes.html">
+      <sub name="Object Hierarchy" link="object-tree.html"/>
+      <sub name="Annotation Glossary" link="annotation-glossary.html"/>
+      <sub name="API Index" link="api-index-full.html"/>
+      <sub name="Index of deprecated API" link="deprecated-api-index.html"/>
+      <sub name="Index of new symbols in 3.26" link="api-index-3-26.html"/>
+      <sub name="Index of new symbols in 3.28" link="api-index-3-28.html"/>
+    </sub>
+  </chapters>
+  <functions>
+    <keyword type="function" name="dh_init ()" link="devhelp-Initialization-and-Finalization.html#dh-init"/>
+    <keyword type="function" name="dh_finalize ()" link="devhelp-Initialization-and-Finalization.html#dh-finalize" since="3.26"/>
+    <keyword type="function" name="dh_book_manager_new ()" link="DhBookManager.html#dh-book-manager-new" deprecated="3.26: Call dh_book_manager_get_singleton() instead."/>
+    <keyword type="function" name="dh_book_manager_get_singleton ()" link="DhBookManager.html#dh-book-manager-get-singleton" since="3.26"/>
+    <keyword type="function" name="dh_book_manager_populate ()" link="DhBookManager.html#dh-book-manager-populate" deprecated=""/>
+    <keyword type="function" name="dh_book_manager_get_books ()" link="DhBookManager.html#dh-book-manager-get-books"/>
+    <keyword type="function" name="dh_book_manager_get_group_by_language ()" link="DhBookManager.html#dh-book-manager-get-group-by-language"/>
+    <keyword type="function" name="dh_book_manager_set_group_by_language ()" link="DhBookManager.html#dh-book-manager-set-group-by-language"/>
+    <keyword type="struct" name="struct DhBookManager" link="DhBookManager.html#DhBookManager-struct"/>
+    <keyword type="property" name="The “group-by-language” property" link="DhBookManager.html#DhBookManager--group-by-language"/>
+    <keyword type="signal" name="The “book-created” signal" link="DhBookManager.html#DhBookManager-book-created"/>
+    <keyword type="signal" name="The “book-deleted” signal" link="DhBookManager.html#DhBookManager-book-deleted"/>
+    <keyword type="signal" name="The “book-disabled” signal" link="DhBookManager.html#DhBookManager-book-disabled"/>
+    <keyword type="signal" name="The “book-enabled” signal" link="DhBookManager.html#DhBookManager-book-enabled"/>
+    <keyword type="function" name="dh_book_new ()" link="DhBook.html#dh-book-new"/>
+    <keyword type="function" name="dh_book_get_index_file ()" link="DhBook.html#dh-book-get-index-file"/>
+    <keyword type="function" name="dh_book_get_id ()" link="DhBook.html#dh-book-get-id"/>
+    <keyword type="function" name="dh_book_get_title ()" link="DhBook.html#dh-book-get-title"/>
+    <keyword type="function" name="dh_book_get_language ()" link="DhBook.html#dh-book-get-language"/>
+    <keyword type="function" name="dh_book_get_links ()" link="DhBook.html#dh-book-get-links"/>
+    <keyword type="function" name="dh_book_get_tree ()" link="DhBook.html#dh-book-get-tree"/>
+    <keyword type="function" name="dh_book_get_completion ()" link="DhBook.html#dh-book-get-completion" since="3.28"/>
+    <keyword type="function" name="dh_book_get_enabled ()" link="DhBook.html#dh-book-get-enabled"/>
+    <keyword type="function" name="dh_book_set_enabled ()" link="DhBook.html#dh-book-set-enabled"/>
+    <keyword type="function" name="dh_book_cmp_by_id ()" link="DhBook.html#dh-book-cmp-by-id"/>
+    <keyword type="function" name="dh_book_cmp_by_title ()" link="DhBook.html#dh-book-cmp-by-title"/>
+    <keyword type="struct" name="struct DhBook" link="DhBook.html#DhBook-struct"/>
+    <keyword type="signal" name="The “deleted” signal" link="DhBook.html#DhBook-deleted"/>
+    <keyword type="signal" name="The “disabled” signal" link="DhBook.html#DhBook-disabled"/>
+    <keyword type="signal" name="The “enabled” signal" link="DhBook.html#DhBook-enabled"/>
+    <keyword type="signal" name="The “updated” signal" link="DhBook.html#DhBook-updated"/>
+    <keyword type="function" name="dh_link_new_book ()" link="DhLink.html#dh-link-new-book" since="3.28"/>
+    <keyword type="function" name="dh_link_new ()" link="DhLink.html#dh-link-new"/>
+    <keyword type="function" name="dh_link_ref ()" link="DhLink.html#dh-link-ref"/>
+    <keyword type="function" name="dh_link_unref ()" link="DhLink.html#dh-link-unref"/>
+    <keyword type="function" name="dh_link_get_link_type ()" link="DhLink.html#dh-link-get-link-type"/>
+    <keyword type="function" name="dh_link_get_flags ()" link="DhLink.html#dh-link-get-flags"/>
+    <keyword type="function" name="dh_link_set_flags ()" link="DhLink.html#dh-link-set-flags"/>
+    <keyword type="function" name="dh_link_get_name ()" link="DhLink.html#dh-link-get-name"/>
+    <keyword type="function" name="dh_link_match_relative_url ()" link="DhLink.html#dh-link-match-relative-url" since="3.28"/>
+    <keyword type="function" name="dh_link_belongs_to_page ()" link="DhLink.html#dh-link-belongs-to-page" since="3.28"/>
+    <keyword type="function" name="dh_link_get_uri ()" link="DhLink.html#dh-link-get-uri"/>
+    <keyword type="function" name="dh_link_get_book_title ()" link="DhLink.html#dh-link-get-book-title"/>
+    <keyword type="function" name="dh_link_get_book_id ()" link="DhLink.html#dh-link-get-book-id"/>
+    <keyword type="function" name="dh_link_compare ()" link="DhLink.html#dh-link-compare"/>
+    <keyword type="function" name="dh_link_type_to_string ()" link="DhLink.html#dh-link-type-to-string"/>
+    <keyword type="struct" name="DhLink" link="DhLink.html#DhLink-struct"/>
+    <keyword type="enum" name="enum DhLinkType" link="DhLink.html#DhLinkType"/>
+    <keyword type="enum" name="enum DhLinkFlags" link="DhLink.html#DhLinkFlags"/>
+    <keyword type="function" name="dh_sidebar_new ()" link="DhSidebar.html#dh-sidebar-new"/>
+    <keyword type="function" name="dh_sidebar_select_uri ()" link="DhSidebar.html#dh-sidebar-select-uri"/>
+    <keyword type="function" name="dh_sidebar_set_search_string ()" link="DhSidebar.html#dh-sidebar-set-search-string"/>
+    <keyword type="function" name="dh_sidebar_set_search_focus ()" link="DhSidebar.html#dh-sidebar-set-search-focus"/>
+    <keyword type="struct" name="struct DhSidebar" link="DhSidebar.html#DhSidebar-struct"/>
+    <keyword type="signal" name="The “link-selected” signal" link="DhSidebar.html#DhSidebar-link-selected"/>
+    <keyword type="function" name="dh_book_tree_new ()" link="DhBookTree.html#dh-book-tree-new"/>
+    <keyword type="function" name="dh_book_tree_select_uri ()" link="DhBookTree.html#dh-book-tree-select-uri"/>
+    <keyword type="function" name="dh_book_tree_get_selected_book ()" link="DhBookTree.html#dh-book-tree-get-selected-book"/>
+    <keyword type="struct" name="struct DhBookTree" link="DhBookTree.html#DhBookTree-struct"/>
+    <keyword type="signal" name="The “link-selected” signal" link="DhBookTree.html#DhBookTree-link-selected"/>
+    <keyword type="function" name="dh_keyword_model_new ()" link="DhKeywordModel.html#dh-keyword-model-new"/>
+    <keyword type="function" name="dh_keyword_model_filter ()" link="DhKeywordModel.html#dh-keyword-model-filter"/>
+    <keyword type="struct" name="struct DhKeywordModel" link="DhKeywordModel.html#DhKeywordModel-struct"/>
+    <keyword type="function" name="dh_assistant_view_new ()" link="DhAssistantView.html#dh-assistant-view-new"/>
+    <keyword type="function" name="dh_assistant_view_set_link ()" link="DhAssistantView.html#dh-assistant-view-set-link"/>
+    <keyword type="function" name="dh_assistant_view_search ()" link="DhAssistantView.html#dh-assistant-view-search"/>
+    <keyword type="struct" name="struct DhAssistantView" link="DhAssistantView.html#DhAssistantView-struct"/>
+    <keyword type="signal" name="The “open-uri” signal" link="DhAssistantView.html#DhAssistantView-open-uri"/>
+    <keyword type="function" name="dh_completion_new ()" link="DhCompletion.html#dh-completion-new" since="3.28"/>
+    <keyword type="function" name="dh_completion_add_string ()" link="DhCompletion.html#dh-completion-add-string" since="3.28"/>
+    <keyword type="function" name="dh_completion_sort ()" link="DhCompletion.html#dh-completion-sort" since="3.28"/>
+    <keyword type="function" name="dh_completion_complete ()" link="DhCompletion.html#dh-completion-complete" since="3.28"/>
+    <keyword type="function" name="dh_completion_aggregate_complete ()" link="DhCompletion.html#dh-completion-aggregate-complete" since="3.28"/>
+    <keyword type="struct" name="struct DhCompletion" link="DhCompletion.html#DhCompletion-struct"/>
+    <keyword type="constant" name="DH_LINK_TYPE_BOOK" link="DhLink.html#DH-LINK-TYPE-BOOK:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_PAGE" link="DhLink.html#DH-LINK-TYPE-PAGE:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_KEYWORD" link="DhLink.html#DH-LINK-TYPE-KEYWORD:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_FUNCTION" link="DhLink.html#DH-LINK-TYPE-FUNCTION:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_STRUCT" link="DhLink.html#DH-LINK-TYPE-STRUCT:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_MACRO" link="DhLink.html#DH-LINK-TYPE-MACRO:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_ENUM" link="DhLink.html#DH-LINK-TYPE-ENUM:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_TYPEDEF" link="DhLink.html#DH-LINK-TYPE-TYPEDEF:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_PROPERTY" link="DhLink.html#DH-LINK-TYPE-PROPERTY:CAPS"/>
+    <keyword type="constant" name="DH_LINK_TYPE_SIGNAL" link="DhLink.html#DH-LINK-TYPE-SIGNAL:CAPS"/>
+    <keyword type="constant" name="DH_LINK_FLAGS_NONE" link="DhLink.html#DH-LINK-FLAGS-NONE:CAPS"/>
+    <keyword type="constant" name="DH_LINK_FLAGS_DEPRECATED" link="DhLink.html#DH-LINK-FLAGS-DEPRECATED:CAPS"/>
+  </functions>
+</book>

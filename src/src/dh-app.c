@@ -4,6 +4,7 @@
  * Copyright (C) 2002 Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2004-2008 Imendio AB
  * Copyright (C) 2012 Aleksander Morgado <aleksander@gnu.org>
+ * Copyright (C) 2017, 2018 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -15,149 +16,67 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "config.h"
 #include "dh-app.h"
-
-#include <stdlib.h>
-#include <glib/gi18n-lib.h>
-
-#include "devhelp.h"
+#include <glib/gi18n.h>
+#include "dh-assistant.h"
 #include "dh-preferences.h"
+#include "dh-settings.h"
+#include "dh-util.h"
 
-typedef struct {
-        DhBookManager *book_manager;
-} DhAppPrivate;
+G_DEFINE_TYPE (DhApp, dh_app, GTK_TYPE_APPLICATION);
 
-G_DEFINE_TYPE_WITH_PRIVATE (DhApp, dh_app, GTK_TYPE_APPLICATION);
-
-/******************************************************************************/
-
-DhBookManager *
-dh_app_peek_book_manager (DhApp *app)
+static DhAssistant *
+get_active_assistant_window (DhApp *app)
 {
-        DhAppPrivate *priv;
-
-        g_return_val_if_fail (DH_IS_APP (app), NULL);
-
-        priv = dh_app_get_instance_private (app);
-
-        return priv->book_manager;
-}
-
-GtkWindow *
-dh_app_peek_first_window (DhApp *app)
-{
+        GList *windows;
         GList *l;
 
-        g_return_val_if_fail (DH_IS_APP (app), NULL);
+        windows = gtk_application_get_windows (GTK_APPLICATION (app));
 
-        for (l = gtk_application_get_windows (GTK_APPLICATION (app));
-             l;
-             l = g_list_next (l)) {
-                if (DH_IS_WINDOW (l->data)) {
-                        return GTK_WINDOW (l->data);
-                }
-        }
+        for (l = windows; l != NULL; l = l->next) {
+                GtkWindow *cur_window = GTK_WINDOW (l->data);
 
-        /* Create a new window */
-        dh_app_new_window (app);
-
-        /* And look for the newly created window again */
-        return dh_app_peek_first_window (app);
-}
-
-GtkWindow *
-dh_app_peek_assistant (DhApp *app)
-{
-        GList *l;
-
-        g_return_val_if_fail (DH_IS_APP (app), NULL);
-
-        for (l = gtk_application_get_windows (GTK_APPLICATION (app));
-             l;
-             l = g_list_next (l)) {
-                if (DH_IS_ASSISTANT (l->data)) {
-                        return GTK_WINDOW (l->data);
-                }
+                if (DH_IS_ASSISTANT (cur_window))
+                        return DH_ASSISTANT (cur_window);
         }
 
         return NULL;
 }
 
-gboolean
-_dh_app_has_app_menu (DhApp *app)
+static void
+save_active_main_window_gsettings (DhApp *app)
 {
-        GtkSettings *gtk_settings;
-        gboolean show_app_menu;
-        gboolean show_menubar;
+        DhWindow *active_window;
+        DhSettings *settings;
 
-        g_return_val_if_fail (DH_IS_APP (app), FALSE);
+        active_window = dh_app_get_active_main_window (app, FALSE);
+        if (active_window == NULL)
+                return;
 
-        /* We have three cases:
-         * - GNOME 3: show-app-menu true, show-menubar false -> use the app menu
-         * - Unity, OSX: show-app-menu and show-menubar true -> use the normal menu
-         * - Other WM, Windows: show-app-menu and show-menubar false -> use the normal menu
-         */
-        gtk_settings = gtk_settings_get_default ();
-        g_object_get (G_OBJECT (gtk_settings),
-                      "gtk-shell-shows-app-menu", &show_app_menu,
-                      "gtk-shell-shows-menubar", &show_menubar,
-                      NULL);
-
-        return show_app_menu && !show_menubar;
+        settings = dh_settings_get_singleton ();
+        dh_util_window_settings_save (GTK_WINDOW (active_window),
+                                      dh_settings_peek_window_settings (settings));
 }
 
-/******************************************************************************/
-/* Application action activators */
-
-void
-dh_app_new_window (DhApp *app)
+static void
+save_active_assistant_window_gsettings (DhApp *app)
 {
-        g_return_if_fail (DH_IS_APP (app));
+        DhAssistant *active_assistant;
+        DhSettings *settings;
 
-        g_action_group_activate_action (G_ACTION_GROUP (app), "new-window", NULL);
+        active_assistant = get_active_assistant_window (app);
+        if (active_assistant == NULL)
+                return;
+
+        settings = dh_settings_get_singleton ();
+        dh_util_window_settings_save (GTK_WINDOW (active_assistant),
+                                      dh_settings_peek_assistant_settings (settings));
 }
-
-void
-dh_app_quit (DhApp *app)
-{
-        g_return_if_fail (DH_IS_APP (app));
-
-        g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
-}
-
-void
-dh_app_search (DhApp *app,
-               const gchar *keyword)
-{
-        g_return_if_fail (DH_IS_APP (app));
-
-        g_action_group_activate_action (G_ACTION_GROUP (app), "search", g_variant_new_string (keyword));
-}
-
-void
-dh_app_search_assistant (DhApp *app,
-                         const gchar *keyword)
-{
-        g_return_if_fail (DH_IS_APP (app));
-
-        g_action_group_activate_action (G_ACTION_GROUP (app), "search-assistant", g_variant_new_string (keyword));
-}
-
-void
-dh_app_raise (DhApp *app)
-{
-        g_return_if_fail (DH_IS_APP (app));
-
-        g_action_group_activate_action (G_ACTION_GROUP (app), "raise", NULL);
-}
-
-/******************************************************************************/
-/* Application actions setup */
 
 static void
 new_window_cb (GSimpleAction *action,
@@ -165,11 +84,12 @@ new_window_cb (GSimpleAction *action,
                gpointer       user_data)
 {
         DhApp *app = DH_APP (user_data);
-        GtkWidget *window;
+        GtkWidget *new_window;
 
-        window = dh_window_new (app);
-        gtk_application_add_window (GTK_APPLICATION (app), GTK_WINDOW (window));
-        gtk_widget_show_all (window);
+        save_active_main_window_gsettings (app);
+
+        new_window = dh_window_new (GTK_APPLICATION (app));
+        gtk_widget_show_all (new_window);
 }
 
 static void
@@ -178,48 +98,30 @@ preferences_cb (GSimpleAction *action,
                 gpointer       user_data)
 {
         DhApp *app = DH_APP (user_data);
-        GtkWindow *window;
+        GtkWindow *parent_window;
 
-        window = dh_app_peek_first_window (app);
-
-        dh_preferences_show_dialog (window);
+        parent_window = (GtkWindow *) dh_app_get_active_main_window (app, FALSE);
+        dh_preferences_show_dialog (parent_window);
 }
 
 static void
-shortcuts_cb (GSimpleAction *action,
-              GVariant      *parameter,
-              gpointer       user_data)
+help_cb (GSimpleAction *action,
+         GVariant      *parameter,
+         gpointer       user_data)
 {
         DhApp *app = DH_APP (user_data);
-        static GtkWidget *shortcuts_window;
         GtkWindow *window;
+        GError *error = NULL;
 
-        window = dh_app_peek_first_window (app);
+        window = (GtkWindow *) dh_app_get_active_main_window (app, FALSE);
 
-        if (shortcuts_window == NULL)
-        {
-                GtkBuilder *builder;
+        gtk_show_uri_on_window (window, "help:devhelp", GDK_CURRENT_TIME, &error);
 
-                builder = gtk_builder_new_from_resource ("/org/gnome/devhelp/help-overlay.ui");
-                shortcuts_window = GTK_WIDGET (gtk_builder_get_object (builder, "help_overlay"));
-
-                g_signal_connect (shortcuts_window,
-                                  "destroy",
-                                  G_CALLBACK (gtk_widget_destroyed),
-                                  &shortcuts_window);
-
-                g_object_unref (builder);
+        if (error != NULL) {
+                g_warning ("Failed to open the documentation: %s", error->message);
+                g_clear_error (&error);
         }
-
-        if (GTK_WINDOW (window) != gtk_window_get_transient_for (GTK_WINDOW (shortcuts_window)))
-        {
-                gtk_window_set_transient_for (GTK_WINDOW (shortcuts_window), GTK_WINDOW (window));
-        }
-
-        gtk_widget_show_all (shortcuts_window);
-        gtk_window_present (GTK_WINDOW (shortcuts_window));
 }
-
 
 static void
 about_cb (GSimpleAction *action,
@@ -227,7 +129,7 @@ about_cb (GSimpleAction *action,
           gpointer       user_data)
 {
         DhApp *app = DH_APP (user_data);
-        GtkWindow *parent;
+        GtkWindow *parent_window;
 
         const gchar *authors[] = {
                 "Mikael Hallendal <micke@imendio.com>",
@@ -241,21 +143,22 @@ about_cb (GSimpleAction *action,
                 NULL
         };
 
-        parent = dh_app_peek_first_window (app);
+        parent_window = (GtkWindow *) dh_app_get_active_main_window (app, FALSE);
 
-        /* i18n: Please don't translate "Devhelp" (it's marked as translatable
-         * for transliteration only) */
-        gtk_show_about_dialog (parent,
+        gtk_show_about_dialog (parent_window,
+                               /* Translators: please don't translate "Devhelp" (it's marked as
+                                * translatable for transliteration only).
+                                */
                                "name", _("Devhelp"),
                                "version", PACKAGE_VERSION,
-                               "comments", _("A developers' help browser for GNOME"),
+                               "comments", _("A developer tool for browsing and searching API documentation"),
                                "authors", authors,
                                "translator-credits", _("translator-credits"),
                                "website", PACKAGE_URL,
                                "website-label", _("Devhelp Website"),
                                "logo-icon-name", PACKAGE_TARNAME,
                                "license-type", GTK_LICENSE_GPL_2_0,
-                               "copyright", "Copyright 2001-2016 – the Devhelp team",
+                               "copyright", "Copyright 2001-2018 – the Devhelp team",
                                NULL);
 }
 
@@ -265,13 +168,11 @@ quit_cb (GSimpleAction *action,
          gpointer       user_data)
 {
         DhApp *app = DH_APP (user_data);
-        GList *l;
 
-        /* Remove all windows registered in the application */
-        while ((l = gtk_application_get_windows (GTK_APPLICATION (app)))) {
-                gtk_application_remove_window (GTK_APPLICATION (app),
-                                               GTK_WINDOW (l->data));
-        }
+        save_active_main_window_gsettings (app);
+        save_active_assistant_window_gsettings (app);
+
+        g_application_quit (G_APPLICATION (app));
 }
 
 static void
@@ -280,19 +181,18 @@ search_cb (GSimpleAction *action,
            gpointer       user_data)
 {
         DhApp *app = DH_APP (user_data);
-        GtkWindow *window;
-        const gchar *str;
+        const gchar *keyword;
+        DhWindow *window;
 
-        window = dh_app_peek_first_window (app);
-        str = g_variant_get_string (parameter, NULL);
-        if (str[0] == '\0') {
-                g_warning ("Cannot search in application window: "
-                           "No keyword given");
+        keyword = g_variant_get_string (parameter, NULL);
+        if (keyword == NULL || keyword[0] == '\0') {
+                g_warning ("Cannot search in application window: no keyword given.");
                 return;
         }
 
-        dh_window_search (DH_WINDOW (window), str);
-        gtk_window_present (window);
+        window = dh_app_get_active_main_window (app, TRUE);
+        dh_window_search (window, keyword);
+        gtk_window_present (GTK_WINDOW (window));
 }
 
 static void
@@ -301,24 +201,21 @@ search_assistant_cb (GSimpleAction *action,
                      gpointer       user_data)
 {
         DhApp *app = DH_APP (user_data);
-        GtkWindow *assistant;
-        const gchar *str;
+        DhAssistant *assistant;
+        const gchar *keyword;
 
-        str = g_variant_get_string (parameter, NULL);
-        if (str[0] == '\0') {
-                g_warning ("Cannot look for keyword in Search Assistant: "
-                           "No keyword given");
+        keyword = g_variant_get_string (parameter, NULL);
+        if (keyword == NULL || keyword[0] == '\0') {
+                g_warning ("Cannot look for keyword in Search Assistant: no keyword given.");
                 return;
         }
 
-        /* Look for an already registered assistant */
-        assistant = dh_app_peek_assistant (app);
-        if (!assistant) {
-                assistant = GTK_WINDOW (dh_assistant_new (app));
-                gtk_application_add_window (GTK_APPLICATION (app), assistant);
-        }
+        assistant = get_active_assistant_window (app);
+        if (assistant == NULL)
+                assistant = dh_assistant_new (app);
 
-        dh_assistant_search (DH_ASSISTANT (assistant), str);
+        dh_assistant_search (assistant, keyword);
+        gtk_window_present (GTK_WINDOW (assistant));
 }
 
 static void
@@ -329,154 +226,174 @@ raise_cb (GSimpleAction *action,
         DhApp *app = DH_APP (user_data);
         GtkWindow *window;
 
-        /* Look for the first application window available and show it */
-        window = dh_app_peek_first_window (app);
+        window = gtk_application_get_active_window (GTK_APPLICATION (app));
+        if (window == NULL)
+                window = (GtkWindow *) dh_app_get_active_main_window (app, TRUE);
+
         gtk_window_present (window);
 }
 
-static GActionEntry app_entries[] = {
-        /* general  actions */
-        { "new-window",       new_window_cb,       NULL, NULL, NULL },
-        { "preferences",      preferences_cb,      NULL, NULL, NULL },
-        { "shortcuts",        shortcuts_cb,        NULL, NULL, NULL },
-        { "about",            about_cb,            NULL, NULL, NULL },
-        { "quit",             quit_cb,             NULL, NULL, NULL },
-        /* additional commandline-specific actions */
-        { "search",           search_cb,           "s",  NULL, NULL },
-        { "search-assistant", search_assistant_cb, "s",  NULL, NULL },
-        { "raise",            raise_cb,            NULL, NULL, NULL },
-};
+static void
+add_action_entries (DhApp *app)
+{
+        const GActionEntry app_entries[] = {
+                /* General actions */
+                { "new-window", new_window_cb },
+                { "preferences", preferences_cb },
+                { "help", help_cb },
+                { "about", about_cb },
+                { "quit", quit_cb },
 
-/******************************************************************************/
+                /* Additional commandline-specific actions */
+                { "search", search_cb, "s" },
+                { "search-assistant", search_assistant_cb, "s" },
+                { "raise", raise_cb },
+        };
+
+        g_action_map_add_action_entries (G_ACTION_MAP (app),
+                                         app_entries,
+                                         G_N_ELEMENTS (app_entries),
+                                         app);
+}
 
 static void
-setup_accelerators (DhApp *self)
+setup_go_to_tab_accelerators (GtkApplication *app)
+{
+        const gchar *accels[] = {NULL, NULL};
+        gint key_num;
+
+        for (key_num = 1; key_num <= 9; key_num++) {
+                gchar *accel;
+                gchar *detailed_action_name;
+
+                accel = g_strdup_printf ("<Alt>%d", key_num);
+                accels[0] = accel;
+
+                detailed_action_name = g_strdup_printf ("win.go-to-tab(uint16 %d)", key_num - 1);
+
+                gtk_application_set_accels_for_action (app, detailed_action_name, accels);
+
+                g_free (accel);
+                g_free (detailed_action_name);
+        }
+
+        /* On a typical keyboard the 0 is after 9, so it's the equivalent of 10
+         * (9 starting from 0).
+         */
+        accels[0] = "<Alt>0";
+        gtk_application_set_accels_for_action (app, "win.go-to-tab(uint16 9)", accels);
+}
+
+static void
+setup_accelerators (GtkApplication *app)
 {
         const gchar *accels[] = {NULL, NULL, NULL, NULL};
 
-        accels[0] = "<Primary>0";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.zoom-default", accels);
+        setup_go_to_tab_accelerators (app);
 
-        accels[0] = "<Primary>minus";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.zoom-out", accels);
+        accels[0] = "<Control>0";
+        gtk_application_set_accels_for_action (app, "win.zoom-default", accels);
 
-        accels[0] = "<Primary>plus";
-        accels[1] = "<Primary>equal";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.zoom-in", accels);
-        accels[0] = NULL;
+        accels[0] = "<Control>minus";
+        gtk_application_set_accels_for_action (app, "win.zoom-out", accels);
 
-        accels[0] = "<Primary>f";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.find", accels);
+        /* For "<Control>equal": Epiphany also has this keyboard shortcut for
+         * zoom-in. On keyboards the = and + are usually on the same key, but +
+         * is less convenient to type because Shift must be pressed too.
+         * Apparently it's usual on Windows to press Ctrl+= to zoom in.
+         * https://bugzilla.gnome.org/show_bug.cgi?id=743704
+         */
+        accels[0] = "<Control>plus";
+        accels[1] = "<Control>equal";
+        gtk_application_set_accels_for_action (app, "win.zoom-in", accels);
+        accels[1] = NULL;
 
-        accels[0] = "<Primary>c";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.copy", accels);
+        accels[0] = "<Control>f";
+        gtk_application_set_accels_for_action (app, "win.find", accels);
 
-        accels[0] = "<Primary>p";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.print", accels);
+        accels[0] = "<Control>c";
+        gtk_application_set_accels_for_action (app, "win.copy", accels);
 
-        accels[0] = "<Primary>t";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.new-tab", accels);
+        accels[0] = "<Control>p";
+        gtk_application_set_accels_for_action (app, "win.print", accels);
 
-        accels[0] = "<Primary>Page_Down";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.next-tab", accels);
+        accels[0] = "<Control>t";
+        gtk_application_set_accels_for_action (app, "win.new-tab", accels);
 
-        accels[0] = "<Primary>Page_Up";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.prev-tab", accels);
+        accels[0] = "<Control>n";
+        gtk_application_set_accels_for_action (app, "app.new-window", accels);
+
+        accels[0] = "<Control>Page_Down";
+        gtk_application_set_accels_for_action (app, "win.next-tab", accels);
+
+        accels[0] = "<Control>Page_Up";
+        gtk_application_set_accels_for_action (app, "win.prev-tab", accels);
+
+        accels[0] = "<Control>w";
+        gtk_application_set_accels_for_action (app, "win.close", accels);
+
+        accels[0] = "<Control>q";
+        gtk_application_set_accels_for_action (app, "app.quit", accels);
+
+        accels[0] = "F1";
+        gtk_application_set_accels_for_action (app, "app.help", accels);
 
         accels[0] = "F9";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.show-sidebar", accels);
-
-        accels[0] = "<Primary>w";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.close", accels);
+        gtk_application_set_accels_for_action (app, "win.show-sidebar", accels);
 
         accels[0] = "F10";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.gear-menu", accels);
-
-        accels[0] = "<Primary>F1";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "app.shortcuts", accels);
+        gtk_application_set_accels_for_action (app, "win.show-window-menu", accels);
 
         accels[0] = "<Alt>Right";
         accels[1] = "Forward";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.go-forward", accels);
+        gtk_application_set_accels_for_action (app, "win.go-forward", accels);
 
         accels[0] = "<Alt>Left";
         accels[1] = "Back";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.go-back", accels);
+        gtk_application_set_accels_for_action (app, "win.go-back", accels);
 
-        accels[0] = "<Primary>k";
-        accels[1] = "<Primary>s";
-        accels[2] = "<Primary>l";
-        gtk_application_set_accels_for_action (GTK_APPLICATION (self), "win.focus-search", accels);
+        accels[0] = "<Control>k";
+        accels[1] = "<Control>s";
+        accels[2] = "<Control>l";
+        gtk_application_set_accels_for_action (app, "win.focus-search", accels);
 }
 
-/******************************************************************************/
+static void
+set_app_menu_if_needed (GtkApplication *app)
+{
+	GMenu *manual_app_menu;
+
+	manual_app_menu = gtk_application_get_menu_by_id (app, "manual-app-menu");
+
+        /* Have the g_return in all cases, to catch problems in all cases. */
+	g_return_if_fail (manual_app_menu != NULL);
+
+	if (gtk_application_prefers_app_menu (app))
+		gtk_application_set_app_menu (app, G_MENU_MODEL (manual_app_menu));
+}
 
 static void
 dh_app_startup (GApplication *application)
 {
         DhApp *app = DH_APP (application);
-        DhAppPrivate *priv = dh_app_get_instance_private (app);
 
         g_application_set_resource_base_path (application, "/org/gnome/devhelp");
 
-        /* Chain up parent's startup */
-        G_APPLICATION_CLASS (dh_app_parent_class)->startup (application);
+        if (G_APPLICATION_CLASS (dh_app_parent_class)->startup != NULL)
+                G_APPLICATION_CLASS (dh_app_parent_class)->startup (application);
 
-        /* Setup actions */
-        g_action_map_add_action_entries (G_ACTION_MAP (app),
-                                         app_entries, G_N_ELEMENTS (app_entries),
-                                         app);
-
-        if (_dh_app_has_app_menu (app)) {
-                GtkBuilder *builder;
-                GError *error = NULL;
-
-                /* Setup menu */
-                builder = gtk_builder_new ();
-
-                if (!gtk_builder_add_from_resource (builder,
-                                                    "/org/gnome/devhelp/devhelp-menu.ui",
-                                                    &error)) {
-                        g_warning ("loading menu builder file: %s", error->message);
-                        g_error_free (error);
-                } else {
-                        GMenuModel *app_menu;
-
-                        app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "app-menu"));
-                        gtk_application_set_app_menu (GTK_APPLICATION (application),
-                                                      app_menu);
-                }
-
-                g_object_unref (builder);
-        }
-
-        /* Setup accelerators */
-        setup_accelerators (app);
-
-        /* Load the book manager */
-        priv->book_manager = dh_book_manager_new ();
-        dh_book_manager_populate (priv->book_manager);
+        add_action_entries (app);
+        setup_accelerators (GTK_APPLICATION (app));
+        set_app_menu_if_needed (GTK_APPLICATION (app));
 }
 
 static void
-dh_app_activate (GApplication *application)
+dh_app_activate (GApplication *app)
 {
-        dh_app_new_window (DH_APP (application));
+        g_action_group_activate_action (G_ACTION_GROUP (app), "new-window", NULL);
 }
 
-/******************************************************************************/
-
-DhApp *
-dh_app_new (void)
-{
-        return g_object_new (DH_TYPE_APP,
-                             "application-id",   "org.gnome.Devhelp",
-                             "flags",            G_APPLICATION_HANDLES_COMMAND_LINE,
-                             "register-session", TRUE,
-                             NULL);
-}
-
-static gboolean  option_version;
+static gboolean option_version;
 
 static GOptionEntry options[] = {
         { "new-window", 'n',
@@ -509,80 +426,116 @@ static GOptionEntry options[] = {
 
 static gint
 dh_app_handle_local_options (GApplication *app,
-                             GVariantDict *options)
+                             GVariantDict *local_options)
 {
-  if (option_version)
-    {
-      g_print ("%s %s\n", g_get_application_name (), PACKAGE_VERSION);
-      exit (0);
-    }
+        if (option_version) {
+                g_print ("%s %s\n", g_get_application_name (), PACKAGE_VERSION);
+                return 0;
+        }
 
-  return -1;
+        return -1;
 }
 
 static gint
-dh_app_command_line (GApplication            *app,
+dh_app_command_line (GApplication            *g_app,
                      GApplicationCommandLine *command_line)
 {
+        DhApp *app = DH_APP (g_app);
+        GVariantDict *options_dict;
         gboolean option_new_window = FALSE;
         const gchar *option_search = NULL;
         const gchar *option_search_assistant = NULL;
         gboolean option_quit = FALSE;
-        GVariantDict *options;
 
-        options = g_application_command_line_get_options_dict (command_line);
-        g_variant_dict_lookup (options, "new-window", "b", &option_new_window);
-        g_variant_dict_lookup (options, "search", "&s", &option_search);
-        g_variant_dict_lookup (options, "search-assistant", "&s", &option_search_assistant);
-        g_variant_dict_lookup (options, "quit", "b", &option_quit);
+        options_dict = g_application_command_line_get_options_dict (command_line);
 
-        if (option_new_window) {
-                dh_app_new_window (DH_APP (app));
-        } else if (option_quit) {
-                dh_app_quit (DH_APP (app));
-        } else if (option_search) {
-                dh_app_search (DH_APP (app), option_search);
-        } else if (option_search_assistant) {
-                dh_app_search_assistant (DH_APP (app), option_search_assistant);
-        } else {
-                dh_app_raise (DH_APP (app));
+        g_variant_dict_lookup (options_dict, "new-window", "b", &option_new_window);
+        g_variant_dict_lookup (options_dict, "search", "&s", &option_search);
+        g_variant_dict_lookup (options_dict, "search-assistant", "&s", &option_search_assistant);
+        g_variant_dict_lookup (options_dict, "quit", "b", &option_quit);
+
+        if (option_quit) {
+                g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
+                return 0;
         }
+
+        if (option_new_window)
+                g_action_group_activate_action (G_ACTION_GROUP (app), "new-window", NULL);
+
+        if (option_search != NULL)
+                g_action_group_activate_action (G_ACTION_GROUP (app),
+                                                "search",
+                                                g_variant_new_string (option_search));
+
+        if (option_search_assistant != NULL)
+                g_action_group_activate_action (G_ACTION_GROUP (app),
+                                                "search-assistant",
+                                                g_variant_new_string (option_search_assistant));
+
+        g_action_group_activate_action (G_ACTION_GROUP (app), "raise", NULL);
 
         return 0;
 }
 
 static void
-dh_app_init (DhApp *app)
-{
-        /* i18n: Please don't translate "Devhelp" (it's marked as translatable
-         * for transliteration only) */
-        g_set_application_name (_("Devhelp"));
-        gtk_window_set_default_icon_name ("devhelp");
-
-        g_application_add_main_option_entries (G_APPLICATION (app), options);
-}
-
-static void
-dh_app_dispose (GObject *object)
-{
-        DhApp *app = DH_APP (object);
-        DhAppPrivate *priv = dh_app_get_instance_private (app);
-
-        g_clear_object (&priv->book_manager);
-
-        G_OBJECT_CLASS (dh_app_parent_class)->dispose (object);
-}
-
-static void
 dh_app_class_init (DhAppClass *klass)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GApplicationClass *application_class = G_APPLICATION_CLASS (klass);
 
         application_class->startup = dh_app_startup;
         application_class->activate = dh_app_activate;
         application_class->handle_local_options = dh_app_handle_local_options;
         application_class->command_line = dh_app_command_line;
+}
 
-        object_class->dispose = dh_app_dispose;
+static void
+dh_app_init (DhApp *app)
+{
+        /* Translators: please don't translate "Devhelp" (it's marked as
+         * translatable for transliteration only).
+         */
+        g_set_application_name (_("Devhelp"));
+        gtk_window_set_default_icon_name ("devhelp");
+
+        g_application_add_main_option_entries (G_APPLICATION (app), options);
+}
+
+DhApp *
+dh_app_new (void)
+{
+        return g_object_new (DH_TYPE_APP,
+                             "application-id", "org.gnome.Devhelp",
+                             "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
+                             NULL);
+}
+
+/* Returns: (transfer none) (nullable). */
+DhWindow *
+dh_app_get_active_main_window (DhApp    *app,
+                               gboolean  create_if_none)
+{
+        GList *windows;
+        GList *l;
+
+        g_return_val_if_fail (DH_IS_APP (app), NULL);
+
+        windows = gtk_application_get_windows (GTK_APPLICATION (app));
+
+        for (l = windows; l != NULL; l = l->next) {
+                GtkWindow *cur_window = GTK_WINDOW (l->data);
+
+                if (DH_IS_WINDOW (cur_window))
+                        return DH_WINDOW (cur_window);
+        }
+
+        if (create_if_none) {
+                g_action_group_activate_action (G_ACTION_GROUP (app), "new-window", NULL);
+
+                /* Look again, but with create_if_none = FALSE to avoid an
+                 * infinite recursion in case creating a new main window fails.
+                 */
+                return dh_app_get_active_main_window (app, FALSE);
+        }
+
+        return NULL;
 }

@@ -1,6 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*- */
 /*
  * Copyright (C) 2010 Lanedo GmbH
+ * Copyright (C) 2017 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -12,12 +13,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_BOOK_MANAGER_H__
-#define __DH_BOOK_MANAGER_H__
+#ifndef DH_BOOK_MANAGER_H
+#define DH_BOOK_MANAGER_H
 
 #include <glib-object.h>
 
@@ -39,20 +40,31 @@ struct _DhBookManager {
 
 struct _DhBookManagerClass {
         GObjectClass parent_class;
+
+        /* Padding for future expansion */
+        gpointer padding[12];
 };
 
-GType          dh_book_manager_get_type              (void) G_GNUC_CONST;
-DhBookManager *dh_book_manager_new                   (void);
-void           dh_book_manager_populate              (DhBookManager *book_manager);
-GList         *dh_book_manager_get_books             (DhBookManager *book_manager);
+GType           dh_book_manager_get_type                (void) G_GNUC_CONST;
+
+DhBookManager * dh_book_manager_get_singleton           (void);
+
+GList *         dh_book_manager_get_books               (DhBookManager *book_manager);
+
+gboolean        dh_book_manager_get_group_by_language   (DhBookManager *book_manager);
+
+void            dh_book_manager_set_group_by_language   (DhBookManager *book_manager,
+                                                         gboolean       group_by_language);
 
 G_DEPRECATED
-GList         *dh_book_manager_get_languages         (DhBookManager *book_manager);
+DhBookManager * dh_book_manager_new                     (void);
 
-gboolean       dh_book_manager_get_group_by_language (DhBookManager *book_manager);
-void           dh_book_manager_set_group_by_language (DhBookManager *book_manager,
-                                                      gboolean       group_by_language);
+G_DEPRECATED
+void            dh_book_manager_populate                (DhBookManager *book_manager);
+
+G_GNUC_INTERNAL
+void            _dh_book_manager_unref_singleton        (void);
 
 G_END_DECLS
 
-#endif /* __DH_BOOK_MANAGER_H__ */
+#endif /* DH_BOOK_MANAGER_H */

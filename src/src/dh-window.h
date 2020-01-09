@@ -3,6 +3,7 @@
  * Copyright (C) 2002 CodeFactory AB
  * Copyright (C) 2001-2002 Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2005 Imendio AB
+ * Copyright (C) 2017-2018 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -14,15 +15,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_WINDOW_H__
-#define __DH_WINDOW_H__
+#ifndef DH_WINDOW_H
+#define DH_WINDOW_H
 
 #include <gtk/gtk.h>
-#include "dh-app.h"
 
 G_BEGIN_DECLS
 
@@ -36,32 +36,24 @@ G_BEGIN_DECLS
 typedef struct _DhWindow       DhWindow;
 typedef struct _DhWindowClass  DhWindowClass;
 
-typedef enum
-{
-        DH_OPEN_LINK_NEW_WINDOW = 1 << 0,
-        DH_OPEN_LINK_NEW_TAB    = 1 << 1
-} DhOpenLinkFlags;
-
 struct _DhWindow {
         GtkApplicationWindow parent_instance;
 };
 
 struct _DhWindowClass {
         GtkApplicationWindowClass parent_class;
-
-        /* Signals */
-        void (*open_link) (DhWindow        *window,
-                           const char      *location,
-                           DhOpenLinkFlags  flags);
 };
 
-GType      dh_window_get_type     (void) G_GNUC_CONST;
-GtkWidget *dh_window_new          (DhApp       *application);
-void       dh_window_search       (DhWindow    *window,
-                                   const gchar *str);
-void       _dh_window_display_uri (DhWindow    *window,
-                                   const gchar *uri);
+GType           dh_window_get_type              (void) G_GNUC_CONST;
+
+GtkWidget *     dh_window_new                   (GtkApplication *application);
+
+void            dh_window_search                (DhWindow    *window,
+                                                 const gchar *str);
+
+void            _dh_window_display_uri          (DhWindow    *window,
+                                                 const gchar *uri);
 
 G_END_DECLS
 
-#endif /* __DH_WINDOW_H__ */
+#endif /* DH_WINDOW_H */

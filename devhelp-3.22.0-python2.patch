@@ -1,10 +1,10 @@
-diff -up devhelp-3.22.0/misc/gedit-plugin/devhelp.plugin.desktop.in.python2 devhelp-3.22.0/misc/gedit-plugin/devhelp.plugin.desktop.in
---- devhelp-3.22.0/misc/gedit-plugin/devhelp.plugin.desktop.in.python2	2016-11-24 15:16:31.871038939 +0100
-+++ devhelp-3.22.0/misc/gedit-plugin/devhelp.plugin.desktop.in	2016-11-24 15:16:35.327107126 +0100
+diff -urNp devhelp-3.28.1.old/plugins/gedit-plugin/devhelp.plugin.desktop.in devhelp-3.28.1/plugins/gedit-plugin/devhelp.plugin.desktop.in
+--- devhelp-3.28.1.old/plugins/gedit-plugin/devhelp.plugin.desktop.in	2018-06-06 19:10:51.608355911 +0100
++++ devhelp-3.28.1/plugins/gedit-plugin/devhelp.plugin.desktop.in	2018-06-06 19:12:25.448057120 +0100
 @@ -1,5 +1,5 @@
  [Plugin]
 -Loader=python3
 +Loader=python
  Module=devhelp
  IAge=3
- _Name=Devhelp support
+ Name=Devhelp support

@@ -2,23 +2,29 @@
 # Please keep this file sorted alphabetically.
 data/org.gnome.Devhelp.appdata.xml.in
 data/org.gnome.Devhelp.desktop.in.in
-[type: gettext/gsettings]data/org.gnome.devhelp.gschema.xml
-misc/gedit-plugin/devhelp.plugin.desktop.in
-misc/gedit-plugin/devhelp.py
-[type: gettext/glade]src/devhelp-menu.ui
-[type: gettext/glade]src/help-overlay.ui
+data/org.gnome.devhelp.gschema.xml
+plugins/gedit-plugin/devhelp.plugin.desktop.in
+plugins/gedit-plugin/devhelp.py
 src/dh-app.c
 src/dh-assistant.c
-[type: gettext/glade]src/dh-assistant.ui
+src/dh-assistant.ui
 src/dh-assistant-view.c
 src/dh-book.c
 src/dh-book-tree.c
+src/dh-completion.c
 src/dh-keyword-model.c
 src/dh-link.c
 src/dh-main.c
 src/dh-parser.c
-[type: gettext/glade]src/dh-preferences.ui
+src/dh-preferences.ui
+src/dh-search-context.c
 src/dh-sidebar.c
+src/dh-tab.c
+src/dh-tab-label.c
 src/dh-util.c
+src/dh-web-view.c
 src/dh-window.c
-[type: gettext/glade]src/dh-window.ui
+src/dh-window.ui
+src/help-overlay.ui
+src/menus.ui
+src/tepl-info-bar.c

@@ -12,16 +12,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __DH_BOOK_TREE_H__
-#define __DH_BOOK_TREE_H__
+#ifndef DH_BOOK_TREE_H
+#define DH_BOOK_TREE_H
 
 #include <gtk/gtk.h>
 #include "dh-link.h"
-#include "dh-book-manager.h"
 
 G_BEGIN_DECLS
 
@@ -40,14 +39,20 @@ struct _DhBookTree {
 
 struct _DhBookTreeClass {
         GtkTreeViewClass parent_class;
+
+        /* Padding for future expansion */
+        gpointer padding[12];
 };
 
-GType        dh_book_tree_get_type          (void) G_GNUC_CONST;
-GtkWidget *  dh_book_tree_new               (DhBookManager *book_manager);
-void         dh_book_tree_select_uri        (DhBookTree    *book_tree,
-                                             const gchar   *uri);
-DhLink      *dh_book_tree_get_selected_book (DhBookTree    *tree);
+GType           dh_book_tree_get_type           (void) G_GNUC_CONST;
+
+DhBookTree *    dh_book_tree_new                (void);
+
+void            dh_book_tree_select_uri         (DhBookTree  *tree,
+                                                 const gchar *uri);
+
+DhLink *        dh_book_tree_get_selected_book  (DhBookTree *tree);
 
 G_END_DECLS
 
-#endif /* __DH_BOOK_TREE_H__ */
+#endif /* DH_BOOK_TREE_H */

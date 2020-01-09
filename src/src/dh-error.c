@@ -13,8 +13,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public
- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "config.h"
@@ -26,7 +26,7 @@ dh_error_quark (void)
         static GQuark q = 0;
 
         if (q == 0) {
-                q = g_quark_from_static_string ("dh-error-quark");
+                q = g_quark_from_static_string ("devhelp-error-quark");
         }
 
         return q;

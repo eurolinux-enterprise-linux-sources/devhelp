@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="search" xml:lang="cs">
+
+<info>
+  <link type="guide" xref="index"/>
+</info>
+
+<title>Hledání v postranním panelu</title>
+
+<synopsis>
+  <p>Jak funguje hledání v postranním panelu.</p>
+</synopsis>
+
+<section id="case-sensitivity">
+  <title>Rozlišování velikosti písmen</title>
+  <p>Při hledání se bere ohled na velikost písmen, když se ve výrazu objeví velké písmeno. Pokud jsou v hledaném výrazu jen samá malá písmena, nebere se velikost písmen při hledání v úvahu. Je to podobné, jako inteligentní práce s velikostí písmen v textových editorech, tzv. funkce „smartcase“.</p>
+</section>
+
+<section id="globs">
+  <title>Porovnávání podle globálního stylu vzorů</title>
+  <p>Hledaný výraz může být vzor obsahující divoké znaky „*“ a „?“. „*“ vyhovuje cokoliv, včetně prázdného řetězce a „?“ vyhovuje právě jeden libovolný znak.</p>
+</section>
+
+<section id="several-search-terms">
+  <title>Hledání několika výrazů</title>
+  <p>Můžete hledat několik výrazů naráz (oddělených mezerami). Symbol vyhoví hledání jen v případě, že se jednotlivě shodují <em>všechny</em> hledané výrazy (ne nutně ve stejném pořadí, jak byly zadány).</p>
+  <p>Pamatujte, že se to liší od hledání pomocí divokého znaku „*“: divoký znak „*“ si vynutí, aby byla klíčová slova ve stejném pořadí.</p>
+  <p>Například, když hledáte „<input>gtk window application</input>“, bude tomu vyhovovat „<code>gtk_window_get_application()</code>“ a „<code>GtkApplicationWindow</code>“ (mimo jiné).</p>
+  <p>Na druhou stranu, hledání „<input>gtk*window*application</input>“ bude vyhovovat „<code>gtk_window_get_application()</code>“, ale „<code>GtkApplicationWindow</code>“ už ne.</p>
+</section>
+</page>
