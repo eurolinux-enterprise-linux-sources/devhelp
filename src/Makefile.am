@@ -1,18 +1,14 @@
-SUBDIRS = data plugins po help src unit-tests docs
+ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
-AM_DISTCHECK_CONFIGURE_FLAGS =	\
-	--enable-gtk-doc	\
-	--enable-introspection	\
-	--enable-appstream-util
+SUBDIRS = libgd po src data misc contrib
 
-EXTRA_DIST = devhelp.doap
+EXTRA_DIST =			\
+	autogen.sh		\
+	misc/devhelp.el	        \
+	misc/html2funcs.py	\
+	misc/html2xml.py	\
+	misc/devhelp.vim
 
-MAINTAINERCLEANFILES = \
-	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
-	$(GITIGNORE_MAINTAINERCLEANFILES_MAKEFILE_IN) \
-	$(GITIGNORE_MAINTAINERCLEANFILES_M4_GETTEXT) \
-	$(GITIGNORE_MAINTAINERCLEANFILES_M4_LIBTOOL) \
-	gtk-doc.make \
-	py-compile
-
--include $(top_srcdir)/git.mk
+DISTCLEANFILES = intltool-extract  \
+		 intltool-merge    \
+		 intltool-update

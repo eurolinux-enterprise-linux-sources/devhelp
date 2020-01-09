@@ -4,7 +4,6 @@
  * Copyright (C) 2002 Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2008 Imendio AB
  * Copyright (C) 2010 Lanedo GmbH
- * Copyright (C) 2015-2018 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -16,114 +15,76 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#include "dh-keyword-model.h"
+#include "config.h"
 #include <gtk/gtk.h>
+#include <string.h>
+
+#include "dh-link.h"
 #include "dh-book.h"
-#include "dh-book-manager.h"
-#include "dh-search-context.h"
-#include "dh-util.h"
+#include "dh-keyword-model.h"
 
-/**
- * SECTION:dh-keyword-model
- * @Title: DhKeywordModel
- * @Short_description: A custom #GtkTreeModel implementation for searching
- * #DhLink's
- *
- * #DhKeywordModel is a custom #GtkTreeModel implementation (as a list, not a
- * tree) for searching #DhLink's.
- *
- * The dh_keyword_model_filter() function is used to set the search criteria. It
- * fills the #GtkTreeModel with the list of #DhLink's that match the search
- * criteria (up to a certain maximum number of matches).
- *
- * How the search works (for end users) is explained in the user documentation
- * of the Devhelp application.
- *
- * # Filter by book and page
- *
- * As a kind of API for integrating Devhelp with other applications, the search
- * string supports additional features. Those features are not intended to be
- * used directly by end users when typing the search string in the GUI, because
- * it's not really convenient. It is intended to be used with the
- * `devhelp --search "search-string"` command line, so that another application
- * can launch Devhelp and set a specific search string.
- *
- * It is possible to filter by book by prefixing the search string with
- * “book:the-book-ID”. For example “book:gtk3”. If there are no other search
- * terms, it shows the top-level page of that book. If there are other search
- * terms, it limits the search to the specified book. See also the
- * dh_book_get_id() function (in the `*.devhelp2` index file format it's called
- * the book “name”, not ID, but ID is clearer).
- *
- * Similarly, it is possible to filter by page, by prefixing the search string
- * with “page:the-page-ID”. For example “page:GtkWindow”. If there are no other
- * search terms, the top of the page is shown and the search matches all the
- * symbols part of that page. If there are other search terms, it limits the
- * search to the specified page. To know what is the “page ID”, see the
- * dh_link_belongs_to_page() function.
- *
- * “book:” and “page:” can be combined. Normal search terms must be
- * <emphasis>after</emphasis> “book:” and “page:”.
- *
- * The book and page IDs – even if they contain an uppercase letter – don't
- * affect the case sensitivity for the other search terms.
- */
+struct _DhKeywordModelPriv {
+        DhBookManager *book_manager;
 
-typedef struct {
-        gchar *current_book_id;
+        GList *keyword_words;
+        gint   keyword_words_length;
 
-        /* List of owned DhLink*.
-         *
-         * Note: GQueue, not GQueue* so we are sure that it always exists, we
-         * don't need to check if priv->links == NULL.
-         */
-        GQueue links;
+        gint   stamp;
+};
 
-        gint stamp;
-} DhKeywordModelPrivate;
+/* Store a keyword as well as glob
+ * patterns that match at the start of a word
+ * and one that matches in any position of a
+ * word */
+struct _DhKeywordGlobPattern {
+        gchar *keyword;
+        gboolean has_glob;
+        GPatternSpec *glob_pattern_start;
+        GPatternSpec *glob_pattern_any;
+};
 
-typedef struct {
-        DhSearchContext *search_context;
-        const gchar *book_id;
-        const gchar *skip_book_id;
-        guint prefix : 1;
-} SearchSettings;
+#define G_LIST(x) ((GList *) x)
+#define MAX_HITS 100
 
-#define MAX_HITS 1000
-
-static void dh_keyword_model_tree_model_init (GtkTreeModelIface *iface);
+static void dh_keyword_model_init            (DhKeywordModel      *list_store);
+static void dh_keyword_model_class_init      (DhKeywordModelClass *class);
+static void dh_keyword_model_tree_model_init (GtkTreeModelIface   *iface);
+static GList *dh_globbed_keywords_new        (GStrv                keywords);
+static void dh_globbed_keywords_free         (GList               *keyword_globs);
 
 G_DEFINE_TYPE_WITH_CODE (DhKeywordModel, dh_keyword_model, G_TYPE_OBJECT,
-                         G_ADD_PRIVATE (DhKeywordModel)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL,
                                                 dh_keyword_model_tree_model_init));
 
 static void
-clear_links (DhKeywordModel *model)
+keyword_model_dispose (GObject *object)
 {
-        DhKeywordModelPrivate *priv = dh_keyword_model_get_instance_private (model);
-        GList *l;
+        DhKeywordModel     *model = DH_KEYWORD_MODEL (object);
+        DhKeywordModelPriv *priv = model->priv;
 
-        for (l = priv->links.head; l != NULL; l = l->next) {
-                DhLink *cur_link = l->data;
-                dh_link_unref (cur_link);
+        if (priv->book_manager) {
+                g_object_unref (priv->book_manager);
+                priv->book_manager = NULL;
         }
 
-        g_queue_clear (&priv->links);
+        G_OBJECT_CLASS (dh_keyword_model_parent_class)->dispose (object);
 }
 
 static void
-dh_keyword_model_finalize (GObject *object)
+keyword_model_finalize (GObject *object)
 {
-        DhKeywordModel *model = DH_KEYWORD_MODEL (object);
-        DhKeywordModelPrivate *priv = dh_keyword_model_get_instance_private (model);
+        DhKeywordModel     *model = DH_KEYWORD_MODEL (object);
+        DhKeywordModelPriv *priv = model->priv;
 
-        g_free (priv->current_book_id);
-        clear_links (model);
+        g_list_free (priv->keyword_words);
+
+        g_free (model->priv);
 
         G_OBJECT_CLASS (dh_keyword_model_parent_class)->finalize (object);
 }
@@ -131,64 +92,64 @@ dh_keyword_model_finalize (GObject *object)
 static void
 dh_keyword_model_class_init (DhKeywordModelClass *klass)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);;
 
-        object_class->finalize = dh_keyword_model_finalize;
+        object_class->finalize = keyword_model_finalize;
+        object_class->dispose = keyword_model_dispose;
 }
 
 static void
 dh_keyword_model_init (DhKeywordModel *model)
 {
-        DhKeywordModelPrivate *priv = dh_keyword_model_get_instance_private (model);
+        DhKeywordModelPriv *priv;
 
-        priv->stamp = g_random_int_range (1, G_MAXINT32);
+        priv = g_new0 (DhKeywordModelPriv, 1);
+        model->priv = priv;
+
+        do {
+                priv->stamp = g_random_int ();
+        } while (priv->stamp == 0);
 }
 
 static GtkTreeModelFlags
-dh_keyword_model_get_flags (GtkTreeModel *tree_model)
+keyword_model_get_flags (GtkTreeModel *tree_model)
 {
-        return GTK_TREE_MODEL_LIST_ONLY;
+        return GTK_TREE_MODEL_ITERS_PERSIST | GTK_TREE_MODEL_LIST_ONLY;
 }
 
 static gint
-dh_keyword_model_get_n_columns (GtkTreeModel *tree_model)
+keyword_model_get_n_columns (GtkTreeModel *tree_model)
 {
         return DH_KEYWORD_MODEL_NUM_COLS;
 }
 
 static GType
-dh_keyword_model_get_column_type (GtkTreeModel *tree_model,
-                                  gint          column)
+keyword_model_get_column_type (GtkTreeModel *tree_model,
+                               gint          column)
 {
         switch (column) {
         case DH_KEYWORD_MODEL_COL_NAME:
                 return G_TYPE_STRING;
-
+                break;
         case DH_KEYWORD_MODEL_COL_LINK:
-                return DH_TYPE_LINK;
-
-        case DH_KEYWORD_MODEL_COL_CURRENT_BOOK_FLAG:
-                return G_TYPE_BOOLEAN;
-
+                return G_TYPE_POINTER;
         default:
                 return G_TYPE_INVALID;
         }
 }
 
 static gboolean
-dh_keyword_model_get_iter (GtkTreeModel *tree_model,
-                           GtkTreeIter  *iter,
-                           GtkTreePath  *path)
+keyword_model_get_iter (GtkTreeModel *tree_model,
+                        GtkTreeIter  *iter,
+                        GtkTreePath  *path)
 {
-        DhKeywordModelPrivate *priv;
-        const gint *indices;
-        GList *node;
+        DhKeywordModel     *model;
+        DhKeywordModelPriv *priv;
+        GList              *node;
+        const gint         *indices;
 
-        priv = dh_keyword_model_get_instance_private (DH_KEYWORD_MODEL (tree_model));
-
-        if (gtk_tree_path_get_depth (path) > 1) {
-                return FALSE;
-        }
+        model = DH_KEYWORD_MODEL (tree_model);
+        priv = model->priv;
 
         indices = gtk_tree_path_get_indices (path);
 
@@ -196,120 +157,99 @@ dh_keyword_model_get_iter (GtkTreeModel *tree_model,
                 return FALSE;
         }
 
-        node = g_queue_peek_nth_link (&priv->links, indices[0]);
-
-        if (node != NULL) {
-                iter->stamp = priv->stamp;
-                iter->user_data = node;
-                return TRUE;
+        if (indices[0] >= priv->keyword_words_length) {
+                return FALSE;
         }
 
-        return FALSE;
+        node = g_list_nth (priv->keyword_words, indices[0]);
+
+        iter->stamp     = priv->stamp;
+        iter->user_data = node;
+
+        return TRUE;
 }
 
 static GtkTreePath *
-dh_keyword_model_get_path (GtkTreeModel *tree_model,
-                           GtkTreeIter  *iter)
+keyword_model_get_path (GtkTreeModel *tree_model,
+                        GtkTreeIter  *iter)
 {
-        DhKeywordModelPrivate *priv;
-        GList *node;
-        GtkTreePath *path;
-        gint pos;
+        DhKeywordModel     *model = DH_KEYWORD_MODEL (tree_model);
+        DhKeywordModelPriv *priv;
+        GtkTreePath        *path;
+        gint                i = 0;
 
-        priv = dh_keyword_model_get_instance_private (DH_KEYWORD_MODEL (tree_model));
+        g_return_val_if_fail (iter->stamp == model->priv->stamp, NULL);
 
-        g_return_val_if_fail (iter->stamp == priv->stamp, NULL);
+        priv = model->priv;
 
-        node = iter->user_data;
-        pos = g_queue_link_index (&priv->links, node);
-
-        if (pos < 0) {
+        i = g_list_position (priv->keyword_words, iter->user_data);
+        if (i < 0) {
                 return NULL;
         }
 
         path = gtk_tree_path_new ();
-        gtk_tree_path_append_index (path, pos);
+        gtk_tree_path_append_index (path, i);
 
         return path;
 }
 
 static void
-dh_keyword_model_get_value (GtkTreeModel *tree_model,
-                            GtkTreeIter  *iter,
-                            gint          column,
-                            GValue       *value)
+keyword_model_get_value (GtkTreeModel *tree_model,
+                         GtkTreeIter  *iter,
+                         gint          column,
+                         GValue       *value)
 {
-        DhKeywordModelPrivate *priv;
-        GList *node;
         DhLink *link;
-        gboolean in_current_book;
 
-        priv = dh_keyword_model_get_instance_private (DH_KEYWORD_MODEL (tree_model));
-
-        g_return_if_fail (iter->stamp == priv->stamp);
-
-        node = iter->user_data;
-        link = node->data;
+        link = G_LIST (iter->user_data)->data;
 
         switch (column) {
         case DH_KEYWORD_MODEL_COL_NAME:
                 g_value_init (value, G_TYPE_STRING);
                 g_value_set_string (value, dh_link_get_name (link));
                 break;
-
         case DH_KEYWORD_MODEL_COL_LINK:
-                g_value_init (value, DH_TYPE_LINK);
-                g_value_set_boxed (value, link);
+                g_value_init (value, G_TYPE_POINTER);
+                g_value_set_pointer (value, link);
                 break;
-
-        case DH_KEYWORD_MODEL_COL_CURRENT_BOOK_FLAG:
-                in_current_book = g_strcmp0 (dh_link_get_book_id (link), priv->current_book_id) == 0;
-                g_value_init (value, G_TYPE_BOOLEAN);
-                g_value_set_boolean (value, in_current_book);
-                break;
-
         default:
                 g_warning ("Bad column %d requested", column);
         }
 }
 
 static gboolean
-dh_keyword_model_iter_next (GtkTreeModel *tree_model,
-                            GtkTreeIter  *iter)
+keyword_model_iter_next (GtkTreeModel *tree_model,
+                         GtkTreeIter  *iter)
 {
-        DhKeywordModelPrivate *priv;
-        GList *node;
+        DhKeywordModel *model = DH_KEYWORD_MODEL (tree_model);
 
-        priv = dh_keyword_model_get_instance_private (DH_KEYWORD_MODEL (tree_model));
+        g_return_val_if_fail (model->priv->stamp == iter->stamp, FALSE);
 
-        g_return_val_if_fail (priv->stamp == iter->stamp, FALSE);
+        iter->user_data = G_LIST (iter->user_data)->next;
 
-        node = iter->user_data;
-        iter->user_data = node->next;
-
-        return iter->user_data != NULL;
+        return (iter->user_data != NULL);
 }
 
 static gboolean
-dh_keyword_model_iter_children (GtkTreeModel *tree_model,
-                                GtkTreeIter  *iter,
-                                GtkTreeIter  *parent)
+keyword_model_iter_children (GtkTreeModel *tree_model,
+                             GtkTreeIter  *iter,
+                             GtkTreeIter  *parent)
 {
-        DhKeywordModelPrivate *priv;
+        DhKeywordModelPriv *priv;
 
-        priv = dh_keyword_model_get_instance_private (DH_KEYWORD_MODEL (tree_model));
+        priv = DH_KEYWORD_MODEL (tree_model)->priv;
 
         /* This is a list, nodes have no children. */
-        if (parent != NULL) {
+        if (parent) {
                 return FALSE;
         }
 
         /* But if parent == NULL we return the list itself as children of
          * the "root".
          */
-        if (priv->links.head != NULL) {
+        if (priv->keyword_words) {
                 iter->stamp = priv->stamp;
-                iter->user_data = priv->links.head;
+                iter->user_data = priv->keyword_words;
                 return TRUE;
         }
 
@@ -317,22 +257,22 @@ dh_keyword_model_iter_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-dh_keyword_model_iter_has_child (GtkTreeModel *tree_model,
-                                 GtkTreeIter  *iter)
+keyword_model_iter_has_child (GtkTreeModel *tree_model,
+                              GtkTreeIter  *iter)
 {
         return FALSE;
 }
 
 static gint
-dh_keyword_model_iter_n_children (GtkTreeModel *tree_model,
-                                  GtkTreeIter  *iter)
+keyword_model_iter_n_children (GtkTreeModel *tree_model,
+                               GtkTreeIter  *iter)
 {
-        DhKeywordModelPrivate *priv;
+        DhKeywordModelPriv *priv;
 
-        priv = dh_keyword_model_get_instance_private (DH_KEYWORD_MODEL (tree_model));
+        priv = DH_KEYWORD_MODEL (tree_model)->priv;
 
         if (iter == NULL) {
-                return priv->links.length;
+                return priv->keyword_words_length;
         }
 
         g_return_val_if_fail (priv->stamp == iter->stamp, -1);
@@ -341,23 +281,23 @@ dh_keyword_model_iter_n_children (GtkTreeModel *tree_model,
 }
 
 static gboolean
-dh_keyword_model_iter_nth_child (GtkTreeModel *tree_model,
-                                 GtkTreeIter  *iter,
-                                 GtkTreeIter  *parent,
-                                 gint          n)
+keyword_model_iter_nth_child (GtkTreeModel *tree_model,
+                              GtkTreeIter  *iter,
+                              GtkTreeIter  *parent,
+                              gint          n)
 {
-        DhKeywordModelPrivate *priv;
-        GList *child;
+        DhKeywordModelPriv *priv;
+        GList              *child;
 
-        priv = dh_keyword_model_get_instance_private (DH_KEYWORD_MODEL (tree_model));
+        priv = DH_KEYWORD_MODEL (tree_model)->priv;
 
-        if (parent != NULL) {
+        if (parent) {
                 return FALSE;
         }
 
-        child = g_queue_peek_nth_link (&priv->links, n);
+        child = g_list_nth (priv->keyword_words, n);
 
-        if (child != NULL) {
+        if (child) {
                 iter->stamp = priv->stamp;
                 iter->user_data = child;
                 return TRUE;
@@ -367,9 +307,9 @@ dh_keyword_model_iter_nth_child (GtkTreeModel *tree_model,
 }
 
 static gboolean
-dh_keyword_model_iter_parent (GtkTreeModel *tree_model,
-                              GtkTreeIter  *iter,
-                              GtkTreeIter  *child)
+keyword_model_iter_parent (GtkTreeModel *tree_model,
+                           GtkTreeIter  *iter,
+                           GtkTreeIter  *child)
 {
         return FALSE;
 }
@@ -377,162 +317,95 @@ dh_keyword_model_iter_parent (GtkTreeModel *tree_model,
 static void
 dh_keyword_model_tree_model_init (GtkTreeModelIface *iface)
 {
-        iface->get_flags = dh_keyword_model_get_flags;
-        iface->get_n_columns = dh_keyword_model_get_n_columns;
-        iface->get_column_type = dh_keyword_model_get_column_type;
-        iface->get_iter = dh_keyword_model_get_iter;
-        iface->get_path = dh_keyword_model_get_path;
-        iface->get_value = dh_keyword_model_get_value;
-        iface->iter_next = dh_keyword_model_iter_next;
-        iface->iter_children = dh_keyword_model_iter_children;
-        iface->iter_has_child = dh_keyword_model_iter_has_child;
-        iface->iter_n_children = dh_keyword_model_iter_n_children;
-        iface->iter_nth_child = dh_keyword_model_iter_nth_child;
-        iface->iter_parent = dh_keyword_model_iter_parent;
+        iface->get_flags       = keyword_model_get_flags;
+        iface->get_n_columns   = keyword_model_get_n_columns;
+        iface->get_column_type = keyword_model_get_column_type;
+        iface->get_iter        = keyword_model_get_iter;
+        iface->get_path        = keyword_model_get_path;
+        iface->get_value       = keyword_model_get_value;
+        iface->iter_next       = keyword_model_iter_next;
+        iface->iter_children   = keyword_model_iter_children;
+        iface->iter_has_child  = keyword_model_iter_has_child;
+        iface->iter_n_children = keyword_model_iter_n_children;
+        iface->iter_nth_child  = keyword_model_iter_nth_child;
+        iface->iter_parent     = keyword_model_iter_parent;
 }
 
-/**
- * dh_keyword_model_new:
- *
- * Returns: a new #DhKeywordModel object.
- */
 DhKeywordModel *
 dh_keyword_model_new (void)
 {
-        return g_object_new (DH_TYPE_KEYWORD_MODEL, NULL);
+        DhKeywordModel *model;
+
+        model = g_object_new (DH_TYPE_KEYWORD_MODEL, NULL);
+
+        return model;
 }
 
-static GQueue *
-search_single_book (DhBook          *book,
-                    SearchSettings  *settings,
-                    guint            max_hits,
-                    DhLink         **exact_link)
+void
+dh_keyword_model_set_words (DhKeywordModel *model,
+                            DhBookManager  *book_manager)
 {
-        GQueue *ret;
-        GList *l;
+        g_return_if_fail (DH_IS_KEYWORD_MODEL (model));
 
-        ret = g_queue_new ();
-
-        for (l = dh_book_get_links (book);
-             l != NULL && ret->length < max_hits;
-             l = l->next) {
-                DhLink *link = l->data;
-
-                if (!_dh_search_context_match_link (settings->search_context,
-                                                    link,
-                                                    settings->prefix)) {
-                        continue;
-                }
-
-                g_queue_push_tail (ret, dh_link_ref (link));
-
-                if (exact_link == NULL || !settings->prefix)
-                        continue;
-
-                /* Look for an exact link match. If the link is a PAGE, we can
-                 * overwrite any previous exact link set. For example, when
-                 * looking for GFile, we want the page, not the struct.
-                 */
-                if ((*exact_link == NULL || dh_link_get_link_type (link) == DH_LINK_TYPE_PAGE) &&
-                    _dh_search_context_is_exact_link (settings->search_context, link)) {
-                        *exact_link = link;
-                }
-        }
-
-        return ret;
+        model->priv->book_manager = g_object_ref (book_manager);
 }
 
-static GQueue *
-search_books (SearchSettings  *settings,
-              guint            max_hits,
-              DhLink         **exact_link)
+/* Returns a GList of struct _DhKeywordGlobPattern
+ * with GPatternSpec's allocated if there are any
+ * special glob characters ('*', '?') in a keyword in keywords.
+ * The list returned is the same length as keywords */
+static GList *
+dh_globbed_keywords_new (GStrv keywords)
 {
-        DhBookManager *book_manager;
-        GList *books;
-        GList *l;
-        GQueue *ret;
+        gint i;
+        gchar *glob;
+        GList *list = NULL;
+        struct _DhKeywordGlobPattern *glob_struct;
 
-        ret = g_queue_new ();
-
-        book_manager = dh_book_manager_get_singleton ();
-        books = dh_book_manager_get_books (book_manager);
-
-        for (l = books;
-             l != NULL && ret->length < max_hits;
-             l = l->next) {
-                DhBook *book = DH_BOOK (l->data);
-                GQueue *book_result;
-
-                if (!_dh_search_context_match_book (settings->search_context, book))
-                        continue;
-
-                /* Filtering by book? */
-                if (settings->book_id != NULL &&
-                    g_strcmp0 (settings->book_id, dh_book_get_id (book)) != 0) {
-                        continue;
-                }
-
-                /* Skipping a given book? */
-                if (settings->skip_book_id != NULL &&
-                    g_strcmp0 (settings->skip_book_id, dh_book_get_id (book)) == 0) {
-                        continue;
-                }
-
-                book_result = search_single_book (book,
-                                                  settings,
-                                                  max_hits - ret->length,
-                                                  exact_link);
-
-                dh_util_queue_concat (ret, book_result);
-        }
-
-        g_queue_sort (ret, (GCompareDataFunc) dh_link_compare, NULL);
-        return ret;
-}
-
-static GQueue *
-handle_book_id_only (DhSearchContext  *search_context,
-                     DhLink          **exact_link)
-{
-        DhBookManager *book_manager;
-        GList *books;
-        GList *l;
-        GQueue *ret;
-
-        if (_dh_search_context_get_book_id (search_context) == NULL ||
-            _dh_search_context_get_page_id (search_context) != NULL ||
-            _dh_search_context_get_keywords (search_context) != NULL) {
+        if (keywords == NULL) {
                 return NULL;
         }
 
-        ret = g_queue_new ();
+        for (i = 0; keywords[i] != NULL; i++) {
+                glob_struct = g_slice_new (struct _DhKeywordGlobPattern);
+                glob_struct->keyword = keywords[i];
+                if (g_strrstr (keywords[i], "*") || g_strrstr (keywords[i], "?")) {
+                        glob_struct->has_glob = TRUE;
+                        /* g_pattern_match matches whole strings only, so
+                         * for globs, we need to end with a star for partial matches */
+                        glob = g_strdup_printf ("%s*", keywords[i]);
+                        glob_struct->glob_pattern_start = g_pattern_spec_new (glob);
+                        g_free (glob);
 
-        book_manager = dh_book_manager_get_singleton ();
-        books = dh_book_manager_get_books (book_manager);
-
-        for (l = books; l != NULL; l = l->next) {
-                DhBook *book = DH_BOOK (l->data);
-                GNode *node;
-
-                if (!_dh_search_context_match_book (search_context, book))
-                        continue;
-
-                /* Return only the top-level book page. */
-                node = dh_book_get_tree (book);
-                if (node != NULL) {
-                        DhLink *link;
-
-                        link = node->data;
-                        g_queue_push_tail (ret, dh_link_ref (link));
-
-                        if (exact_link != NULL)
-                                *exact_link = link;
+                        glob = g_strdup_printf ("*%s*", keywords[i]);
+                        glob_struct->glob_pattern_any = g_pattern_spec_new (glob);
+                        g_free (glob);
+                } else {
+                        glob_struct->has_glob = FALSE;
                 }
 
-                break;
+                list = g_list_append (list, (gpointer)glob_struct);
         }
 
-        return ret;
+        return list;
+}
+
+/* Frees all the datastructures and patterns associated with
+ * keyword_globs as well as keyword_globs itself.  It does not free
+ * _DhKeywordGlobPattern->keyword however (only the pattern spects) */
+static void
+dh_globbed_keywords_free (GList *keyword_globs)
+{
+        GList *list;
+        for (list = keyword_globs; list != NULL; list = g_list_next (list)) {
+                struct _DhKeywordGlobPattern *data = (struct _DhKeywordGlobPattern *)list->data;
+                if (data->has_glob) {
+                        g_pattern_spec_free (data->glob_pattern_start);
+                        g_pattern_spec_free (data->glob_pattern_any);
+                }
+                g_slice_free (struct _DhKeywordGlobPattern, data);
+        }
+        g_list_free (keyword_globs);
 }
 
 /* The Search rationale is as follows:
@@ -551,186 +424,448 @@ handle_book_id_only (DhSearchContext  *search_context,
  * - If 'page_id' and 'keywords' are given but no 'book_id', all the items
  *   matching the keywords in the given page will be shown.
  *
- * - If 'keywords' only are given, up to max_hits items matching the keywords
+ * - If 'keywords' only are given, up to MAX_HITS items matching the keywords
  *   will be shown. If keyword matches both a page link and a non-page one,
  *   the page link is the one given as exact match.
  */
-static GQueue *
-keyword_model_search (DhKeywordModel   *model,
-                      DhSearchContext  *search_context,
-                      DhLink          **exact_link)
+static GList *
+keyword_model_search_books (DhKeywordModel  *model,
+                            const gchar     *string,
+                            const GStrv      keywords,
+                            const gchar     *book_id,
+                            const gchar     *page_id,
+                            const gchar     *language,
+                            gboolean         case_sensitive,
+                            gboolean         prefix,
+                            guint            max_hits,
+                            guint           *n_hits,
+                            DhLink         **exact_link)
 {
-        DhKeywordModelPrivate *priv = dh_keyword_model_get_instance_private (model);
-        SearchSettings settings;
-        guint max_hits = MAX_HITS;
-        GQueue *in_book = NULL;
-        GQueue *other_books = NULL;
-        DhLink *in_book_exact_link = NULL;
-        DhLink *other_books_exact_link = NULL;
-        GQueue *out;
+        DhKeywordModelPriv *priv;
+        GList              *new_list = NULL, *b;
+        gint                hits = 0;
+        gchar              *page_filename_prefix = NULL;
 
-        out = handle_book_id_only (search_context, exact_link);
-        if (out != NULL)
-                return out;
+        priv = model->priv;
 
-        out = g_queue_new ();
+        /* Compile each keyword into a GPatternSpec if necessary */
+        GList *keyword_globs = dh_globbed_keywords_new (keywords);
 
-        settings.search_context = search_context;
-        settings.book_id = priv->current_book_id;
-        settings.skip_book_id = NULL;
-        settings.prefix = TRUE;
-
-        if (_dh_search_context_get_page_id (search_context) != NULL) {
+        if (page_id) {
+                page_filename_prefix = g_strdup_printf("%s.", page_id);
                 /* If filtering per page, increase the maximum number of
                  * hits. This is due to the fact that a page may have
                  * more than MAX_HITS keywords, and the page link may be
                  * the last one in the list, but we always want to get it.
                  */
-                max_hits = G_MAXUINT;
+                max_hits = G_MAXINT;
         }
 
-        /* First look for prefixed items in the given book id. */
-        if (priv->current_book_id != NULL) {
-                in_book = search_books (&settings,
-                                        max_hits,
-                                        &in_book_exact_link);
+        for (b = dh_book_manager_get_books (priv->book_manager);
+             b && hits < max_hits;
+             b = g_list_next (b)) {
+                DhBook *book;
+                GList *l;
+
+                book = DH_BOOK (b->data);
+
+                /* Filtering by book? */
+                if (book_id) {
+                        if (g_strcmp0 (book_id, dh_book_get_name (book)) != 0) {
+                                continue;
+                        }
+
+                        /* Looking only for some specific book, without page or
+                         * keywords? Return only the match of the first book page.
+                         */
+                        if (!page_id && !keywords) {
+                                GNode *node;
+
+                                node = dh_book_get_tree (book);
+                                if (node) {
+                                        if (exact_link)
+                                                *exact_link = node->data;
+                                        return g_list_prepend (NULL, node->data);
+                                }
+                        }
+                }
+
+                /* Filtering by language? */
+                if (language &&
+                    g_strcmp0 (language, dh_book_get_language (book)) != 0) {
+                        continue;
+                }
+
+                for (l = dh_book_get_keywords (book);
+                     l && hits < max_hits;
+                     l = g_list_next (l)) {
+                        DhLink   *link;
+                        gboolean  found;
+
+                        link = l->data;
+                        found = FALSE;
+
+                        /* Filter by page? */
+                        if (page_id) {
+                                gchar *file_name;
+
+                                file_name = (case_sensitive ?
+                                             g_strdup (dh_link_get_file_name (link)) :
+                                             g_ascii_strdown (dh_link_get_file_name (link), -1));
+
+                                /* First, filter out all keywords not belonging
+                                 * to this given page. */
+                                if (!g_str_has_prefix (file_name, page_filename_prefix)) {
+                                        /* No need of this keyword. */
+                                        g_free (file_name);
+                                        continue;
+                                }
+                                g_free (file_name);
+
+                                /* This means we got no keywords to look for. */
+                                if (!keywords) {
+                                        /* Show all in the page */
+                                        found = TRUE;
+                                }
+                        }
+
+                        if (!found && keywords) {
+                                gboolean  all_found;
+                                gboolean  prefix_found;
+                                gchar    *name;
+                                GList    *list;
+
+                                name = (case_sensitive ?
+                                        g_strdup (dh_link_get_name (link)) :
+                                        g_ascii_strdown (dh_link_get_name (link), -1));
+
+                                all_found = TRUE;
+                                prefix_found = FALSE;
+                                for (list = keyword_globs; list != NULL; list = g_list_next (list)) {
+                                        struct _DhKeywordGlobPattern *data = (struct _DhKeywordGlobPattern *)list->data;
+
+                                        /* If our keyword is a glob pattern, use
+                                         * it.  Otherwise, do more efficient string searching */
+                                        if (data->has_glob) {
+                                                if (g_pattern_match_string (data->glob_pattern_start, name)) {
+                                                        prefix_found = TRUE;
+                                                        /* If we get a prefix match and we're not
+                                                         * looking for prefix, stop. */
+                                                        if (!prefix)
+                                                                break;
+                                                } else if (!g_pattern_match_string (data->glob_pattern_any, name)) {
+                                                        all_found = FALSE;
+                                                        break;
+                                                }
+                                        } else {
+                                                if (g_str_has_prefix (name, data->keyword)) {
+                                                        prefix_found = TRUE;
+                                                        if (!prefix)
+                                                                break;
+                                                } else if (!g_strrstr (name, data->keyword)) {
+                                                        all_found = FALSE;
+                                                        break;
+                                                }
+                                        }
+                                }
+
+                                g_free (name);
+
+                                found = (all_found &&
+                                         ((prefix && prefix_found) ||
+                                          (!prefix && !prefix_found)) ?
+                                         TRUE : FALSE);
+                        }
+
+                        if (found) {
+                                /* Include in the new list. */
+                                new_list = g_list_prepend (new_list, link);
+                                hits++;
+
+                                if (!exact_link || !dh_link_get_name (link))
+                                    continue;
+
+                                /* Look for an exact link match. If the link is a PAGE,
+                                 * we can overwrite any previous exact link set. For
+                                 * example, when looking for GFile, we want the page,
+                                 * not the struct. */
+                                if (dh_link_get_link_type (link) == DH_LINK_TYPE_PAGE &&
+                                    ((page_id && strcmp (dh_link_get_name (link), page_id) == 0) ||
+                                     (strcmp (dh_link_get_name (link), string) == 0))) {
+                                        *exact_link = link;
+                                } else if (!*exact_link &&
+                                           strcmp (dh_link_get_name (link), string) == 0) {
+                                        *exact_link = link;
+                                }
+                        }
+                }
         }
 
-        /* Next, always check other books as well, as the exact match may be in
-         * there.
-         */
-        settings.book_id = NULL;
-        settings.skip_book_id = priv->current_book_id;
-        other_books = search_books (&settings,
-                                    max_hits,
-                                    &other_books_exact_link);
+        g_free (page_filename_prefix);
 
-        /* Now that we got prefix searches in current and other books, decide
-         * which the preferred exact link is. If the exact match is in other
-         * books, prefer those to the current book.
-         */
-        if (in_book_exact_link != NULL) {
-                *exact_link = in_book_exact_link;
-                dh_util_queue_concat (out, in_book);
-                dh_util_queue_concat (out, other_books);
-        } else if (other_books_exact_link != NULL) {
-                *exact_link = other_books_exact_link;
-                dh_util_queue_concat (out, other_books);
-                dh_util_queue_concat (out, in_book);
-        } else {
-                *exact_link = NULL;
-                dh_util_queue_concat (out, in_book);
-                dh_util_queue_concat (out, other_books);
-        }
+        dh_globbed_keywords_free (keyword_globs);
 
-        if (out->length >= max_hits)
-                return out;
-
-        /* Look for non-prefixed matches in current book. */
-        settings.prefix = FALSE;
-
-        if (priv->current_book_id != NULL) {
-                settings.book_id = priv->current_book_id;
-                settings.skip_book_id = NULL;
-
-                in_book = search_books (&settings,
-                                        max_hits - out->length,
-                                        NULL);
-
-                dh_util_queue_concat (out, in_book);
-                if (out->length >= max_hits)
-                        return out;
-        }
-
-        /* If still room for more items, look for non-prefixed items in other
-         * books.
-         */
-        settings.book_id = NULL;
-        settings.skip_book_id = priv->current_book_id;
-        other_books = search_books (&settings,
-                                    max_hits - out->length,
-                                    NULL);
-        dh_util_queue_concat (out, other_books);
-
-        return out;
+        if (n_hits)
+                *n_hits = hits;
+        return g_list_sort (new_list, dh_link_compare);
 }
 
-/**
- * dh_keyword_model_filter:
- * @model: a #DhKeywordModel.
- * @search_string: a search query.
- * @current_book_id: (nullable): the ID of the book currently shown, or %NULL.
- * @language: (nullable): deprecated, must be %NULL.
- *
- * Searches in the #DhBookManager the list of #DhLink's that correspond to
- * @search_string, and fills the @model with that list (erasing the previous
- * content).
- *
- * Attention, when calling this function the @model needs to be disconnected
- * from the #GtkTreeView, because the #GtkTreeModel signals are not emitted, to
- * improve the performances (sending a lot of signals is slow) and have a
- * simpler implementation. The previous row selection is anyway no longer
- * relevant.
- *
- * Note that there is a maximum number of matches (configured internally). When
- * the maximum is reached the search is stopped, to avoid blocking the GUI
- * (since this function runs synchronously) if the @search_string contains for
- * example only one character. (And it is anyway not very useful to show to the
- * user tens of thousands search results).
- *
- * Returns: (nullable) (transfer none): the #DhLink that matches exactly
- * @search_string, or %NULL if no such #DhLink was found within the maximum
- * number of matches.
- */
-DhLink *
-dh_keyword_model_filter (DhKeywordModel *model,
-                         const gchar    *search_string,
-                         const gchar    *current_book_id,
-                         const gchar    *language)
+static GList *
+keyword_model_search (DhKeywordModel  *model,
+                      const gchar     *string,
+                      const GStrv      keywords,
+                      const gchar     *book_id,
+                      const gchar     *page_id,
+                      const gchar     *language,
+                      gboolean         case_sensitive,
+                      DhLink         **exact_link)
 {
-        DhKeywordModelPrivate *priv;
-        DhSearchContext *search_context;
-        GQueue *new_links = NULL;
-        DhLink *exact_link = NULL;
+        guint max_hits = MAX_HITS;
+        guint n_hits;
+        GList *list;
 
-        g_return_val_if_fail (DH_IS_KEYWORD_MODEL (model), NULL);
-        g_return_val_if_fail (search_string != NULL, NULL);
-        g_return_val_if_fail (language == NULL, NULL);
+        /* First, look for prefixed items */
+        list = keyword_model_search_books (model,
+                                           string,
+                                           keywords,
+                                           book_id,
+                                           page_id,
+                                           language,
+                                           case_sensitive,
+                                           TRUE,
+                                           max_hits,
+                                           &n_hits,
+                                           exact_link);
 
-        priv = dh_keyword_model_get_instance_private (model);
+        if (n_hits < max_hits) {
+                GList *non_prefixed_list;
 
-        g_free (priv->current_book_id);
-        priv->current_book_id = NULL;
-
-        search_context = _dh_search_context_new (search_string);
-
-        if (search_context != NULL) {
-                const gchar *book_id_in_search_string;
-
-                book_id_in_search_string = _dh_search_context_get_book_id (search_context);
-
-                if (book_id_in_search_string != NULL)
-                        priv->current_book_id = g_strdup (book_id_in_search_string);
-                else
-                        priv->current_book_id = g_strdup (current_book_id);
-
-                new_links = keyword_model_search (model, search_context, &exact_link);
+                /* If not enough hits, get non-prefixed ones */
+                non_prefixed_list = keyword_model_search_books (model,
+                                                                string,
+                                                                keywords,
+                                                                book_id,
+                                                                page_id,
+                                                                language,
+                                                                case_sensitive,
+                                                                FALSE,
+                                                                max_hits - n_hits,
+                                                                NULL,
+                                                                NULL);
+                list = g_list_concat (list, non_prefixed_list);
         }
 
-        clear_links (model);
-        dh_util_queue_concat (&priv->links, new_links);
-        new_links = NULL;
+        return list;
+}
 
-        /* The content has been modified, change the stamp so that older
-         * GtkTreeIter's become invalid.
+/* Process the input search string and extract:
+ *  - If "book:" prefix given, a book_id
+ *  - If "page:" prefix given, a page_id
+ *  - All remaining keywords
+ *
+ * Returns TRUE when any of the output parameters are set.
+ */
+static gboolean
+keyword_model_process_search_string (const gchar  *string,
+                                     gchar       **book_id,
+                                     gchar       **page_id,
+                                     GStrv        *keywords)
+{
+        gchar *processed;
+        gchar *aux;
+        GStrv  strv;
+        gint   i;
+        gint   j;
+
+        *book_id = NULL;
+        *page_id = NULL;
+        *keywords = NULL;
+
+        /* First, remove all leading and trailing whitespaces in
+         * the search string */
+        processed = g_strdup (string);
+        g_strstrip (processed);
+
+        /* Also avoid words being separated by more than one whitespace,
+         * or g_strsplit() will give us empty strings. */
+        aux = processed;
+        while ((aux = strchr (aux, ' ')) != NULL) {
+                g_strchug (++aux);
+        }
+
+        /* If after all this we get an empty string, nothing else to do */
+        if (processed[0] == '\0') {
+                g_free (processed);
+                return FALSE;
+        }
+
+        /* Split the input string into tokens */
+        strv = g_strsplit (processed, " ", 0);
+        g_free (processed);
+
+        /* Allocate output keywords */
+        *keywords = g_new0 (gchar *, g_strv_length (strv) + 1);
+
+        for (i = 0, j = 0; strv[i]; i++) {
+                /* Book prefix? */
+                if (g_str_has_prefix (strv[i], "book:")) {
+                        /* If keyword given but no content, skip it. */
+                        if (strv[i][5] == '\0') {
+                                continue;
+                        }
+
+                        /* We got a second request of book, don't allow
+                         * this. */
+                        if (*book_id) {
+                                g_free (*book_id);
+                                g_free (*page_id);
+                                g_strfreev (*keywords);
+                                return FALSE;
+                        }
+
+                        *book_id = g_strdup (&strv[i][5]);
+                        continue;
+                }
+
+                /* Page prefix? */
+                if (g_str_has_prefix (strv[i], "page:")) {
+                        /* If keyword given but no content, skip it. */
+                        if (strv[i][5] == '\0') {
+                                continue;
+                        }
+
+                        /* We got a second request of page, don't allow
+                         * this. */
+                        if (*page_id) {
+                                g_free (*book_id);
+                                g_free (*page_id);
+                                g_strfreev (*keywords);
+                                return FALSE;
+                        }
+
+                        *page_id = g_strdup (&strv[i][5]);
+                        continue;
+                }
+
+                /* Then, a new keyword to look for */
+                (*keywords)[j++] = g_strdup (strv[i]);
+        }
+
+        if (j == 0) {
+                g_free (*keywords);
+                *keywords = NULL;
+        }
+
+        g_strfreev (strv);
+
+        return TRUE;
+}
+
+DhLink *
+dh_keyword_model_filter (DhKeywordModel *model,
+                         const gchar    *string,
+                         const gchar    *book_id,
+                         const gchar    *language)
+{
+        DhKeywordModelPriv  *priv;
+        GList               *new_list = NULL;
+        gint                 old_length;
+        DhLink              *exact_link = NULL;
+        gint                 hits;
+        gint                 i;
+        GtkTreePath         *path;
+        GtkTreeIter          iter;
+        gchar               *book_id_in_string = NULL;
+        gchar               *page_id_in_string = NULL;
+        GStrv                keywords = NULL;
+
+        g_return_val_if_fail (DH_IS_KEYWORD_MODEL (model), NULL);
+        g_return_val_if_fail (string != NULL, NULL);
+
+        priv = model->priv;
+
+        /* Do the minimum amount of work: call update on all rows that are
+         * kept and remove the rest.
          */
-        priv->stamp++;
+        old_length = priv->keyword_words_length;
+        new_list = NULL;
+        hits = 0;
 
-        _dh_search_context_free (search_context);
+        /* Parse input search string, and make sure either one of the
+         * book ids is set; or both are set and are equal */
+        if (keyword_model_process_search_string (string,
+                                                 &book_id_in_string,
+                                                 &page_id_in_string,
+                                                 &keywords) &&
+            ((!book_id && book_id_in_string) ||
+             (book_id && !book_id_in_string) ||
+             g_strcmp0 (book_id, book_id_in_string) == 0)) {
+                gboolean case_sensitive;
 
-        /* One hit */
-        if (priv->links.length == 1)
-                return g_queue_peek_head (&priv->links);
+                /* Searches are case sensitive when any uppercase
+                 * letter is used in the search terms, matching vim
+                 * smartcase behaviour.
+                 */
+                case_sensitive = FALSE;
+                for (i = 0; string[i] != '\0'; i++) {
+                        if (g_ascii_isupper (string[i])) {
+                                case_sensitive = TRUE;
+                                break;
+                        }
+                }
+
+                new_list = keyword_model_search (model,
+                                                 string,
+                                                 keywords,
+                                                 book_id ? book_id : book_id_in_string,
+                                                 page_id_in_string,
+                                                 language,
+                                                 case_sensitive,
+                                                 &exact_link);
+                hits = g_list_length (new_list);
+        }
+
+        g_free (book_id_in_string);
+        g_free (page_id_in_string);
+        g_strfreev (keywords);
+
+        /* Update the list of hits. */
+        g_list_free (priv->keyword_words);
+        priv->keyword_words = new_list;
+        priv->keyword_words_length = hits;
+
+        /* Update model: rows 0 -> hits. */
+        for (i = 0; i < hits; ++i) {
+                path = gtk_tree_path_new ();
+                gtk_tree_path_append_index (path, i);
+                keyword_model_get_iter (GTK_TREE_MODEL (model), &iter, path);
+                gtk_tree_model_row_changed (GTK_TREE_MODEL (model), path, &iter);
+                gtk_tree_path_free (path);
+        }
+
+        if (old_length > hits) {
+                /* Update model: remove rows hits -> old_length. */
+                for (i = old_length - 1; i >= hits; i--) {
+                        path = gtk_tree_path_new ();
+                        gtk_tree_path_append_index (path, i);
+                        gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
+                        gtk_tree_path_free (path);
+                }
+        }
+        else if (old_length < hits) {
+                /* Update model: add rows old_length -> hits. */
+                for (i = old_length; i < hits; i++) {
+                        path = gtk_tree_path_new ();
+                        gtk_tree_path_append_index (path, i);
+                        keyword_model_get_iter (GTK_TREE_MODEL (model), &iter, path);
+                        gtk_tree_model_row_inserted (GTK_TREE_MODEL (model), path, &iter);
+                        gtk_tree_path_free (path);
+                }
+        }
+
+        if (hits == 1) {
+                return priv->keyword_words->data;
+        }
 
         return exact_link;
 }

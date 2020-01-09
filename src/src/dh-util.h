@@ -2,7 +2,6 @@
 /*
  * Copyright (C) 2001-2002 Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2004,2008 Imendio AB
- * Copyright (C) 2015, 2017 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -14,23 +13,41 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef DH_UTIL_H
-#define DH_UTIL_H
+#ifndef __DH_UTIL_H__
+#define __DH_UTIL_H__
 
 #include <gtk/gtk.h>
+#include <gio/gio.h>
+#ifdef HAVE_WEBKIT2
 #include <webkit2/webkit2.h>
+#else
+#include <webkit/webkit.h>
+#endif
+#include "dh-link.h"
 
 G_BEGIN_DECLS
 
+GtkBuilder * dh_util_builder_get_file             (const gchar *filename,
+                                                   const gchar *root,
+                                                   const gchar *domain,
+                                                   const gchar *first_required_widget,
+                                                   ...);
+void         dh_util_builder_connect              (GtkBuilder  *gui,
+                                                   gpointer     user_data,
+                                                   gchar       *first_widget,
+                                                   ...);
 gchar *      dh_util_build_data_filename          (const gchar *first_part,
                                                    ...);
+gint         dh_util_cmp_book                     (DhLink *a,
+                                                   DhLink *b);
 
 void         dh_util_ascii_strtitle               (gchar *str);
-
 gchar       *dh_util_create_data_uri_for_filename (const gchar *filename,
                                                    const gchar *mime_type);
 
@@ -39,20 +56,13 @@ void         dh_util_view_set_font                (WebKitWebView *view,
                                                    const gchar *font_name_variable);
 
 void         dh_util_window_settings_save         (GtkWindow *window,
-                                                   GSettings *settings);
+                                                   GSettings *settings,
+                                                   gboolean has_maximize);
 
-void         dh_util_window_settings_restore      (GtkWindow *gtk_window,
-                                                   GSettings *settings);
-
-void         dh_util_queue_concat                 (GQueue *q1,
-                                                   GQueue *q2);
-
-G_GNUC_INTERNAL
-void         _dh_util_free_book_tree              (GNode *book_tree);
-
-G_GNUC_INTERNAL
-GSList *     _dh_util_get_possible_index_files    (GFile *book_directory);
+void         dh_util_window_settings_restore      (GtkWindow *window,
+                                                   GSettings *settings,
+                                                   gboolean has_maximize);
 
 G_END_DECLS
 
-#endif /* DH_UTIL_H */
+#endif /* __DH_UTIL_H__ */

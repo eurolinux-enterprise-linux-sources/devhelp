@@ -12,107 +12,163 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
 #include "config.h"
-#include "dh-assistant.h"
+#include <string.h>
+#include <glib/gi18n-lib.h>
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
 #include "dh-window.h"
 #include "dh-util.h"
 #include "dh-assistant-view.h"
+#include "dh-assistant.h"
 #include "dh-settings.h"
 
 typedef struct {
-        GtkWidget *view;
-} DhAssistantPrivate;
+        DhApp         *application;
+        GtkWidget     *main_box;
+        GtkWidget     *view;
+        DhSettings    *settings;
+} DhAssistantPriv;
 
-G_DEFINE_TYPE_WITH_PRIVATE (DhAssistant, dh_assistant, GTK_TYPE_APPLICATION_WINDOW);
+static void dh_assistant_class_init (DhAssistantClass *klass);
+static void dh_assistant_init       (DhAssistant      *assistant);
+
+G_DEFINE_TYPE (DhAssistant, dh_assistant, GTK_TYPE_APPLICATION_WINDOW);
+
+#define GET_PRIVATE(instance) G_TYPE_INSTANCE_GET_PRIVATE \
+  (instance, DH_TYPE_ASSISTANT, DhAssistantPriv)
+
+static gboolean
+assistant_key_press_event_cb (GtkWidget   *widget,
+                              GdkEventKey *event,
+                              DhAssistant *assistant)
+{
+        if (event->keyval == GDK_KEY_Escape) {
+                gtk_widget_destroy (GTK_WIDGET (assistant));
+                return TRUE;
+        }
+
+        return FALSE;
+}
 
 static void
 assistant_view_open_uri_cb (DhAssistantView *view,
                             const char      *uri,
                             DhAssistant     *assistant)
 {
-        DhApp *app;
-        DhWindow *window;
+        DhAssistantPriv  *priv;
+        GtkWindow* window;
 
-        app = DH_APP (gtk_window_get_application (GTK_WINDOW (assistant)));
-
-        window = dh_app_get_active_main_window (app, TRUE);
-        _dh_window_display_uri (window, uri);
+        priv = GET_PRIVATE (assistant);
+        window = dh_app_peek_first_window (priv->application);
+        _dh_window_display_uri (DH_WINDOW (window), uri);
 }
 
 static gboolean
-dh_assistant_key_press_event (GtkWidget   *widget,
-                              GdkEventKey *event)
+window_configure_event_cb (GtkWidget *window,
+                           GdkEventConfigure *event,
+                           gpointer user_data)
 {
-        DhAssistant *assistant = DH_ASSISTANT (widget);
+        DhAssistant *assistant;
+        DhAssistantPriv  *priv;
 
-        if (event->keyval == GDK_KEY_Escape) {
-                gtk_window_close (GTK_WINDOW (assistant));
-                return GDK_EVENT_STOP;
-        }
-
-        return GTK_WIDGET_CLASS (dh_assistant_parent_class)->key_press_event (widget, event);
+        assistant = DH_ASSISTANT (user_data);
+        priv = GET_PRIVATE (assistant);
+        dh_util_window_settings_save (
+                GTK_WINDOW (assistant),
+                dh_settings_peek_assistant_settings (priv->settings), FALSE);
+	return FALSE;
 }
 
-static gboolean
-dh_assistant_delete_event (GtkWidget   *widget,
-                           GdkEventAny *event)
+static void
+dispose (GObject *object)
 {
-        DhSettings *settings;
+        DhAssistant *assistant = DH_ASSISTANT (object);
+        DhAssistantPriv *priv = GET_PRIVATE (assistant);
+        g_clear_object (&priv->application);
+        g_clear_object (&priv->settings);
 
-        settings = dh_settings_get_singleton ();
-        dh_util_window_settings_save (GTK_WINDOW (widget),
-                                      dh_settings_peek_assistant_settings (settings));
-
-        if (GTK_WIDGET_CLASS (dh_assistant_parent_class)->delete_event == NULL)
-                return GDK_EVENT_PROPAGATE;
-
-        return GTK_WIDGET_CLASS (dh_assistant_parent_class)->delete_event (widget, event);
+        G_OBJECT_CLASS (dh_assistant_parent_class)->dispose (object);
 }
 
 static void
 dh_assistant_class_init (DhAssistantClass *klass)
 {
-        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-        widget_class->key_press_event = dh_assistant_key_press_event;
-        widget_class->delete_event = dh_assistant_delete_event;
-
-        /* Bind class to template */
-        gtk_widget_class_set_template_from_resource (widget_class,
-                                                     "/org/gnome/devhelp/dh-assistant.ui");
-        gtk_widget_class_bind_template_child_private (widget_class, DhAssistant, view);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        g_type_class_add_private (klass, sizeof (DhAssistantPriv));
+        object_class->dispose = dispose;
 }
 
 static void
 dh_assistant_init (DhAssistant *assistant)
 {
-        DhAssistantPrivate *priv = dh_assistant_get_instance_private (assistant);
+        DhAssistantPriv *priv = GET_PRIVATE (assistant);
+#ifndef HAVE_WEBKIT2
+        GtkWidget       *scrolled_window;
+#endif
+        priv->settings = dh_settings_get ();
+        priv->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+        gtk_widget_show (priv->main_box);
+        gtk_container_add (GTK_CONTAINER (assistant), priv->main_box);
 
-        gtk_widget_init_template (GTK_WIDGET (assistant));
+        /* i18n: Please don't translate "Devhelp". */
+        gtk_window_set_title (GTK_WINDOW (assistant), _("Devhelp — Assistant"));
+        gtk_window_set_icon_name (GTK_WINDOW (assistant), "devhelp");
+
+        priv->view = dh_assistant_view_new ();
 
         g_signal_connect (priv->view, "open-uri",
                           G_CALLBACK (assistant_view_open_uri_cb),
                           assistant);
+
+        g_signal_connect (assistant, "key-press-event",
+                          G_CALLBACK (assistant_key_press_event_cb),
+                          assistant);
+#ifdef HAVE_WEBKIT2
+        gtk_box_pack_start (GTK_BOX (priv->main_box),
+                            priv->view, TRUE, TRUE, 0);
+        gtk_widget_show (priv->view);
+#else
+        scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+                                        GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+
+        gtk_container_add (GTK_CONTAINER (scrolled_window), priv->view);
+
+        gtk_widget_show_all (scrolled_window);
+
+        gtk_box_pack_start (GTK_BOX (priv->main_box),
+                            scrolled_window, TRUE, TRUE, 0);
+#endif
+
+        dh_util_window_settings_restore (
+                GTK_WINDOW (assistant),
+                dh_settings_peek_assistant_settings (priv->settings), FALSE);
+
+        g_signal_connect (GTK_WINDOW (assistant), "configure-event",
+                          G_CALLBACK (window_configure_event_cb),
+                          assistant);
 }
 
-DhAssistant *
+GtkWidget *
 dh_assistant_new (DhApp *application)
 {
-        DhAssistant *assistant;
-        DhSettings *settings;
+        GtkWidget       *assistant;
+        DhAssistantPriv *priv;
 
-        assistant = g_object_new (DH_TYPE_ASSISTANT,
-                                  "application", application,
-                                  NULL);
+        assistant = g_object_new (DH_TYPE_ASSISTANT, NULL);
 
-        settings = dh_settings_get_singleton ();
-        gtk_widget_realize (GTK_WIDGET (assistant));
-        dh_util_window_settings_restore (GTK_WINDOW (assistant),
-                                         dh_settings_peek_assistant_settings (settings));
+        priv = GET_PRIVATE (assistant);
+        priv->application = g_object_ref (application);
+
+        dh_assistant_view_set_book_manager (DH_ASSISTANT_VIEW (priv->view),
+                                            dh_app_peek_book_manager (application));
 
         return assistant;
 }
@@ -121,12 +177,12 @@ gboolean
 dh_assistant_search (DhAssistant *assistant,
                      const gchar *str)
 {
-        DhAssistantPrivate *priv;
+        DhAssistantPriv *priv;
 
         g_return_val_if_fail (DH_IS_ASSISTANT (assistant), FALSE);
         g_return_val_if_fail (str != NULL, FALSE);
 
-        priv = dh_assistant_get_instance_private (assistant);
+        priv = GET_PRIVATE (assistant);
 
         if (dh_assistant_view_search (DH_ASSISTANT_VIEW (priv->view), str)) {
                 gtk_widget_show (GTK_WIDGET (assistant));

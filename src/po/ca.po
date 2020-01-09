@@ -4,611 +4,654 @@
 # Jordi Mallach <jordi@sindominio.ne>, 2003.
 # Aleix Badia i Bosch <a.badia@callusdigital.org>, 2005.
 # Xavier Conde Rueda <xavi.conde@gmail.com>, 2006
-# Gil Forcada <gilforcada@guifi.net>, 2007, 2008, 2009, 2010, 2012, 2013, 2014.
-# Jordi Serratosa <jordis@softcatala.cat>, 2017.
+# Gil Forcada <gilforcada@guifi.net>, 2007, 2008, 2009, 2010, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: devhelp\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=devhelp&keywords=I18N+L10N&component=General\n"
-"POT-Creation-Date: 2017-08-22 06:59+0000\n"
-"PO-Revision-Date: 2017-08-22 00:27+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=devhelp&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-02-02 01:39+0000\n"
+"PO-Revision-Date: 2013-02-10 18:27+0100\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.11\n"
 
 #. i18n: Please don't translate "Devhelp" (it's marked as translatable
 #. * for transliteration only)
-#: data/org.gnome.Devhelp.appdata.xml.in:6
-#: data/org.gnome.Devhelp.desktop.in.in:3 src/dh-app.c:232 src/dh-app.c:537
-#: src/dh-window.c:878
+#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-app.c:162 ../src/dh-app.c:342
+#: ../src/dh-window.c:623
 msgid "Devhelp"
 msgstr "Devhelp"
 
-#: data/org.gnome.Devhelp.appdata.xml.in:7
-#: data/org.gnome.Devhelp.desktop.in.in:4
-msgid "Developer’s Help program"
+#: ../data/devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
 msgstr "Programa d'ajuda per als desenvolupadors"
 
-#: data/org.gnome.Devhelp.appdata.xml.in:9
-msgid ""
-"Devhelp is an API documentation browser. It provides an easy way to navigate "
-"through libraries, search by function, struct, or macro. It provides a "
-"tabbed interface and allows to print results."
-msgstr ""
-"El Devhelp és un navegador de documentació API. Facilita la navegació per "
-"biblioteques, cercar funcions, estructures o macros. Té una interfície amb "
-"pestanyes i permet imprimir els resultats."
-
-#: data/org.gnome.Devhelp.appdata.xml.in:15
-msgid ""
-"Devhelp integrates with other applications such as Glade, Anjuta, or Geany."
-msgstr ""
-"El Devhelp s'integra amb altres aplicacions com el Glade, l'Anjuta o el "
-"Geany."
-
-#: data/org.gnome.Devhelp.desktop.in.in:5
+#: ../data/devhelp.desktop.in.in.h:3
 msgid "Documentation Browser"
 msgstr "Navegador de documentació"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Devhelp.desktop.in.in:7
+#: ../data/devhelp.desktop.in.in.h:4
 msgid "documentation;information;manual;developer;api;"
 msgstr "documentació;informació;manual;desenvolupador;api;"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Devhelp.desktop.in.in:12
-#: misc/gedit-plugin/devhelp.plugin.desktop.in:10
-msgid "devhelp"
-msgstr "devhelp"
-
-#: data/org.gnome.devhelp.gschema.xml:18
+#: ../data/org.gnome.devhelp.gschema.xml.h:1
 msgid "Main window maximized state"
 msgstr "Estat maximitzat de la finestra principal"
 
-#: data/org.gnome.devhelp.gschema.xml:19
+#: ../data/org.gnome.devhelp.gschema.xml.h:2
 msgid "Whether the main window should start maximized."
 msgstr "Si la finestra principal s'ha d'iniciar maximitzada."
 
-#: data/org.gnome.devhelp.gschema.xml:23
+#: ../data/org.gnome.devhelp.gschema.xml.h:3
 msgid "Width of the main window"
 msgstr "Amplada de la finestra principal"
 
-#: data/org.gnome.devhelp.gschema.xml:24
+#: ../data/org.gnome.devhelp.gschema.xml.h:4
 msgid "The width of the main window."
 msgstr "L'amplada de la finestra principal."
 
-#: data/org.gnome.devhelp.gschema.xml:28
+#: ../data/org.gnome.devhelp.gschema.xml.h:5
 msgid "Height of main window"
 msgstr "Alçada de la finestra principal"
 
-#: data/org.gnome.devhelp.gschema.xml:29
+#: ../data/org.gnome.devhelp.gschema.xml.h:6
 msgid "The height of the main window."
 msgstr "Alçada de la finestra principal."
 
-#: data/org.gnome.devhelp.gschema.xml:33
+#: ../data/org.gnome.devhelp.gschema.xml.h:7
 msgid "X position of main window"
 msgstr "Posició X de la finestra principal"
 
-#: data/org.gnome.devhelp.gschema.xml:34
+#: ../data/org.gnome.devhelp.gschema.xml.h:8
 msgid "The X position of the main window."
 msgstr "La posició X de la finestra principal."
 
-#: data/org.gnome.devhelp.gschema.xml:38
+#: ../data/org.gnome.devhelp.gschema.xml.h:9
 msgid "Y position of main window"
 msgstr "Posició Y de la finestra principal"
 
-#: data/org.gnome.devhelp.gschema.xml:39
+#: ../data/org.gnome.devhelp.gschema.xml.h:10
 msgid "The Y position of the main window."
 msgstr "La posició Y de la finestra principal."
 
-#: data/org.gnome.devhelp.gschema.xml:45
+#: ../data/org.gnome.devhelp.gschema.xml.h:11
 msgid "Width of the index and search pane"
 msgstr "Amplada de la subfinestra d'índex i cerca"
 
-#: data/org.gnome.devhelp.gschema.xml:46
+#: ../data/org.gnome.devhelp.gschema.xml.h:12
 msgid "The width of the index and search pane."
 msgstr "L'amplada de la subfinestra d'índex i cerca."
 
-#: data/org.gnome.devhelp.gschema.xml:52
+#: ../data/org.gnome.devhelp.gschema.xml.h:13
+msgid "Selected tab: \"content\" or \"search\""
+msgstr "Pestanya seleccionada: «content» (contingut) o «search» (cerca)"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:14
+msgid "Which of the tabs is selected: \"content\" or \"search\"."
+msgstr ""
+"Quina pestanya està seleccionada: «content» (contingut) o «search» (cerca)."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:15
 msgid "Books disabled"
 msgstr "Llibres inhabilitats"
 
-#: data/org.gnome.devhelp.gschema.xml:53
+#: ../data/org.gnome.devhelp.gschema.xml.h:16
 msgid "List of books disabled by the user."
 msgstr "Llibres que l'usuari ha inhabilitat."
 
-#: data/org.gnome.devhelp.gschema.xml:57
+#: ../data/org.gnome.devhelp.gschema.xml.h:17
 msgid "Group by language"
 msgstr "Agrupa per llenguatge"
 
-#: data/org.gnome.devhelp.gschema.xml:58
+#: ../data/org.gnome.devhelp.gschema.xml.h:18
 msgid "Whether books should be grouped by language in the UI"
 msgstr ""
 "Si a la interfície d'usuari els llibres s'haurien d'agrupar per llenguatge"
 
-#: data/org.gnome.devhelp.gschema.xml:67
-msgid "Whether the assistant window should be maximized"
-msgstr "Si la finestra auxiliar s'ha de maximitzar"
-
-#: data/org.gnome.devhelp.gschema.xml:68
-msgid "Whether the assistant window should be maximized."
-msgstr "Si la finestra auxiliar s'ha de maximitzar."
-
-#: data/org.gnome.devhelp.gschema.xml:72
+#: ../data/org.gnome.devhelp.gschema.xml.h:19
 msgid "Width of the assistant window"
 msgstr "Amplada de la finestra auxiliar"
 
-#: data/org.gnome.devhelp.gschema.xml:73
+#: ../data/org.gnome.devhelp.gschema.xml.h:20
 msgid "The width of the assistant window."
 msgstr "L'amplada de la finestra auxiliar."
 
-#: data/org.gnome.devhelp.gschema.xml:77
+#: ../data/org.gnome.devhelp.gschema.xml.h:21
 msgid "Height of assistant window"
 msgstr "Alçada de la finestra auxiliar"
 
-#: data/org.gnome.devhelp.gschema.xml:78
+#: ../data/org.gnome.devhelp.gschema.xml.h:22
 msgid "The height of the assistant window."
 msgstr "Alçada de la finestra auxiliar."
 
-#: data/org.gnome.devhelp.gschema.xml:82
+#: ../data/org.gnome.devhelp.gschema.xml.h:23
 msgid "X position of assistant window"
 msgstr "Posició X de la finestra auxiliar"
 
-#: data/org.gnome.devhelp.gschema.xml:83
+#: ../data/org.gnome.devhelp.gschema.xml.h:24
 msgid "The X position of the assistant window."
 msgstr "La posició X de la finestra auxiliar."
 
-#: data/org.gnome.devhelp.gschema.xml:87
+#: ../data/org.gnome.devhelp.gschema.xml.h:25
 msgid "Y position of assistant window"
 msgstr "Posició Y de la finestra auxiliar"
 
-#: data/org.gnome.devhelp.gschema.xml:88
+#: ../data/org.gnome.devhelp.gschema.xml.h:26
 msgid "The Y position of the assistant window."
 msgstr "La posició Y de la finestra auxiliar."
 
-#: data/org.gnome.devhelp.gschema.xml:94
+#: ../data/org.gnome.devhelp.gschema.xml.h:27
 msgid "Use system fonts"
 msgstr "Utilitza els tipus de lletra del sistema"
 
-#: data/org.gnome.devhelp.gschema.xml:95
+#: ../data/org.gnome.devhelp.gschema.xml.h:28
 msgid "Use the system default fonts."
 msgstr "Utilitza els tipus de lletra predeterminats del sistema."
 
-#: data/org.gnome.devhelp.gschema.xml:99
+#: ../data/org.gnome.devhelp.gschema.xml.h:29
 msgid "Font for text"
 msgstr "Tipus de lletra per al text"
 
-#: data/org.gnome.devhelp.gschema.xml:100
+#: ../data/org.gnome.devhelp.gschema.xml.h:30
 msgid "Font for text with variable width."
 msgstr "Tipus de lletra per al text d'amplada variable."
 
-#: data/org.gnome.devhelp.gschema.xml:104
+#: ../data/org.gnome.devhelp.gschema.xml.h:31
 msgid "Font for fixed width text"
 msgstr "Tipus de lletra per al text de mida fixa"
 
-#: data/org.gnome.devhelp.gschema.xml:105
+#: ../data/org.gnome.devhelp.gschema.xml.h:32
 msgid "Font for text with fixed width, such as code examples."
 msgstr ""
 "Tipus de lletra per al text d'amplada fixa, com ara en els exemples de codi."
 
 # gil: al ser un connector per el gedit i que fa el que diu la següent
 #     cadena, trobo que així tot i no ser correcte s'entendrà més
-#: misc/gedit-plugin/devhelp.plugin.desktop.in:6
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
 msgid "Devhelp support"
 msgstr "Consulta el Devhelp"
 
-#: misc/gedit-plugin/devhelp.py:42
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr ""
+"En prémer F2 apareixerà l'ajuda del Devhelp per a la paraula sota el cursor"
+
+#: ../misc/gedit-plugin/devhelp.py:69
 msgid "Show API Documentation"
 msgstr "Mostra la documentació de l'API"
 
-#: src/devhelp-menu.ui:28 src/dh-window.ui:46
-msgid "New _Window"
-msgstr "Finestra _nova"
+#: ../misc/gedit-plugin/devhelp.py:71
+msgid "Show API Documentation for the word at the cursor"
+msgstr "Mostra la documentació de l'API per a la paraula sota el cursor"
 
-#: src/devhelp-menu.ui:35 src/dh-window.ui:89
-msgid "_Preferences"
-msgstr "_Preferències"
+#: ../src/devhelp.ui.h:1
+msgid "New window"
+msgstr "Finestra nova"
 
-#: src/devhelp-menu.ui:41 src/dh-window.ui:95
-msgid "_Keyboard Shortcuts"
-msgstr "_Drecera de teclat"
+#: ../src/devhelp.ui.h:2
+msgid "Preferences"
+msgstr "Preferències"
 
-#: src/devhelp-menu.ui:45
-msgid "_About"
-msgstr "_Quant a"
+#: ../src/devhelp.ui.h:3
+msgid "About Devhelp"
+msgstr "Quant al Devhelp"
 
-#: src/devhelp-menu.ui:49 src/dh-window.ui:103
-msgid "_Quit"
-msgstr "_Surt"
+#: ../src/devhelp.ui.h:4
+msgid "Quit"
+msgstr "Surt"
 
-#: src/help-overlay.ui:14
-msgctxt "shortcut window"
-msgid "General"
-msgstr "General"
+#: ../src/devhelp.ui.h:5
+msgid "New _Tab"
+msgstr "_Pestanya nova"
 
-#: src/help-overlay.ui:19
-msgctxt "shortcut window"
-msgid "Focus global search"
-msgstr "Focalitza la cerca global"
+#: ../src/devhelp.ui.h:6
+msgid "_Print"
+msgstr "Im_primeix"
 
-#: src/help-overlay.ui:26
-msgctxt "shortcut window"
-msgid "Find in current page"
-msgstr "Cerca a la pàgina actual"
+#: ../src/devhelp.ui.h:7
+msgid "_Find"
+msgstr "_Cerca"
 
-#: src/help-overlay.ui:33
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "Obre una finestra nova"
+#: ../src/devhelp.ui.h:8
+msgid "_Larger text"
+msgstr "Text més _gran"
 
-#: src/help-overlay.ui:40
-msgctxt "shortcut window"
-msgid "Open a new tab"
-msgstr "Obre una pestanya nova"
+#: ../src/devhelp.ui.h:9
+msgid "S_maller text"
+msgstr "Text més _petit"
 
-#: src/help-overlay.ui:47
-msgctxt "shortcut window"
-msgid "Toggle side panel visibility"
-msgstr "Commuta la visibilitat de la subfinestra lateral"
+#: ../src/devhelp.ui.h:10
+msgid "_Normal size"
+msgstr "Mida _normal"
 
-#: src/help-overlay.ui:54
-msgctxt "shortcut window"
-msgid "Go back"
-msgstr "Vés enrere"
+#: ../src/devhelp.ui.h:11
+msgid "_Group by language"
+msgstr "A_grupa per llenguatge"
 
-#: src/help-overlay.ui:61
-msgctxt "shortcut window"
-msgid "Go forward"
-msgstr "Vés endavant"
+#: ../src/devhelp.ui.h:12
+msgid "Enabled"
+msgstr "Habilitat"
 
-#: src/help-overlay.ui:68
-msgctxt "shortcut window"
-msgid "Print"
-msgstr "Imprimeix"
+#: ../src/devhelp.ui.h:13
+msgid "Title"
+msgstr "Títol"
 
-#: src/help-overlay.ui:75
-msgctxt "shortcut window"
-msgid "Close the current window"
-msgstr "Tanca la finestra actual"
+#: ../src/devhelp.ui.h:14
+msgid "Book Shelf"
+msgstr "Prestatgeria"
 
-#: src/help-overlay.ui:82
-msgctxt "shortcut window"
-msgid "Close all windows"
-msgstr "Tanca totes les finestres"
+#: ../src/devhelp.ui.h:15
+msgid "_Use system fonts"
+msgstr "_Utilitza els tipus de lletra del sistema"
 
-#: src/help-overlay.ui:90
-msgctxt "shortcut window"
-msgid "Zoom"
-msgstr "Zoom"
+#: ../src/devhelp.ui.h:16
+msgid "_Variable width: "
+msgstr "Amplada _variable: "
 
-#: src/help-overlay.ui:95
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Amplia"
+#: ../src/devhelp.ui.h:17
+msgid "_Fixed width:"
+msgstr "Amplada _fixa:"
 
-#: src/help-overlay.ui:102
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Redueix"
+#: ../src/devhelp.ui.h:18
+msgid "Fonts"
+msgstr "Tipus de lletra"
 
-#: src/help-overlay.ui:109
-msgctxt "shortcut window"
-msgid "Reset Zoom"
-msgstr "Reinicia el zoom"
-
-#: src/dh-app.c:234
-msgid "A developers’ help browser for GNOME"
-msgstr "Un navegador d'ajuda per a desenvolupadors del GNOME"
-
-#: src/dh-app.c:236
-msgid "translator-credits"
+#: ../src/dh-app.c:157
+msgid "translator_credits"
 msgstr ""
 "Aleix Badia i Bosch <a.badia@callusdigital.org>\n"
 "Xavier Conde Rueda <xavi.conde@gmail.com>\n"
-"Gil Forcada <gilforcada@guifi.net>\n"
-"Pau Iranzo <pau.iranzo@softcatala.org>"
+"Gil Forcada <gilforcada@guifi.net>"
 
-#: src/dh-app.c:238
-msgid "Devhelp Website"
+#: ../src/dh-app.c:164
+msgid "A developers' help browser for GNOME"
+msgstr "Un navegador d'ajuda per a desenvolupadors del GNOME"
+
+#: ../src/dh-app.c:172
+msgid "DevHelp Website"
 msgstr "Pàgina web del Devhelp"
 
-#: src/dh-app.c:462
-msgid "Opens a new Devhelp window"
-msgstr "Obre una finestra del Devhelp nova"
-
-#: src/dh-app.c:467
-msgid "Search for a keyword"
-msgstr "Cerca una paraula clau"
-
-#: src/dh-app.c:468 src/dh-app.c:473
-msgid "KEYWORD"
-msgstr "PARAULA CLAU"
-
-#: src/dh-app.c:472
-msgid "Search and display any hit in the assistant window"
-msgstr "Cerca i visualitza qualsevol coincidència a la finestra auxiliar"
-
-#: src/dh-app.c:477
-msgid "Display the version and exit"
-msgstr "Mostra la versió i surt"
-
-#: src/dh-app.c:482
-msgid "Quit any running Devhelp"
-msgstr "Surt de tots els Devhelp en execució"
-
-#. Please don't translate "Devhelp"
-#: src/dh-assistant.ui:8
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:121
 msgid "Devhelp — Assistant"
 msgstr "Devhelp — Auxiliar"
 
-#: src/dh-assistant-view.c:399
+#: ../src/dh-assistant-view.c:403
 msgid "Book:"
 msgstr "Llibre:"
 
-#: src/dh-book.c:324
+#: ../src/dh-book.c:256
 #, c-format
 msgid "Language: %s"
 msgstr "Llenguatge: %s"
 
-#: src/dh-book.c:325
+#: ../src/dh-book.c:257
 msgid "Language: Undefined"
 msgstr "Llenguatge: no definit"
 
-#: src/dh-book-tree.c:648
-msgid "_Collapse All"
-msgstr "_Col·lapsa-ho tot"
-
 #. i18n: a documentation book
-#: src/dh-link.c:403
+#: ../src/dh-link.c:267
 msgid "Book"
 msgstr "Llibre"
 
 #. i18n: a "page" in a documentation book
-#: src/dh-link.c:407
+#: ../src/dh-link.c:270
 msgid "Page"
 msgstr "Pàgina"
 
 #. i18n: a search hit in the documentation, could be a
 #. * function, macro, struct, etc
-#: src/dh-link.c:412
+#: ../src/dh-link.c:274
 msgid "Keyword"
 msgstr "Paraula clau"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:418
+#: ../src/dh-link.c:279
 msgid "Function"
 msgstr "Funció"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:424
+#: ../src/dh-link.c:284
 msgid "Struct"
 msgstr "Estructura"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:430
+#: ../src/dh-link.c:289
 msgid "Macro"
 msgstr "Macro"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:436
+#: ../src/dh-link.c:294
 msgid "Enum"
 msgstr "Enumeració"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:442
+#: ../src/dh-link.c:299
 msgid "Type"
 msgstr "Tipus"
 
-#. i18n: in the programming language context, if you don't
-#. * have an ESTABLISHED term for it, leave it
-#. * untranslated.
-#: src/dh-link.c:448
-msgid "Property"
-msgstr "Propietat"
+#: ../src/dh-main.c:43
+msgid "Opens a new Devhelp window"
+msgstr "Obre una finestra del Devhelp nova"
 
-#. i18n: in the programming language context, if you don't
-#. * have an ESTABLISHED term for it, leave it
-#. * untranslated.
-#: src/dh-link.c:454
-msgid "Signal"
-msgstr "Senyal"
+#: ../src/dh-main.c:48
+msgid "Search for a keyword"
+msgstr "Cerca una paraula clau"
 
-#: src/dh-preferences.ui:40
-msgid "Preferences"
-msgstr "Preferències"
+#: ../src/dh-main.c:49 ../src/dh-main.c:54
+msgid "KEYWORD"
+msgstr "PARAULA CLAU"
 
-#: src/dh-preferences.ui:76
-msgid "_Group by language"
-msgstr "A_grupa per llenguatge"
+#: ../src/dh-main.c:53
+msgid "Search and display any hit in the assistant window"
+msgstr "Cerca i visualitza qualsevol coincidència a la finestra auxiliar"
 
-#: src/dh-preferences.ui:107
-msgid "Enabled"
-msgstr "Habilitat"
+#: ../src/dh-main.c:58
+msgid "Display the version and exit"
+msgstr "Mostra la versió i surt"
 
-#: src/dh-preferences.ui:122
-msgid "Title"
-msgstr "Títol"
+#: ../src/dh-main.c:63
+msgid "Quit any running Devhelp"
+msgstr "Surt de tots els Devhelp en execució"
 
-#: src/dh-preferences.ui:151
-msgid "Book Shelf"
-msgstr "Prestatgeria"
+#: ../src/dh-parser.c:97 ../src/dh-parser.c:199 ../src/dh-parser.c:263
+#: ../src/dh-parser.c:273
+#, c-format
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "S'esperava «%s» però s'ha obtingut «%s» a la línia %d, columna %d"
 
-#: src/dh-preferences.ui:172
-msgid "_Use system fonts"
-msgstr "_Utilitza els tipus de lletra del sistema"
+#: ../src/dh-parser.c:114
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "L'espai de noms «%s» no és vàlid a la línia %d, columna %d"
 
-#: src/dh-preferences.ui:196
-msgid "_Variable width: "
-msgstr "Amplada _variable: "
+#: ../src/dh-parser.c:143
+#, c-format
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr ""
+"Els elements «title» (títol), «name» (nom) i «link» (enllaç) són necessaris "
+"a la línia %d, columna %d"
 
-#: src/dh-preferences.ui:209
-msgid "_Fixed width:"
-msgstr "Amplada _fixa:"
+#: ../src/dh-parser.c:218
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column "
+"%d"
+msgstr ""
+"Els elements «name» (nom) i «link» (enllaç) són necessaris dins de <sub> a "
+"la línia %d, columna %d"
 
-#: src/dh-preferences.ui:270
-msgid "Fonts"
-msgstr "Tipus de lletra"
+#: ../src/dh-parser.c:298
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr ""
+"Els elements «name» (nom) i «link» (enllaç) són necessaris dins de «%s» a la "
+"línia %d, columna %d"
 
-#: src/dh-window.c:78
+#: ../src/dh-parser.c:311
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr ""
+"L'element «type» (tipus) és necessari dins de <keyword> a la línia %d, "
+"columna %d"
+
+#: ../src/dh-parser.c:514
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "No s'ha pogut descomprimir el llibre «%s»: %s"
+
+#. Setup the Current/All Files selector
+#: ../src/dh-sidebar.c:471
+msgid "Current"
+msgstr "Actual"
+
+#: ../src/dh-sidebar.c:474
+msgid "All Books"
+msgstr "Tots els llibres"
+
+#: ../src/dh-window.c:87
 msgid "50%"
 msgstr "50%"
 
-#: src/dh-window.c:79
+#: ../src/dh-window.c:88
 msgid "75%"
 msgstr "75%"
 
-#: src/dh-window.c:80
+#: ../src/dh-window.c:89
 msgid "100%"
 msgstr "100%"
 
-#: src/dh-window.c:81
+#: ../src/dh-window.c:90
 msgid "125%"
 msgstr "125%"
 
-#: src/dh-window.c:82
+#: ../src/dh-window.c:91
 msgid "150%"
 msgstr "150%"
 
-#: src/dh-window.c:83
+#: ../src/dh-window.c:92
 msgid "175%"
 msgstr "175%"
 
-#: src/dh-window.c:84
+#: ../src/dh-window.c:93
 msgid "200%"
 msgstr "200%"
 
-#: src/dh-window.c:85
+#: ../src/dh-window.c:94
 msgid "300%"
 msgstr "300%"
 
-#: src/dh-window.c:86
+#: ../src/dh-window.c:95
 msgid "400%"
 msgstr "400%"
 
-#: src/dh-window.c:1100
-msgid "Error opening the requested link."
-msgstr "S'ha produït un error en obrir l'enllaç sol·licitat."
-
-#: src/dh-window.c:1417
-msgid "_Close"
-msgstr "_Tanca"
-
-#: src/dh-window.c:1435 src/dh-window.c:1616
-msgid "Empty Page"
-msgstr "Pàgina buida"
-
-#: src/dh-window.ui:7
-msgid "Side _Panel"
-msgstr "Subfinestra _lateral"
-
-#: src/dh-window.ui:15 src/dh-window.ui:60
-msgid "_Print"
-msgstr "Im_primeix"
-
-#: src/dh-window.ui:20 src/dh-window.ui:65
-msgid "_Find"
-msgstr "_Cerca"
-
-#: src/dh-window.ui:27 src/dh-window.ui:72
-msgid "_Larger Text"
-msgstr "Text més _gran"
-
-#: src/dh-window.ui:32 src/dh-window.ui:77
-msgid "S_maller Text"
-msgstr "Text més _petit"
-
-#: src/dh-window.ui:37 src/dh-window.ui:82
-msgid "_Normal Size"
-msgstr "Mida _normal"
-
-#: src/dh-window.ui:53
-msgid "_Side Panel"
-msgstr "_Subfinestra lateral"
-
-#: src/dh-window.ui:99
-msgid "_About Devhelp"
-msgstr "_Quant al Devhelp"
-
-#: src/dh-window.ui:133
+#: ../src/dh-window.c:654
 msgid "Back"
 msgstr "Enrere"
 
-#: src/dh-window.ui:152
+#: ../src/dh-window.c:659
 msgid "Forward"
 msgstr "Endavant"
 
-#: src/dh-window.ui:176
-msgid "New Tab"
-msgstr "Pestanya nova"
+#: ../src/dh-window.c:919
+msgid "Error opening the requested link."
+msgstr "S'ha produït un error en obrir l'enllaç sol·licitat."
+
+#: ../src/dh-window.c:1269 ../src/dh-window.c:1455
+msgid "Empty Page"
+msgstr "Pàgina buida"
+
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "Cerca:"
+
+#: ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "Cerca l'anterior"
+
+#: ../src/eggfindbar.c:333 ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "Cerca l'ocurrència anterior de la cadena de cerca"
+
+#: ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "Cerca la següent"
+
+#: ../src/eggfindbar.c:346 ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "Cerca l'ocurrència següent de la cadena de cerca"
+
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "_Diferencia entre minúscules i majúscules"
+
+#: ../src/eggfindbar.c:362 ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "Commuta la cerca diferenciant les minúscules de les majúscules"
+
+#~ msgid "_Window"
+#~ msgstr "_Finestra"
+
+#~ msgid "_Close"
+#~ msgstr "Tan_ca"
+
+#~ msgid "_Edit"
+#~ msgstr "_Edita"
+
+#~ msgid "_Copy"
+#~ msgstr "_Copia"
+
+#~ msgid "Find _Next"
+#~ msgstr "Cerca el següe_nt"
+
+#~ msgid "Find _Previous"
+#~ msgstr "Cerca l'_anterior"
+
+#~ msgid "_View"
+#~ msgstr "_Visualitza"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Pantalla completa"
+
+#~ msgid "_Go"
+#~ msgstr "_Vés a"
+
+#~ msgid "_Search Tab"
+#~ msgstr "Pestanya de _cerca"
+
+#~ msgid "_Contents Tab"
+#~ msgstr "Pestanya de _continguts"
+
+#~ msgid "Go to the previous page"
+#~ msgstr "Vés a la pàgina anterior"
+
+#~ msgid "Go to the next page"
+#~ msgstr "Vés a la pàgina següent"
+
+#~ msgid "Decrease the text size"
+#~ msgstr "Redueix la mida del text"
+
+#~ msgid "Increase the text size"
+#~ msgstr "Augmenta la mida del text"
+
+#~ msgid "Focus the Devhelp window with the search field active"
+#~ msgstr "Dóna el focus a la finestra del Devhelp amb el camp de cerca actiu"
+
+#~ msgid "Search in:"
+#~ msgstr "Cerca a:"
+
+#~ msgid "Contents"
+#~ msgstr "Continguts"
+
+#~ msgid "Search"
+#~ msgstr "Cerca"
+
+#~ msgid "_File"
+#~ msgstr "_Fitxer"
+
+#~ msgid "_Help"
+#~ msgstr "A_juda"
+
+#~ msgid "Use the normal text size"
+#~ msgstr "Utilitza la mida de text normal"
+
+#~ msgid "Leave fullscreen mode"
+#~ msgstr "Surt del mode de pantalla completa"
+
+#~ msgid "Display in full screen"
+#~ msgstr "Mostra a pantalla completa"
+
+#~ msgid "Larger"
+#~ msgstr "Més gran"
+
+#~ msgid "Smaller"
+#~ msgstr "Més petit"
+
+#~ msgid "Preferences…"
+#~ msgstr "Preferències…"
+
+#~ msgid "<b>Fonts</b>"
+#~ msgstr "<b>Tipus de lletra</b>"
+
+#~ msgid "Preferences..."
+#~ msgstr "Preferències..."
+
+#~ msgid "Show advanced search options"
+#~ msgstr "Mostra les opcions de cerca avançades"
+
+#~ msgid "Whether the advanced search options are shown."
+#~ msgstr "Si es mostren les opcions de cerca avançada."
+
+#~ msgid "<b>Searching</b>"
+#~ msgstr "<b>Cerca</b>"
+
+#~ msgid "_Show advanced search options"
+#~ msgstr "Mo_stra les opcions de cerca avançada"
 
 #~ msgid ""
-#~ "https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
-#~ "target=devhelp.png"
-#~ msgstr ""
-#~ "https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
-#~ "target=devhelp.png"
-
-#~ msgid "Selected tab: \"content\" or \"search\""
-#~ msgstr "Pestanya seleccionada: «content» (contingut) o «search» (cerca)"
-
-#~ msgid "Which of the tabs is selected: \"content\" or \"search\"."
-#~ msgstr ""
-#~ "Quina pestanya està seleccionada: «content» (contingut) o "
-#~ "«search» (cerca)."
-
-#~ msgid "Makes F2 bring up Devhelp for the word at the cursor"
-#~ msgstr ""
-#~ "En prémer F2 apareixerà l'ajuda del Devhelp per a la paraula sota el "
-#~ "cursor"
-
-#~ msgid "Expected '%s', got '%s' at line %d, column %d"
-#~ msgstr "S'esperava «%s» però s'ha obtingut «%s» a la línia %d, columna %d"
-
-#~ msgid "Invalid namespace '%s' at line %d, column %d"
-#~ msgstr "L'espai de noms «%s» no és vàlid a la línia %d, columna %d"
-
-#~ msgid ""
-#~ "\"title\", \"name\" and \"link\" elements are required at line %d, column "
+#~ "name and link elements are required inside <function> on line %d, column "
 #~ "%d"
 #~ msgstr ""
-#~ "Els elements «title» (títol), «name» (nom) i «link» (enllaç) són "
-#~ "necessaris a la línia %d, columna %d"
+#~ "Els elements «name» (nom) i «link» (enllaç) són necessaris dins de "
+#~ "<function> a la línia %d, columna %d"
+
+#~ msgid "Could not create book parser"
+#~ msgstr "No s'ha pogut crear l'analitzador del llibre"
+
+#~ msgid "Could not create markup parser"
+#~ msgstr "No s'ha pogut crear l'analitzador de marques"
+
+#~ msgid "Devhelp is not built with zlib support"
+#~ msgstr "El Devhelp s'ha muntat sense habilitar l'ús de la zlib"
+
+#~ msgid "Browse Contents"
+#~ msgstr "Navega pels continguts"
+
+#~ msgid "Specify the size and location of the window"
+#~ msgstr "Especifica la mida i la ubicació de la finestra"
+
+#~ msgid "WIDTHxHEIGHT+XOFF+YOFF"
+#~ msgstr "AMPLADAxALÇADA+Despl_X+Despl_Y"
+
+#~ msgid "Cannot set UI: %s"
+#~ msgstr "No s'ha pogut definir l'IU: %s"
+
+#~ msgid "Location of the paned"
+#~ msgstr "Ubicació de la subfinestra"
+
+#~ msgid "The location of the paned separator."
+#~ msgstr "La ubicació del separador de la subfinestra."
+
+#~ msgid "    "
+#~ msgstr "    "
+
+#~ msgid "Devhelp project page"
+#~ msgstr "Pàgina del projecte Devhelp"
+
+#~ msgid "Bug report Devhelp"
+#~ msgstr "Envia un informe d'error del Devhelp"
 
 #~ msgid ""
-#~ "\"name\" and \"link\" elements are required inside <sub> on line %d, "
-#~ "column %d"
+#~ "Select a subject in the contents to the left or switch to the search tab "
+#~ "to find what you are looking for."
 #~ msgstr ""
-#~ "Els elements «name» (nom) i «link» (enllaç) són necessaris dins de <sub> "
-#~ "a la línia %d, columna %d"
-
-#~ msgid ""
-#~ "\"name\" and \"link\" elements are required inside '%s' on line %d, "
-#~ "column %d"
-#~ msgstr ""
-#~ "Els elements «name» (nom) i «link» (enllaç) són necessaris dins de «%s» a "
-#~ "la línia %d, columna %d"
-
-#~ msgid "\"type\" element is required inside <keyword> on line %d, column %d"
-#~ msgstr ""
-#~ "L'element «type» (tipus) és necessari dins de <keyword> a la línia %d, "
-#~ "columna %d"
-
-#~ msgid "Cannot uncompress book '%s': %s"
-#~ msgstr "No s'ha pogut descomprimir el llibre «%s»: %s"
+#~ "Per trobar el que esteu buscant seleccioneu un tema dels continguts de "
+#~ "l'esquerra o commuteu a la pestanya de cerca."

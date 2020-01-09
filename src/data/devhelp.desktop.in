@@ -1,0 +1,15 @@
+[Desktop Entry]
+_Name=Devhelp
+_Comment=Developer's Help program
+_GenericName=Documentation Browser
+_Keywords=documentation;information;manual;developer;api;
+Exec=devhelp
+Terminal=false
+Type=Application
+Icon=devhelp
+Categories=GNOME;GTK;Development;
+StartupNotify=true
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=devhelp
+X-GNOME-Bugzilla-Component=General
+X-GNOME-Bugzilla-Version=3.8.2

@@ -1,30 +1,28 @@
 AC_PREREQ([2.64])
 AC_INIT([Devhelp],
-        [3.28.1],
-        [https://bugzilla.gnome.org/browse.cgi?product=devhelp],
+        [3.8.2],
+        [http://bugzilla.gnome.org/enter_bug.cgi?product=devhelp],
         [devhelp],
-        [https://wiki.gnome.org/Apps/Devhelp])
-
-AX_REQUIRE_DEFINED([AX_IS_RELEASE])
-AX_IS_RELEASE([git-directory])
+        [http://live.gnome.org/devhelp])
 
 # LT Version numbers, remember to change them just *before* a release.
-# A good time to update it is for the GNOME x.y.90 version, at API freeze,
-# so that packagers have the time to update the package.
 #   (Interfaces removed:    CURRENT++, AGE=0, REVISION=0)
 #   (Interfaces added:      CURRENT++, AGE++, REVISION=0)
 #   (No interfaces changed:                   REVISION++)
-LIBDEVHELP_LT_CURRENT=5
-LIBDEVHELP_LT_REVISION=0
-LIBDEVHELP_LT_AGE=0
-LIBDEVHELP_LT_VERSION="$LIBDEVHELP_LT_CURRENT:$LIBDEVHELP_LT_REVISION:$LIBDEVHELP_LT_AGE"
-AC_SUBST([LIBDEVHELP_LT_VERSION])
+LIBDEVHELP_CURRENT=2
+LIBDEVHELP_AGE=0
+LIBDEVHELP_REVISION=0
+
+AC_SUBST(LIBDEVHELP_CURRENT)
+AC_SUBST(LIBDEVHELP_AGE)
+AC_SUBST(LIBDEVHELP_REVISION)
 
 AC_CONFIG_HEADERS(config.h)
 AC_CONFIG_SRCDIR(src/dh-main.c)
 AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR([build-aux])
 
-AM_INIT_AUTOMAKE([1.14 -Wall foreign no-define tar-ustar no-dist-gzip dist-xz -Wno-portability])
+AM_INIT_AUTOMAKE([1.11 -Wall foreign no-define tar-ustar no-dist-gzip dist-xz])
 
 # Support silent build rules, requires at least automake-1.11. Disable
 # by either passing --disable-silent-rules to configure or passing V=1
@@ -33,92 +31,105 @@ AM_SILENT_RULES([yes])
 
 # Check for programs
 AC_PROG_CC
-AC_PATH_PROG([GLIB_MKENUMS], [glib-mkenums])
-AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
+AC_PROG_CPP
+AM_PROG_CC_C_O
 
 # Initialize libtool
 LT_PREREQ([2.2])
 LT_INIT([disable-static])
 
-AX_REQUIRE_DEFINED([APPSTREAM_XML])
-APPSTREAM_XML
-
-AX_REQUIRE_DEFINED([GLIB_GSETTINGS])
 GLIB_GSETTINGS
 
-AX_REQUIRE_DEFINED([GOBJECT_INTROSPECTION_CHECK])
-GOBJECT_INTROSPECTION_CHECK([1.30.0])
+PKG_PROG_PKG_CONFIG
 
-AX_REQUIRE_DEFINED([YELP_HELP_INIT])
-YELP_HELP_INIT
+GNOME_COMPILE_WARNINGS([maximum])
 
-# Compile warnings. There can be deprecation warnings at any time, so disable
-# -Werror by default with the [yes] argument.
-AX_REQUIRE_DEFINED([AX_COMPILER_FLAGS])
-AX_COMPILER_FLAGS([WARN_CFLAGS], [WARN_LDFLAGS], [yes])
+AC_ARG_WITH(webkit2,
+        [AC_HELP_STRING([--with-webkit2], [build with WebKit2 [default=yes]])],
+        [],[with_webkit2=yes])
 
-LT_LIB_M
+if test "x$with_webkit2" != xno; then
+   WEBKITGTK_PC_NAME=webkit2gtk-3.0
+   WEBKITGTK_REQUIRED_VERSION=1.10.0
+   AC_DEFINE([HAVE_WEBKIT2],[1],[Define if building with WebKit2])
+else
+   WEBKITGTK_PC_NAME=webkitgtk-3.0
+   WEBKITGTK_REQUIRED_VERSION=1.6.0
+fi
+AM_CONDITIONAL(WITH_WEBKIT2, test "x$with_webkit2" != xno)
+AC_SUBST(WEBKITGTK_PC_NAME)
 
-AX_REQUIRE_DEFINED([AX_PKG_CHECK_MODULES])
-AX_PKG_CHECK_MODULES([DEVHELP],
-		     [gio-2.0 >= 2.40  gtk+-3.0 >= 3.22  webkit2gtk-4.0 >= 2.19.2],
-		     [gsettings-desktop-schemas])
+AC_CHECK_LIBM
+AC_SUBST(LIBM)
+
+PKG_CHECK_MODULES(DEVHELP, [
+  gthread-2.0 >= 2.10.0
+  gtk+-3.0 >= 3.5.6
+  $WEBKITGTK_PC_NAME >= $WEBKITGTK_REQUIRED_VERSION
+  gio-2.0 >= 2.32
+])
+
+PKG_CHECK_MODULES(LIBDEVHELP, [
+  gtk+-3.0 >= 3.5.6
+  gio-2.0 >= 2.32
+  $WEBKITGTK_PC_NAME >= $WEBKITGTK_REQUIRED_VERSION
+])
+
+AC_ARG_WITH(zlib, [  --with-zlib=DIR         use zlib in DIR], zlibdir=$with_zlib)
+have_zlib=no
+if test "x$zlibdir" != x; then
+    ZLIB_CPPFLAGS=-I$zlibdir/include
+    ZLIB_LDFLAGS=-L$zlibdir/lib
+fi
+save_CPPFLAGS="$CPPFLAGS"
+save_LDFLAGS="$LDFLAGS"
+CPPFLAGS="$CPPFLAGS $ZLIB_CPPFLAGS"
+LDFLAGS="$LDFLAGS $ZLIB_LDFLAGS"
+AC_CHECK_HEADERS(zlib.h, AC_CHECK_LIB(z, gzread, have_zlib=yes))
+CPPFLAGS="$save_CPPFLAGS"
+LDFLAGS="$save_LDFLAGS"
+ZLIB_LIBS=-lz
+AC_SUBST(ZLIB_CFLAGS)
+AC_SUBST(ZLIB_LDFLAGS)
+AC_SUBST(ZLIB_LIBS)
 
 # i18n stuff
+IT_PROG_INTLTOOL([0.40.0])
+
+AM_GNU_GETTEXT_VERSION([0.17])
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.19.7])
 
 GETTEXT_PACKAGE=devhelp
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Package name for gettext])
 
+AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
+
 AM_PATH_PYTHON([2.3],[],[no])
 
-# Flatpak
-AC_ARG_ENABLE([flatpak-build],
-	      [AS_HELP_STRING([--enable-flatpak-build], [Enable Flatpak build mode])],
-	      [flatpak_build=${enableval}],
-	      [flatpak_build=no])
-
-if test "x${flatpak_build}" = xyes; then
-	AC_DEFINE([FLATPAK_BUILD], 1, [Whether Flatpak build mode is enabled])
-fi
-
-# GTK-Doc
-AX_REQUIRE_DEFINED([GTK_DOC_CHECK])
-GTK_DOC_CHECK([1.25],[--flavour no-tmpl])
-
-AX_REQUIRE_DEFINED([PKG_CHECK_VAR])
-PKG_CHECK_VAR([WEBKITGTK_PREFIX], [webkit2gtk-4.0], [prefix])
+LIBGD_INIT([
+  header-bar
+  static
+])
 
 AC_CONFIG_FILES([
-	Makefile
-	data/libdevhelp-3.0.pc
-	data/Makefile
-	data/org.gnome.Devhelp.desktop.in
-	data/icons/Makefile
-	docs/Makefile
-	docs/reference/Makefile
-	help/Makefile
-	plugins/Makefile
-	plugins/gedit-plugin/Makefile
-	po/Makefile.in
-	src/Makefile
-	unit-tests/Makefile
+Makefile
+po/Makefile.in
+src/Makefile
+data/Makefile
+data/libdevhelp-3.0.pc
+data/devhelp.desktop.in
+data/icons/Makefile
+data/dtd/Makefile
+libgd/Makefile
+misc/Makefile
+misc/gedit-plugin/Makefile
+contrib/Makefile
 ])
 
 AC_OUTPUT
 
-# Print a summary of the configuration
-echo "
-Configuration:
-
-	${PACKAGE_NAME} version ${PACKAGE_VERSION}
-
-	Source code location:	${srcdir}
-	Prefix:			${prefix}
-	Compiler:		${CC}
-	API documentation:	${enable_gtk_doc}
-	GObject introspection:	${found_introspection}
-	Flatpak build mode:	${flatpak_build}
-"
+echo
+echo "Prefix:    $prefix"
+echo "WebKit2:   $with_webkit2"
+echo

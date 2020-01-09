@@ -20,51 +20,43 @@
  */
 
 #include "config.h"
-#include "dh-assistant-view.h"
 #include <string.h>
 #include <glib/gi18n-lib.h>
+#include "dh-assistant-view.h"
+#include "dh-link.h"
 #include "dh-util.h"
-#include "dh-book.h"
 #include "dh-book-manager.h"
-
-/**
- * SECTION:dh-assistant-view
- * @Title: DhAssistantView
- * @Short_description: A small “assistant” widget for displaying just one hit
- *
- * #DhAssistantView is a subclass of #WebKitWebView for displaying the
- * documentation of just one symbol.
- *
- * A possible use-case: in a text editor, pressing a keyboard shortcut could
- * display this widget for the symbol under the cursor.
- *
- * With the Devhelp application, an assistant can easily be launched with the
- * command line option `--search-assistant`.
- */
+#include "dh-book.h"
 
 typedef struct {
-        DhLink *link;
-        gchar *current_search;
-        guint snippet_loaded : 1;
-} DhAssistantViewPrivate;
+        DhBookManager *book_manager;
+        DhLink        *link;
+        gchar         *current_search;
+        gboolean       snippet_loaded;
+} DhAssistantViewPriv;
 
 enum {
         SIGNAL_OPEN_URI,
-        N_SIGNALS
+        SIGNAL_LAST
 };
+static guint signals[SIGNAL_LAST] = { 0 };
 
-static guint signals[N_SIGNALS] = { 0 };
+G_DEFINE_TYPE (DhAssistantView, dh_assistant_view, WEBKIT_TYPE_WEB_VIEW);
 
-G_DEFINE_TYPE_WITH_PRIVATE (DhAssistantView, dh_assistant_view, WEBKIT_TYPE_WEB_VIEW);
+#define GET_PRIVATE(instance) G_TYPE_INSTANCE_GET_PRIVATE \
+  (instance, DH_TYPE_ASSISTANT_VIEW, DhAssistantViewPriv)
 
 static void
 view_finalize (GObject *object)
 {
-        DhAssistantView *view = DH_ASSISTANT_VIEW (object);
-        DhAssistantViewPrivate *priv = dh_assistant_view_get_instance_private (view);
+        DhAssistantViewPriv *priv = GET_PRIVATE (object);
 
         if (priv->link) {
                 g_object_unref (priv->link);
+        }
+
+        if (priv->book_manager) {
+                g_object_unref (priv->book_manager);
         }
 
         g_free (priv->current_search);
@@ -72,15 +64,15 @@ view_finalize (GObject *object)
         G_OBJECT_CLASS (dh_assistant_view_parent_class)->finalize (object);
 }
 
+#ifdef HAVE_WEBKIT2
 static gboolean
 assistant_decide_policy (WebKitWebView           *web_view,
                          WebKitPolicyDecision    *decision,
                          WebKitPolicyDecisionType decision_type)
 {
-        DhAssistantViewPrivate         *priv;
+        DhAssistantViewPriv            *priv;
         const gchar                    *uri;
         WebKitNavigationPolicyDecision *navigation_decision;
-        WebKitNavigationAction         *navigation_action;
         WebKitNavigationType            navigation_type;
         WebKitURIRequest               *request;
 
@@ -90,11 +82,9 @@ assistant_decide_policy (WebKitWebView           *web_view,
                 return TRUE;
         }
 
-        priv = dh_assistant_view_get_instance_private (DH_ASSISTANT_VIEW (web_view));
-
+        priv = GET_PRIVATE (web_view);
         navigation_decision = WEBKIT_NAVIGATION_POLICY_DECISION (decision);
-        navigation_action = webkit_navigation_policy_decision_get_navigation_action (navigation_decision);
-        navigation_type = webkit_navigation_action_get_navigation_type (navigation_action);
+        navigation_type = webkit_navigation_policy_decision_get_navigation_type (navigation_decision);
         if (navigation_type != WEBKIT_NAVIGATION_TYPE_LINK_CLICKED) {
                 if (! priv->snippet_loaded) {
                         priv->snippet_loaded = TRUE;
@@ -106,7 +96,7 @@ assistant_decide_policy (WebKitWebView           *web_view,
                 return TRUE;
         }
 
-        request = webkit_navigation_action_get_request (navigation_action);
+        request = webkit_navigation_policy_decision_get_request (navigation_decision);
         uri = webkit_uri_request_get_uri (request);
         if (strcmp (uri, "about:blank") == 0) {
                 webkit_policy_decision_use (decision);
@@ -119,6 +109,32 @@ assistant_decide_policy (WebKitWebView           *web_view,
 
         return TRUE;
 }
+#else
+static WebKitNavigationResponse
+assistant_navigation_requested (WebKitWebView        *web_view,
+                                WebKitWebFrame       *frame,
+                                WebKitNetworkRequest *request)
+{
+        DhAssistantViewPriv *priv;
+        const gchar         *uri;
+
+        priv = GET_PRIVATE (web_view);
+
+        uri = webkit_network_request_get_uri (request);
+        if (strcmp (uri, "about:blank") == 0) {
+                return WEBKIT_NAVIGATION_RESPONSE_ACCEPT;
+        }
+        else if (! priv->snippet_loaded) {
+                priv->snippet_loaded = TRUE;
+                return WEBKIT_NAVIGATION_RESPONSE_ACCEPT;
+        }
+        else if (g_str_has_prefix (uri, "file://")) {
+                g_signal_emit (web_view, signals[SIGNAL_OPEN_URI], 0, uri);
+        }
+
+        return WEBKIT_NAVIGATION_RESPONSE_IGNORE;
+}
+#endif /* HAVE_WEBKIT2 */
 
 static gboolean
 assistant_button_press_event (GtkWidget      *widget,
@@ -142,13 +158,14 @@ dh_assistant_view_class_init (DhAssistantViewClass* klass)
         object_class->finalize = view_finalize;
 
         widget_class->button_press_event = assistant_button_press_event;
+#ifdef HAVE_WEBKIT2
         web_view_class->decide_policy = assistant_decide_policy;
+#else
+        web_view_class->navigation_requested = assistant_navigation_requested;
+#endif
 
-        /**
-         * DhAssistantView::open-uri:
-         * @view: the view on which the signal is emitted
-         * @uri: the uri to open
-         */
+        g_type_class_add_private (klass, sizeof (DhAssistantViewPriv));
+
         signals[SIGNAL_OPEN_URI] = g_signal_new ("open-uri",
                                                  G_TYPE_FROM_CLASS (object_class),
                                                  0, 0,
@@ -163,12 +180,7 @@ dh_assistant_view_init (DhAssistantView *view)
 {
 }
 
-/**
- * dh_assistant_view_new:
- *
- * Returns: (transfer floating): a new #DhAssistantView widget.
- */
-GtkWidget *
+GtkWidget*
 dh_assistant_view_new (void)
 {
         return g_object_new (DH_TYPE_ASSISTANT_VIEW, NULL);
@@ -200,18 +212,18 @@ find_in_buffer (const gchar *buffer,
 
 /**
  * dh_assistant_view_set_link:
- * @view: a #DhAssistantView.
- * @link: (nullable): a #DhLink to set or %NULL.
+ * @view: an devhelp assistant view
+ * @link: the #DhLink
  *
  * Open @link in the assistant view, if %NULL the view will be blanked.
  *
- * Returns: %TRUE if the requested link is open, %FALSE otherwise.
- */
+ * Return value: %TRUE if the requested link is open, %FALSE otherwise.
+ **/
 gboolean
 dh_assistant_view_set_link (DhAssistantView *view,
                             DhLink          *link)
 {
-        DhAssistantViewPrivate *priv;
+        DhAssistantViewPriv *priv;
         gchar               *uri;
         const gchar         *anchor;
         gchar               *filename;
@@ -226,7 +238,7 @@ dh_assistant_view_set_link (DhAssistantView *view,
 
         g_return_val_if_fail (DH_IS_ASSISTANT_VIEW (view), FALSE);
 
-        priv = dh_assistant_view_get_instance_private (view);
+        priv = GET_PRIVATE (view);
 
         if (priv->link == link) {
                 return TRUE;
@@ -244,7 +256,6 @@ dh_assistant_view_set_link (DhAssistantView *view,
                 return TRUE;
         }
 
-        /* FIXME uri can be NULL. */
         uri = dh_link_get_uri (link);
         anchor = strrchr (uri, '#');
         if (anchor) {
@@ -332,14 +343,6 @@ dh_assistant_view_set_link (DhAssistantView *view,
                         break_line = TRUE;
                         function = "onload=\"cleanupSignature()\"";
                         break;
-                case DH_LINK_TYPE_BOOK:
-                case DH_LINK_TYPE_PAGE:
-                case DH_LINK_TYPE_KEYWORD:
-                case DH_LINK_TYPE_STRUCT:
-                case DH_LINK_TYPE_ENUM:
-                case DH_LINK_TYPE_TYPEDEF:
-                case DH_LINK_TYPE_PROPERTY:
-                case DH_LINK_TYPE_SIGNAL:
                 default:
                         break_line = FALSE;
                         function = "";
@@ -394,11 +397,11 @@ dh_assistant_view_set_link (DhAssistantView *view,
                         stylesheet_html,
                         javascript_html,
                         function,
-                        dh_link_type_to_string (dh_link_get_link_type (link)),
+                        dh_link_get_type_as_string (link),
                         dh_link_get_uri (link),
                         dh_link_get_name (link),
                         _("Book:"),
-                        dh_link_get_book_title (link),
+                        dh_link_get_book_name (link),
                         buf);
                 g_free (buf);
 
@@ -406,36 +409,41 @@ dh_assistant_view_set_link (DhAssistantView *view,
                 g_free (javascript_html);
 
                 priv->snippet_loaded = FALSE;
+#ifdef HAVE_WEBKIT2
                 webkit_web_view_load_html (
                         WEBKIT_WEB_VIEW (view),
                         html,
                         filename);
+#else
+                webkit_web_view_load_string (
+                        WEBKIT_WEB_VIEW (view),
+                        html,
+                        "text/html",
+                        NULL,
+                        filename);
+#endif
+
                 g_free (html);
         } else {
                 webkit_web_view_load_uri (WEBKIT_WEB_VIEW (view), "about:blank");
         }
 
+#if GLIB_CHECK_VERSION(2,21,3)
         g_mapped_file_unref (file);
+#else
+        g_mapped_file_free (file);
+#endif
+
         g_free (filename);
 
         return TRUE;
 }
 
-/**
- * dh_assistant_view_search:
- * @view: a #DhAssistantView.
- * @str: the search query.
- *
- * Search for @str in the current assistant view.
- *
- * Returns: %TRUE if @str was found, %FALSE otherwise.
- */
 gboolean
 dh_assistant_view_search (DhAssistantView *view,
                           const gchar     *str)
 {
-        DhAssistantViewPrivate *priv;
-        DhBookManager       *book_manager;
+        DhAssistantViewPriv *priv;
         const gchar         *name;
         DhLink              *link;
         DhLink              *exact_link;
@@ -445,7 +453,7 @@ dh_assistant_view_search (DhAssistantView *view,
         g_return_val_if_fail (DH_IS_ASSISTANT_VIEW (view), FALSE);
         g_return_val_if_fail (str, FALSE);
 
-        priv = dh_assistant_view_get_instance_private (view);
+        priv = GET_PRIVATE (view);
 
         /* Filter out very short strings. */
         if (strlen (str) < 4) {
@@ -461,14 +469,12 @@ dh_assistant_view_search (DhAssistantView *view,
         prefix_link = NULL;
         exact_link = NULL;
 
-        book_manager = dh_book_manager_get_singleton ();
-
-        for (books = dh_book_manager_get_books (book_manager);
+        for (books = dh_book_manager_get_books (priv->book_manager);
              !exact_link && books;
              books = g_list_next (books)) {
                 GList *l;
 
-                for (l = dh_book_get_links (DH_BOOK (books->data));
+                for (l = dh_book_get_keywords (DH_BOOK (books->data));
                      l && exact_link == NULL;
                      l = l->next) {
                         DhLinkType type;
@@ -513,4 +519,18 @@ dh_assistant_view_search (DhAssistantView *view,
         }
 
         return TRUE;
+}
+
+void
+dh_assistant_view_set_book_manager (DhAssistantView *view,
+                                    DhBookManager   *book_manager)
+{
+        DhAssistantViewPriv *priv;
+
+        g_return_if_fail (DH_IS_ASSISTANT_VIEW (view));
+        g_return_if_fail (DH_IS_BOOK_MANAGER (book_manager));
+
+        priv = GET_PRIVATE (view);
+
+        priv->book_manager = g_object_ref (book_manager);
 }

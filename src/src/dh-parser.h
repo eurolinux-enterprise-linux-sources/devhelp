@@ -2,7 +2,6 @@
 /*
  * Copyright (C) 2003 CodeFactory AB
  * Copyright (C) 2003 Mikael Hallendal <micke@imendio.com>
- * Copyright (C) 2017 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -14,25 +13,27 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef DH_PARSER_H
-#define DH_PARSER_H
+#ifndef __DH_PARSER_H__
+#define __DH_PARSER_H__
 
-#include <gio/gio.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
-gboolean dh_parser_read_file (GFile   *index_file,
-                              gchar  **book_title,
-                              gchar  **book_id,
-                              gchar  **book_language,
-                              GNode  **book_tree,
-                              GList  **all_links,
-                              GError **error);
+gboolean dh_parser_read_file (const gchar  *path,
+                              gchar       **book_title,
+                              gchar       **book_name,
+                              gchar       **book_language,
+                              GNode       **book_tree,
+                              GList       **keywords,
+                              GError      **error);
 
 G_END_DECLS
 
-#endif /* DH_PARSER_H */
+#endif /* __DH_PARSER_H__ */

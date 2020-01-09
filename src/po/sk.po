@@ -2,398 +2,389 @@
 # Copyright (C) 2001-2005, 2010-2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the devhelp package.
 # Marcel Telka <marcel@telka.sk>, 2001-2005.
-# Roman Mátyus <romanmatyus@gmail.com>, 2010-2012.
-# Dušan Kazik <prescott66@gmail.com>, 2015.
+# Roman Mátyus <romanmatyus@gmail.com>, 2010, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: devhelp\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=devhelp&keywords=I18N+L10N&component=General\n"
-"POT-Creation-Date: 2017-07-27 13:58+0000\n"
-"PO-Revision-Date: 2017-09-03 12:43+0200\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
-"Language-Team: slovenčina <>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=devhelp&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-09-24 21:58+0000\n"
+"PO-Revision-Date: 2012-10-09 23:16+0100\n"
+"Last-Translator: Roman Mátyus <romanmatyus@gmail.com>\n"
+"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.0.3\n"
 
 #. i18n: Please don't translate "Devhelp" (it's marked as translatable
 #. * for transliteration only)
-#: data/org.gnome.Devhelp.appdata.xml.in:6
-#: data/org.gnome.Devhelp.desktop.in.in:3 src/dh-app.c:232 src/dh-app.c:537
-#: src/dh-window.c:807
+#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-app.c:167 ../src/dh-app.c:350
+#: ../src/dh-window.c:958 ../src/dh-window.c:1857
 msgid "Devhelp"
 msgstr "Devhelp"
 
-#: data/org.gnome.Devhelp.appdata.xml.in:7
-#: data/org.gnome.Devhelp.desktop.in.in:4
-msgid "Developer’s Help program"
+#: ../data/devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
 msgstr "Program pomocníka pre vývojárov"
 
-#: data/org.gnome.Devhelp.appdata.xml.in:9
-msgid ""
-"Devhelp is an API documentation browser. It provides an easy way to navigate "
-"through libraries, search by function, struct, or macro. It provides a "
-"tabbed interface and allows to print results."
-msgstr ""
-"Devhelp je prehliadač dokumentácie API. Poskytuje jednoduchý spôsob pre "
-"prechádzanie knižnicami, vyhľadávanie podľa funkci, štruktúry, alebo makra. "
-"Poskytuje rozhranie so záložkami a umožňuje tlačiť výsledky."
-
-#: data/org.gnome.Devhelp.appdata.xml.in:15
-msgid ""
-"Devhelp integrates with other applications such as Glade, Anjuta, or Geany."
-msgstr ""
-"Devhelp je integrovaný s inými aplikáciami, ako sú Glade, Anjuta, alebo "
-"Geany."
-
-#: data/org.gnome.Devhelp.desktop.in.in:5
+#: ../data/devhelp.desktop.in.in.h:3
 msgid "Documentation Browser"
 msgstr "Prehliadač dokumentácie"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Devhelp.desktop.in.in:7
-msgid "documentation;information;manual;developer;api;"
-msgstr "dokumentácia;informácie;návod;vývojár;api;rozhranie;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Devhelp.desktop.in.in:12
-#: misc/gedit-plugin/devhelp.plugin.desktop.in:10
-msgid "devhelp"
-msgstr "devhelp"
-
-#: data/org.gnome.devhelp.gschema.xml:18
+#: ../data/devhelp.schemas.in.h:1
 msgid "Main window maximized state"
 msgstr "Maximalizovaný stav hlavného okna"
 
-#: data/org.gnome.devhelp.gschema.xml:19
+#: ../data/devhelp.schemas.in.h:2
 msgid "Whether the main window should start maximized."
-msgstr "Určuje, či sa má hlavné okno spustiť maximalizované."
+msgstr "Či sa má hlavné okno spustiť maximalizované."
 
-#: data/org.gnome.devhelp.gschema.xml:23
+#: ../data/devhelp.schemas.in.h:3
 msgid "Width of the main window"
 msgstr "Šírka hlavného okna"
 
-#: data/org.gnome.devhelp.gschema.xml:24
+#: ../data/devhelp.schemas.in.h:4
 msgid "The width of the main window."
 msgstr "Šírka hlavného okna."
 
-#: data/org.gnome.devhelp.gschema.xml:28
+#: ../data/devhelp.schemas.in.h:5
 msgid "Height of main window"
 msgstr "Výška hlavného okna"
 
-#: data/org.gnome.devhelp.gschema.xml:29
+#: ../data/devhelp.schemas.in.h:6
 msgid "The height of the main window."
 msgstr "Výška hlavného okna."
 
-#: data/org.gnome.devhelp.gschema.xml:33
+#: ../data/devhelp.schemas.in.h:7
 msgid "X position of main window"
 msgstr "Umiestnenie hlavného okna v smere osi X"
 
-#: data/org.gnome.devhelp.gschema.xml:34
+#: ../data/devhelp.schemas.in.h:8
 msgid "The X position of the main window."
 msgstr "Umiestnenie hlavného okna v smere osi X."
 
-#: data/org.gnome.devhelp.gschema.xml:38
+#: ../data/devhelp.schemas.in.h:9
 msgid "Y position of main window"
 msgstr "Umiestnenie hlavného okna v smere osi Y"
 
-#: data/org.gnome.devhelp.gschema.xml:39
+#: ../data/devhelp.schemas.in.h:10
 msgid "The Y position of the main window."
 msgstr "Umiestnenie hlavného okna v smere osi Y."
 
-#: data/org.gnome.devhelp.gschema.xml:45
-msgid "Width of the index and search pane"
-msgstr "Šírka indexu a vyhľadávacieho panelu"
-
-#: data/org.gnome.devhelp.gschema.xml:46
-msgid "The width of the index and search pane."
-msgstr "Šírka indexu a vyhľadávacieho panelu."
-
-#: data/org.gnome.devhelp.gschema.xml:52
-msgid "Books disabled"
-msgstr "Zakázané knihy"
-
-#: data/org.gnome.devhelp.gschema.xml:53
-msgid "List of books disabled by the user."
-msgstr "Zoznam kníh zakázaných používateľom."
-
-#: data/org.gnome.devhelp.gschema.xml:57
-msgid "Group by language"
-msgstr "Zoskupiť podla jazyka"
-
-#: data/org.gnome.devhelp.gschema.xml:58
-msgid "Whether books should be grouped by language in the UI"
-msgstr ""
-"Určuje, či by sa mali knihy v používateľskom rozhraní zoskupovať podla jazyka"
-
-#: data/org.gnome.devhelp.gschema.xml:67
-msgid "Whether the assistant window should be maximized"
-msgstr "Určuje, či má byť okno asistenta maximalizované"
-
-# nahlasene
-#: data/org.gnome.devhelp.gschema.xml:68
-msgid "Whether the assistant window should be maximized."
-msgstr "Určuje, či má byť okno asistenta maximalizované."
-
-#: data/org.gnome.devhelp.gschema.xml:72
+#: ../data/devhelp.schemas.in.h:11
 msgid "Width of the assistant window"
 msgstr "Šírka okna asistenta"
 
-#: data/org.gnome.devhelp.gschema.xml:73
+#: ../data/devhelp.schemas.in.h:12
 msgid "The width of the assistant window."
 msgstr "Šírka okna asistenta."
 
-#: data/org.gnome.devhelp.gschema.xml:77
+#: ../data/devhelp.schemas.in.h:13
 msgid "Height of assistant window"
 msgstr "Výška okna asistenta"
 
-#: data/org.gnome.devhelp.gschema.xml:78
+#: ../data/devhelp.schemas.in.h:14
 msgid "The height of the assistant window."
 msgstr "Výška okna asistenta."
 
-#: data/org.gnome.devhelp.gschema.xml:82
+#: ../data/devhelp.schemas.in.h:15
 msgid "X position of assistant window"
 msgstr "Umiestnenie okna asistenta v smere osi X"
 
-#: data/org.gnome.devhelp.gschema.xml:83
+#: ../data/devhelp.schemas.in.h:16
 msgid "The X position of the assistant window."
 msgstr "Umiestnenie okna asistenta v smere osi X."
 
-#: data/org.gnome.devhelp.gschema.xml:87
+#: ../data/devhelp.schemas.in.h:17
 msgid "Y position of assistant window"
 msgstr "Umiestnenie okna asistenta v smere osi Y"
 
-#: data/org.gnome.devhelp.gschema.xml:88
+#: ../data/devhelp.schemas.in.h:18
 msgid "The Y position of the assistant window."
 msgstr "Umiestnenie okna asistenta v smere osi Y."
 
-#: data/org.gnome.devhelp.gschema.xml:94
+#: ../data/devhelp.schemas.in.h:19
+msgid "Width of the index and search pane"
+msgstr "Šírka indexu a vyhľadávacieho panelu"
+
+#: ../data/devhelp.schemas.in.h:20
+msgid "The width of the index and search pane."
+msgstr "Šírka indexu a vyhľadávacieho panelu."
+
+#: ../data/devhelp.schemas.in.h:21
+msgid "Selected tab: \"content\" or \"search\""
+msgstr "Zvolená karta: „obsah“ (obsah) alebo „search“ (hľadanie)"
+
+#: ../data/devhelp.schemas.in.h:22
+msgid "Which of the tabs is selected: \"content\" or \"search\"."
+msgstr ""
+"Ktorá z týchto kariet je vybraná: „content“ (obsah) alebo „search“ "
+"(hľadanie)."
+
+#: ../data/devhelp.schemas.in.h:23
+msgid "Books disabled"
+msgstr "Zakázané knihy"
+
+#: ../data/devhelp.schemas.in.h:24
+msgid "List of books disabled by the user."
+msgstr "Zoznam kníh zakázaných používateľom."
+
+#: ../data/devhelp.schemas.in.h:25
+msgid "Group by language"
+msgstr "Zoskupiť podla jazyka"
+
+#: ../data/devhelp.schemas.in.h:26
+msgid "Whether books should be grouped by language in the UI"
+msgstr "Či by sa mali knihy v používateľskom rozhraní zoskupovať podla jazyka"
+
+#: ../data/devhelp.schemas.in.h:27
 msgid "Use system fonts"
 msgstr "Použiť systémové písma"
 
-#: data/org.gnome.devhelp.gschema.xml:95
+#: ../data/devhelp.schemas.in.h:28
 msgid "Use the system default fonts."
 msgstr "Použiť predvolené systémové písma."
 
-#: data/org.gnome.devhelp.gschema.xml:99
+#: ../data/devhelp.schemas.in.h:29
 msgid "Font for text"
 msgstr "Písmo pre text"
 
-#: data/org.gnome.devhelp.gschema.xml:100
+#: ../data/devhelp.schemas.in.h:30
 msgid "Font for text with variable width."
 msgstr "Písmo pre text s premenlivou šírkou."
 
-#: data/org.gnome.devhelp.gschema.xml:104
+#: ../data/devhelp.schemas.in.h:31
 msgid "Font for fixed width text"
 msgstr "Písmo pre pevnú šírku textu"
 
-#: data/org.gnome.devhelp.gschema.xml:105
+#: ../data/devhelp.schemas.in.h:32
 msgid "Font for text with fixed width, such as code examples."
 msgstr "Písmo pre text s pevnou šírkou, napríklad ukážky kódu."
 
-#: misc/gedit-plugin/devhelp.plugin.desktop.in:6
+#: ../data/ui/devhelp.builder.h:1
+msgid "New window"
+msgstr "Nové okno"
+
+#: ../data/ui/devhelp.builder.h:2
+msgid "Preferences"
+msgstr "Nastavenia"
+
+#: ../data/ui/devhelp.builder.h:3
+msgid "About Devhelp"
+msgstr "O programe Devhelp"
+
+#: ../data/ui/devhelp.builder.h:4
+msgid "Quit"
+msgstr "Ukončiť"
+
+#: ../data/ui/devhelp.builder.h:5
+msgid "_Window"
+msgstr "_Okno"
+
+#: ../data/ui/devhelp.builder.h:6
+msgid "New _Tab"
+msgstr "Nová _karta"
+
+#: ../data/ui/devhelp.builder.h:7
+msgid "_Print"
+msgstr "_Tlačiť"
+
+#: ../data/ui/devhelp.builder.h:8
+msgid "_Close"
+msgstr "_Zatvoriť"
+
+#: ../data/ui/devhelp.builder.h:9
+msgid "_Edit"
+msgstr "_Upraviť"
+
+#: ../data/ui/devhelp.builder.h:10
+msgid "_Copy"
+msgstr "_Kopírovať"
+
+#: ../data/ui/devhelp.builder.h:11
+msgid "_Find"
+msgstr "_Nájsť"
+
+#: ../data/ui/devhelp.builder.h:12
+msgid "Find _Next"
+msgstr "Nájsť ď_alšie"
+
+#: ../data/ui/devhelp.builder.h:13
+msgid "Find _Previous"
+msgstr "Nájsť _predchádzajúce"
+
+#: ../data/ui/devhelp.builder.h:14
+msgid "_View"
+msgstr "_Zobraziť"
+
+#: ../data/ui/devhelp.builder.h:15
+msgid "_Larger text"
+msgstr "_Väčší text"
+
+#: ../data/ui/devhelp.builder.h:16
+msgid "S_maller text"
+msgstr "_Menší text"
+
+#: ../data/ui/devhelp.builder.h:17
+msgid "_Normal size"
+msgstr "_Normálna veľkosť"
+
+#: ../data/ui/devhelp.builder.h:18
+msgid "Fullscreen"
+msgstr "Celá obrazovka"
+
+#: ../data/ui/devhelp.builder.h:19
+msgid "_Go"
+msgstr "P_rejsť"
+
+#: ../data/ui/devhelp.builder.h:20
+msgid "_Back"
+msgstr "_Späť"
+
+#: ../data/ui/devhelp.builder.h:21
+msgid "_Forward"
+msgstr "_Dopredu"
+
+#: ../data/ui/devhelp.builder.h:22
+msgid "_Search Tab"
+msgstr "Karta vyhľadáva_nia"
+
+#: ../data/ui/devhelp.builder.h:23
+msgid "_Contents Tab"
+msgstr "Karta _obsahu"
+
+#: ../data/ui/devhelp.builder.h:24
+msgid "Go to the previous page"
+msgstr "Prejsť na predchádzajúcu stranu"
+
+#: ../data/ui/devhelp.builder.h:25
+msgid "Go to the next page"
+msgstr "Prejsť na ďalšiu stranu"
+
+#: ../data/ui/devhelp.builder.h:26
+msgid "Decrease the text size"
+msgstr "Zmenšiť veľkosť textu"
+
+#: ../data/ui/devhelp.builder.h:27
+msgid "Increase the text size"
+msgstr "Zväčšiť veľkosť textu"
+
+#: ../data/ui/devhelp.builder.h:28
+msgid "_Group by language"
+msgstr "_Zoskupiť podla jazyka"
+
+#: ../data/ui/devhelp.builder.h:29
+msgid "Enabled"
+msgstr "Zapnuté"
+
+#: ../data/ui/devhelp.builder.h:30
+msgid "Title"
+msgstr "Titulok"
+
+#: ../data/ui/devhelp.builder.h:31
+msgid "Book Shelf"
+msgstr "Knižnica"
+
+#: ../data/ui/devhelp.builder.h:32
+msgid "_Use system fonts"
+msgstr "Použiť _systémové písma"
+
+#: ../data/ui/devhelp.builder.h:33
+msgid "_Variable width: "
+msgstr "Premenli_vá šírka: "
+
+#: ../data/ui/devhelp.builder.h:34
+msgid "_Fixed width:"
+msgstr "_Pevná šírka:"
+
+#: ../data/ui/devhelp.builder.h:35
+msgid "Fonts"
+msgstr "Písma"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
 msgid "Devhelp support"
 msgstr "Podpora pre Devhelp"
 
-#: misc/gedit-plugin/devhelp.py:42
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "Zariadi, že F2 vyvolá Devhelp pre slovo, na ktorom je kurzor"
+
+#: ../misc/gedit-plugin/devhelp.py:69
 msgid "Show API Documentation"
 msgstr "Zobraziť dokumentáciu API"
 
-#: src/devhelp-menu.ui:28 src/dh-window.ui:46
-msgid "New _Window"
-msgstr "Nové _okno"
+#: ../misc/gedit-plugin/devhelp.py:71
+msgid "Show API Documentation for the word at the cursor"
+msgstr "Zobraziť dokumentáciu API pre slovo, na ktorom je kurzor"
 
-#: src/devhelp-menu.ui:35 src/dh-window.ui:89
-msgid "_Preferences"
-msgstr "Nas_tavenia"
-
-#: src/devhelp-menu.ui:41 src/dh-window.ui:95
-msgid "_Keyboard Shortcuts"
-msgstr "_Klávesové skratky"
-
-#: src/devhelp-menu.ui:45
-msgid "_About"
-msgstr "_O programe"
-
-#: src/devhelp-menu.ui:49 src/dh-window.ui:103
-msgid "_Quit"
-msgstr "U_končiť"
-
-#: src/help-overlay.ui:14
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Všeobecné"
-
-#: src/help-overlay.ui:19
-msgctxt "shortcut window"
-msgid "Focus global search"
-msgstr "Zameranie globálneho vyhľadávania"
-
-#: src/help-overlay.ui:26
-msgctxt "shortcut window"
-msgid "Find in current page"
-msgstr "Nájdenie v aktuálnej stránke"
-
-#: src/help-overlay.ui:33
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "Otvorenie nového okna"
-
-#: src/help-overlay.ui:40
-msgctxt "shortcut window"
-msgid "Open a new tab"
-msgstr "Otvorenie novej karty"
-
-#: src/help-overlay.ui:47
-msgctxt "shortcut window"
-msgid "Toggle side panel visibility"
-msgstr "Prepnutie viditeľnosti bočného panelu"
-
-#: src/help-overlay.ui:54
-msgctxt "shortcut window"
-msgid "Go back"
-msgstr "Prejdenie späť"
-
-#: src/help-overlay.ui:61
-msgctxt "shortcut window"
-msgid "Go forward"
-msgstr "Prejdenie dopredu"
-
-#: src/help-overlay.ui:68
-msgctxt "shortcut window"
-msgid "Print"
-msgstr "Tlač"
-
-#: src/help-overlay.ui:75
-msgctxt "shortcut window"
-msgid "Close the current window"
-msgstr "Zatvorenie aktuálneho okna"
-
-#: src/help-overlay.ui:82
-msgctxt "shortcut window"
-msgid "Close all windows"
-msgstr "Zatvorenie všetkých okien"
-
-#: src/help-overlay.ui:90
-msgctxt "shortcut window"
-msgid "Zoom"
-msgstr "Priblíženie"
-
-#: src/help-overlay.ui:95
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Zväčšenie"
-
-#: src/help-overlay.ui:102
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Zmenšenie"
-
-#: src/help-overlay.ui:109
-msgctxt "shortcut window"
-msgid "Reset Zoom"
-msgstr "Vynulovanie priblíženia"
-
-#: src/dh-app.c:234
-msgid "A developers’ help browser for GNOME"
-msgstr "Prehliadač pomocníka pre vývojárov prostredia GNOME"
-
-#: src/dh-app.c:236
-msgid "translator-credits"
+#: ../src/dh-app.c:162
+msgid "translator_credits"
 msgstr ""
 "Marcel Telka <marcel@telka.sk>\n"
-"Roman Mátyus <romanmatyus@gmail.com>\n"
-"Dušan Kazik <prescott66@gmail.com>"
+"Roman Mátyus <romanmatyus@gmail.com>"
 
-#: src/dh-app.c:238
-msgid "Devhelp Website"
+#: ../src/dh-app.c:169
+msgid "A developers' help browser for GNOME"
+msgstr "Prehliadač pomocníka pre vývojárov pre GNOME"
+
+#: ../src/dh-app.c:177
+msgid "DevHelp Website"
 msgstr "Webová stránka Devhelp"
 
-#: src/dh-app.c:462
-msgid "Opens a new Devhelp window"
-msgstr "Otvoriť nové okno Devhelp"
-
-#: src/dh-app.c:467
-msgid "Search for a keyword"
-msgstr "Vyhľadať kľúčové slovo"
-
-#: src/dh-app.c:468 src/dh-app.c:473
-msgid "KEYWORD"
-msgstr "KĽÚČOVÉ SLOVO"
-
-#: src/dh-app.c:472
-msgid "Search and display any hit in the assistant window"
-msgstr "Nájsť a zobraziť každý výskyt v okne asistenta"
-
-#: src/dh-app.c:477
-msgid "Display the version and exit"
-msgstr "Zobraziť verziu a ukončiť"
-
-#: src/dh-app.c:482
-msgid "Quit any running Devhelp"
-msgstr "Ukončiť každý bežiaci Devhelp"
-
-#. Please don't translate "Devhelp"
-#: src/dh-assistant.ui:8
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:76
 msgid "Devhelp — Assistant"
 msgstr "Devhelp — asistent"
 
-#: src/dh-assistant-view.c:399
+#: ../src/dh-assistant-view.c:395
 msgid "Book:"
 msgstr "Kniha:"
 
-#: src/dh-book.c:324
+#: ../src/dh-book.c:252
 #, c-format
 msgid "Language: %s"
 msgstr "Jazyk: %s"
 
-#: src/dh-book.c:325
+#: ../src/dh-book.c:253
 msgid "Language: Undefined"
 msgstr "Jazyk: Nedefinovaný"
 
-#: src/dh-book-tree.c:648
-msgid "_Collapse All"
-msgstr "Z_baliť všetko"
-
 #. i18n: a documentation book
-#: src/dh-link.c:403
+#: ../src/dh-link.c:267
 msgid "Book"
 msgstr "Kniha"
 
 #. i18n: a "page" in a documentation book
-#: src/dh-link.c:407
+#: ../src/dh-link.c:270
 msgid "Page"
 msgstr "Strana"
 
 #. i18n: a search hit in the documentation, could be a
 #. * function, macro, struct, etc
-#: src/dh-link.c:412
+#: ../src/dh-link.c:274
 msgid "Keyword"
 msgstr "Kľúčové slovo"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:418
+#: ../src/dh-link.c:279
 msgid "Function"
 msgstr "Funkcia"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:424
+#: ../src/dh-link.c:284
 msgid "Struct"
 msgstr "Štruktúra"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:430
+#: ../src/dh-link.c:289
 msgid "Macro"
 msgstr "Makro"
 
@@ -401,225 +392,203 @@ msgstr "Makro"
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:436
+#: ../src/dh-link.c:294
 msgid "Enum"
 msgstr "Enum"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:442
+#: ../src/dh-link.c:299
 msgid "Type"
 msgstr "Typ"
 
-#. i18n: in the programming language context, if you don't
-#. * have an ESTABLISHED term for it, leave it
-#. * untranslated.
-#: src/dh-link.c:448
-msgid "Property"
-msgstr "Vlastnosť"
+#: ../src/dh-main.c:48
+msgid "Opens a new Devhelp window"
+msgstr "Otvoriť nové okno Devhelp"
 
-#. i18n: in the programming language context, if you don't
-#. * have an ESTABLISHED term for it, leave it
-#. * untranslated.
-#: src/dh-link.c:454
-msgid "Signal"
-msgstr "Signál"
+#: ../src/dh-main.c:53
+msgid "Focus the Devhelp window with the search field active"
+msgstr "Aktivovať okno Devhelp s aktívnym vyhľadávacím poľom"
 
-#: src/dh-preferences.ui:40
-msgid "Preferences"
-msgstr "Nastavenia"
+#: ../src/dh-main.c:58
+msgid "Search for a keyword"
+msgstr "Vyhľadať kľúčové slovo"
 
-#: src/dh-preferences.ui:76
-msgid "_Group by language"
-msgstr "_Zoskupiť podla jazyka"
+#: ../src/dh-main.c:59 ../src/dh-main.c:64
+msgid "KEYWORD"
+msgstr "KĽÚČOVÉ SLOVO"
 
-#: src/dh-preferences.ui:107
-msgid "Enabled"
-msgstr "Povolené"
+#: ../src/dh-main.c:63
+msgid "Search and display any hit in the assistant window"
+msgstr "Nájsť a zobraziť každý výskyt v okne asistenta"
 
-#: src/dh-preferences.ui:122
-msgid "Title"
-msgstr "Titulok"
+#: ../src/dh-main.c:68
+msgid "Display the version and exit"
+msgstr "Zobraziť verziu a ukončiť"
 
-#: src/dh-preferences.ui:151
-msgid "Book Shelf"
-msgstr "Knižnica"
+#: ../src/dh-main.c:73
+msgid "Quit any running Devhelp"
+msgstr "Ukončiť každý bežiaci Devhelp"
 
-#: src/dh-preferences.ui:172
-msgid "_Use system fonts"
-msgstr "Použiť _systémové písma"
+#: ../src/dh-parser.c:97 ../src/dh-parser.c:199 ../src/dh-parser.c:263
+#: ../src/dh-parser.c:273
+#, c-format
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "Očakávané „%s“, vyskytlo sa „%s“ na riadku %d, stĺpci %d"
 
-#: src/dh-preferences.ui:196
-msgid "_Variable width: "
-msgstr "Premenli_vá šírka: "
+#: ../src/dh-parser.c:114
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "Neplatný menný priestor „%s“ na riadku %d, stĺpci %d"
 
-#: src/dh-preferences.ui:209
-msgid "_Fixed width:"
-msgstr "_Pevná šírka:"
+# Sú to názvy elementov, nie je dôvod na ich prekladanie
+#: ../src/dh-parser.c:143
+#, c-format
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr ""
+"Elementy „title“, „name“ a „link“ sú vyžadované na riadku %d, stĺpci %d"
 
-#: src/dh-preferences.ui:270
-msgid "Fonts"
-msgstr "Písma"
+# Sú to názvy elementov, nie je dôvod na ich prekladanie
+#: ../src/dh-parser.c:218
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column "
+"%d"
+msgstr ""
+"Elementy „name“ a „link“ sú vyžadované vo vnútri <sub> na riadku %d, "
+"stĺpci %d"
 
-#: src/dh-window.c:75
+# Sú to názvy elementov, nie je dôvod na ich prekladanie
+#: ../src/dh-parser.c:298
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr ""
+"Elementy „name“ a „link“ sú vyžadované vo vnútri „%s“ na riadku %d, "
+"stĺpci %d"
+
+# Sú to názvy elementov, nie je dôvod na ich prekladanie
+#: ../src/dh-parser.c:311
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr ""
+"Element „type“ je vyžadovaný vo vnútri <keyword> na riadku %d, stĺpci %d"
+
+#: ../src/dh-parser.c:514
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "Nepodarilo sa rozbaliť knihu „%s“: %s"
+
+#: ../src/dh-search.c:492
+msgid "All books"
+msgstr "Všetky knihy"
+
+#: ../src/dh-search.c:1110
+msgid "Search in:"
+msgstr "Hľadať v:"
+
+#: ../src/dh-window.c:100
 msgid "50%"
 msgstr "50 %"
 
-#: src/dh-window.c:76
+#: ../src/dh-window.c:101
 msgid "75%"
 msgstr "75 %"
 
-#: src/dh-window.c:77
+#: ../src/dh-window.c:102
 msgid "100%"
 msgstr "100 %"
 
-#: src/dh-window.c:78
+#: ../src/dh-window.c:103
 msgid "125%"
 msgstr "125 %"
 
-#: src/dh-window.c:79
+#: ../src/dh-window.c:104
 msgid "150%"
 msgstr "150 %"
 
-#: src/dh-window.c:80
+#: ../src/dh-window.c:105
 msgid "175%"
 msgstr "175 %"
 
-#: src/dh-window.c:81
+#: ../src/dh-window.c:106
 msgid "200%"
 msgstr "200 %"
 
-#: src/dh-window.c:82
+#: ../src/dh-window.c:107
 msgid "300%"
 msgstr "300 %"
 
-#: src/dh-window.c:83
+#: ../src/dh-window.c:108
 msgid "400%"
 msgstr "400 %"
 
-#: src/dh-window.c:1029
+#: ../src/dh-window.c:1046
+msgid "Contents"
+msgstr "Obsah"
+
+#: ../src/dh-window.c:1056
+msgid "Search"
+msgstr "Hľadať"
+
+#: ../src/dh-window.c:1266
 msgid "Error opening the requested link."
 msgstr "Chyba pri otváraní požadovaného odkazu."
 
-#: src/dh-window.c:1346
-msgid "_Close"
-msgstr "_Zavrieť"
-
-#: src/dh-window.c:1364 src/dh-window.c:1545
+#: ../src/dh-window.c:1638 ../src/dh-window.c:1885
 msgid "Empty Page"
 msgstr "Prázdna strana"
 
-#: src/dh-window.ui:7
-msgid "Side _Panel"
-msgstr "_Bočný panel"
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "Nájsť:"
 
-#: src/dh-window.ui:15 src/dh-window.ui:60
-msgid "_Print"
-msgstr "_Tlačiť"
+#: ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "Nájsť predchádzajúce"
 
-#: src/dh-window.ui:20 src/dh-window.ui:65
-msgid "_Find"
-msgstr "_Nájsť"
+#: ../src/eggfindbar.c:333 ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "Nájsť predchádzajúci výskyt hľadaného reťazca"
 
-#: src/dh-window.ui:27 src/dh-window.ui:72
-msgid "_Larger Text"
-msgstr "_Väčší text"
+#: ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "Nájsť ďalšie"
 
-#: src/dh-window.ui:32 src/dh-window.ui:77
-msgid "S_maller Text"
-msgstr "_Menší text"
+#: ../src/eggfindbar.c:346 ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "Nájsť nasledujúci výskyt hľadaného reťazca"
 
-#: src/dh-window.ui:37 src/dh-window.ui:82
-msgid "_Normal Size"
-msgstr "_Normálna veľkosť"
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "Citlivé na _veľkosť písmen"
 
-#: src/dh-window.ui:53
-msgid "_Side Panel"
-msgstr "_Bočný panel"
+#: ../src/eggfindbar.c:362 ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "Prepnúť citlivosť na veľkosť písmen vyhľadávanie"
 
-#: src/dh-window.ui:99
-msgid "_About Devhelp"
-msgstr "_O programe Devhelp"
+#~ msgid "_File"
+#~ msgstr "_Súbor"
 
-#: src/dh-window.ui:133
-msgid "Back"
-msgstr "Späť"
+#~ msgid "_Help"
+#~ msgstr "_Pomocník"
 
-#: src/dh-window.ui:152
-msgid "Forward"
-msgstr "Dopredu"
+#~ msgid "Use the normal text size"
+#~ msgstr "Použiť normálnu veľkosť textu"
 
-#: src/dh-window.ui:176
-msgid "New Tab"
-msgstr "Nová karta"
+#~ msgid "Leave fullscreen mode"
+#~ msgstr "Opustiť režim celej obrazovky"
 
-#~ msgid "Selected tab: \"content\" or \"search\""
-#~ msgstr "Zvolená karta: „obsah“ (obsah) alebo „search“ (hľadanie)"
+#~ msgid "Display in full screen"
+#~ msgstr "Zobraziť v režime celej obrazovky"
 
-#~ msgid "Which of the tabs is selected: \"content\" or \"search\"."
-#~ msgstr ""
-#~ "Ktorá z týchto kariet je vybraná: „content“ (obsah) alebo "
-#~ "„search“ (hľadanie)."
+#~ msgid "Larger"
+#~ msgstr "Zväčšiť"
 
-#~ msgid "Expected '%s', got '%s' at line %d, column %d"
-#~ msgstr "Očakávané „%s“, vyskytlo sa „%s“ na riadku %d, stĺpci %d"
+#~ msgid "Smaller"
+#~ msgstr "Zmenšiť"
 
-#~ msgid "Invalid namespace '%s' at line %d, column %d"
-#~ msgstr "Neplatný menný priestor „%s“ na riadku %d, stĺpci %d"
-
-# Sú to názvy elementov, nie je dôvod na ich prekladanie
-#~ msgid ""
-#~ "\"title\", \"name\" and \"link\" elements are required at line %d, column "
-#~ "%d"
-#~ msgstr ""
-#~ "Elementy „title“, „name“ a „link“ sú vyžadované na riadku %d, stĺpci %d"
-
-# Sú to názvy elementov, nie je dôvod na ich prekladanie
-#~ msgid ""
-#~ "\"name\" and \"link\" elements are required inside <sub> on line %d, "
-#~ "column %d"
-#~ msgstr ""
-#~ "Elementy „name“ a „link“ sú vyžadované vo vnútri <sub> na riadku %d, "
-#~ "stĺpci %d"
-
-# Sú to názvy elementov, nie je dôvod na ich prekladanie
-#~ msgid ""
-#~ "\"name\" and \"link\" elements are required inside '%s' on line %d, "
-#~ "column %d"
-#~ msgstr ""
-#~ "Elementy „name“ a „link“ sú vyžadované vo vnútri „%s“ na riadku %d, "
-#~ "stĺpci %d"
-
-# Sú to názvy elementov, nie je dôvod na ich prekladanie
-#~ msgid "\"type\" element is required inside <keyword> on line %d, column %d"
-#~ msgstr ""
-#~ "Element „type“ je vyžadovaný vo vnútri <keyword> na riadku %d, stĺpci %d"
-
-#~ msgid "Cannot uncompress book '%s': %s"
-#~ msgstr "Nedá sa rozbaliť knihu „%s“: %s"
-
-#~ msgid "_Side pane"
-#~ msgstr "_Bočný panel"
-
-#~ msgid "Makes F2 bring up Devhelp for the word at the cursor"
-#~ msgstr "Zariadi, že F2 vyvolá Devhelp pre slovo, na ktorom je kurzor"
-
-#~| msgid ""
-#~| "https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
-#~| "target=devhelp.png"
-#~ msgid ""
-#~ "<image>https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&amp;"
-#~ "do=view&amp;target=devhelp.png</image>"
-#~ msgstr ""
-#~ "<image>https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&amp;"
-#~ "do=view&amp;target=devhelp.png</image>"
-
-#~ msgid "Show API Documentation for the word at the cursor"
-#~ msgstr "Zobraziť dokumentáciu API pre slovo, na ktorom je kurzor"
-
-#~ msgid "Current"
-#~ msgstr "Aktuálne"
-
-#~ msgid "All Books"
-#~ msgstr "Všetky knihy"
+#~ msgid "Preferences…"
+#~ msgstr "Nastavenia…"

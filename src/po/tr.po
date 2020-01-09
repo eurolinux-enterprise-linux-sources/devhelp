@@ -3,698 +3,581 @@
 # Copyright (C) 2007-2012 Free Software Foundation, Inc.
 #
 # Baris Cicek <baris@teamforce.name.tr>, 2007, 2008, 2009.
-# Necdet Yücel <necdetyucel@gmail.com>, 2014.
-# Osman Karagöz <osmank3@gmail.com>, 2017.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017.
-# Muhammet Kara <muhammetk@gmail.com>, 2011, 2012, 2014, 2015, 2018.
-#
+# Muhammet Kara <muhammet.k@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: devhelp\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=devhelp&keywords=I18N+L10N&component=General\n"
-"POT-Creation-Date: 2018-03-10 11:41+0000\n"
-"PO-Revision-Date: 2018-03-11 11:15+0300\n"
-"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
-"Language: tr\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=devhelp&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-12-17 15:53+0000\n"
+"PO-Revision-Date: 2012-01-04 10:22+0000\n"
+"Last-Translator: Muhammet Kara <muhammet.k@gmail.com>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
-"X-POOTLE-MTIME: 1419278523.000000\n"
+"Plural-Forms:  nplurals=1; plural=0;\n"
+"Language: tr\n"
+"X-Generator: Lokalize 1.2\n"
 
-#. Translators: please don't translate "Devhelp" (it's marked as
-#. * translatable for transliteration only).
-#.
-#: data/org.gnome.Devhelp.appdata.xml.in:6
-#: data/org.gnome.Devhelp.desktop.in.in:3 src/dh-app.c:152 src/dh-app.c:497
+#: ../data/devhelp.desktop.in.in.h:1
+msgid "Developer's Help program"
+msgstr "Geliştirici Yardım programı"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:2 ../src/dh-main.c:281
+#: ../src/dh-window.c:731 ../src/dh-window.c:1039 ../src/dh-window.c:1868
 msgid "Devhelp"
 msgstr "Devhelp"
 
-#: data/org.gnome.Devhelp.appdata.xml.in:7
-#: data/org.gnome.Devhelp.desktop.in.in:4 src/dh-app.c:154
-msgid "A developer tool for browsing and searching API documentation"
-msgstr ""
-"API belgelendirmesine gözatmak ve belgelendirme içinde arama yapmak için bir "
-"geliştirici aracı"
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "Belgelendirme Tarayıcısı"
 
-#: data/org.gnome.Devhelp.appdata.xml.in:9
-#| msgid ""
-#| "Devhelp is an API documentation browser. It provides an easy way to "
-#| "navigate through libraries, search by function, struct, or macro. It "
-#| "provides a tabbed interface and allows to print results."
-msgid ""
-"Devhelp is a developer tool for browsing and searching API documentation. It "
-"provides an easy way to navigate through libraries and to search by "
-"function, struct, or macro."
-msgstr ""
-"Devhelp, API belgelendirmesine gözatmak ve belgelendirme içinde arama yapmak "
-"için bir geliştirici aracıdır. Kitaplıklar arasında gezinti; işlev, yapı ve "
-"makrolar ile arama için kolay bir yol sunar."
-
-#: data/org.gnome.Devhelp.appdata.xml.in:14
-msgid ""
-"The documentation must be installed locally, so an internet connection is "
-"not needed to use Devhelp."
-msgstr ""
-"Devhelp kullanırken internet bağlantısına gerek duyulmaması için; "
-"belgelendirme, bilgisayarınızda kurulu olmalıdır."
-
-#: data/org.gnome.Devhelp.appdata.xml.in:18
-msgid ""
-"Devhelp works natively with GTK-Doc, so the GTK+ and GNOME libraries are "
-"well supported. But other development platforms can be supported as well, as "
-"long as the API documentation is available in HTML and a *.devhelp2 index "
-"file is generated."
-msgstr ""
-"Devhelp GTK-Doc ile doğal olarak çalışır; dolayısıyla, GTK+ ve GNOME "
-"kütüphaneleri iyi desteklenir. Fakat API belgeleri HTML biçiminde olduğu ve "
-"bir *.devhelp2 dizin dosyası üretildiği sürece, diğer geliştirme "
-"platformları da desteklenebilir."
-
-#: data/org.gnome.Devhelp.appdata.xml.in:24
-#| msgid ""
-#| "Devhelp integrates with other applications such as Glade, Anjuta, or "
-#| "Geany."
-msgid ""
-"Devhelp integrates with other applications such as Glade, Builder or Anjuta, "
-"and plugins are available for different text editors (gedit, Vim, Emacs, "
-"Geany, …)."
-msgstr ""
-"Devhelp; Glade, Builder ya da Anjuta gibi diğer uygulamalarla bütünleşik "
-"olarak çalışır ve farklı metin düzenleyiciler (gedit, Vim, Emacs, Geany, …) "
-"için kullanılabilir eklentiler bulunmaktadır."
-
-#: data/org.gnome.Devhelp.desktop.in.in:5
-#| msgid "Documentation Browser"
-msgid "API Documentation Browser"
-msgstr "API Belgeleri Tarayıcısı"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Devhelp.desktop.in.in:7
-msgid "documentation;information;manual;developer;api;"
-msgstr "belgelendirme;bilgiler;el kitabı;rehber;kılavuz;geliştirici;api;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Devhelp.desktop.in.in:12
-#: plugins/gedit-plugin/devhelp.plugin.desktop.in:10
-msgid "devhelp"
-msgstr "devhelp"
-
-#: data/org.gnome.devhelp.gschema.xml:18
-msgid "Main window maximized state"
-msgstr "Ana pencerenin büyültülmüş durumu"
-
-#: data/org.gnome.devhelp.gschema.xml:19
-msgid "Whether the main window should start maximized."
-msgstr "Ana pencerenin büyültülmüş olarak başlatılması."
-
-#: data/org.gnome.devhelp.gschema.xml:23
-msgid "Width of the main window"
-msgstr "Ana pencerenin genişliği"
-
-#: data/org.gnome.devhelp.gschema.xml:24
-msgid "The width of the main window."
-msgstr "Ana pencerenin genişliği."
-
-#: data/org.gnome.devhelp.gschema.xml:28
-msgid "Height of main window"
-msgstr "Ana pencerenin yüksekliği"
-
-#: data/org.gnome.devhelp.gschema.xml:29
-msgid "The height of the main window."
-msgstr "Ana pencerenin yüksekliği."
-
-#: data/org.gnome.devhelp.gschema.xml:35
-msgid "Width of the index and search pane"
-msgstr "Dizin ve arama panelinin genişliği"
-
-#: data/org.gnome.devhelp.gschema.xml:36
-msgid "The width of the index and search pane."
-msgstr "Dizin ve arama panelinin genişliği."
-
-#: data/org.gnome.devhelp.gschema.xml:42
+#: ../data/devhelp.schemas.in.h:1
 msgid "Books disabled"
 msgstr "Kitaplar devre dışı"
 
-#: data/org.gnome.devhelp.gschema.xml:43
-msgid "List of books disabled by the user."
-msgstr "Kullanıcı tarafından devre dışı bırakılan kitap listesi."
+#: ../data/devhelp.schemas.in.h:2
+msgid "Font for fixed width text"
+msgstr "Sabit genişlikli metin için yazıtipi"
 
-#: data/org.gnome.devhelp.gschema.xml:47
+#: ../data/devhelp.schemas.in.h:3
+msgid "Font for text"
+msgstr "Metin için yazıtipi"
+
+#: ../data/devhelp.schemas.in.h:4
+msgid "Font for text with fixed width, such as code examples."
+msgstr "Sabit genişlikli metin, örneğin kod örnekleri, için yazıtipi."
+
+#: ../data/devhelp.schemas.in.h:5
+msgid "Font for text with variable width."
+msgstr "Değişken genişlikli metin için yazıtipi."
+
+#: ../data/devhelp.schemas.in.h:6
 msgid "Group by language"
 msgstr "Dile göre grupla"
 
-#: data/org.gnome.devhelp.gschema.xml:48
-msgid "Whether books should be grouped by language in the UI"
-msgstr "Kitapların kullanıcı arayüzü (UI) içinde dile göre gruplandırılması"
-
-#: data/org.gnome.devhelp.gschema.xml:57
-msgid "Width of the assistant window"
-msgstr "Yardımcı pencerenin genişliği"
-
-#: data/org.gnome.devhelp.gschema.xml:58
-msgid "The width of the assistant window."
-msgstr "Yardımcı pencerenin genişliği."
-
-#: data/org.gnome.devhelp.gschema.xml:62
+#: ../data/devhelp.schemas.in.h:7
 msgid "Height of assistant window"
 msgstr "Yardımcı pencerenin yüksekliği"
 
-#: data/org.gnome.devhelp.gschema.xml:63
+#: ../data/devhelp.schemas.in.h:8
+msgid "Height of main window"
+msgstr "Ana pencerenin yüksekliği"
+
+#: ../data/devhelp.schemas.in.h:9
+msgid "List of books disabled by the user."
+msgstr "Kullanıcı tarafından devre dışı bırakılan kitap listesi."
+
+#: ../data/devhelp.schemas.in.h:10
+msgid "Main window maximized state"
+msgstr "Ana pencerenin büyültülmüş durumu"
+
+#: ../data/devhelp.schemas.in.h:11
+msgid "Selected tab: \"content\" or \"search\""
+msgstr "Seçilen sekme: \"content\" (içerik) ya da \"search\" (arama)"
+
+#: ../data/devhelp.schemas.in.h:12
+msgid "The X position of the assistant window."
+msgstr "Yardımcı pencerenin X pozisyonu."
+
+#: ../data/devhelp.schemas.in.h:13
+msgid "The X position of the main window."
+msgstr "Ana pencerenin X pozisyonu."
+
+#: ../data/devhelp.schemas.in.h:14
+msgid "The Y position of the assistant window."
+msgstr "Yardımcı pencerenin Y pozisyonu."
+
+#: ../data/devhelp.schemas.in.h:15
+msgid "The Y position of the main window."
+msgstr "Ana pencerenin Y pozisyonu."
+
+#: ../data/devhelp.schemas.in.h:16
 msgid "The height of the assistant window."
 msgstr "Yardımcı pencerenin yüksekliği."
 
-#: data/org.gnome.devhelp.gschema.xml:69
+#: ../data/devhelp.schemas.in.h:17
+msgid "The height of the main window."
+msgstr "Ana pencerenin yüksekliği."
+
+#: ../data/devhelp.schemas.in.h:18
+msgid "The width of the assistant window."
+msgstr "Yardımcı pencerenin genişliği."
+
+#: ../data/devhelp.schemas.in.h:19
+msgid "The width of the index and search pane."
+msgstr "Dizin ve arama panelinin genişliği."
+
+#: ../data/devhelp.schemas.in.h:20
+msgid "The width of the main window."
+msgstr "Ana pencerenin genişliği."
+
+#: ../data/devhelp.schemas.in.h:21
 msgid "Use system fonts"
-msgstr "Sistem yazı tiplerini kullan"
+msgstr "Sistem yazıtiplerini kullan"
 
-#: data/org.gnome.devhelp.gschema.xml:70
+#: ../data/devhelp.schemas.in.h:22
 msgid "Use the system default fonts."
-msgstr "Sistem öntanımlı yazı tiplerini kullan."
+msgstr "Sistem öntanımlı yazıtiplerini kullan."
 
-#: data/org.gnome.devhelp.gschema.xml:74
-msgid "Font for text"
-msgstr "Metin için yazı tipi"
+#: ../data/devhelp.schemas.in.h:23
+msgid "Whether books should be grouped by language in the UI"
+msgstr "Kitapların kullanıcı arayüzü (UI) içinde dile göre gruplandırılması"
 
-#: data/org.gnome.devhelp.gschema.xml:75
-msgid "Font for text with variable width."
-msgstr "Değişken genişlikli metin için yazı tipi."
+#: ../data/devhelp.schemas.in.h:24
+msgid "Whether the main window should start maximized."
+msgstr "Ana pencerenin büyültülmüş olarak başlatılması."
 
-#: data/org.gnome.devhelp.gschema.xml:79
-msgid "Font for fixed width text"
-msgstr "Sabit genişlikli metin için yazı tipi"
+#: ../data/devhelp.schemas.in.h:25
+msgid "Which of the tabs is selected: \"content\" or \"search\"."
+msgstr "Hangi sekme seçili: \"content\" (içerik) ya da \"search\" (arama)."
 
-#: data/org.gnome.devhelp.gschema.xml:80
-msgid "Font for text with fixed width, such as code examples."
-msgstr "Sabit genişlikli metin, örneğin kod örnekleri, için yazı tipi."
+#: ../data/devhelp.schemas.in.h:26
+msgid "Width of the assistant window"
+msgstr "Yardımcı pencerenin genişliği"
 
-#: plugins/gedit-plugin/devhelp.plugin.desktop.in:6
+#: ../data/devhelp.schemas.in.h:27
+msgid "Width of the index and search pane"
+msgstr "Dizin ve arama panelinin genişliği"
+
+#: ../data/devhelp.schemas.in.h:28
+msgid "Width of the main window"
+msgstr "Ana pencerenin genişliği"
+
+#: ../data/devhelp.schemas.in.h:29
+msgid "X position of assistant window"
+msgstr "Yardımcı pencerenin X konumu"
+
+#: ../data/devhelp.schemas.in.h:30
+msgid "X position of main window"
+msgstr "Ana pencerenin X konumu"
+
+#: ../data/devhelp.schemas.in.h:31
+msgid "Y position of assistant window"
+msgstr "Yardımcı pencerenin Y konumu"
+
+#: ../data/devhelp.schemas.in.h:32
+msgid "Y position of main window"
+msgstr "Ana pencerenin Y konumu"
+
+#: ../data/ui/devhelp.builder.h:1
+msgid "Book Shelf"
+msgstr "Kitap Rafı"
+
+#: ../data/ui/devhelp.builder.h:2
+msgid "Enabled"
+msgstr "Etkinleştirildi"
+
+#: ../data/ui/devhelp.builder.h:3
+msgid "Fonts"
+msgstr "Yazıtipleri"
+
+#: ../data/ui/devhelp.builder.h:4
+msgid "Preferences"
+msgstr "Tercihler"
+
+#: ../data/ui/devhelp.builder.h:5
+#| msgid "_File"
+msgid "Title"
+msgstr "Başlık"
+
+#: ../data/ui/devhelp.builder.h:6
+msgid "_Fixed width:"
+msgstr "_Sabit genişlik:"
+
+#: ../data/ui/devhelp.builder.h:7
+msgid "_Group by language"
+msgstr "_Dile göre grupla"
+
+#: ../data/ui/devhelp.builder.h:8
+msgid "_Use system fonts"
+msgstr "_Sistem yazıtiplerini kullan"
+
+#: ../data/ui/devhelp.builder.h:9
+msgid "_Variable width: "
+msgstr "_Değişken genişlik: "
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
 msgid "Devhelp support"
 msgstr "Devhelp desteği"
 
-#: plugins/gedit-plugin/devhelp.py:42
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "F2 imlecin bulunduğu kelimede Devhelp'i getirir"
+
+#: ../misc/gedit-plugin/devhelp.py:69
 msgid "Show API Documentation"
 msgstr "API Belgelendirmesini Göster"
 
-#: src/dh-app.c:156
-msgid "translator-credits"
-msgstr ""
-"Barış Çiçek <baris@teamforce.name.tr>\n"
-"Muhammet Kara <muhammetk@gmail.com>\n"
-"Osman Karagöz <osmank3@gmail.com>"
+#: ../misc/gedit-plugin/devhelp.py:71
+msgid "Show API Documentation for the word at the cursor"
+msgstr "İmlecin bulunduğu kelime için API belgelendirmesini göster"
 
-#: src/dh-app.c:158
-msgid "Devhelp Website"
-msgstr "Devhelp Web Sitesi"
-
-#: src/dh-app.c:401
-msgid "Opens a new Devhelp window"
-msgstr "Yeni bir Devhelp penceresi açar"
-
-#: src/dh-app.c:406
-msgid "Search for a keyword"
-msgstr "Bir anahtar sözcük için ara"
-
-#: src/dh-app.c:407 src/dh-app.c:412
-msgid "KEYWORD"
-msgstr "ANAHTAR SÖZCÜK"
-
-#: src/dh-app.c:411
-msgid "Search and display any hit in the assistant window"
-msgstr "Ara ve bulunan herhangi bir ögeyi yardımcı penceresinde göster"
-
-#: src/dh-app.c:416
-msgid "Display the version and exit"
-msgstr "Sürümü göster ve çık"
-
-#: src/dh-app.c:421
-msgid "Quit any running Devhelp"
-msgstr "Çalışan herhangi bir Devhelp’ten çık"
-
-#. Please don't translate "Devhelp"
-#: src/dh-assistant.ui:8
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:74
 msgid "Devhelp — Assistant"
-msgstr "Devhelp — Yardımcı"
+msgstr "Devhelp - Yardımcı"
 
-#: src/dh-assistant-view.c:400
+#: ../src/dh-assistant-view.c:336
 msgid "Book:"
 msgstr "Kitap:"
 
-#: src/dh-book.c:348
+#: ../src/dh-book.c:252
 #, c-format
 msgid "Language: %s"
 msgstr "Dil: %s"
 
-#: src/dh-book.c:349
+#: ../src/dh-book.c:253
 msgid "Language: Undefined"
 msgstr "Dil: Tanımlanmamış"
 
-#: src/dh-book-tree.c:655
-msgid "_Collapse All"
-msgstr "T_üm Dalları Kapat"
-
 #. i18n: a documentation book
-#: src/dh-link.c:549
+#: ../src/dh-link.c:267
 msgid "Book"
 msgstr "Kitap"
 
 #. i18n: a "page" in a documentation book
-#: src/dh-link.c:553
+#: ../src/dh-link.c:270
 msgid "Page"
 msgstr "Sayfa"
 
 #. i18n: a search hit in the documentation, could be a
 #. * function, macro, struct, etc
-#: src/dh-link.c:558
+#: ../src/dh-link.c:274
 msgid "Keyword"
-msgstr "Anahtar sözcük"
+msgstr "Anahtar kelime"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:564
+#: ../src/dh-link.c:279
 msgid "Function"
 msgstr "İşlev"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:570
+#: ../src/dh-link.c:284
 msgid "Struct"
 msgstr "Struct"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:576
+#: ../src/dh-link.c:289
 msgid "Macro"
 msgstr "Makro"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:582
+#: ../src/dh-link.c:294
 msgid "Enum"
 msgstr "Enum"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: src/dh-link.c:588
+#: ../src/dh-link.c:299
 msgid "Type"
 msgstr "Tür"
 
-#. i18n: in the programming language context, if you don't
-#. * have an ESTABLISHED term for it, leave it
-#. * untranslated.
-#: src/dh-link.c:594
-msgid "Property"
-msgstr "Özellik"
+#: ../src/dh-main.c:47
+msgid "Search for a keyword"
+msgstr "Bir anahtar kelime için ara"
 
-#. i18n: in the programming language context, if you don't
-#. * have an ESTABLISHED term for it, leave it
-#. * untranslated.
-#: src/dh-link.c:600
-msgid "Signal"
-msgstr "Sinyal"
+#: ../src/dh-main.c:52
+msgid "Quit any running Devhelp"
+msgstr "Çalışan herhangibir Devhelp'den çık"
 
-#: src/dh-preferences.ui:40
-msgid "Preferences"
-msgstr "Tercihler"
+#: ../src/dh-main.c:57
+msgid "Display the version and exit"
+msgstr "Sürümü göster ve çık"
 
-#: src/dh-preferences.ui:76
-msgid "_Group by language"
-msgstr "_Dile göre grupla"
+#: ../src/dh-main.c:62
+msgid "Focus the Devhelp window with the search field active"
+msgstr "Devhelp penceresini arama alanı aktif şekilde odakla"
 
-#: src/dh-preferences.ui:107
-msgid "Enabled"
-msgstr "Etkinleştirildi"
+#: ../src/dh-main.c:67
+msgid "Search and display any hit in the assistant window"
+msgstr "Ara ve bulunan herhangibir öğeyi yardımcı penceresinde göster"
 
-#: src/dh-preferences.ui:122
-msgid "Title"
-msgstr "Başlık"
+#: ../src/dh-parser.c:97 ../src/dh-parser.c:199 ../src/dh-parser.c:263
+#: ../src/dh-parser.c:273
+#, c-format
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "Beklenen '%s', alınan '%s', satır %d, sütun %d"
 
-#: src/dh-preferences.ui:151
-msgid "Book Shelf"
-msgstr "Kitap Rafı"
+#: ../src/dh-parser.c:114
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "'%s' geçersiz isim alanı; satır %d, sütun %d"
 
-#: src/dh-preferences.ui:172
-msgid "_Use system fonts"
-msgstr "_Sistem yazı tiplerini kullan"
+#: ../src/dh-parser.c:143
+#, c-format
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr "\"title\", \"name\" ve \"link\" öğeleri gerekli; satır %d, sütun %d"
 
-#: src/dh-preferences.ui:196
-msgid "_Variable width: "
-msgstr "_Değişken genişlik: "
+#: ../src/dh-parser.c:218
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column %"
+"d"
+msgstr "<sub> içinde \"name\" ve \"link\" öğeleri gerekli; satır %d, sütun %d"
 
-#: src/dh-preferences.ui:209
-msgid "_Fixed width:"
-msgstr "_Sabit genişlik:"
+#: ../src/dh-parser.c:298
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr "'%s' içinde \"isim\" ve \"link\" öğeleri gerekli; satır %d, sütun %d"
 
-#: src/dh-preferences.ui:270
-msgid "Fonts"
-msgstr "Yazı Tipleri"
+#: ../src/dh-parser.c:311
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr "<keyword> içinde \"type\" öğesi gerekli; satır %d, sütun %d"
 
-#: src/dh-tab.c:68
-msgid "Error opening the requested link."
-msgstr "İstenen bağlantı açılırken hata oluştu."
+#: ../src/dh-parser.c:514
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "'%s' kitabı sıkıştırması açılamadı: %s"
 
-#: src/dh-web-view.c:201
-msgid "Empty Page"
-msgstr "Boş Sayfa"
+#: ../src/dh-search.c:500
+msgid "All books"
+msgstr "Tüm kitaplar"
 
-#: src/dh-window.ui:7 src/dh-window.ui:45
-msgid "_Side Panel"
-msgstr "Yan P_anel"
+#: ../src/dh-search.c:1118
+msgid "Search in:"
+msgstr "Arama yeri:"
 
-#: src/dh-window.ui:13 src/dh-window.ui:51
-msgid "_Print"
-msgstr "_Yazdır"
+#: ../src/dh-window.c:99
+msgid "50%"
+msgstr "%%50"
 
-#: src/dh-window.ui:17 src/dh-window.ui:55
-msgid "_Find"
-msgstr "_Bul"
+#: ../src/dh-window.c:100
+msgid "75%"
+msgstr "%%75"
 
-#: src/dh-window.ui:23 src/dh-window.ui:61
-msgid "_Larger Text"
-msgstr "Daha _Büyük Metin"
+#: ../src/dh-window.c:101
+msgid "100%"
+msgstr "%%100"
 
-#: src/dh-window.ui:27 src/dh-window.ui:65
-msgid "S_maller Text"
-msgstr "Daha _Küçük Metin"
+#: ../src/dh-window.c:102
+msgid "125%"
+msgstr "%%125"
 
-#: src/dh-window.ui:31 src/dh-window.ui:69
-msgid "_Normal Size"
-msgstr "Olağa_n Boyut"
+#: ../src/dh-window.c:103
+msgid "150%"
+msgstr "%%150"
 
-#: src/dh-window.ui:39 src/menus.ui:30
-msgid "New _Window"
-msgstr "Yeni _Pencere"
+#: ../src/dh-window.c:104
+msgid "175%"
+msgstr "%%175"
 
-#: src/dh-window.ui:75 src/menus.ui:36
-msgid "_Preferences"
-msgstr "_Tercihler"
+#: ../src/dh-window.c:105
+msgid "200%"
+msgstr "%%200"
 
-#: src/dh-window.ui:81 src/menus.ui:42
-msgid "_Keyboard Shortcuts"
-msgstr "_Klavye Kısayolları"
+#: ../src/dh-window.c:106
+msgid "300%"
+msgstr "%%300"
 
-#: src/dh-window.ui:85 src/menus.ui:46
+#: ../src/dh-window.c:107
+msgid "400%"
+msgstr "%%400"
+
+#: ../src/dh-window.c:726
+msgid "translator_credits"
+msgstr ""
+"Barış Çiçek <baris@teamforce.name.tr>\n"
+"Muhammet Kara <muhammet.k@gmail.com>"
+
+#: ../src/dh-window.c:733
+msgid "A developers' help browser for GNOME"
+msgstr "GNOME için, geliştiricinin yardım tarayıcısı"
+
+#: ../src/dh-window.c:740
+msgid "DevHelp Website"
+msgstr "DevHelp Web Sitesi"
+
+#: ../src/dh-window.c:764
+msgid "_File"
+msgstr "_Dosya"
+
+#: ../src/dh-window.c:765
+msgid "_Edit"
+msgstr "_Düzenle"
+
+#: ../src/dh-window.c:766
+msgid "_View"
+msgstr "_Görünüm"
+
+#: ../src/dh-window.c:767
+msgid "_Go"
+msgstr "_Git"
+
+#: ../src/dh-window.c:768
 msgid "_Help"
 msgstr "_Yardım"
 
-#: src/dh-window.ui:89
-msgid "_About Devhelp"
-msgstr "Devhelp _Hakkında"
+#. File menu
+#: ../src/dh-window.c:771
+msgid "_New Window"
+msgstr "_Yeni Pencere"
 
-#: src/dh-window.ui:93 src/menus.ui:54
-msgid "_Quit"
-msgstr "_Çıkış"
+#: ../src/dh-window.c:773
+msgid "New _Tab"
+msgstr "Yeni _Sekme"
 
-#: src/dh-window.ui:122
-msgid "Back"
-msgstr "Geri"
+#: ../src/dh-window.c:775
+msgid "_Print…"
+msgstr "_Yazdır..."
 
-#: src/dh-window.ui:141
-msgid "Forward"
-msgstr "İleri"
+#: ../src/dh-window.c:787 ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "Sonrakini Bul"
 
-#: src/dh-window.ui:187
-msgid "New Tab"
-msgstr "Yeni Sekme"
+#: ../src/dh-window.c:789 ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "Öncekini Bul"
 
-#: src/help-overlay.ui:14
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Genel"
+#: ../src/dh-window.c:796
+msgid "Go to the previous page"
+msgstr "Önceki sayfaya git"
 
-#: src/help-overlay.ui:19
-msgctxt "shortcut window"
-msgid "Focus global search"
-msgstr "Genel aramaya odaklan"
+#: ../src/dh-window.c:799
+msgid "Go to the next page"
+msgstr "Sonraki sayfaya git"
 
-#: src/help-overlay.ui:26
-msgctxt "shortcut window"
-msgid "Find in current page"
-msgstr "Sayfada bul"
+#: ../src/dh-window.c:802
+msgid "_Contents Tab"
+msgstr "İçi_ndekiler Sekmesi"
 
-#: src/help-overlay.ui:33
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "Yeni bir pencere aç"
+#: ../src/dh-window.c:805
+msgid "_Search Tab"
+msgstr "_Arama Sekmesi"
 
-#: src/help-overlay.ui:40
-msgctxt "shortcut window"
-msgid "Open a new tab"
-msgstr "Yeni bir sekme aç"
+#. View menu
+#: ../src/dh-window.c:809
+msgid "_Larger Text"
+msgstr "Daha _Büyük Metin"
 
-#: src/help-overlay.ui:47
-msgctxt "shortcut window"
-msgid "Toggle side panel visibility"
-msgstr "Yan panel görünürlüğünü değiştir"
+#: ../src/dh-window.c:810
+msgid "Increase the text size"
+msgstr "Metin boyutunu büyült"
 
-#: src/help-overlay.ui:54
-msgctxt "shortcut window"
-msgid "Go back"
-msgstr "Geri git"
+#: ../src/dh-window.c:812
+msgid "S_maller Text"
+msgstr "Daha _Küçük Metin"
 
-#: src/help-overlay.ui:61
-msgctxt "shortcut window"
-msgid "Go forward"
-msgstr "İleri git"
+#: ../src/dh-window.c:813
+msgid "Decrease the text size"
+msgstr "Metin boyutunu küçült"
 
-#: src/help-overlay.ui:68
-msgctxt "shortcut window"
-msgid "Print"
-msgstr "Yazdır"
+#: ../src/dh-window.c:815
+msgid "_Normal Size"
+msgstr "_Normal Boyut"
 
-#: src/help-overlay.ui:75
-msgctxt "shortcut window"
-msgid "Close the current window"
-msgstr "Geçerli pencereyi kapat"
+#: ../src/dh-window.c:816
+msgid "Use the normal text size"
+msgstr "Normal metin boyutunu kullan"
 
-#: src/help-overlay.ui:82
-msgctxt "shortcut window"
-msgid "Close all windows"
-msgstr "Tüm pencereleri kapat"
+#: ../src/dh-window.c:825
+msgid "Leave fullscreen mode"
+msgstr "Tam ekran kipinden çık"
 
-#: src/help-overlay.ui:90
-msgctxt "shortcut window"
-msgid "Zoom"
-msgstr "Yakınlaştırma"
+#: ../src/dh-window.c:832
+msgid "Display in full screen"
+msgstr "Tam ekranda göster"
 
-#: src/help-overlay.ui:95
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Yakınlaştır"
+#. Translators: This refers to text size
+#: ../src/dh-window.c:952
+msgid "Larger"
+msgstr "Daha Büyük"
 
-#: src/help-overlay.ui:102
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Uzaklaştır"
+#. Translators: This refers to text size
+#: ../src/dh-window.c:955
+msgid "Smaller"
+msgstr "Daha Küçük"
 
-#: src/help-overlay.ui:109
-msgctxt "shortcut window"
-msgid "Reset Zoom"
-msgstr "Yakınlaştırmayı sıfırla"
+#: ../src/dh-window.c:1159
+msgid "Contents"
+msgstr "İçindekiler"
 
-#: src/menus.ui:50
-msgid "_About"
-msgstr "_Hakkında"
+#: ../src/dh-window.c:1169
+msgid "Search"
+msgstr "Ara"
 
-#~ msgid "Developer’s Help program"
-#~ msgstr "Geliştirici Yardım programı"
+#: ../src/dh-window.c:1344
+msgid "Error opening the requested link."
+msgstr "İstenen bağlantı açılırken hata oluştu."
 
-#~ msgid "X position of main window"
-#~ msgstr "Ana pencerenin X konumu"
+#: ../src/dh-window.c:1657 ../src/dh-window.c:1896
+msgid "Empty Page"
+msgstr "Boş Sayfa"
 
-#~ msgid "The X position of the main window."
-#~ msgstr "Ana pencerenin X pozisyonu."
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "Bul:"
 
-#~ msgid "Y position of main window"
-#~ msgstr "Ana pencerenin Y konumu"
+#: ../src/eggfindbar.c:333 ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "Arama dizgisinin bir önceki geçtiği yeri bul"
 
-#~ msgid "The Y position of the main window."
-#~ msgstr "Ana pencerenin Y pozisyonu."
+#: ../src/eggfindbar.c:346 ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "Arama dizgisinin bir sonraki geçtiği yeri bul"
 
-#~ msgid "Whether the assistant window should be maximized"
-#~ msgstr "Yardımcı pencerenin boyutunun büyültülüp büyütülmeyeceği"
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "_Büyük Küçük Harf Duyarlı"
 
-#~ msgid "Whether the assistant window should be maximized."
-#~ msgstr "Yardımcı pencerenin boyutunun büyültülüp büyütülmeyeceği."
+#: ../src/eggfindbar.c:362 ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "Harf duyarlı aramayı aç ya da kapat"
 
-#~ msgid "X position of assistant window"
-#~ msgstr "Yardımcı pencerenin X konumu"
+#~ msgid "About Devhelp"
+#~ msgstr "Devhelp Hakkında"
 
-#~ msgid "The X position of the assistant window."
-#~ msgstr "Yardımcı pencerenin X pozisyonu."
+#~| msgid "Preferences..."
+#~ msgid "Preferences…"
+#~ msgstr "Tercihler..."
 
-#~ msgid "Y position of assistant window"
-#~ msgstr "Yardımcı pencerenin Y konumu"
+#~ msgid "Show advanced search options"
+#~ msgstr "Genişmiş arama seçeneklerini göster"
 
-#~ msgid "The Y position of the assistant window."
-#~ msgstr "Yardımcı pencerenin Y pozisyonu."
+#~ msgid "Whether the advanced search options are shown."
+#~ msgstr "Gelişmiş arama seçeneklerinin gösterilmesi."
 
-#~ msgid "A developers’ help browser for GNOME"
-#~ msgstr "GNOME için, geliştiricinin yardım tarayıcısı"
+#~ msgid "<b>Fonts</b>"
+#~ msgstr "<b>Yazıtipleri</b>"
 
-#~ msgid "50%"
-#~ msgstr "%%50"
+#~ msgid "<b>Searching</b>"
+#~ msgstr "<b>Arama</b>"
 
-#~ msgid "75%"
-#~ msgstr "%%75"
+#~ msgid "_Back"
+#~ msgstr "_Geri"
 
-#~ msgid "100%"
-#~ msgstr "%%100"
+#~ msgid "_Forward"
+#~ msgstr "İ_leri"
 
-#~ msgid "125%"
-#~ msgstr "%%125"
-
-#~ msgid "150%"
-#~ msgstr "%%150"
-
-#~ msgid "175%"
-#~ msgstr "%%175"
-
-#~ msgid "200%"
-#~ msgstr "%%200"
-
-#~ msgid "300%"
-#~ msgstr "%%300"
-
-#~ msgid "400%"
-#~ msgstr "%%400"
-
-#~ msgid "_Close"
-#~ msgstr "_Kapat"
-
-#~ msgid "Side _Panel"
-#~ msgstr "Yan _Panel"
+#~ msgid "_Show advanced search options"
+#~ msgstr "_Gelişmiş arama seçeneklerini göster"
 
 #~ msgid ""
-#~ "https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
-#~ "target=devhelp.png"
+#~ "name and link elements are required inside <function> on line %d, column %"
+#~ "d"
 #~ msgstr ""
-#~ "https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
-#~ "target=devhelp.png"
+#~ "<function> içinde isim ve bağlantı öğeleri gerekli; satır %d, sütun %d"
 
-#~ msgid "Selected tab: \"content\" or \"search\""
-#~ msgstr "Seçilen sekme: \"content\" (içerik) ya da \"search\" (arama)"
+#~ msgid "Could not create book parser"
+#~ msgstr "Kitap ayrıştırıcı oluşturulamadı"
 
-#~ msgid "Which of the tabs is selected: \"content\" or \"search\"."
-#~ msgstr "Hangi sekme seçili: \"content\" (içerik) ya da \"search\" (arama)."
+#~ msgid "Could not create markup parser"
+#~ msgstr "Biçimleme ayrıştırıcısı oluşturulamadı"
 
-#~ msgid "Makes F2 bring up Devhelp for the word at the cursor"
-#~ msgstr "F2 imlecin bulunduğu kelimede Devhelp'i getirir"
-
-#~ msgid "Expected '%s', got '%s' at line %d, column %d"
-#~ msgstr "Beklenen '%s', alınan '%s', satır %d, sütun %d"
-
-#~ msgid "Invalid namespace '%s' at line %d, column %d"
-#~ msgstr "'%s' geçersiz isim alanı; satır %d, sütun %d"
-
-#~ msgid ""
-#~ "\"title\", \"name\" and \"link\" elements are required at line %d, column "
-#~ "%d"
-#~ msgstr "\"title\", \"name\" ve \"link\" öğeleri gerekli; satır %d, sütun %d"
-
-#~ msgid ""
-#~ "\"name\" and \"link\" elements are required inside <sub> on line %d, "
-#~ "column %d"
-#~ msgstr ""
-#~ "<sub> içinde \"name\" ve \"link\" öğeleri gerekli; satır %d, sütun %d"
-
-#~ msgid ""
-#~ "\"name\" and \"link\" elements are required inside '%s' on line %d, "
-#~ "column %d"
-#~ msgstr ""
-#~ "'%s' içinde \"isim\" ve \"link\" öğeleri gerekli; satır %d, sütun %d"
-
-#~ msgid "\"type\" element is required inside <keyword> on line %d, column %d"
-#~ msgstr "<keyword> içinde \"type\" öğesi gerekli; satır %d, sütun %d"
-
-#~ msgid "Cannot uncompress book '%s': %s"
-#~ msgstr "'%s' kitabı sıkıştırması açılamadı: %s"
-
-#~ msgid "Show API Documentation for the word at the cursor"
-#~ msgstr "İmlecin bulunduğu kelime için API belgelendirmesini göster"
-
-#~ msgid "Focus the Devhelp window with the search field active"
-#~ msgstr "Devhelp penceresini arama alanı aktif şekilde odakla"
-
-#~ msgid "All books"
-#~ msgstr "Tüm kitaplar"
-
-#~ msgid "Search in:"
-#~ msgstr "Arama yeri:"
-
-#~ msgid "_File"
-#~ msgstr "_Dosya"
-
-#~ msgid "_Edit"
-#~ msgstr "_Düzenle"
-
-#~ msgid "_View"
-#~ msgstr "_Görünüm"
-
-#~ msgid "_Go"
-#~ msgstr "_Git"
-
-#~ msgid "Find Next"
-#~ msgstr "Sonrakini Bul"
-
-#~ msgid "Find Previous"
-#~ msgstr "Öncekini Bul"
-
-#~ msgid "Go to the previous page"
-#~ msgstr "Önceki sayfaya git"
-
-#~ msgid "Go to the next page"
-#~ msgstr "Sonraki sayfaya git"
-
-#~ msgid "_Contents Tab"
-#~ msgstr "İçi_ndekiler Sekmesi"
-
-#~ msgid "_Search Tab"
-#~ msgstr "_Arama Sekmesi"
-
-#~ msgid "Increase the text size"
-#~ msgstr "Metin boyutunu büyült"
-
-#~ msgid "Decrease the text size"
-#~ msgstr "Metin boyutunu küçült"
-
-#~ msgid "Use the normal text size"
-#~ msgstr "Normal metin boyutunu kullan"
-
-#~ msgid "Leave fullscreen mode"
-#~ msgstr "Tam ekran kipinden çık"
-
-#~ msgid "Display in full screen"
-#~ msgstr "Tam ekranda göster"
-
-#~ msgid "Larger"
-#~ msgstr "Daha Büyük"
-
-#~ msgid "Smaller"
-#~ msgstr "Daha Küçük"
-
-#~ msgid "Contents"
-#~ msgstr "İçindekiler"
-
-#~ msgid "Search"
-#~ msgstr "Ara"
-
-#~ msgid "Find previous occurrence of the search string"
-#~ msgstr "Arama dizgisinin bir önceki geçtiği yeri bul"
-
-#~ msgid "Find next occurrence of the search string"
-#~ msgstr "Arama dizgisinin bir sonraki geçtiği yeri bul"
-
-#~ msgid "C_ase Sensitive"
-#~ msgstr "_Büyük Küçük Harf Duyarlı"
-
-#~ msgid "Toggle case sensitive search"
-#~ msgstr "Harf duyarlı aramayı aç ya da kapat"
+#~ msgid "Devhelp is not built with zlib support"
+#~ msgstr "Devhelp zlib desteği ile derlenmemiş"

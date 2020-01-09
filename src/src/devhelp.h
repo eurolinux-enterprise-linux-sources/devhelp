@@ -12,23 +12,34 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef DEVHELP_H
-#define DEVHELP_H
+#ifndef __DEVHELP_H__
+#define __DEVHELP_H__
 
-/* Include all the public headers. */
+#include <glib.h>
 
+/* Explicitly include all the exported headers */
+#include "dh-assistant.h"
 #include "dh-assistant-view.h"
-#include "dh-book.h"
 #include "dh-book-manager.h"
+#include "dh-language.h"
+#include "dh-book.h"
 #include "dh-book-tree.h"
-#include "dh-completion.h"
-#include "dh-init.h"
+#include "dh-error.h"
 #include "dh-keyword-model.h"
 #include "dh-link.h"
 #include "dh-sidebar.h"
+#include "dh-window.h"
 
-#endif /* DEVHELP_H */
+G_BEGIN_DECLS
+
+void dh_init (void);
+
+G_END_DECLS
+
+#endif /* __DEVHELP_H__ */

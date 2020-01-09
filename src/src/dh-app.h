@@ -1,7 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*- */
 /*
  * Copyright (C) 2012 Aleksander Morgado <aleksander@gnu.org>
- * Copyright (C) 2017 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -13,15 +12,18 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef DH_APP_H
-#define DH_APP_H
+#ifndef __DH_APP_H__
+#define __DH_APP_H__
 
 #include <gtk/gtk.h>
-#include "dh-window.h"
+
+#include "dh-book-manager.h"
 
 G_BEGIN_DECLS
 
@@ -34,22 +36,33 @@ G_BEGIN_DECLS
 
 typedef struct _DhApp        DhApp;
 typedef struct _DhAppClass   DhAppClass;
+typedef struct _DhAppPrivate DhAppPrivate;
 
 struct _DhApp {
         GtkApplication parent_instance;
+        DhAppPrivate *priv;
 };
 
 struct _DhAppClass {
         GtkApplicationClass parent_class;
 };
 
-GType           dh_app_get_type                 (void) G_GNUC_CONST;
+GType dh_app_get_type (void) G_GNUC_CONST;
 
-DhApp *         dh_app_new                      (void);
+DhApp         *dh_app_new               (void);
 
-DhWindow *      dh_app_get_active_main_window   (DhApp    *app,
-                                                 gboolean  create_if_none);
+DhBookManager *dh_app_peek_book_manager (DhApp *self);
+GtkWindow     *dh_app_peek_first_window (DhApp *self);
+GtkWindow     *dh_app_peek_assistant    (DhApp *self);
+
+void           dh_app_new_window        (DhApp *self);
+void           dh_app_quit              (DhApp *self);
+void           dh_app_search            (DhApp *self,
+                                         const gchar *keyword);
+void           dh_app_search_assistant  (DhApp *self,
+                                         const gchar *keyword);
+void           dh_app_raise             (DhApp *self);
 
 G_END_DECLS
 
-#endif /* DH_APP_H */
+#endif /* __DH_APP_H__ */

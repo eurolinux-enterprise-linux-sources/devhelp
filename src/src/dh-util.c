@@ -1,8 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*- */
 /*
- * Copyright (C) 2001 Mikael Hallendal <micke@imendio.com>
- * Copyright (C) 2004, 2008 Imendio AB
- * Copyright (C) 2015, 2017, 2018 Sébastien Wilmet <swilmet@gnome.org>
+ * Copyright (C) 2001      Mikael Hallendal <micke@imendio.com>
+ * Copyright (C) 2004,2008 Imendio AB
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -14,12 +13,109 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
+#include "config.h"
+#include <string.h>
+#include <stdlib.h>
+#include <gtk/gtk.h>
+#include <math.h>
 #include "dh-util.h"
-#include "dh-link.h"
+
+
+static GtkBuilder *
+get_builder_file (const gchar *filename,
+                  const gchar *root,
+                  const gchar *domain,
+                  const gchar *first_required_widget,
+                  va_list args)
+{
+        GtkBuilder  *builder;
+        const char  *name;
+        GObject    **object_ptr;
+        GError      *error = NULL;
+
+        builder = gtk_builder_new ();
+
+        if (!gtk_builder_add_from_resource (builder, "/org/gnome/devhelp/devhelp.ui", &error)) {
+                g_warning ("Couldn't add resource: %s", error ? error->message : "unknown");
+                g_object_unref (builder);
+                g_clear_error (&error);
+                return NULL;
+        }
+
+        for (name = first_required_widget; name; name = va_arg (args, char *)) {
+                object_ptr = va_arg (args, void *);
+                *object_ptr = gtk_builder_get_object (builder, name);
+
+                if (!*object_ptr) {
+                        g_warning ("UI file '%s' is missing widget '%s'.",
+                                   filename, name);
+                        continue;
+                }
+        }
+
+        return builder;
+}
+
+GtkBuilder *
+dh_util_builder_get_file (const gchar *filename,
+                          const gchar *root,
+                          const gchar *domain,
+                          const gchar *first_required_widget,
+                          ...)
+{
+        va_list     args;
+        GtkBuilder *builder;
+
+        va_start (args, first_required_widget);
+        builder = get_builder_file (filename,
+                                    root,
+                                    domain,
+                                    first_required_widget,
+                                    args);
+        va_end (args);
+
+        return builder;
+}
+
+void
+dh_util_builder_connect (GtkBuilder *builder,
+                         gpointer    user_data,
+                         gchar     *first_widget,
+                         ...)
+{
+        va_list      args;
+        const gchar *name;
+        const gchar *signal;
+        GObject     *object;
+        gpointer    *callback;
+
+        va_start (args, first_widget);
+
+        for (name = first_widget; name; name = va_arg (args, char *)) {
+                signal = va_arg (args, void *);
+                callback = va_arg (args, void *);
+
+                object = gtk_builder_get_object (builder, name);
+                if (!object) {
+                        g_warning ("UI file is missing widget '%s', aborting",
+                                   name);
+                        continue;
+                }
+
+                g_signal_connect (object,
+                                  signal,
+                                  G_CALLBACK (callback),
+                                  user_data);
+        }
+
+        va_end (args);
+}
 
 gchar *
 dh_util_build_data_filename (const gchar *first_part,
@@ -60,6 +156,43 @@ dh_util_build_data_filename (const gchar *first_part,
         return ret;
 }
 
+gint
+dh_util_cmp_book (DhLink *a, DhLink *b)
+{
+        const gchar *name_a;
+        const gchar *name_b;
+        gchar       *name_a_casefold;
+        gchar       *name_b_casefold;
+        int          rc;
+
+        name_a = dh_link_get_name (a);
+        if (!name_a) {
+                name_a = "";
+        }
+
+        name_b = dh_link_get_name (b);
+        if (!name_b) {
+                name_b = "";
+        }
+
+        if (g_ascii_strncasecmp (name_a, "the ", 4) == 0) {
+                name_a += 4;
+        }
+        if (g_ascii_strncasecmp (name_b, "the ", 4) == 0) {
+                name_b += 4;
+        }
+
+        name_a_casefold = g_utf8_casefold (name_a, -1);
+        name_b_casefold = g_utf8_casefold (name_b, -1);
+
+        rc = strcmp (name_a_casefold, name_b_casefold);
+
+        g_free (name_a_casefold);
+        g_free (name_b_casefold);
+
+        return rc;
+}
+
 /* We're only going to expect ASCII strings here, so there's no point in
  * playing with g_unichar_totitle() and such.
  * Note that we modify the string in place.
@@ -69,7 +202,7 @@ dh_util_ascii_strtitle (gchar *str)
 {
         gboolean word_start;
 
-        if (str == NULL)
+        if (!str)
                 return;
 
         word_start = TRUE;
@@ -107,254 +240,145 @@ dh_util_create_data_uri_for_filename (const gchar *filename,
         return uri;
 }
 
-/* Set the given fonts on the given view. */
-void
-dh_util_view_set_font (WebKitWebView *view,
-                       const gchar   *font_name_fixed,
-                       const gchar   *font_name_variable)
+#ifdef HAVE_WEBKIT2
+static gdouble
+get_screen_dpi (GdkScreen *screen)
 {
-        PangoFontDescription *font_desc_fixed;
-        PangoFontDescription *font_desc_variable;
-        guint font_size_fixed;
-        guint font_size_variable;
-        guint font_size_fixed_px;
-        guint font_size_variable_px;
-        WebKitSettings *settings;
+        gdouble dpi;
+        gdouble dp, di;
 
-        g_return_if_fail (WEBKIT_IS_WEB_VIEW (view));
-        g_return_if_fail (font_name_fixed != NULL);
-        g_return_if_fail (font_name_variable != NULL);
+        dpi = gdk_screen_get_resolution (screen);
+        if (dpi != -1)
+                return dpi;
 
-        /* Get the font size. */
-        font_desc_fixed = pango_font_description_from_string (font_name_fixed);
-        font_desc_variable = pango_font_description_from_string (font_name_variable);
-        font_size_fixed = pango_font_description_get_size (font_desc_fixed) / PANGO_SCALE;
-        font_size_variable = pango_font_description_get_size (font_desc_variable) / PANGO_SCALE;
-        font_size_fixed_px = webkit_settings_font_size_to_pixels (font_size_fixed);
-        font_size_variable_px = webkit_settings_font_size_to_pixels (font_size_variable);
+        dp = hypot (gdk_screen_get_width (screen), gdk_screen_get_height (screen));
+        di = hypot (gdk_screen_get_width_mm (screen), gdk_screen_get_height_mm (screen)) / 25.4;
 
-        /* Set the fonts. */
-        settings = webkit_web_view_get_settings (view);
-        webkit_settings_set_zoom_text_only (settings, TRUE);
-        webkit_settings_set_monospace_font_family (settings, font_name_fixed);
-        webkit_settings_set_default_monospace_font_size (settings, font_size_fixed_px);
-        webkit_settings_set_serif_font_family (settings, font_name_variable);
-        webkit_settings_set_default_font_size (settings, font_size_variable_px);
+        return dp / di;
+}
+#endif
 
-        g_debug ("Set font-fixed to '%s' (%i) and font-variable to '%s' (%i).",
-                 font_name_fixed, font_size_fixed_px, font_name_variable, font_size_variable_px);
+static guint
+convert_font_size_to_pixels (GtkWidget *widget,
+                             gdouble    font_size)
+{
+#ifdef HAVE_WEBKIT2
+        /* WebKit2 uses font sizes in pixels */
+        GdkScreen *screen;
+        gdouble    dpi;
+
+        screen = gtk_widget_has_screen (widget) ?
+                gtk_widget_get_screen (widget) : gdk_screen_get_default ();
+        dpi = screen ? get_screen_dpi (screen) : 96;
+
+        return font_size / 72.0 * dpi;
+#else
+        return font_size;
+#endif
+}
+
+/* set the given fonts on the given view */
+void
+dh_util_view_set_font (WebKitWebView *view, const gchar *font_name_fixed, const gchar *font_name_variable)
+{
+        /* get the font size */
+        PangoFontDescription *font_desc_fixed = pango_font_description_from_string (font_name_fixed);
+        PangoFontDescription *font_desc_variable = pango_font_description_from_string (font_name_variable);
+        gdouble font_size_fixed = (double)pango_font_description_get_size (font_desc_fixed) / PANGO_SCALE;
+        gdouble font_size_variable = (double)pango_font_description_get_size (font_desc_variable) / PANGO_SCALE;
+        guint font_size_fixed_px = convert_font_size_to_pixels (GTK_WIDGET (view), font_size_fixed);
+        guint font_size_variable_px = convert_font_size_to_pixels (GTK_WIDGET (view), font_size_variable);
 
         pango_font_description_free (font_desc_fixed);
         pango_font_description_free (font_desc_variable);
-}
 
-static void
-introspect_window_gsettings (GSettings *window_settings,
-                             gboolean  *has_required_keys,
-                             gboolean  *has_maximized_key)
-{
-        GSettingsSchema *schema = NULL;
-
-        g_object_get (window_settings,
-                      "settings-schema", &schema,
+        /* set the fonts */
+        g_object_set (webkit_web_view_get_settings (view),
+#ifdef HAVE_WEBKIT2
+                      "zoom-text-only", TRUE,
+#endif
+                      "monospace-font-family", font_name_fixed,
+                      "default-monospace-font-size", font_size_fixed_px,
+                      "serif-font-family", font_name_variable,
+                      "default-font-size", font_size_variable_px,
                       NULL);
-
-        *has_required_keys = (g_settings_schema_has_key (schema, "width") &&
-                              g_settings_schema_has_key (schema, "height"));
-
-        *has_maximized_key = g_settings_schema_has_key (schema, "maximized");
-
-        g_settings_schema_unref (schema);
+        g_debug ("Set font-fixed to '%s' (%i) and font-variable to '%s' (%i).",
+                 font_name_fixed, font_size_fixed_px, font_name_variable, font_size_variable_px);
 }
 
 void
-dh_util_window_settings_save (GtkWindow *window,
-                              GSettings *settings)
+dh_util_window_settings_save (GtkWindow *window, GSettings *settings, gboolean has_maximize)
 {
-        gboolean has_required_keys;
-        gboolean has_maximized_key;
-        gint width;
-        gint height;
+        GdkWindowState  state;
+        gboolean        maximized;
+        gint            width, height;
+        gint            x, y;
 
-        g_return_if_fail (GTK_IS_WINDOW (window));
-        g_return_if_fail (G_IS_SETTINGS (settings));
 
-        introspect_window_gsettings (settings, &has_required_keys, &has_maximized_key);
-        g_return_if_fail (has_required_keys);
-
-        if (has_maximized_key) {
-                GdkWindowState state;
-                gboolean maximized;
-
+        if (has_maximize) {
                 state = gdk_window_get_state (gtk_widget_get_window (GTK_WIDGET (window)));
-                maximized = (state & GDK_WINDOW_STATE_MAXIMIZED) != 0;
+                if (state & GDK_WINDOW_STATE_MAXIMIZED) {
+                        maximized = TRUE;
+                } else {
+                        maximized = FALSE;
+                }
 
                 g_settings_set_boolean (settings, "maximized", maximized);
 
-                /* If maximized don't save the size. */
-                if (maximized)
+                /* If maximized don't save the size and position. */
+                if (maximized) {
                         return;
+                }
         }
 
-        /* Store the dimensions */
+        /* store the dimensions */
         gtk_window_get_size (GTK_WINDOW (window), &width, &height);
         g_settings_set_int (settings, "width", width);
         g_settings_set_int (settings, "height", height);
+
+        /* store the position */
+        gtk_window_get_position (GTK_WINDOW (window), &x, &y);
+        g_settings_set_int (settings, "x-position", x);
+        g_settings_set_int (settings, "y-position", y);
 }
 
-/* This should be called when @gtk_window is realized (i.e. its GdkWindow is
- * created) but not yet mapped (i.e. gtk_widget_show() has not yet been called,
- * so that when it is shown it already has the good size).
- */
 void
-dh_util_window_settings_restore (GtkWindow *gtk_window,
-                                 GSettings *settings)
+dh_util_window_settings_restore (GtkWindow *window,
+                                 GSettings *settings,
+                                 gboolean has_maximize)
 {
-        gboolean has_required_keys;
-        gboolean has_maximized_key;
-        gint width;
-        gint height;
-
-        g_return_if_fail (GTK_IS_WINDOW (gtk_window));
-        g_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (gtk_window)));
-        g_return_if_fail (G_IS_SETTINGS (settings));
-
-        introspect_window_gsettings (settings, &has_required_keys, &has_maximized_key);
-        g_return_if_fail (has_required_keys);
+        gboolean   maximized;
+        gint       width, height;
+        gint       x, y;
+        GdkScreen *screen;
+        gint       max_width, max_height;
 
         width = g_settings_get_int (settings, "width");
         height = g_settings_get_int (settings, "height");
+        x = g_settings_get_int (settings, "x-position");
+        y = g_settings_get_int (settings, "y-position");
 
         if (width > 1 && height > 1) {
-                GdkDisplay *display;
-                GdkWindow *gdk_window;
-                GdkMonitor *monitor;
-                GdkRectangle monitor_workarea;
-                gint max_width;
-                gint max_height;
-
-                display = gtk_widget_get_display (GTK_WIDGET (gtk_window));
-                /* To get the GdkWindow the widget must be realized. */
-                gdk_window = gtk_widget_get_window (GTK_WIDGET (gtk_window));
-                monitor = gdk_display_get_monitor_at_window (display, gdk_window);
-                gdk_monitor_get_workarea (monitor, &monitor_workarea);
-
-                max_width = monitor_workarea.width;
-                max_height = monitor_workarea.height;
+                screen = gtk_widget_get_screen (GTK_WIDGET (window));
+                max_width = gdk_screen_get_width (screen);
+                max_height = gdk_screen_get_height (screen);
 
                 width = CLAMP (width, 0, max_width);
                 height = CLAMP (height, 0, max_height);
 
-                gtk_window_set_default_size (gtk_window, width, height);
+                x = CLAMP (x, 0, max_width - width);
+                y = CLAMP (y, 0, max_height - height);
+
+                gtk_window_set_default_size (window, width, height);
         }
 
-        if (has_maximized_key && g_settings_get_boolean (settings, "maximized"))
-                gtk_window_maximize (gtk_window);
-}
+        gtk_window_move (window, x, y);
 
-/* Adds q2 onto the end of q1, and frees q2. */
-void
-dh_util_queue_concat (GQueue *q1,
-                      GQueue *q2)
-{
-        g_return_if_fail (q1 != NULL);
+        if (has_maximize) {
+                maximized = g_settings_get_boolean (settings, "maximized");
 
-        if (q2 == NULL)
-                return;
-
-        if (q1->head == NULL) {
-                g_assert_cmpint (q1->length, ==, 0);
-                g_assert (q1->tail == NULL);
-
-                q1->head = q2->head;
-                q1->tail = q2->tail;
-                q1->length = q2->length;
-        } else if (q2->head != NULL) {
-                g_assert_cmpint (q1->length, >, 0);
-                g_assert_cmpint (q2->length, >, 0);
-                g_assert (q1->tail != NULL);
-                g_assert (q2->tail != NULL);
-
-                q1->tail->next = q2->head;
-                q2->head->prev = q1->tail;
-
-                q1->tail = q2->tail;
-                q1->length += q2->length;
-        } else {
-                g_assert_cmpint (q2->length, ==, 0);
-                g_assert (q2->tail == NULL);
+                if (maximized) {
+                        gtk_window_maximize (window);
+                }
         }
-
-        q2->head = NULL;
-        q2->tail = NULL;
-        q2->length = 0;
-        g_queue_free (q2);
-}
-
-static gboolean
-unref_node_link (GNode    *node,
-                 gpointer  data)
-{
-        dh_link_unref (node->data);
-        return FALSE;
-}
-
-void
-_dh_util_free_book_tree (GNode *book_tree)
-{
-        if (book_tree == NULL)
-                return;
-
-        g_node_traverse (book_tree,
-                         G_IN_ORDER,
-                         G_TRAVERSE_ALL,
-                         -1,
-                         unref_node_link,
-                         NULL);
-
-        g_node_destroy (book_tree);
-}
-
-/* Returns: (transfer full) (element-type GFile): the list of possible Devhelp
- * index files in @book_directory, in order of preference.
- */
-GSList *
-_dh_util_get_possible_index_files (GFile *book_directory)
-{
-        const gchar *extensions[] = {
-                ".devhelp2",
-                ".devhelp2.gz",
-                ".devhelp",
-                ".devhelp.gz",
-                NULL
-        };
-        gchar *directory_name;
-        GSList *list = NULL;
-        gint i;
-
-        g_return_val_if_fail (G_IS_FILE (book_directory), NULL);
-
-        directory_name = g_file_get_basename (book_directory);
-        g_return_val_if_fail (directory_name != NULL, NULL);
-
-        for (i = 0; extensions[i] != NULL; i++) {
-                const gchar *cur_extension = extensions[i];
-                gchar *index_file_name;
-                GFile *index_file;
-
-                /* The name of the directory the index file is in and the name
-                 * of the index file (minus the extension) must match.
-                 */
-                index_file_name = g_strconcat (directory_name, cur_extension, NULL);
-
-                index_file = g_file_get_child (book_directory, index_file_name);
-                list = g_slist_prepend (list, index_file);
-
-                g_free (index_file_name);
-        }
-
-        list = g_slist_reverse (list);
-
-        g_free (directory_name);
-        return list;
 }

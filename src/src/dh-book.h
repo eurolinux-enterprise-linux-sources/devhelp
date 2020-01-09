@@ -4,7 +4,6 @@
  * Copyright (C) 2002 Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2005-2008 Imendio AB
  * Copyright (C) 2010 Lanedo GmbH
- * Copyright (C) 2017, 2018 Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -16,15 +15,16 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
-#ifndef DH_BOOK_H
-#define DH_BOOK_H
+#ifndef _DH_BOOK_H_
+#define _DH_BOOK_H_
 
-#include <gio/gio.h>
-#include "dh-completion.h"
+#include <glib-object.h>
 
 G_BEGIN_DECLS
 
@@ -44,40 +44,31 @@ struct _DhBook {
 
 struct _DhBookClass {
         GObjectClass parent_class;
-
-        /* Padding for future expansion */
-        gpointer padding[12];
 };
 
 GType        dh_book_get_type        (void) G_GNUC_CONST;
-
-DhBook *     dh_book_new             (GFile *index_file);
-
-GFile *      dh_book_get_index_file  (DhBook *book);
-
-const gchar *dh_book_get_id          (DhBook *book);
-
+DhBook      *dh_book_new             (const gchar  *book_path);
+GList       *dh_book_get_keywords    (DhBook *book);
+GList       *dh_book_get_completions (DhBook *book);
+GNode       *dh_book_get_tree        (DhBook *book);
+const gchar *dh_book_get_name        (DhBook *book);
 const gchar *dh_book_get_title       (DhBook *book);
-
 const gchar *dh_book_get_language    (DhBook *book);
-
-GList *      dh_book_get_links       (DhBook *book);
-
-GNode *      dh_book_get_tree        (DhBook *book);
-
-DhCompletion *dh_book_get_completion (DhBook *book);
-
+const gchar *dh_book_get_path        (DhBook *book);
 gboolean     dh_book_get_enabled     (DhBook *book);
-
-void         dh_book_set_enabled     (DhBook   *book,
-                                      gboolean  enabled);
-
-gint         dh_book_cmp_by_id       (DhBook *a,
-                                      DhBook *b);
-
-gint         dh_book_cmp_by_title    (DhBook *a,
-                                      DhBook *b);
+void         dh_book_set_enabled     (DhBook *book,
+                                      gboolean enabled);
+gint         dh_book_cmp_by_path     (const DhBook *a,
+                                      const DhBook *b);
+gint         dh_book_cmp_by_path_str (const DhBook *a,
+                                      const gchar  *b_path);
+gint         dh_book_cmp_by_name     (const DhBook *a,
+                                      const DhBook *b);
+gint         dh_book_cmp_by_name_str (const DhBook *a,
+                                      const gchar  *b_name);
+gint         dh_book_cmp_by_title    (const DhBook *a,
+                                      const DhBook *b);
 
 G_END_DECLS
 
-#endif /* DH_BOOK_H */
+#endif /* _DH_BOOK_H_ */

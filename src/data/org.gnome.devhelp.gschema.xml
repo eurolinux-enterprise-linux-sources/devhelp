@@ -10,6 +10,7 @@
   <schema id="org.gnome.devhelp.state.main" path="/org/gnome/devhelp/state/main/">
     <child name="window" schema="org.gnome.devhelp.state.main.window"/>
     <child name="paned" schema="org.gnome.devhelp.state.main.paned"/>
+    <child name="search-notebook" schema="org.gnome.devhelp.state.main.search-notebook"/>
     <child name="contents" schema="org.gnome.devhelp.state.main.contents"/>
   </schema>
   <schema id="org.gnome.devhelp.state.main.window" path="/org/gnome/devhelp/state/main/window/">
@@ -19,7 +20,7 @@
       <description>Whether the main window should start maximized.</description>
     </key>
     <key name="width" type="i">
-      <default>1000</default>
+      <default>700</default>
       <summary>Width of the main window</summary>
       <description>The width of the main window.</description>
     </key>
@@ -28,12 +29,29 @@
       <summary>Height of main window</summary>
       <description>The height of the main window.</description>
     </key>
+    <key name="x-position" type="i">
+      <default>100</default>
+      <summary>X position of main window</summary>
+      <description>The X position of the main window.</description>
+    </key>
+    <key name="y-position" type="i">
+      <default>100</default>
+      <summary>Y position of main window</summary>
+      <description>The Y position of the main window.</description>
+    </key>
   </schema>
   <schema id="org.gnome.devhelp.state.main.paned" path="/org/gnome/devhelp/state/main/paned/">
     <key name="position" type="i">
-      <default>300</default>
+      <default>250</default>
       <summary>Width of the index and search pane</summary>
       <description>The width of the index and search pane.</description>
+    </key>
+  </schema>
+  <schema id="org.gnome.devhelp.state.main.search-notebook" path="/org/gnome/devhelp/state/main/search-notebook/">
+    <key name="selected-tab" type="s">
+      <default>'content'</default>
+      <summary>Selected tab: "content" or "search"</summary>
+      <description>Which of the tabs is selected: "content" or "search".</description>
     </key>
   </schema>
   <schema id="org.gnome.devhelp.state.main.contents" path="/org/gnome/devhelp/state/main/contents/">
@@ -61,6 +79,16 @@
       <default>400</default>
       <summary>Height of assistant window</summary>
       <description>The height of the assistant window.</description>
+    </key>
+    <key name="x-position" type="i">
+      <default>0</default>
+      <summary>X position of assistant window</summary>
+      <description>The X position of the assistant window.</description>
+    </key>
+    <key name="y-position" type="i">
+      <default>0</default>
+      <summary>Y position of assistant window</summary>
+      <description>The Y position of the assistant window.</description>
     </key>
   </schema>
   <schema id="org.gnome.devhelp.fonts" path="/org/gnome/devhelp/fonts/">
