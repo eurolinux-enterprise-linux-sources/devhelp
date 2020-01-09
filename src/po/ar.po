@@ -1,0 +1,585 @@
+# translation of devhelp.HEAD.po to Arabic
+# Arabic translations for PACKAGE package.
+# Copyright (C) 2006 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Khaled Hosny <khaledhosny@eglug.org>, 2007, 2008, 2009, 2010, 2011.
+# Abderrahim Kitouni <a.kitouni@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: devhelp.HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-17 22:10+0100\n"
+"PO-Revision-Date: 2012-03-17 22:15+0100\n"
+"Last-Translator: Abderrahim Kitouni <a.kitouni@gmail.com>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Poedit-Language: Arabic\n"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-main.c:281
+#: ../src/dh-window.c:731 ../src/dh-window.c:1039 ../src/dh-window.c:1868
+msgid "Devhelp"
+msgstr "مساعدة المطورين"
+
+#: ../data/devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
+msgstr "برنامج وثائق المطوِّرين"
+
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "متصفّح التوثيق"
+
+#: ../data/devhelp.schemas.in.h:1
+msgid "Main window maximized state"
+msgstr "حالة تكبير النافذة الرئيسيّة"
+
+#: ../data/devhelp.schemas.in.h:2
+msgid "Whether the main window should start maximized."
+msgstr "ما إذا ستبدأ النافذة الرئيسية مكبّرة أم لا."
+
+#: ../data/devhelp.schemas.in.h:3
+msgid "Width of the main window"
+msgstr "عرض النّافذة الرّئيسيّة"
+
+#: ../data/devhelp.schemas.in.h:4
+msgid "The width of the main window."
+msgstr "عرض النّافذة الرّئيسيّة."
+
+#: ../data/devhelp.schemas.in.h:5
+msgid "Height of main window"
+msgstr "ارتفاع النّافذة الرّئيسيّة"
+
+#: ../data/devhelp.schemas.in.h:6
+msgid "The height of the main window."
+msgstr "ارتفاع النّافذة الرّئيسيّة."
+
+#: ../data/devhelp.schemas.in.h:7
+msgid "X position of main window"
+msgstr "الموضع السيني للنافذة الرئيسية"
+
+#: ../data/devhelp.schemas.in.h:8
+msgid "The X position of the main window."
+msgstr "الموضع السيني للنافذة الرئيسية."
+
+#: ../data/devhelp.schemas.in.h:9
+msgid "Y position of main window"
+msgstr "الموضع الصادي للنافذة الرئيسية"
+
+#: ../data/devhelp.schemas.in.h:10
+msgid "The Y position of the main window."
+msgstr "الموضع الصادي للنافذة الرئيسية."
+
+#: ../data/devhelp.schemas.in.h:11
+msgid "Width of the assistant window"
+msgstr "عرض النّافذة الفرعية"
+
+#: ../data/devhelp.schemas.in.h:12
+msgid "The width of the assistant window."
+msgstr "عرض النّافذة الفرعية."
+
+#: ../data/devhelp.schemas.in.h:13
+msgid "Height of assistant window"
+msgstr "ارتفاع النّافذة الفرعية"
+
+#: ../data/devhelp.schemas.in.h:14
+msgid "The height of the assistant window."
+msgstr "ارتفاع النّافذة الفرعية."
+
+#: ../data/devhelp.schemas.in.h:15
+msgid "X position of assistant window"
+msgstr "الموضع السيني للنافذة الفرعية"
+
+#: ../data/devhelp.schemas.in.h:16
+msgid "The X position of the assistant window."
+msgstr "الموضع السيني للنافذة الفرعية."
+
+#: ../data/devhelp.schemas.in.h:17
+msgid "Y position of assistant window"
+msgstr "الموضع الصادي للنافذة الفرعية"
+
+#: ../data/devhelp.schemas.in.h:18
+msgid "The Y position of the assistant window."
+msgstr "الموضع الصادي للنافذة الفرعية."
+
+#: ../data/devhelp.schemas.in.h:19
+msgid "Width of the index and search pane"
+msgstr "عرض لوح الفهرس والبحث"
+
+#: ../data/devhelp.schemas.in.h:20
+msgid "The width of the index and search pane."
+msgstr "عرض لوح الفهرس والبحث."
+
+#: ../data/devhelp.schemas.in.h:21
+msgid "Selected tab: \"content\" or \"search\""
+msgstr "اللسان المحدد: \"content\" أو \"search\""
+
+#: ../data/devhelp.schemas.in.h:22
+msgid "Which of the tabs is selected: \"content\" or \"search\"."
+msgstr "ما المختار من الألسنة: \"content\" أو \"search\"."
+
+#: ../data/devhelp.schemas.in.h:23
+msgid "Books disabled"
+msgstr "الكتب المُعطّلة"
+
+#: ../data/devhelp.schemas.in.h:24
+msgid "List of books disabled by the user."
+msgstr "قائمة بالكتب التي عطّلها المستخدم."
+
+#: ../data/devhelp.schemas.in.h:25
+msgid "Group by language"
+msgstr "جمّع حسب اللغة"
+
+#: ../data/devhelp.schemas.in.h:26
+msgid "Whether books should be grouped by language in the UI"
+msgstr "ما إذا كان من المتعين تجميع الكتب حسب اللغة في الواجهة"
+
+#: ../data/devhelp.schemas.in.h:27
+msgid "Use system fonts"
+msgstr "استخدم خطوط النّظام"
+
+#: ../data/devhelp.schemas.in.h:28
+msgid "Use the system default fonts."
+msgstr "استخدم خطوط النظام المبدئية."
+
+#: ../data/devhelp.schemas.in.h:29
+msgid "Font for text"
+msgstr "خطّ النّصّ"
+
+#: ../data/devhelp.schemas.in.h:30
+msgid "Font for text with variable width."
+msgstr "خطّ نصّ متغيّر العرض."
+
+#: ../data/devhelp.schemas.in.h:31
+msgid "Font for fixed width text"
+msgstr "خطّ النّص ثابت العرض"
+
+#: ../data/devhelp.schemas.in.h:32
+msgid "Font for text with fixed width, such as code examples."
+msgstr "خطّ النص ثابت العرض، كأمثلة الكود."
+
+#: ../data/ui/devhelp.builder.h:1
+msgid "Preferences"
+msgstr "التفضيلات"
+
+#: ../data/ui/devhelp.builder.h:2
+msgid "_Group by language"
+msgstr "_جمّع حسب اللغة"
+
+#: ../data/ui/devhelp.builder.h:3
+msgid "Enabled"
+msgstr "مُفعّل"
+
+#: ../data/ui/devhelp.builder.h:4
+msgid "Title"
+msgstr "العنوان"
+
+#: ../data/ui/devhelp.builder.h:5
+msgid "Book Shelf"
+msgstr "رف الكتب"
+
+#: ../data/ui/devhelp.builder.h:6
+msgid "_Use system fonts"
+msgstr "ا_ستخدم خطوط النّظام"
+
+#: ../data/ui/devhelp.builder.h:7
+msgid "_Variable width: "
+msgstr "_متغيِّر العرض: "
+
+#: ../data/ui/devhelp.builder.h:8
+msgid "_Fixed width:"
+msgstr "_ثابت العرض:"
+
+#: ../data/ui/devhelp.builder.h:9
+msgid "Fonts"
+msgstr "الخطوط"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+msgid "Devhelp support"
+msgstr "دعم دِڤ‌هِلب"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "يجعل F2 يجلب وثائق المطوِّر حوْل الكلمة عند المؤشِّر"
+
+#: ../misc/gedit-plugin/devhelp.py:69
+msgid "Show API Documentation"
+msgstr "اعرض وثائق واجهة برمجة التطبيقات (API)"
+
+#: ../misc/gedit-plugin/devhelp.py:71
+msgid "Show API Documentation for the word at the cursor"
+msgstr "اعرض مساعدة المطوِّر حوْل الكلمة عند المؤشِّر"
+
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:74
+msgid "Devhelp — Assistant"
+msgstr "‏مساعدة المطورين - المساعد"
+
+#: ../src/dh-assistant-view.c:337
+msgid "Book:"
+msgstr "كتاب:"
+
+#: ../src/dh-book.c:252
+#, c-format
+msgid "Language: %s"
+msgstr "اللغة: %s"
+
+#: ../src/dh-book.c:253
+msgid "Language: Undefined"
+msgstr "اللغة: غير محددة"
+
+#. i18n: a documentation book
+#: ../src/dh-link.c:267
+msgid "Book"
+msgstr "كتاب"
+
+#. i18n: a "page" in a documentation book
+#: ../src/dh-link.c:270
+msgid "Page"
+msgstr "صفحة"
+
+#. i18n: a search hit in the documentation, could be a
+#. * function, macro, struct, etc
+#: ../src/dh-link.c:274
+msgid "Keyword"
+msgstr "كلمة مفتاحية"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:279
+msgid "Function"
+msgstr "دالّة"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:284
+msgid "Struct"
+msgstr "بنية"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:289
+msgid "Macro"
+msgstr "ماكرو"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:294
+msgid "Enum"
+msgstr "Enum"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:299
+msgid "Type"
+msgstr "نوع"
+
+#: ../src/dh-main.c:47
+msgid "Search for a keyword"
+msgstr "ابحث عن كلمة مفتاحية"
+
+#: ../src/dh-main.c:52
+msgid "Quit any running Devhelp"
+msgstr "أغلق أي دِڤ‌هِلب يعمل"
+
+#: ../src/dh-main.c:57
+msgid "Display the version and exit"
+msgstr "اعرض الإصدارة و اخرج"
+
+#: ../src/dh-main.c:62
+msgid "Focus the Devhelp window with the search field active"
+msgstr "ركز على نافذة دِڤ‌هِلب التي تحتوي خانة البحث النشطة"
+
+#: ../src/dh-main.c:67
+msgid "Search and display any hit in the assistant window"
+msgstr "ابحث واعرض أي نتيجة في نافذة المساعِد"
+
+#: ../src/dh-parser.c:97 ../src/dh-parser.c:199 ../src/dh-parser.c:263
+#: ../src/dh-parser.c:273
+#, c-format
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "توقعت '%s'، لكن حصلت على '%s' في السطر %Id، و العمود %Id"
+
+#: ../src/dh-parser.c:114
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "نطاق أسماء غير سليم '%s' في السطر %Id، و العمود %Id"
+
+#: ../src/dh-parser.c:143
+#, c-format
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr "العناصر \"title\" و \"name\" و \"link\" مطلوبة عند السطر %Id، والعمود %Id"
+
+#: ../src/dh-parser.c:218
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column "
+"%d"
+msgstr "العنصران \"name\" و \"link\" مطلوبان بداخل <sub> في السطر %Id، والعمود %Id"
+
+#: ../src/dh-parser.c:298
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr "العنصران \"name\" و \"link\" مطلوبان بداخل '%s' في السطر %Id، والعمود %Id"
+
+#: ../src/dh-parser.c:311
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr "العنصر \"type\" مطلوب بداخل <keyword> في السطر %Id، والعمود %Id"
+
+#: ../src/dh-parser.c:514
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "تعذّر فك ضغط الكتاب '%s': %s"
+
+#: ../src/dh-search.c:500
+msgid "All books"
+msgstr "كل الكتب"
+
+#: ../src/dh-search.c:1118
+msgid "Search in:"
+msgstr "ابحث في:"
+
+#: ../src/dh-window.c:99
+msgid "50%"
+msgstr "50%"
+
+#: ../src/dh-window.c:100
+msgid "75%"
+msgstr "75%"
+
+#: ../src/dh-window.c:101
+msgid "100%"
+msgstr "100%"
+
+#: ../src/dh-window.c:102
+msgid "125%"
+msgstr "125%"
+
+#: ../src/dh-window.c:103
+msgid "150%"
+msgstr "150%"
+
+#: ../src/dh-window.c:104
+msgid "175%"
+msgstr "175%"
+
+#: ../src/dh-window.c:105
+msgid "200%"
+msgstr "200%"
+
+#: ../src/dh-window.c:106
+msgid "300%"
+msgstr "300%"
+
+#: ../src/dh-window.c:107
+msgid "400%"
+msgstr "400%"
+
+#: ../src/dh-window.c:726
+msgid "translator_credits"
+msgstr ""
+"فريق عربآيز للترجمة http://www.arabeyes.org :\n"
+"خالد حسني\t<khaledhosny@eglug.org>"
+
+#: ../src/dh-window.c:733
+msgid "A developers' help browser for GNOME"
+msgstr "متصفح وثائق مطوري جنوم"
+
+#: ../src/dh-window.c:740
+msgid "DevHelp Website"
+msgstr "موقع دِڤ‌هِلب"
+
+#: ../src/dh-window.c:764
+msgid "_File"
+msgstr "_ملف"
+
+#: ../src/dh-window.c:765
+msgid "_Edit"
+msgstr "ت_حرير"
+
+#: ../src/dh-window.c:766
+msgid "_View"
+msgstr "_عرض"
+
+#: ../src/dh-window.c:767
+msgid "_Go"
+msgstr "ا_ذهب"
+
+#: ../src/dh-window.c:768
+msgid "_Help"
+msgstr "_مساعدة"
+
+#. File menu
+#: ../src/dh-window.c:771
+msgid "_New Window"
+msgstr "نافذة _جديدة"
+
+#: ../src/dh-window.c:773
+msgid "New _Tab"
+msgstr "_لسان جديد"
+
+#: ../src/dh-window.c:775
+msgid "_Print…"
+msgstr "ا_طبع…"
+
+#: ../src/dh-window.c:787 ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "ابحث عن التالي"
+
+#: ../src/dh-window.c:789 ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "ابحث عن السابق"
+
+#: ../src/dh-window.c:796
+msgid "Go to the previous page"
+msgstr "اذهب للصفحة السابقة"
+
+#: ../src/dh-window.c:799
+msgid "Go to the next page"
+msgstr "اذهب للصفحة التالية"
+
+#: ../src/dh-window.c:802
+msgid "_Contents Tab"
+msgstr "_لسان المحتويات"
+
+#: ../src/dh-window.c:805
+msgid "_Search Tab"
+msgstr "لسان الب_حث"
+
+#. View menu
+#: ../src/dh-window.c:809
+msgid "_Larger Text"
+msgstr "_نص أكبر"
+
+#: ../src/dh-window.c:810
+msgid "Increase the text size"
+msgstr "زوّد حجم النص"
+
+#: ../src/dh-window.c:812
+msgid "S_maller Text"
+msgstr "نص أ_صغر"
+
+#: ../src/dh-window.c:813
+msgid "Decrease the text size"
+msgstr "قلل حجم النص"
+
+#: ../src/dh-window.c:815
+msgid "_Normal Size"
+msgstr "الحجم ال_عادي"
+
+#: ../src/dh-window.c:816
+msgid "Use the normal text size"
+msgstr "استخدم حجم النص العادي"
+
+#: ../src/dh-window.c:825
+msgid "Leave fullscreen mode"
+msgstr "غادر وضع ملء الشاشة"
+
+#: ../src/dh-window.c:832
+msgid "Display in full screen"
+msgstr "املأ الشاشة"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:952
+msgid "Larger"
+msgstr "أكبر"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:955
+msgid "Smaller"
+msgstr "أصغر"
+
+#: ../src/dh-window.c:1159
+msgid "Contents"
+msgstr "المحتويات"
+
+#: ../src/dh-window.c:1169
+msgid "Search"
+msgstr "ابحث"
+
+#: ../src/dh-window.c:1344
+msgid "Error opening the requested link."
+msgstr "خطأ أثناء فتح الرابط المطلوب."
+
+#: ../src/dh-window.c:1657 ../src/dh-window.c:1896
+msgid "Empty Page"
+msgstr "صفحة فارغة"
+
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "ابحث:"
+
+#: ../src/eggfindbar.c:333 ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "ابحث عن التواجد السابق لسلسة البحث"
+
+#: ../src/eggfindbar.c:346 ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "ابحث عن التواجد التالي لسلسلة البحث"
+
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "ح_سّاس لحالة الأحرف"
+
+#: ../src/eggfindbar.c:362 ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "بدّل البحث الحسّاس لحالة الأحرف"
+
+#~ msgid "About Devhelp"
+#~ msgstr "عن البرنامج"
+
+#~ msgid "Preferences…"
+#~ msgstr "التفضيلات…"
+
+#~ msgid "Preferences..."
+#~ msgstr "التفضيلات..."
+
+#~ msgid "Show advanced search options"
+#~ msgstr "أظهر خيارات البحث المتقدمة"
+
+#~ msgid "Whether the advanced search options are shown."
+#~ msgstr "ما إذا ستُعرض خيارات البحث المتقدّمة."
+
+#~ msgid "<b>Fonts</b>"
+#~ msgstr "<b>الخطوط</b>"
+
+#~ msgid "<b>Searching</b>"
+#~ msgstr "<b>البحث</b>"
+
+#~ msgid "_Back"
+#~ msgstr "لل_خلف"
+
+#~ msgid "_Forward"
+#~ msgstr "للأ_مام"
+
+#~ msgid "_Show advanced search options"
+#~ msgstr "أ_ظهر خيارات البحث المتقدمة"
+
+#~ msgid ""
+#~ "name and link elements are required inside <function> on line %d, column "
+#~ "%d"
+#~ msgstr ""
+#~ "عنصري الاسم والوصلة مطلوبين بداخل <function> في السطر %Id، والعمود %Id"
+
+#~ msgid "Could not create book parser"
+#~ msgstr "تعذّر إنشاء محلل كتاب"
+
+#~ msgid "Could not create markup parser"
+#~ msgstr "تعذّر إنشاء محلل رقْم"
+
+#~ msgid "Devhelp is not built with zlib support"
+#~ msgstr "لم يُبنى Devhelp بدعم zlib "

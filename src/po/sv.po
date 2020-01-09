@@ -1,0 +1,517 @@
+# Swedish messages for Devhelp.
+# Copyright © 2001-2014 Free Software Foundation, Inc.
+# Richard Hult <richard@imendio.com>, 2001, 2004.
+# Johan Dahlin <zilch.am@home.se>, 2001.
+# Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004.
+# Daniel Nylander <po@danielnylander.se>, 2006, 2008, 2009, 2010, 2011, 2012.
+# Sebastian Rasmussen <sebras@gmail.com>, 2014.
+#
+# Översätt inte "Devhelp", det är ett namn.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: devhelp\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=devhelp&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-09-13 03:11+0000\n"
+"PO-Revision-Date: 2014-09-14 01:49+0100\n"
+"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../data/devhelp.appdata.xml.in.h:1
+msgid ""
+"Devhelp is an API documentation browser. It provides an easy way to navigate "
+"through libraries, search by function, struct, or macro. It provides a "
+"tabbed interface and allows to print results."
+msgstr ""
+"Devhelp är en visare för API-dokumentation. Det erbjuder ett lätt sätt att "
+"navigera genom bibliotek, söka efter funktioner, strukturer eller makron. "
+"Det tillhandahåller ett flikbaserat gränssnitt och tillåter utskrift av "
+"resultat."
+
+#: ../data/devhelp.appdata.xml.in.h:2
+msgid ""
+"Devhelp integrates with other applications such as Glade, Anjuta, or Geany."
+msgstr "Devhelp integrerar med andra program så som Glade, Anjuta eller Geany."
+
+#: ../data/devhelp.appdata.xml.in.h:3
+msgid ""
+"https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
+"target=devhelp.png"
+msgstr ""
+"https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
+"target=devhelp.png"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-app.c:212 ../src/dh-app.c:399
+#: ../src/dh-window.c:659
+msgid "Devhelp"
+msgstr "Devhelp"
+
+#: ../data/devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
+msgstr "Hjälpprogram för utvecklare"
+
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "Dokumentationsläsare"
+
+#: ../data/devhelp.desktop.in.in.h:4
+msgid "documentation;information;manual;developer;api;"
+msgstr "dokumentation;information;manual;utvecklare;api;"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:1
+msgid "Main window maximized state"
+msgstr "Maximerat tillstånd för huvudfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:2
+msgid "Whether the main window should start maximized."
+msgstr "Huruvida huvudfönstret ska starta maximerat."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:3
+msgid "Width of the main window"
+msgstr "Bredd på huvudfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:4
+msgid "The width of the main window."
+msgstr "Bredden på huvudfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:5
+msgid "Height of main window"
+msgstr "Höjd på huvudfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:6
+msgid "The height of the main window."
+msgstr "Höjden på huvudfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:7
+msgid "X position of main window"
+msgstr "X-position för huvudfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:8
+msgid "The X position of the main window."
+msgstr "X-positionen för huvudfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:9
+msgid "Y position of main window"
+msgstr "Y-position för huvudfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:10
+msgid "The Y position of the main window."
+msgstr "Y-positionen för huvudfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:11
+msgid "Width of the index and search pane"
+msgstr "Bredd på index- och sökpanelen"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:12
+msgid "The width of the index and search pane."
+msgstr "Bredden på index- och sökpanelen."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:13
+msgid "Selected tab: \"content\" or \"search\""
+msgstr "Vald flik: “content“ eller “search“"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:14
+msgid "Which of the tabs is selected: \"content\" or \"search\"."
+msgstr "Vilken av flikarna som är vald: “content“ eller “search“."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:15
+msgid "Books disabled"
+msgstr "Böcker inaktiverade"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:16
+msgid "List of books disabled by the user."
+msgstr "Lista över böcker som inaktiverats av användaren."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:17
+msgid "Group by language"
+msgstr "Gruppera efter språk"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:18
+msgid "Whether books should be grouped by language in the UI"
+msgstr "Huruvida böckerna ska grupperas efter språk i användargränssnittet"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:19
+#| msgid "Whether the main window should start maximized."
+msgid "Whether the assistant window should be maximized"
+msgstr "Huruvida assistentfönstret ska vara maximerat"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:20
+#| msgid "Whether the main window should start maximized."
+msgid "Whether the assistant window should be maximized."
+msgstr "Huruvida assistentfönstret ska vara maximerat."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:21
+msgid "Width of the assistant window"
+msgstr "Bredd på assistentfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:22
+msgid "The width of the assistant window."
+msgstr "Bredden på assistentfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:23
+msgid "Height of assistant window"
+msgstr "Höjd på assistentfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:24
+msgid "The height of the assistant window."
+msgstr "Höjden på assistentfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:25
+msgid "X position of assistant window"
+msgstr "X-position för assistentfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:26
+msgid "The X position of the assistant window."
+msgstr "X-positionen för assistentfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:27
+msgid "Y position of assistant window"
+msgstr "Y-position för assistentfönstret"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:28
+msgid "The Y position of the assistant window."
+msgstr "Y-positionen för assistentfönstret."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:29
+msgid "Use system fonts"
+msgstr "Använd systemtypsnitt"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:30
+msgid "Use the system default fonts."
+msgstr "Använd systemets standardtypsnitt."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:31
+msgid "Font for text"
+msgstr "Typsnitt för text"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:32
+msgid "Font for text with variable width."
+msgstr "Typsnitt för text med variabel bredd."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:33
+msgid "Font for fixed width text"
+msgstr "Typsnitt för text med fast bredd"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:34
+msgid "Font for text with fixed width, such as code examples."
+msgstr "Typsnitt för text med fast bredd, som kodexempel."
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+msgid "Devhelp support"
+msgstr "Stöd för Devhelp"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "Gör så att F2 tar fram Devhelp för ordet vid markören"
+
+#: ../misc/gedit-plugin/devhelp.py:42
+msgid "Show API Documentation"
+msgstr "Visa API-dokumentation"
+
+#. ex:ts=4:et:
+#: ../src/devhelp-menu.ui.h:1 ../src/dh-window.ui.h:7
+#| msgid "_New Window"
+msgid "New _Window"
+msgstr "Nytt _fönster"
+
+#: ../src/devhelp-menu.ui.h:2 ../src/dh-window.ui.h:9
+#| msgid "Preferences"
+msgid "_Preferences"
+msgstr "_Inställningar"
+
+#: ../src/devhelp-menu.ui.h:3
+msgid "_About"
+msgstr "_Om"
+
+#: ../src/devhelp-menu.ui.h:4 ../src/dh-window.ui.h:11
+msgid "_Quit"
+msgstr "_Avsluta"
+
+#: ../src/dh-app.c:204
+#| msgid "translator_credits"
+msgid "translator-credits"
+msgstr ""
+"Daniel Nylander <po@danielnylander.se>\n"
+"Christian Rose <menthos@menthos.com>\n"
+"Richard Hult <richard@imendio.com>\n"
+"Johan Dahlin <johan@gnome.org>\n"
+"Sebastian Rasmussen <sebras@gmail.com>\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
+
+#: ../src/dh-app.c:214
+msgid "A developers' help browser for GNOME"
+msgstr "Ett hjälpprogram för utvecklare för GNOME"
+
+#: ../src/dh-app.c:222
+msgid "DevHelp Website"
+msgstr "Webbplatsen för DevHelp"
+
+#. Please don't translate "Devhelp"
+#: ../src/dh-assistant.ui.h:2
+msgid "Devhelp — Assistant"
+msgstr "Devhelp — Assistent"
+
+#: ../src/dh-assistant-view.c:372
+msgid "Book:"
+msgstr "Bok:"
+
+#: ../src/dh-book.c:240
+#, c-format
+msgid "Language: %s"
+msgstr "Språk: %s"
+
+#: ../src/dh-book.c:241
+msgid "Language: Undefined"
+msgstr "Språk: Odefinierat"
+
+#. i18n: a documentation book
+#: ../src/dh-link.c:270
+msgid "Book"
+msgstr "Bok"
+
+#. i18n: a "page" in a documentation book
+#: ../src/dh-link.c:273
+msgid "Page"
+msgstr "Sida"
+
+#. i18n: a search hit in the documentation, could be a
+#. * function, macro, struct, etc
+#: ../src/dh-link.c:277
+msgid "Keyword"
+msgstr "Nyckelord"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:282
+msgid "Function"
+msgstr "Funktion"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:287
+msgid "Struct"
+msgstr "Struct"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:292
+msgid "Macro"
+msgstr "Makro"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:297
+msgid "Enum"
+msgstr "Enum"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:302
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/dh-main.c:41
+msgid "Opens a new Devhelp window"
+msgstr "Öppnar ett nytt Devhelp-fönster"
+
+#: ../src/dh-main.c:46
+msgid "Search for a keyword"
+msgstr "Sök efter ett nyckelord"
+
+#: ../src/dh-main.c:47 ../src/dh-main.c:52
+msgid "KEYWORD"
+msgstr "NYCKELORD"
+
+#: ../src/dh-main.c:51
+msgid "Search and display any hit in the assistant window"
+msgstr "Sök och visa eventuell träff i assistentfönstret"
+
+#: ../src/dh-main.c:56
+msgid "Display the version and exit"
+msgstr "Visa versionen och avsluta"
+
+#: ../src/dh-main.c:61
+msgid "Quit any running Devhelp"
+msgstr "Avsluta alla körande Devhelp"
+
+#: ../src/dh-parser.c:95 ../src/dh-parser.c:196 ../src/dh-parser.c:260
+#: ../src/dh-parser.c:270
+#, c-format
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "“%s“ förväntades, fick “%s“ på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:112
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "Ogiltig namnrymd “%s“ vid rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:141
+#, c-format
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr "Elementen “title“, “name“ och “link“ krävs på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:215
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column "
+"%d"
+msgstr "Elementen “name“ och “link“ krävs inuti <sub> på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:295
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr "Elementen “name“ och “link“ krävs inuti “%s“ på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:308
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr "Elementet “type“ krävs inuti <keyword> på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:511
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "Kan inte dekomprimera boken “%s“: %s"
+
+#: ../src/dh-preferences.ui.h:1
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: ../src/dh-preferences.ui.h:2
+msgid "_Group by language"
+msgstr "_Gruppera efter språk"
+
+#: ../src/dh-preferences.ui.h:3
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: ../src/dh-preferences.ui.h:4
+msgid "Title"
+msgstr "Titel"
+
+#: ../src/dh-preferences.ui.h:5
+msgid "Book Shelf"
+msgstr "Bokhylla"
+
+#: ../src/dh-preferences.ui.h:6
+msgid "_Use system fonts"
+msgstr "_Använd systemets typsnitt"
+
+#: ../src/dh-preferences.ui.h:7
+msgid "_Variable width: "
+msgstr "_Variabel bredd:"
+
+#: ../src/dh-preferences.ui.h:8
+msgid "_Fixed width:"
+msgstr "_Fast bredd:"
+
+#: ../src/dh-preferences.ui.h:9
+msgid "Fonts"
+msgstr "Typsnitt"
+
+#: ../src/dh-window.c:81
+msgid "50%"
+msgstr "50%"
+
+#: ../src/dh-window.c:82
+msgid "75%"
+msgstr "75%"
+
+#: ../src/dh-window.c:83
+msgid "100%"
+msgstr "100%"
+
+#: ../src/dh-window.c:84
+msgid "125%"
+msgstr "125%"
+
+#: ../src/dh-window.c:85
+msgid "150%"
+msgstr "150%"
+
+#: ../src/dh-window.c:86
+msgid "175%"
+msgstr "175%"
+
+#: ../src/dh-window.c:87
+msgid "200%"
+msgstr "200%"
+
+#: ../src/dh-window.c:88
+msgid "300%"
+msgstr "300%"
+
+#: ../src/dh-window.c:89
+msgid "400%"
+msgstr "400%"
+
+#: ../src/dh-window.c:868
+msgid "Error opening the requested link."
+msgstr "Fel vid öppnadet av begärd länk."
+
+#: ../src/dh-window.c:1126
+msgid "_Close"
+msgstr "_Stäng"
+
+#: ../src/dh-window.c:1154 ../src/dh-window.c:1327
+msgid "Empty Page"
+msgstr "Tom sida"
+
+#: ../src/dh-window.ui.h:1
+msgid "New _Tab"
+msgstr "Ny _flik"
+
+#: ../src/dh-window.ui.h:2
+#| msgid "_Print…"
+msgid "_Print"
+msgstr "_Skriv ut"
+
+#: ../src/dh-window.ui.h:3
+#| msgid "Find:"
+msgid "_Find"
+msgstr "_Sök"
+
+#: ../src/dh-window.ui.h:4
+msgid "_Larger Text"
+msgstr "_Större text"
+
+#: ../src/dh-window.ui.h:5
+msgid "S_maller Text"
+msgstr "_Mindre text"
+
+#: ../src/dh-window.ui.h:6
+msgid "_Normal Size"
+msgstr "_Normal storlek"
+
+#: ../src/dh-window.ui.h:8
+msgid "_Side pane"
+msgstr "_Sidopanel"
+
+#: ../src/dh-window.ui.h:10
+#| msgid "About Devhelp"
+msgid "_About Devhelp"
+msgstr "_Om Devhelp"
+
+#: ../src/dh-window.ui.h:12
+msgid "Back"
+msgstr "Bakåt"
+
+#: ../src/dh-window.ui.h:13
+msgid "Forward"
+msgstr "Framåt"

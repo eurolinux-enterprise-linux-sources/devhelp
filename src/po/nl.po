@@ -1,0 +1,597 @@
+# Dutch translation for devhelp
+#
+# This file is distributed under the same license as the devhelp package.
+#
+# Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>, 2003
+# Daniel van Eeden <daniel_e@dds.nl>, 2004
+# Taco Witte <tcwitte@cs.uu.nl>, 2004, 2005
+# Wouter Bolsterlee <wbolster@gnome.org>, 2006–2012
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: devhelp\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-22 11:18+0100\n"
+"PO-Revision-Date: 2012-11-22 11:22+0100\n"
+"Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-app.c:167 ../src/dh-app.c:350
+#: ../src/dh-window.c:958 ../src/dh-window.c:1857
+msgid "Devhelp"
+msgstr "Devhelp"
+
+#: ../data/devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
+msgstr "Hulpprogramma voor ontwikkelaars"
+
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "Documentatie-browser"
+
+#: ../data/devhelp.desktop.in.in.h:4
+msgid "documentation;information;manual;developer;api;"
+msgstr "documentatie;informatie;handleiding;ontwikkeling;api;"
+
+#: ../data/devhelp.schemas.in.h:1
+msgid "Main window maximized state"
+msgstr "Gemaximaliseerde status van hoofdvenster"
+
+#: ../data/devhelp.schemas.in.h:2
+msgid "Whether the main window should start maximized."
+msgstr "Of het hoofdvenster gemaximaliseerd moet starten."
+
+#: ../data/devhelp.schemas.in.h:3
+msgid "Width of the main window"
+msgstr "Breedte van het hoofdvenster"
+
+#: ../data/devhelp.schemas.in.h:4
+msgid "The width of the main window."
+msgstr "De breedte van het hoofdvenster."
+
+#: ../data/devhelp.schemas.in.h:5
+msgid "Height of main window"
+msgstr "Hoogte van hoofdvenster"
+
+#: ../data/devhelp.schemas.in.h:6
+msgid "The height of the main window."
+msgstr "De hoogte van het hoofdvenster."
+
+#: ../data/devhelp.schemas.in.h:7
+msgid "X position of main window"
+msgstr "X-positie van hoofdvenster"
+
+#: ../data/devhelp.schemas.in.h:8
+msgid "The X position of the main window."
+msgstr "De X-positie van het hoofdvenster."
+
+#: ../data/devhelp.schemas.in.h:9
+msgid "Y position of main window"
+msgstr "Y-positie van hoofdvenster"
+
+#: ../data/devhelp.schemas.in.h:10
+msgid "The Y position of the main window."
+msgstr "De Y-positie van het hoofdvenster."
+
+#: ../data/devhelp.schemas.in.h:11
+msgid "Width of the assistant window"
+msgstr "Breedte van het hulpvenster"
+
+#: ../data/devhelp.schemas.in.h:12
+msgid "The width of the assistant window."
+msgstr "De breedte van het hulpvenster."
+
+#: ../data/devhelp.schemas.in.h:13
+msgid "Height of assistant window"
+msgstr "Hoogte van hulpvenster"
+
+#: ../data/devhelp.schemas.in.h:14
+msgid "The height of the assistant window."
+msgstr "De hoogte van het hulpvenster."
+
+#: ../data/devhelp.schemas.in.h:15
+msgid "X position of assistant window"
+msgstr "X-positie van hulpvenster"
+
+#: ../data/devhelp.schemas.in.h:16
+msgid "The X position of the assistant window."
+msgstr "De X-positie van het hulpvenster."
+
+#: ../data/devhelp.schemas.in.h:17
+msgid "Y position of assistant window"
+msgstr "Y-positie van hulpvenster"
+
+#: ../data/devhelp.schemas.in.h:18
+msgid "The Y position of the assistant window."
+msgstr "De Y-positie van het hulpvenster."
+
+#: ../data/devhelp.schemas.in.h:19
+msgid "Width of the index and search pane"
+msgstr "Breedte van het inhoud- en zoekvenster"
+
+#: ../data/devhelp.schemas.in.h:20
+msgid "The width of the index and search pane."
+msgstr "De breedte van het inhoud- en zoekvenster."
+
+#: ../data/devhelp.schemas.in.h:21
+msgid "Selected tab: \"content\" or \"search\""
+msgstr "Geselecteerde tabblad: ‘content’ of ‘search’"
+
+#: ../data/devhelp.schemas.in.h:22
+msgid "Which of the tabs is selected: \"content\" or \"search\"."
+msgstr "Welk tabblad geselecteerd is: ‘content’ of ‘search’."
+
+#: ../data/devhelp.schemas.in.h:23
+msgid "Books disabled"
+msgstr "Boeken uitgeschakeld"
+
+#: ../data/devhelp.schemas.in.h:24
+msgid "List of books disabled by the user."
+msgstr "Boekenlijst is uitgeschakeld door de gebruiker."
+
+#: ../data/devhelp.schemas.in.h:25
+msgid "Group by language"
+msgstr "Groeperen op taal"
+
+#: ../data/devhelp.schemas.in.h:26
+msgid "Whether books should be grouped by language in the UI"
+msgstr "Of boeken per taal gegroepeerd moeten worden in de interface"
+
+#: ../data/devhelp.schemas.in.h:27
+msgid "Use system fonts"
+msgstr "Systeemlettertypen gebruiken"
+
+#: ../data/devhelp.schemas.in.h:28
+msgid "Use the system default fonts."
+msgstr "De systeemlettertypen gebruiken."
+
+#: ../data/devhelp.schemas.in.h:29
+msgid "Font for text"
+msgstr "Lettertype voor tekst"
+
+#: ../data/devhelp.schemas.in.h:30
+msgid "Font for text with variable width."
+msgstr "Lettertype voor tekst met variabele tekenbreedte."
+
+#: ../data/devhelp.schemas.in.h:31
+msgid "Font for fixed width text"
+msgstr "Lettertype voor vaste tekenbreedte"
+
+#: ../data/devhelp.schemas.in.h:32
+msgid "Font for text with fixed width, such as code examples."
+msgstr ""
+"Lettertype voor tekst met een vaste tekenbreedte, zoals codevoorbeelden."
+
+#: ../data/ui/devhelp.builder.h:1
+msgid "New window"
+msgstr "Nieuw venster"
+
+#: ../data/ui/devhelp.builder.h:2
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: ../data/ui/devhelp.builder.h:3
+msgid "About Devhelp"
+msgstr "Over Devhelp"
+
+#: ../data/ui/devhelp.builder.h:4
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: ../data/ui/devhelp.builder.h:5
+msgid "_Window"
+msgstr "_Venster"
+
+#: ../data/ui/devhelp.builder.h:6
+msgid "New _Tab"
+msgstr "Nieuw _tabblad"
+
+#: ../data/ui/devhelp.builder.h:7
+msgid "_Print"
+msgstr "Af_drukken"
+
+#: ../data/ui/devhelp.builder.h:8
+msgid "_Close"
+msgstr "Sl_uiten"
+
+#: ../data/ui/devhelp.builder.h:9
+msgid "_Edit"
+msgstr "Be_werken"
+
+#: ../data/ui/devhelp.builder.h:10
+msgid "_Copy"
+msgstr "_Kopiëren"
+
+#: ../data/ui/devhelp.builder.h:11
+msgid "_Find"
+msgstr "_Zoeken"
+
+#: ../data/ui/devhelp.builder.h:12
+msgid "Find _Next"
+msgstr "_Volgende zoeken"
+
+#: ../data/ui/devhelp.builder.h:13
+msgid "Find _Previous"
+msgstr "V_orige zoeken"
+
+#: ../data/ui/devhelp.builder.h:14
+msgid "_View"
+msgstr "Beel_d"
+
+#: ../data/ui/devhelp.builder.h:15
+msgid "_Larger text"
+msgstr "_Grotere tekst"
+
+#: ../data/ui/devhelp.builder.h:16
+msgid "S_maller text"
+msgstr "_Kleinere tekst"
+
+#: ../data/ui/devhelp.builder.h:17
+msgid "_Normal size"
+msgstr "_Normale grootte"
+
+#: ../data/ui/devhelp.builder.h:18
+msgid "Fullscreen"
+msgstr "Volledig scherm"
+
+#: ../data/ui/devhelp.builder.h:19
+msgid "_Go"
+msgstr "_Ga naar"
+
+#: ../data/ui/devhelp.builder.h:20
+msgid "_Back"
+msgstr "_Terug"
+
+#: ../data/ui/devhelp.builder.h:21
+msgid "_Forward"
+msgstr "_Vooruit"
+
+#: ../data/ui/devhelp.builder.h:22
+msgid "_Search Tab"
+msgstr "_Zoektabblad"
+
+#: ../data/ui/devhelp.builder.h:23
+msgid "_Contents Tab"
+msgstr "In_houdtabblad"
+
+#: ../data/ui/devhelp.builder.h:24
+msgid "Go to the previous page"
+msgstr "Terug naar de vorige pagina"
+
+#: ../data/ui/devhelp.builder.h:25
+msgid "Go to the next page"
+msgstr "Vooruit naar de volgende pagina"
+
+#: ../data/ui/devhelp.builder.h:26
+msgid "Decrease the text size"
+msgstr "Tekst verkleinen"
+
+#: ../data/ui/devhelp.builder.h:27
+msgid "Increase the text size"
+msgstr "Tekst vergroten"
+
+#: ../data/ui/devhelp.builder.h:28
+msgid "_Group by language"
+msgstr "_Groeperen op taal"
+
+#: ../data/ui/devhelp.builder.h:29
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: ../data/ui/devhelp.builder.h:30
+msgid "Title"
+msgstr "Titel"
+
+#: ../data/ui/devhelp.builder.h:31
+msgid "Book Shelf"
+msgstr "Boekenplank"
+
+#: ../data/ui/devhelp.builder.h:32
+msgid "_Use system fonts"
+msgstr "_Systeemlettertypen gebruiken"
+
+#: ../data/ui/devhelp.builder.h:33
+msgid "_Variable width: "
+msgstr "_Variabele breedte: "
+
+#: ../data/ui/devhelp.builder.h:34
+msgid "_Fixed width:"
+msgstr "_Vaste breedte:"
+
+#: ../data/ui/devhelp.builder.h:35
+msgid "Fonts"
+msgstr "Lettertypen"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+msgid "Devhelp support"
+msgstr "Devhelp-ondersteuning"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "Zorgt dat F2 een Devhelp-venster opent voor het huidige woord"
+
+#: ../misc/gedit-plugin/devhelp.py:69
+msgid "Show API Documentation"
+msgstr "API-documentatie tonen"
+
+#: ../misc/gedit-plugin/devhelp.py:71
+msgid "Show API Documentation for the word at the cursor"
+msgstr "API-documentatie voor het huidige woord tonen"
+
+#: ../src/dh-app.c:162
+msgid "translator_credits"
+msgstr ""
+"Wouter Bolsterlee\n"
+"Taco Witte\n"
+"\n"
+"Kijk voor meer informatie op http://nl.gnome.org/"
+
+# Vrij vertaald (Wouter Bolsterlee)
+#: ../src/dh-app.c:169
+msgid "A developers' help browser for GNOME"
+msgstr "Hulpbrowser voor ontwikkelaars"
+
+#: ../src/dh-app.c:177
+msgid "DevHelp Website"
+msgstr "Devhelp-website"
+
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:76
+msgid "Devhelp — Assistant"
+msgstr "Devhelp — Hulpvenster"
+
+#: ../src/dh-assistant-view.c:395
+msgid "Book:"
+msgstr "Boek:"
+
+#: ../src/dh-book.c:252
+#, c-format
+msgid "Language: %s"
+msgstr "Taal: %s"
+
+#: ../src/dh-book.c:253
+msgid "Language: Undefined"
+msgstr "Taal: onbekend"
+
+#. i18n: a documentation book
+#: ../src/dh-link.c:267
+msgid "Book"
+msgstr "Boek"
+
+#. i18n: a "page" in a documentation book
+#: ../src/dh-link.c:270
+msgid "Page"
+msgstr "Pagina"
+
+#. i18n: a search hit in the documentation, could be a
+#. * function, macro, struct, etc
+#: ../src/dh-link.c:274
+msgid "Keyword"
+msgstr "Sleutelwoord"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:279
+msgid "Function"
+msgstr "Functie"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:284
+msgid "Struct"
+msgstr "Struct"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:289
+msgid "Macro"
+msgstr "Macro"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:294
+msgid "Enum"
+msgstr "Enumeratie"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:299
+msgid "Type"
+msgstr "Type"
+
+#: ../src/dh-main.c:48
+msgid "Opens a new Devhelp window"
+msgstr "Nieuw Devhelp-venster openen"
+
+#: ../src/dh-main.c:53
+msgid "Focus the Devhelp window with the search field active"
+msgstr "Het Devhelp-venster de aandacht geven met het zoekveld actief"
+
+#: ../src/dh-main.c:58
+msgid "Search for a keyword"
+msgstr "Naar een sleutelwoord zoeken"
+
+#: ../src/dh-main.c:59 ../src/dh-main.c:64
+msgid "KEYWORD"
+msgstr "ZOEKWOORD"
+
+#: ../src/dh-main.c:63
+msgid "Search and display any hit in the assistant window"
+msgstr "Zoeken naar resultaten en deze weergeven in het hulpvenster"
+
+#: ../src/dh-main.c:68
+msgid "Display the version and exit"
+msgstr "Versie tonen en afsluiten"
+
+#: ../src/dh-main.c:73
+msgid "Quit any running Devhelp"
+msgstr "Alle actieve Devhelp-processen afsluiten"
+
+#: ../src/dh-parser.c:97 ../src/dh-parser.c:199 ../src/dh-parser.c:263
+#: ../src/dh-parser.c:273
+#, c-format
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "Verwacht: ‘%s’, gekregen: ‘%s’ op regel %d, kolom %d"
+
+#: ../src/dh-parser.c:114
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "Ongeldige context '%s' op regel %d, kolom %d"
+
+#: ../src/dh-parser.c:143
+#, c-format
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr ""
+"De elementen ‘title’, ‘name’ en ‘link’ zijn verplicht op regel %d, kolom %d"
+
+#: ../src/dh-parser.c:218
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column "
+"%d"
+msgstr ""
+"De elementen ‘name’ en ‘link’ zijn verplicht in <sub> op regel %d, kolom %d"
+
+#: ../src/dh-parser.c:298
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr ""
+"De elementen ‘name’ en ‘link’ zijn verplicht in ‘%s’ op regel %d, kolom %d"
+
+#: ../src/dh-parser.c:311
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr "Het element ‘type’ is verplicht in <keyword> op regel %d, kolom %d"
+
+#: ../src/dh-parser.c:514
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "Kan boek '%s' niet uitpakken: %s"
+
+#: ../src/dh-search.c:492
+msgid "All books"
+msgstr "Alle boeken"
+
+#: ../src/dh-search.c:1110
+msgid "Search in:"
+msgstr "Zoeken in:"
+
+#: ../src/dh-window.c:100
+msgid "50%"
+msgstr "50%"
+
+#: ../src/dh-window.c:101
+msgid "75%"
+msgstr "75%"
+
+#: ../src/dh-window.c:102
+msgid "100%"
+msgstr "100%"
+
+#: ../src/dh-window.c:103
+msgid "125%"
+msgstr "125%"
+
+#: ../src/dh-window.c:104
+msgid "150%"
+msgstr "150%"
+
+#: ../src/dh-window.c:105
+msgid "175%"
+msgstr "175%"
+
+#: ../src/dh-window.c:106
+msgid "200%"
+msgstr "200%"
+
+#: ../src/dh-window.c:107
+msgid "300%"
+msgstr "300%"
+
+#: ../src/dh-window.c:108
+msgid "400%"
+msgstr "400%"
+
+#: ../src/dh-window.c:1046
+msgid "Contents"
+msgstr "Inhoud"
+
+#: ../src/dh-window.c:1056
+msgid "Search"
+msgstr "Zoeken"
+
+#: ../src/dh-window.c:1266
+msgid "Error opening the requested link."
+msgstr "Fout bij het openen van de opgevraagde verwijzing."
+
+#: ../src/dh-window.c:1638 ../src/dh-window.c:1885
+msgid "Empty Page"
+msgstr "Lege pagina"
+
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "Zoeken:"
+
+#: ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "Vorige zoeken"
+
+#: ../src/eggfindbar.c:333 ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "Vorige voorkomen van de zoekterm vinden"
+
+#: ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "Volgende zoeken"
+
+#: ../src/eggfindbar.c:346 ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "Volgende voorkomen van de zoekterm vinden"
+
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "_Hoofdlettergevoelig"
+
+#: ../src/eggfindbar.c:362 ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "Hoofdlettergevoeligheid omschakelen"
+
+#~ msgid "_File"
+#~ msgstr "_Bestand"
+
+#~ msgid "_Help"
+#~ msgstr "_Hulp"
+
+#~ msgid "Use the normal text size"
+#~ msgstr "Standaard tekstgrootte"
+
+#~ msgid "Leave fullscreen mode"
+#~ msgstr "Volledig scherm verlaten"
+
+#~ msgid "Display in full screen"
+#~ msgstr "In volledig scherm weergeven"
+
+#~ msgid "Larger"
+#~ msgstr "Groter"
+
+#~ msgid "Smaller"
+#~ msgstr "Kleiner"
+
+#~ msgid "Preferences…"
+#~ msgstr "Voorkeuren…"
+
+#~ msgid "<b>Fonts</b>"
+#~ msgstr "<b>Lettertypen</b>"

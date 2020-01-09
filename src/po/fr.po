@@ -1,0 +1,595 @@
+# French translation of devhelp.
+# Copyright (C) 2001-2012 Free Software Foundation, Inc.
+# This file is distributed under the GNU General Public License Version 2.
+#
+# Christophe Fergeau <christophe.fergeau@laposte.net>, 2001.
+# Christophe Merlet <redfox@redfoxcenter.org>, 2002-2006.
+# Laurent Richard <laurent.richard@lilit.be>, 2003.
+# Sebastien Bacher <seb128@debian.org>, 2003.
+# Thierry Moisan <thierryn@videotron.ca>, 2004.
+# Robert-André Mauchin <zebob.m@pengzone.org>, 2006-2008.
+# Jonathan Ernst <jonathan@ernstfamily.ch>, 2006-2007.
+# Damien Durand <splinux@fedoraproject.org>, 2006.
+# Stéphane Raimbault <stephane.raimbault@gmail.com>, 2007.
+# Bruno Brouard <annoa.b@gmail.com>, 2010,2012
+# Alain Lojewski <allomervan@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: devhelp master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=devhelp&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-08-21 03:11+0000\n"
+"PO-Revision-Date: 2014-08-21 15:23+0200\n"
+"Last-Translator: Alain Lojewski <allomervan@gmail.com>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/devhelp.appdata.xml.in.h:1
+msgid ""
+"Devhelp is an API documentation browser. It provides an easy way to navigate "
+"through libraries, search by function, struct, or macro. It provides a "
+"tabbed interface and allows to print results."
+msgstr ""
+"Devhelp est un navigateur pour la documentation des API. Il permet de "
+"naviguer facilement à travers les bibliothèques, chercher par fonction, "
+"structure ou macro. Il fournit une interface à onglets et permet d'imprimer "
+"les résultats."
+
+#: ../data/devhelp.appdata.xml.in.h:2
+msgid ""
+"Devhelp integrates with other applications such as Glade, Anjuta, or Geany."
+msgstr ""
+"Devhelp s'intègre avec d'autres applications, telles que Glade, Anjuta ou "
+"Geany."
+
+#: ../data/devhelp.appdata.xml.in.h:3
+msgid ""
+"https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
+"target=devhelp.png"
+msgstr ""
+"https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
+"target=devhelp.png"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-app.c:212 ../src/dh-app.c:399
+#: ../src/dh-window.c:659
+msgid "Devhelp"
+msgstr "Devhelp"
+
+#: ../data/devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
+msgstr "Programme d'aide pour les développeurs"
+
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "Navigateur de documentation"
+
+#: ../data/devhelp.desktop.in.in.h:4
+msgid "documentation;information;manual;developer;api;"
+msgstr "documentation;information;manuel;développeur;api;"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:1
+msgid "Main window maximized state"
+msgstr "État maximisé de la fenêtre principale"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:2
+msgid "Whether the main window should start maximized."
+msgstr "Indique si la fenêtre principale doit démarrer maximisée."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:3
+msgid "Width of the main window"
+msgstr "Largeur de la fenêtre principale"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:4
+msgid "The width of the main window."
+msgstr "La largeur de la fenêtre principale."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:5
+msgid "Height of main window"
+msgstr "La hauteur de la fenêtre principale"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:6
+msgid "The height of the main window."
+msgstr "La hauteur de la fenêtre principale."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:7
+msgid "X position of main window"
+msgstr "Position X de la fenêtre principale"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:8
+msgid "The X position of the main window."
+msgstr "La position X de la fenêtre principale."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:9
+msgid "Y position of main window"
+msgstr "Position Y de la fenêtre principale"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:10
+msgid "The Y position of the main window."
+msgstr "La position Y de la fenêtre principale."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:11
+msgid "Width of the index and search pane"
+msgstr "Largeur de l'index et du panneau de recherche"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:12
+msgid "The width of the index and search pane."
+msgstr "La largeur de l'index et du panneau de recherche."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:13
+msgid "Selected tab: \"content\" or \"search\""
+msgstr "Onglet sélectionné : « content » ou « search »"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:14
+msgid "Which of the tabs is selected: \"content\" or \"search\"."
+msgstr ""
+"L'onglet qui est sélectionné : « content » (contenu) ou "
+"« search » (recherche)."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:15
+msgid "Books disabled"
+msgstr "Livres désactivés"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:16
+msgid "List of books disabled by the user."
+msgstr "Liste des livres désactivés par l'utilisateur."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:17
+msgid "Group by language"
+msgstr "Grouper par langage"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:18
+msgid "Whether books should be grouped by language in the UI"
+msgstr ""
+"Indique si les livres doivent être groupés par langage dans l'interface"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:19
+msgid "Whether the assistant window should be maximized"
+msgstr "Indique si la fenêtre de l'assitant doit démarrer maximisée."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:20
+msgid "Whether the assistant window should be maximized."
+msgstr "Indique si la fenêtre de l'assistant doit démarrer maximisée."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:21
+msgid "Width of the assistant window"
+msgstr "Largeur de la fenêtre de l'assistant"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:22
+msgid "The width of the assistant window."
+msgstr "La largeur de la fenêtre de l'assistant."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:23
+msgid "Height of assistant window"
+msgstr "La hauteur de la fenêtre de l'assistant"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:24
+msgid "The height of the assistant window."
+msgstr "La hauteur de la fenêtre de l'assistant."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:25
+msgid "X position of assistant window"
+msgstr "Position X de la fenêtre de l'assistant"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:26
+msgid "The X position of the assistant window."
+msgstr "La position X de la fenêtre de l'assistant."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:27
+msgid "Y position of assistant window"
+msgstr "Position Y de la fenêtre de l'assistant"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:28
+msgid "The Y position of the assistant window."
+msgstr "La position Y de la fenêtre de l'assistant."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:29
+msgid "Use system fonts"
+msgstr "Utiliser les polices de caractères du système"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:30
+msgid "Use the system default fonts."
+msgstr "Utiliser les polices de caractères par défaut du système."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:31
+msgid "Font for text"
+msgstr "Police de caractères"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:32
+msgid "Font for text with variable width."
+msgstr "Police de caractères à largeur variable."
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:33
+msgid "Font for fixed width text"
+msgstr "Police de caractères à chasse fixe"
+
+#: ../data/org.gnome.devhelp.gschema.xml.h:34
+msgid "Font for text with fixed width, such as code examples."
+msgstr ""
+"Police pour les caractères à largeur fixe, comme pour les exemples de code."
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+msgid "Devhelp support"
+msgstr "Prise en charge de Devhelp"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr ""
+"Un appui sur la touche F2 permet de lancer Devhelp pour le mot à "
+"l'emplacement du curseur."
+
+#: ../misc/gedit-plugin/devhelp.py:42
+msgid "Show API Documentation"
+msgstr "Afficher la documentation des API"
+
+#. ex:ts=4:et:
+#: ../src/devhelp-menu.ui.h:1 ../src/dh-window.ui.h:7
+msgid "New _Window"
+msgstr "Nouvelle _fenêtre"
+
+#: ../src/devhelp-menu.ui.h:2 ../src/dh-window.ui.h:9
+msgid "_Preferences"
+msgstr "_Préférences"
+
+#: ../src/devhelp-menu.ui.h:3
+msgid "_About"
+msgstr "À _propos"
+
+#: ../src/devhelp-menu.ui.h:4 ../src/dh-window.ui.h:11
+msgid "_Quit"
+msgstr "_Quitter"
+
+#: ../src/dh-app.c:204
+msgid "translator-credits"
+msgstr ""
+"Christophe Fergeau <christophe.fergeau@laposte.net>\n"
+"Christophe Merlet <redfox@redfoxcenter.org>\n"
+"Laurent Richard <laurent.richard@lilit.be>\n"
+"Sebastien Bacher <seb128@debian.org>\n"
+"Thierry Moisan <thierryn@videotron.ca>\n"
+"Robert-André Mauchin <zebob.m@pengzone.org>\n"
+"Jonathan Ernst <jonathan@ernstfamily.ch>\n"
+"Damien Durand <splinux@fedoraproject.org>\n"
+"Stéphane Raimbault <stephane.raimbault@gmail.com>"
+
+#: ../src/dh-app.c:214
+msgid "A developers' help browser for GNOME"
+msgstr "Un navigateur d'aide pour les développeurs GNOME"
+
+#: ../src/dh-app.c:222
+msgid "DevHelp Website"
+msgstr "Site Web de Devhelp"
+
+#. Please don't translate "Devhelp"
+#: ../src/dh-assistant.ui.h:2
+msgid "Devhelp — Assistant"
+msgstr "Devhelp — Assistant"
+
+#: ../src/dh-assistant-view.c:372
+msgid "Book:"
+msgstr "Livre :"
+
+#: ../src/dh-book.c:240
+#, c-format
+msgid "Language: %s"
+msgstr "Langage : %s"
+
+#: ../src/dh-book.c:241
+msgid "Language: Undefined"
+msgstr "Langage : non défini"
+
+#. i18n: a documentation book
+#: ../src/dh-link.c:270
+msgid "Book"
+msgstr "Livre"
+
+#. i18n: a "page" in a documentation book
+#: ../src/dh-link.c:273
+msgid "Page"
+msgstr "Page"
+
+#. i18n: a search hit in the documentation, could be a
+#. * function, macro, struct, etc
+#: ../src/dh-link.c:277
+msgid "Keyword"
+msgstr "Mot-clé"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:282
+msgid "Function"
+msgstr "Fonction"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:287
+msgid "Struct"
+msgstr "Struct"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:292
+msgid "Macro"
+msgstr "Macro"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:297
+msgid "Enum"
+msgstr "Enum"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:302
+msgid "Type"
+msgstr "Type"
+
+#: ../src/dh-main.c:41
+msgid "Opens a new Devhelp window"
+msgstr "Ouvre une nouvelle fenêtre Devhelp"
+
+#: ../src/dh-main.c:46
+msgid "Search for a keyword"
+msgstr "Recherche un mot-clé"
+
+#: ../src/dh-main.c:47 ../src/dh-main.c:52
+msgid "KEYWORD"
+msgstr "MOTCLÉ"
+
+#: ../src/dh-main.c:51
+msgid "Search and display any hit in the assistant window"
+msgstr "Recherche et affiche tout résultat dans la fenêtre de l'assistant"
+
+#: ../src/dh-main.c:56
+msgid "Display the version and exit"
+msgstr "Affiche la version et quitte"
+
+#: ../src/dh-main.c:61
+msgid "Quit any running Devhelp"
+msgstr "Quitte tous les Devhelp en cours"
+
+#: ../src/dh-parser.c:95 ../src/dh-parser.c:196 ../src/dh-parser.c:260
+#: ../src/dh-parser.c:270
+#, c-format
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "« %s » était attendu, reçu « %s » à la ligne %d, colonne %d"
+
+#: ../src/dh-parser.c:112
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "Espace de nommage « %s » incorrect à la ligne %d, colonne %d"
+
+#: ../src/dh-parser.c:141
+#, c-format
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr ""
+"Les éléments « title », « name » et « link » doivent être présents à la "
+"ligne %d, colonne %d"
+
+#: ../src/dh-parser.c:215
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column "
+"%d"
+msgstr ""
+"Les éléments « name » et « link » doivent être présents dans <sub> à la "
+"ligne %d, colonne %d"
+
+#: ../src/dh-parser.c:295
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr ""
+"Les éléments « name » et « link » doivent être présents dans « %s » à la "
+"ligne %d, colonne %d"
+
+#: ../src/dh-parser.c:308
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr ""
+"L'élément « type » doit être présent dans <keyword> à la ligne %d, colonne %d"
+
+#: ../src/dh-parser.c:511
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "Impossible de décompresser le livre « %s » : %s"
+
+#: ../src/dh-preferences.ui.h:1
+msgid "Preferences"
+msgstr "Préférences"
+
+#: ../src/dh-preferences.ui.h:2
+msgid "_Group by language"
+msgstr "_Grouper par langage"
+
+#: ../src/dh-preferences.ui.h:3
+msgid "Enabled"
+msgstr "Activé"
+
+#: ../src/dh-preferences.ui.h:4
+msgid "Title"
+msgstr "Titre"
+
+#: ../src/dh-preferences.ui.h:5
+msgid "Book Shelf"
+msgstr "Bibliothèque"
+
+#: ../src/dh-preferences.ui.h:6
+msgid "_Use system fonts"
+msgstr "_Utiliser les polices de caractères du système"
+
+#: ../src/dh-preferences.ui.h:7
+msgid "_Variable width: "
+msgstr "Largeur _variable : "
+
+#: ../src/dh-preferences.ui.h:8
+msgid "_Fixed width:"
+msgstr "Largeur _fixe :"
+
+#: ../src/dh-preferences.ui.h:9
+msgid "Fonts"
+msgstr "Polices"
+
+#: ../src/dh-window.c:81
+msgid "50%"
+msgstr "50 %"
+
+#: ../src/dh-window.c:82
+msgid "75%"
+msgstr "75 %"
+
+#: ../src/dh-window.c:83
+msgid "100%"
+msgstr "100 %"
+
+#: ../src/dh-window.c:84
+msgid "125%"
+msgstr "125 %"
+
+#: ../src/dh-window.c:85
+msgid "150%"
+msgstr "150 %"
+
+#: ../src/dh-window.c:86
+msgid "175%"
+msgstr "175 %"
+
+#: ../src/dh-window.c:87
+msgid "200%"
+msgstr "200 %"
+
+#: ../src/dh-window.c:88
+msgid "300%"
+msgstr "300 %"
+
+#: ../src/dh-window.c:89
+msgid "400%"
+msgstr "400 %"
+
+#: ../src/dh-window.c:868
+msgid "Error opening the requested link."
+msgstr "Erreur lors de l'ouverture du lien demandé."
+
+#: ../src/dh-window.c:1126
+msgid "_Close"
+msgstr "F_ermer"
+
+#: ../src/dh-window.c:1154 ../src/dh-window.c:1327
+msgid "Empty Page"
+msgstr "Page vide"
+
+#: ../src/dh-window.ui.h:1
+msgid "New _Tab"
+msgstr "Nouvel _onglet"
+
+#: ../src/dh-window.ui.h:2
+msgid "_Print"
+msgstr "_Imprimer"
+
+#: ../src/dh-window.ui.h:3
+msgid "_Find"
+msgstr "Re_chercher"
+
+#: ../src/dh-window.ui.h:4
+msgid "_Larger Text"
+msgstr "A_grandir le texte"
+
+#: ../src/dh-window.ui.h:5
+msgid "S_maller Text"
+msgstr "Ré_duire le texte"
+
+#: ../src/dh-window.ui.h:6
+msgid "_Normal Size"
+msgstr "Taille _normale"
+
+#: ../src/dh-window.ui.h:8
+msgid "_Side pane"
+msgstr "Panneau _latéral"
+
+#: ../src/dh-window.ui.h:10
+msgid "_About Devhelp"
+msgstr "À _propos de Devhelp"
+
+#: ../src/dh-window.ui.h:12
+msgid "Back"
+msgstr "Précédent"
+
+#: ../src/dh-window.ui.h:13
+msgid "Forward"
+msgstr "Suivant"
+
+#~ msgid "Show API Documentation for the word at the cursor"
+#~ msgstr ""
+#~ "Affiche la documentation des API pour le mot à l'emplacement du curseur"
+
+#~ msgid "C_ase Sensitive"
+#~ msgstr "_Sensible à la casse"
+
+#~ msgid "Toggle case sensitive search"
+#~ msgstr "Bascule la sensibilité à la casse de la recherche"
+
+#~ msgid "_Window"
+#~ msgstr "_Fenêtre"
+
+#~ msgid "_Edit"
+#~ msgstr "É_dition"
+
+#~ msgid "_Copy"
+#~ msgstr "_Copier"
+
+#~ msgid "Find _Next"
+#~ msgstr "Rechercher le s_uivant"
+
+#~ msgid "Find _Previous"
+#~ msgstr "Rechercher le _précédent"
+
+#~ msgid "_View"
+#~ msgstr "_Affichage"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Plein écran"
+
+#~ msgid "_Go"
+#~ msgstr "A_ller à"
+
+#~ msgid "_Search Tab"
+#~ msgstr "Onglet de _recherche"
+
+#~ msgid "_Contents Tab"
+#~ msgstr "Onglet du _sommaire"
+
+#~ msgid "Go to the previous page"
+#~ msgstr "Va à la page précédente"
+
+#~ msgid "Go to the next page"
+#~ msgstr "Va à la page suivante"
+
+#~ msgid "Decrease the text size"
+#~ msgstr "Diminue la taille du texte"
+
+#~ msgid "Increase the text size"
+#~ msgstr "Augmente la taille du texte"
+
+#~ msgid "Focus the Devhelp window with the search field active"
+#~ msgstr ""
+#~ "Donne le focus à la fenêtre Devhelp avec le champ de recherche actif"
+
+#~ msgid "Search in:"
+#~ msgstr "Rechercher dans :"
+
+#~ msgid "Contents"
+#~ msgstr "Sommaire"
+
+#~ msgid "Search"
+#~ msgstr "Rechercher"

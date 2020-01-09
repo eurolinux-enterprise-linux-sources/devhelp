@@ -1,0 +1,590 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# G Karunakar <karunakar@freedomink.org>, 2003.
+# chandankumar <chandankumar.093047@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: devhelp HEAD\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=devhel"
+"p&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-04-05 16:37+0000\n"
+"PO-Revision-Date: 2012-04-11 12:41+0530\n"
+"Last-Translator: chandankumar (ciypro) <chandankumar.093047@gmail.com>\n"
+"Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.2\n"
+"X-DamnedLies-Scope: partial\n"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-main.c:281
+#: ../src/dh-window.c:745 ../src/dh-window.c:1051 ../src/dh-window.c:1967
+msgid "Devhelp"
+msgstr "Devhelp"
+
+#: ../data/devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
+msgstr "डेवलपर मदद प्रोग्राम"
+
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "प्रलेखन ब्राउज़र"
+
+#: ../data/devhelp.schemas.in.h:3
+msgid "Width of the main window"
+msgstr "मुख्य विंडो की चौड़ाई"
+
+#: ../data/devhelp.schemas.in.h:4
+msgid "The width of the main window."
+msgstr "मुख्य विंडो की चौड़ाई."
+
+#: ../data/devhelp.schemas.in.h:5
+msgid "Height of main window"
+msgstr "मुख्य विंडो की ऊँचाई"
+
+#: ../data/devhelp.schemas.in.h:6
+msgid "The height of the main window."
+msgstr "मुख्य विंडो की ऊँचाई."
+
+#: ../data/devhelp.schemas.in.h:7
+msgid "X position of main window"
+msgstr "मुख्य विंडो के X स्थिति"
+
+#: ../data/devhelp.schemas.in.h:8
+msgid "The X position of the main window."
+msgstr "मुख्य विंडो की X स्थिति."
+
+#: ../data/devhelp.schemas.in.h:9
+msgid "Y position of main window"
+msgstr "मुख्य विंडो के Y स्थिति"
+
+#: ../data/devhelp.schemas.in.h:10
+msgid "The Y position of the main window."
+msgstr "मुख्य विंडो की Y स्थिति."
+
+#: ../data/devhelp.schemas.in.h:11
+#| msgid "Width of the main window"
+msgid "Width of the assistant window"
+msgstr "सहायक विंडो की चौड़ाई"
+
+#: ../data/devhelp.schemas.in.h:12
+#| msgid "The width of the main window."
+msgid "The width of the assistant window."
+msgstr "सहायक विंडो की चौड़ाई."
+
+#: ../data/devhelp.schemas.in.h:13
+#| msgid "Height of main window"
+msgid "Height of assistant window"
+msgstr "सहायक विंडो की ऊंचाई"
+
+#: ../data/devhelp.schemas.in.h:14
+#| msgid "The height of the main window."
+msgid "The height of the assistant window."
+msgstr "सहायक विंडो की ऊँचाई."
+
+#: ../data/devhelp.schemas.in.h:15
+#| msgid "X position of main window"
+msgid "X position of assistant window"
+msgstr "सहायक विंडो के X स्थिति"
+
+#: ../data/devhelp.schemas.in.h:16
+#| msgid "The X position of the main window."
+msgid "The X position of the assistant window."
+msgstr "सहायक विंडो की X स्थिति."
+
+#: ../data/devhelp.schemas.in.h:17
+#| msgid "Y position of main window"
+msgid "Y position of assistant window"
+msgstr "सहायक विंडो के Y स्थिति"
+
+#: ../data/devhelp.schemas.in.h:18
+#| msgid "The Y position of the main window."
+msgid "The Y position of the assistant window."
+msgstr "सहायक विंडो की Y स्थिति."
+
+#: ../data/devhelp.schemas.in.h:19
+#| msgid "Width of the main window"
+msgid "Width of the index and search pane"
+msgstr "सूचकांक और खोज फलक की चौड़ाई"
+
+#: ../data/devhelp.schemas.in.h:20
+#| msgid "The width of the main window."
+msgid "The width of the index and search pane."
+msgstr "सूचकांक और खोज फलक की चौड़ाई."
+
+#: ../data/devhelp.schemas.in.h:27
+msgid "Use system fonts"
+msgstr "प्रणाली फोंट का प्रयोग करें"
+
+#: ../data/devhelp.schemas.in.h:28
+msgid "Use the system default fonts."
+msgstr "सिस्टम डिफ़ॉल्ट फ़ॉन्ट का प्रयोग करें."
+
+#: ../data/devhelp.schemas.in.h:29
+msgid "Font for text"
+msgstr "पाठ के लिए फ़ॉन्ट"
+
+#: ../data/devhelp.schemas.in.h:30
+msgid "Font for text with variable width."
+msgstr "परिवर्तनीय चौड़ाई के साथ पाठ के लिए फ़ॉन्ट."
+
+#: ../data/devhelp.schemas.in.h:31
+#| msgid "Font for fixed text"
+msgid "Font for fixed width text"
+msgstr "स्थिर चौड़ाई पाठ के लिए फ़ॉन्ट"
+
+#: ../data/devhelp.schemas.in.h:32
+#| msgid "Font for text with fixed width."
+msgid "Font for text with fixed width, such as code examples."
+msgstr "कोड उदाहरण के रूप में, फिक्स्ड चौड़ाई के साथ पाठ के लिए फ़ॉन्ट."
+
+#: ../data/ui/devhelp.builder.h:1
+msgid "Preferences"
+msgstr "प्राथमिकताएँ"
+
+#: ../data/ui/devhelp.builder.h:2
+msgid "_Group by language"
+msgstr "भाषा द्वारा समूह (_G)"
+
+#: ../data/ui/devhelp.builder.h:3
+msgid "Enabled"
+msgstr "सक्षम"
+
+#: ../data/ui/devhelp.builder.h:4
+#| msgid "_File"
+msgid "Title"
+msgstr "शीर्षक"
+
+#: ../data/ui/devhelp.builder.h:5
+msgid "Book Shelf"
+msgstr "किताब शेल्फ"
+
+#: ../data/ui/devhelp.builder.h:6
+msgid "_Use system fonts"
+msgstr "सिस्टम फ़ॉन्ट प्रयोग करें (_U)"
+
+#: ../data/ui/devhelp.builder.h:7
+#| msgid "Variable width: "
+msgid "_Variable width: "
+msgstr "चर चौड़ाई: (_V)"
+
+#: ../data/ui/devhelp.builder.h:8
+#| msgid "Fixed width:"
+msgid "_Fixed width:"
+msgstr "स्थिर चौड़ाई: (_F)"
+
+#: ../data/ui/devhelp.builder.h:9
+#| msgid "Contents"
+msgid "Fonts"
+msgstr "फ़ॉन्ट्स"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+#| msgid "Devhelp Book"
+msgid "Devhelp support"
+msgstr "Devhelp समर्थन"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "कर्सर पर शब्द के लिएDevhelp को लाने में F2 करता है"
+
+#: ../misc/gedit-plugin/devhelp.py:69
+msgid "Show API Documentation"
+msgstr "एपीआई प्रलेखन दिखाएँ"
+
+#: ../misc/gedit-plugin/devhelp.py:71
+msgid "Show API Documentation for the word at the cursor"
+msgstr "शब्द के लिए कर्सर पर एपीआई प्रलेखन दिखाएँ"
+
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:76
+msgid "Devhelp — Assistant"
+msgstr "Devhelp — सहायक"
+
+#: ../src/dh-assistant-view.c:407
+msgid "Book:"
+msgstr "किताब:"
+
+#: ../src/dh-book.c:252
+#, c-format
+msgid "Language: %s"
+msgstr "भाषा: %s"
+
+#: ../src/dh-book.c:253
+msgid "Language: Undefined"
+msgstr "भाषा: अपरिभाषित"
+
+#. i18n: a documentation book
+#: ../src/dh-link.c:267
+msgid "Book"
+msgstr "किताब"
+
+#. i18n: a "page" in a documentation book
+#: ../src/dh-link.c:270
+msgid "Page"
+msgstr "पृष्ठ"
+
+#. i18n: a search hit in the documentation, could be a
+#. * function, macro, struct, etc
+#: ../src/dh-link.c:274
+msgid "Keyword"
+msgstr "कीवर्ड"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:279
+#| msgid "Section"
+msgid "Function"
+msgstr "फंक्शन"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:284
+msgid "Struct"
+msgstr "Struct"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:289
+msgid "Macro"
+msgstr "मैक्रो"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:294
+msgid "Enum"
+msgstr "Enum"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:299
+msgid "Type"
+msgstr "क़िस्म"
+
+#: ../src/dh-main.c:47
+#| msgid "Search for a function"
+msgid "Search for a keyword"
+msgstr "कीवर्ड के लिए खोज"
+
+#: ../src/dh-main.c:52
+msgid "Quit any running Devhelp"
+msgstr "कोइ चालू डेवहेल्प बंद करें"
+
+#: ../src/dh-main.c:57
+msgid "Display the version and exit"
+msgstr "संस्करण और निकास प्रदर्शित"
+
+#: ../src/dh-main.c:62
+msgid "Focus the Devhelp window with the search field active"
+msgstr "खोज क्षेत्र सक्रिय के साथ Devhelp विंडो ध्यान केंद्रित करें"
+
+#: ../src/dh-main.c:67
+msgid "Search and display any hit in the assistant window"
+msgstr "खोज और सहायक विंडो में कोई भी हिट प्रदर्शित"
+
+#: ../src/dh-parser.c:97 ../src/dh-parser.c:199 ../src/dh-parser.c:263
+#: ../src/dh-parser.c:273
+#, c-format
+#| msgid "Expected '%s' got '%s' at line %d, column %d"
+msgid "Expected '%s', got '%s' at line %d, column %d"
+msgstr "उम्मीद '%s', मिला '%s' पंक्ति %d, कॉलम %d पर"
+
+#: ../src/dh-parser.c:114
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "अवैध नामस्थान '%s' पंक्ति %d, कॉलम %d पर"
+
+#: ../src/dh-parser.c:143
+#, c-format
+#| msgid "title, name, and link elements are required at line %d, column %d"
+msgid ""
+"\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
+msgstr ""
+"\"शीर्षक\", \"नाम\", और \"लिंक\" तत्वों %d पंक्ति, कॉलम %d पर आवश्यक हैं"
+
+#: ../src/dh-parser.c:218
+#, c-format
+#| msgid ""
+#| "name and link elements are required inside <sub> on line %d, column %d"
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column %"
+"d"
+msgstr ""
+"\"नाम\" और \"लिंक\" तत्वों %d पंक्ति, कॉलम %d पर <sub> के अंदर आवश्यक हैं"
+
+#: ../src/dh-parser.c:298
+#, c-format
+#| msgid ""
+#| "name and link elements are required inside <sub> on line %d, column %d"
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr ""
+"\"नाम\" और \"लिंक\" तत्वों '%s' के अंदर %d पंक्ति, कॉलम %d पर  आवश्यक हैं"
+
+#: ../src/dh-parser.c:311
+#, c-format
+#| msgid ""
+#| "name and link elements are required inside <sub> on line %d, column %d"
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr "\"प्रकार\" तत्व %d पंक्ति, कॉलम %d पर <sub> के अंदर आवश्यक हैं"
+
+#: ../src/dh-parser.c:514
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "पुस्तक '%s' नहीं uncompress कर सकते हैं: %s"
+
+#: ../src/dh-search.c:493
+msgid "All books"
+msgstr "सभी पुस्तकों"
+
+#: ../src/dh-search.c:1111
+#| msgid "_Search:"
+msgid "Search in:"
+msgstr "में खोजें:"
+
+#: ../src/dh-window.c:104
+msgid "50%"
+msgstr "50%"
+
+#: ../src/dh-window.c:105
+msgid "75%"
+msgstr "75%"
+
+#: ../src/dh-window.c:106
+msgid "100%"
+msgstr "100%"
+
+#: ../src/dh-window.c:107
+msgid "125%"
+msgstr "125%"
+
+#: ../src/dh-window.c:108
+msgid "150%"
+msgstr "150%"
+
+#: ../src/dh-window.c:109
+msgid "175%"
+msgstr "175%"
+
+#: ../src/dh-window.c:110
+msgid "200%"
+msgstr "200%"
+
+#: ../src/dh-window.c:111
+msgid "300%"
+msgstr "300%"
+
+#: ../src/dh-window.c:112
+msgid "400%"
+msgstr "400%"
+
+#: ../src/dh-window.c:740
+msgid "translator_credits"
+msgstr "चंदन कुमार (chandankumar.093047@gmail.com)"
+
+#: ../src/dh-window.c:747
+#| msgid "A developer's help browser for GNOME 2"
+msgid "A developers' help browser for GNOME"
+msgstr "एक 'डेवलपर्स मदद ब्राउज़र GNOME के ​​लिए"
+
+#: ../src/dh-window.c:754
+msgid "DevHelp Website"
+msgstr "DevHelp वेबसाइट"
+
+#: ../src/dh-window.c:778
+msgid "_File"
+msgstr "फाइल (_F)"
+
+#: ../src/dh-window.c:779
+msgid "_Edit"
+msgstr "संपादन (_E)"
+
+#: ../src/dh-window.c:780
+#| msgid "_File"
+msgid "_View"
+msgstr "दृश्य_(V)"
+
+#: ../src/dh-window.c:781
+msgid "_Go"
+msgstr "जाना (_G)"
+
+#: ../src/dh-window.c:782
+msgid "_Help"
+msgstr "सहायता (_H)"
+
+#. File menu
+#: ../src/dh-window.c:785
+msgid "_New Window"
+msgstr "नया विंडो (_N)"
+
+#: ../src/dh-window.c:787
+msgid "New _Tab"
+msgstr "नया टैब (_T)"
+
+#: ../src/dh-window.c:789
+msgid "_Print…"
+msgstr "छापें (_P)…"
+
+#: ../src/dh-window.c:801 ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "अगला ढूंढें"
+
+#: ../src/dh-window.c:803 ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "पिछला ढूंढें"
+
+#: ../src/dh-window.c:810
+msgid "Go to the previous page"
+msgstr "पिछले पृष्ठ पर जाएँ"
+
+#: ../src/dh-window.c:813
+msgid "Go to the next page"
+msgstr "अगले पेज पर जाएँ"
+
+#: ../src/dh-window.c:816
+#| msgid "Contents"
+msgid "_Contents Tab"
+msgstr "सामग्री टैब (_C)"
+
+#: ../src/dh-window.c:819
+#| msgid "_Search:"
+msgid "_Search Tab"
+msgstr "खोज टैब (_S)"
+
+#. View menu
+#: ../src/dh-window.c:823
+msgid "_Larger Text"
+msgstr "बड़ा पाठ (_L)"
+
+#: ../src/dh-window.c:824
+msgid "Increase the text size"
+msgstr "पाठ का आकार बढ़ाएँ"
+
+#: ../src/dh-window.c:826
+msgid "S_maller Text"
+msgstr "छोटा पाठ (_m)"
+
+#: ../src/dh-window.c:827
+msgid "Decrease the text size"
+msgstr "पाठ का आकार घटाएँ"
+
+#: ../src/dh-window.c:829
+msgid "_Normal Size"
+msgstr "सामान्य आकार (_N)"
+
+#: ../src/dh-window.c:830
+msgid "Use the normal text size"
+msgstr "सामान्य पाठ आकार उपयोग"
+
+#: ../src/dh-window.c:839
+msgid "Leave fullscreen mode"
+msgstr "पूर्ण स्क्रीन छोड़ें"
+
+#: ../src/dh-window.c:846
+msgid "Display in full screen"
+msgstr "पूर्ण स्क्रीन में प्रदर्शित करें"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:966
+msgid "Larger"
+msgstr "बड़ा"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:969
+msgid "Smaller"
+msgstr "छोटा"
+
+#: ../src/dh-window.c:1171
+msgid "Contents"
+msgstr "घटक"
+
+#: ../src/dh-window.c:1181
+msgid "Search"
+msgstr "खोज"
+
+#: ../src/dh-window.c:1395
+msgid "Error opening the requested link."
+msgstr "अनुरोध लिंक खोलने में त्रुटि."
+
+#: ../src/dh-window.c:1748 ../src/dh-window.c:1995
+msgid "Empty Page"
+msgstr "रिक्त पेज"
+
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "ढूंढें:"
+
+#: ../src/eggfindbar.c:333 ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "खोज स्ट्रिंग की पिछली उपस्थिति ढूंढें"
+
+#: ../src/eggfindbar.c:346 ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "खोज स्ट्रिंग की अगली उपस्थिति ढूंढें"
+
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "स्थिति के प्रति संवेदनशील (_a)"
+
+#: ../src/eggfindbar.c:362 ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "स्थिति संवेदनशील खोज टॉगल करें"
+
+#~ msgid "Location of the paned"
+#~ msgstr "paned का स्थान"
+
+#~ msgid "The location of the paned separator."
+#~ msgstr "paned विभाजक का स्थान."
+
+#~ msgid "Specify the size and location of the window"
+#~ msgstr "विंडो का आकार और स्थान निर्दिष्ट करें"
+
+#~ msgid "WIDTHxHEIGHT+XOFF+YOFF"
+#~ msgstr "WIDTHxHEIGHT+XOFF+YOFF"
+
+#~ msgid ""
+#~ "name and link elements are required inside <function> on line %d, column %"
+#~ "d"
+#~ msgstr "नाम और लिंक तत्वों %d पंक्ति, कॉलम %d पर <function> के अंदर आवश्यक हैं"
+
+#~ msgid "Could not create book parser"
+#~ msgstr "पुस्तक पार्सर नहीं बना सका"
+
+#~ msgid "Could not create markup parser"
+#~ msgstr "मार्कअप पार्सर नहीं बना सका"
+
+#~ msgid "Cannot set UI: %s"
+#~ msgstr "यूआई सेट नहीं कर सकते: %s"
+
+#~ msgid "Devhelp project page"
+#~ msgstr "Devhelp परियोजना पृष्ठ"
+
+#~ msgid "Bug report Devhelp"
+#~ msgstr "बग रिपोर्ट Devhelp"
+
+#~ msgid "    "
+#~ msgstr "    "
+
+#~ msgid "<b>Fonts</b>"
+#~ msgstr "<b>फ़ॉन्ट्स</b>"
+
+#~ msgid "_Back"
+#~ msgstr "पीछे (_B)"
+
+#~ msgid "_Forward"
+#~ msgstr "आगे (_F)"
+
+#~ msgid "_Search for:"
+#~ msgstr "के लिए ढूँढें (_S):"
+
+#~ msgid "_About"
+#~ msgstr "के बारे में (_A)"
