@@ -6,7 +6,7 @@
 
 Name: devhelp
 Version: 2.28.1
-Release: 3%{?dist}
+Release: 6%{?dist}
 License: GPLv2+
 Group: Development/Tools
 Summary: API documention browser
@@ -17,6 +17,9 @@ BuildRoot: %{_tmppath}/devhelp-%{version}-%{release}-root-%(%{__id_u} -n)
 ### Patches ###
 
 Patch1: devhelp-2.28.1-missing-webkit-1.0.patch
+
+# https://bugzilla.redhat.com/1136304
+Patch2: devhelp-2.28.1-enable-deprecated.patch
 
 ### Dependencies ###
 
@@ -58,6 +61,7 @@ into other applications such as IDEs.
 %prep
 %setup -q -n devhelp-%{version}
 %patch1 -p1 -b .missing-webkit-1.0
+%patch2 -p1 -b .enable-deprecated
 
 # the configure script in the 2.28.0 tarball is bad
 autoreconf -f -i
@@ -147,6 +151,20 @@ fi
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Fri Sep 05 2014 Matthew Barnes <mbarnes@redhat.com> - 2.28.1-6
+- Enable deprecated GLib/GTK+ symbols since Devhelp uses some of them
+  since the GLib rebase. Apps should not be shipping with these build
+  flags anyway.
+- Resolves: rhbz#1136304
+
+* Fri Jun 20 2014 Tomas Popela <tpopela@redhat.com> - 2.28.1-5
+- Rebuild against new webkitgtk
+- Resolves: rhbz#1101401
+
+* Fri Jun 20 2014 Tomas Popela <tpopela@redhat.com> - 2.28.1-4
+- Rebuild against new webkitgtk
+- Resolves: rhbz#1101401
+
 * Tue Jan 12 2010 Matthias Clasen <mclasen@redhat.com> - 2.28.1-3
 - Fix BuildRequires
 

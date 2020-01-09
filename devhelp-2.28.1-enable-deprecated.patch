@@ -1,0 +1,26 @@
+diff -up devhelp-2.28.1/src/Makefile.am.enable-deprecated devhelp-2.28.1/src/Makefile.am
+--- devhelp-2.28.1/src/Makefile.am.enable-deprecated	2014-09-05 13:17:35.703103077 -0400
++++ devhelp-2.28.1/src/Makefile.am	2014-09-05 13:17:55.086134269 -0400
+@@ -23,9 +23,6 @@ AM_CPPFLAGS = 						\
+ 	-DLOCALEDIR=\""$(datadir)/locale"\" 	  	\
+ 	-DDATADIR=\""$(datadir)"\"                      \
+ 	-DG_LOG_DOMAIN=\"Devhelp\"			\
+-	-DG_DISABLE_DEPRECATED				\
+-	-DGDK_DISABLE_DEPRECATED			\
+-	-DGTK_DISABLE_DEPRECATED			\
+ 	$(WARN_CFLAGS)
+ 
+ bin_PROGRAMS = devhelp
+diff -up devhelp-2.28.1/src/Makefile.in.enable-deprecated devhelp-2.28.1/src/Makefile.in
+--- devhelp-2.28.1/src/Makefile.in.enable-deprecated	2014-09-05 13:17:44.254120031 -0400
++++ devhelp-2.28.1/src/Makefile.in	2014-09-05 13:18:02.222140951 -0400
+@@ -326,9 +326,6 @@ AM_CPPFLAGS = \
+ 	-DLOCALEDIR=\""$(datadir)/locale"\" 	  	\
+ 	-DDATADIR=\""$(datadir)"\"                      \
+ 	-DG_LOG_DOMAIN=\"Devhelp\"			\
+-	-DG_DISABLE_DEPRECATED				\
+-	-DGDK_DISABLE_DEPRECATED			\
+-	-DGTK_DISABLE_DEPRECATED			\
+ 	$(WARN_CFLAGS)
+ 
+ devhelp_SOURCES = \
