@@ -2,7 +2,7 @@
 
 Name: devhelp
 Version: 3.8.2
-Release: 6%{?dist}
+Release: 7%{?dist}
 Epoch: 1
 License: GPLv2+
 Group: Development/Tools
@@ -103,6 +103,10 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >&/dev/null || :
 %{_libdir}/pkgconfig/*
 
 %changelog
+* Thu May 21 2015 Ray Strode <rstrode@redhat.com> - 1:3.8.2-7
+- rebuild
+  Resolves: #1221601
+
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1:3.8.2-6
 - Mass rebuild 2014-01-24
 
