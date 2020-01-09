@@ -1,0 +1,19 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/devhelp.desktop.in.in
+data/devhelp.schemas.in
+data/ui/devhelp.builder
+misc/gedit-plugin/devhelp.desktop.in
+misc/gedit-plugin/devhelp/devhelp.py
+src/dh-assistant.c
+src/dh-assistant-view.c
+src/dh-base.c
+src/dh-book-tree.c
+src/dh-keyword-model.c
+src/dh-link.c
+src/dh-main.c
+src/dh-parser.c
+src/dh-search.c
+src/dh-util.c
+src/dh-window.c
+src/eggfindbar.c

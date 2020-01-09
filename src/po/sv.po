@@ -1,0 +1,497 @@
+# Swedish messages for Devhelp.
+# Copyright (C) 2001-2009 Free Software Foundation, Inc.
+# Richard Hult <richard@imendio.com>, 2001, 2004.
+# Johan Dahlin <zilch.am@home.se>, 2001.
+# Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004.
+# Daniel Nylander <po@danielnylander.se>, 2006, 2008, 2009.
+#
+# Översätt inte "Devhelp", det är ett namn.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: devhelp\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-01 00:14+0200\n"
+"PO-Revision-Date: 2009-09-01 00:14+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/devhelp.desktop.in.in.h:1
+msgid "Developer's Help program"
+msgstr "Hjälpprogram för utvecklare"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:2
+#: ../src/dh-main.c:235
+#: ../src/dh-window.c:438
+#: ../src/dh-window.c:734
+#: ../src/dh-window.c:1398
+msgid "Devhelp"
+msgstr "Devhelp"
+
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "Dokumentationsläsare"
+
+#: ../data/devhelp.schemas.in.h:1
+msgid "Font for fixed width text"
+msgstr "Typsnitt för text med fast bredd"
+
+#: ../data/devhelp.schemas.in.h:2
+msgid "Font for text"
+msgstr "Typsnitt för text"
+
+#: ../data/devhelp.schemas.in.h:3
+msgid "Font for text with fixed width, such as code examples."
+msgstr "Typsnitt för text med fast bredd, som kodexampel."
+
+#: ../data/devhelp.schemas.in.h:4
+msgid "Font for text with variable width."
+msgstr "Typsnitt för text med variabel bredd."
+
+#: ../data/devhelp.schemas.in.h:5
+msgid "Height of assistant window"
+msgstr "Höjd på assistentfönstret"
+
+#: ../data/devhelp.schemas.in.h:6
+msgid "Height of main window"
+msgstr "Höjd på huvudfönstret"
+
+#: ../data/devhelp.schemas.in.h:7
+msgid "Main window maximized state"
+msgstr "Maximerat tillstånd för huvudfönstret"
+
+#: ../data/devhelp.schemas.in.h:8
+msgid "Selected tab, \"content\" or \"search\""
+msgstr "Vald flik, \"content\" eller \"search\""
+
+#: ../data/devhelp.schemas.in.h:9
+msgid "The X position of the assistant window."
+msgstr "X-positionen för assistentfönstret."
+
+#: ../data/devhelp.schemas.in.h:10
+msgid "The X position of the main window."
+msgstr "X-positionen för huvudfönstret."
+
+#: ../data/devhelp.schemas.in.h:11
+msgid "The Y position of the assistant window."
+msgstr "Y-positionen för assistantfönstret."
+
+#: ../data/devhelp.schemas.in.h:12
+msgid "The Y position of the main window."
+msgstr "Y-positionen för huvudfönstret."
+
+#: ../data/devhelp.schemas.in.h:13
+msgid "The height of the assistant window."
+msgstr "Höjden på assistentfönstret."
+
+#: ../data/devhelp.schemas.in.h:14
+msgid "The height of the main window."
+msgstr "Höjden på huvudfönstret."
+
+#: ../data/devhelp.schemas.in.h:15
+msgid "The width of the assistant window."
+msgstr "Bredden på assistentfönstret."
+
+#: ../data/devhelp.schemas.in.h:16
+msgid "The width of the index and search pane."
+msgstr "Bredden på index- och sökpanelen."
+
+#: ../data/devhelp.schemas.in.h:17
+msgid "The width of the main window."
+msgstr "Bredden på huvudfönstret."
+
+#: ../data/devhelp.schemas.in.h:18
+msgid "Use system fonts"
+msgstr "Använd systemtypsnitt"
+
+#: ../data/devhelp.schemas.in.h:19
+msgid "Use the system default fonts."
+msgstr "Använd systemets standardtypsnitt."
+
+#: ../data/devhelp.schemas.in.h:20
+msgid "Whether the main window should start maximized or not."
+msgstr "Huruvida huvudfönstret ska starta maximerat eller inte."
+
+#: ../data/devhelp.schemas.in.h:21
+msgid "Which of the tabs that is selected, \"content\" or \"search\"."
+msgstr "Vilken av flikarna som är vald, \"content\" eller \"search\"."
+
+#: ../data/devhelp.schemas.in.h:22
+msgid "Width of the assistant window"
+msgstr "Bredd på assistentfönstret"
+
+#: ../data/devhelp.schemas.in.h:23
+msgid "Width of the index and search pane"
+msgstr "Bredd på index- och sökpanelen"
+
+#: ../data/devhelp.schemas.in.h:24
+msgid "Width of the main window"
+msgstr "Bredd på huvudfönstret"
+
+#: ../data/devhelp.schemas.in.h:25
+msgid "X position of assistant window"
+msgstr "X-position för assistentfönstret"
+
+#: ../data/devhelp.schemas.in.h:26
+msgid "X position of main window"
+msgstr "X-position för huvudfönstret"
+
+#: ../data/devhelp.schemas.in.h:27
+msgid "Y position of assistant window"
+msgstr "Y-position för assistentfönstret"
+
+#: ../data/devhelp.schemas.in.h:28
+msgid "Y position of main window"
+msgstr "Y-position för huvudfönstret"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+msgid "Devhelp support"
+msgstr "Stöd för Devhelp"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "Gör så att F2 tar fram Devhelp för ordet vid markören"
+
+#: ../misc/gedit-plugin/devhelp/devhelp.py:38
+msgid "Show API Documentation"
+msgstr "Visa API-dokumentation"
+
+#: ../misc/gedit-plugin/devhelp/devhelp.py:40
+msgid "Show API Documentation for the word at the cursor"
+msgstr "Visa API-dokumentation för ordet vid markören"
+
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:74
+msgid "Devhelp - Assistant"
+msgstr "Devhelp - Assistent"
+
+#: ../src/dh-assistant-view.c:319
+msgid "Book:"
+msgstr "Bok:"
+
+#. i18n: a documentation book
+#: ../src/dh-link.c:255
+msgid "Book"
+msgstr "Bok"
+
+#. i18n: a "page" in a documentation book
+#: ../src/dh-link.c:258
+msgid "Page"
+msgstr "Sida"
+
+#. i18n: a search hit in the documentation, could be a
+#. * function, macro, struct, etc
+#: ../src/dh-link.c:262
+msgid "Keyword"
+msgstr "Nyckelord"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:267
+msgid "Function"
+msgstr "Funktion"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:272
+msgid "Struct"
+msgstr "Struct"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:277
+msgid "Macro"
+msgstr "Makro"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:282
+msgid "Enum"
+msgstr "Enum"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:287
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/dh-main.c:175
+msgid "Search for a keyword"
+msgstr "Sök efter ett nyckelord"
+
+#: ../src/dh-main.c:180
+msgid "Quit any running Devhelp"
+msgstr "Avsluta alla körande Devhelp"
+
+#: ../src/dh-main.c:185
+msgid "Display the version and exit"
+msgstr "Visa versionen och avsluta"
+
+#: ../src/dh-main.c:190
+msgid "Focus the Devhelp window with the search field active"
+msgstr "Fokusera Devhelpfönstret med sökfältet aktivt"
+
+#: ../src/dh-main.c:195
+msgid "Search and display any hit in the assistant window"
+msgstr "Sök och visa eventuell träff i assistentfönstret"
+
+#: ../src/dh-parser.c:81
+#: ../src/dh-parser.c:178
+#: ../src/dh-parser.c:242
+#: ../src/dh-parser.c:252
+#, c-format
+msgid "Expected '%s' got '%s' at line %d, column %d"
+msgstr "\"%s\" förväntades, fick \"%s\" vid rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:98
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "Ogiltig namnrymd \"%s\" vid rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:129
+#, c-format
+msgid "\"title\", \"name\", and \"link\" elements are required at line %d, column %d"
+msgstr "Elementen \"title\", \"name\" och \"link\" krävs på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:197
+#, c-format
+msgid "\"name\" and \"link\" elements are required inside <sub> on line %d, column %d"
+msgstr "Elementen \"name\" och \"link\" krävs inuti <sub> på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:277
+#, c-format
+msgid "\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr "Elementen \"name\" och \"link\" krävs inuti \"%s\" på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:290
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr "Elementet \"type\" krävs inuti <keyword> på rad %d, kolumn %d"
+
+#: ../src/dh-parser.c:495
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "Kan inte dekomprimera boken \"%s\": %s"
+
+#: ../src/dh-search.c:490
+msgid "All books"
+msgstr "Alla böcker"
+
+#: ../src/dh-search.c:557
+msgid "Search in:"
+msgstr "Sök i:"
+
+#: ../src/dh-window.c:82
+msgid "50%"
+msgstr "50%"
+
+#: ../src/dh-window.c:83
+msgid "75%"
+msgstr "75%"
+
+#: ../src/dh-window.c:84
+msgid "100%"
+msgstr "100%"
+
+#: ../src/dh-window.c:85
+msgid "125%"
+msgstr "125%"
+
+#: ../src/dh-window.c:86
+msgid "150%"
+msgstr "150%"
+
+#: ../src/dh-window.c:87
+msgid "175%"
+msgstr "175%"
+
+#: ../src/dh-window.c:88
+msgid "200%"
+msgstr "200%"
+
+#: ../src/dh-window.c:89
+msgid "300%"
+msgstr "300%"
+
+#: ../src/dh-window.c:90
+msgid "400%"
+msgstr "400%"
+
+#: ../src/dh-window.c:433
+msgid "translator_credits"
+msgstr ""
+"Daniel Nylander <po@danielnylander.se>\n"
+"Christian Rose <menthos@menthos.com>\n"
+"Richard Hult <richard@imendio.com>\n"
+"Johan Dahlin <johan@gnome.org>"
+
+#: ../src/dh-window.c:440
+msgid "A developer's help browser for GNOME"
+msgstr "Ett hjälpprogram för utvecklare för GNOME"
+
+#: ../src/dh-window.c:470
+msgid "_File"
+msgstr "_Arkiv"
+
+#: ../src/dh-window.c:471
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: ../src/dh-window.c:472
+msgid "_View"
+msgstr "_Visa"
+
+#: ../src/dh-window.c:473
+msgid "_Go"
+msgstr "_Gå"
+
+#: ../src/dh-window.c:474
+msgid "_Help"
+msgstr "_Hjälp"
+
+#. File menu
+#: ../src/dh-window.c:477
+msgid "_New Window"
+msgstr "_Nytt fönster"
+
+#: ../src/dh-window.c:479
+msgid "New _Tab"
+msgstr "Ny _flik"
+
+#: ../src/dh-window.c:481
+msgid "_Print..."
+msgstr "_Skriv ut..."
+
+#: ../src/dh-window.c:493
+#: ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "Sök nästa"
+
+#: ../src/dh-window.c:495
+#: ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "Sök föregående"
+
+#: ../src/dh-window.c:502
+msgid "Go to the previous page"
+msgstr "Gå till föregående sida"
+
+#: ../src/dh-window.c:505
+msgid "Go to the next page"
+msgstr "Gå till nästa sida"
+
+#: ../src/dh-window.c:508
+msgid "_Contents Tab"
+msgstr "_Innehållsflik"
+
+#: ../src/dh-window.c:511
+msgid "_Search Tab"
+msgstr "_Sökflik"
+
+#. View menu
+#: ../src/dh-window.c:515
+msgid "_Larger Text"
+msgstr "_Större text"
+
+#: ../src/dh-window.c:516
+msgid "Increase the text size"
+msgstr "Öka textstorleken"
+
+#: ../src/dh-window.c:518
+msgid "S_maller Text"
+msgstr "_Mindre text"
+
+#: ../src/dh-window.c:519
+msgid "Decrease the text size"
+msgstr "Minska textstorleken"
+
+#: ../src/dh-window.c:521
+msgid "_Normal Size"
+msgstr "_Normal storlek"
+
+#: ../src/dh-window.c:522
+msgid "Use the normal text size"
+msgstr "Använd normal textstorlek"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:647
+msgid "Larger"
+msgstr "Större"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:650
+msgid "Smaller"
+msgstr "Mindre"
+
+#. i18n: please don't translate
+#. * "Devhelp", it's a name, not a
+#. * generic word.
+#: ../src/dh-window.c:789
+msgid "About Devhelp"
+msgstr "Om Devhelp"
+
+#: ../src/dh-window.c:794
+msgid "Preferences..."
+msgstr "Inställningar..."
+
+#: ../src/dh-window.c:837
+msgid "Contents"
+msgstr "Innehåll"
+
+#: ../src/dh-window.c:847
+msgid "Search"
+msgstr "Sök"
+
+#: ../src/dh-window.c:1216
+#: ../src/dh-window.c:1425
+msgid "Empty Page"
+msgstr "Tom sida"
+
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "Sök:"
+
+#: ../src/eggfindbar.c:333
+#: ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "Sök föregående förekomst av söksträngen"
+
+#: ../src/eggfindbar.c:346
+#: ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "Sök nästa förekomst av söksträngen"
+
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "Skift_lägeskänslig"
+
+#: ../src/eggfindbar.c:362
+#: ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "Växla skiftlägeskänslighet"
+
+#~ msgid "<b>Fonts</b>"
+#~ msgstr "<b>Typsnitt</b>"
+#~ msgid "Preferences"
+#~ msgstr "Inställningar"
+#~ msgid "_Fixed width:"
+#~ msgstr "_Fast bredd:"
+#~ msgid "_Use system fonts"
+#~ msgstr "_Använd systemets typsnitt"
+#~ msgid "_Variable width: "
+#~ msgstr "_Variabel bredd:"
+#~ msgid "Could not create book parser"
+#~ msgstr "Kunde inte skapa boktolk"
+#~ msgid "Could not create markup parser"
+#~ msgstr "Kunde inte skapa markuptolk"
+

@@ -1,0 +1,10 @@
+[Gedit Plugin]
+Loader=python
+Module=devhelp
+IAge=2
+_Name=Devhelp support
+_Description=Makes F2 bring up Devhelp for the word at the cursor
+Authors=Richard Hult
+Icon=devhelp
+Copyright=Copyright © 2006 Richard Hult
+Website=http://people.imendio.com/richard/

@@ -1,0 +1,492 @@
+NEW in 2.28.1:
+==============
+
+Fixed bugs:
+
+ - #589435, Track pad horizontal scrolling
+ - #596808, Fix several leaks reported by valgrind
+ - #596810, Clicking close button on a tab always closes the current tab
+ - #598598, Linking across GNOME components
+
+Updated translations: ca, ja, ru, zh_CN
+
+Many thanks to all contributors: Leonid Kanter, Gil Forcada, Jonathon
+Jongsma, Takeshi Aihana, Tao Wei
+
+NEW in 2.28.0.1:
+================
+
+Fixed bugs:
+
+ - badly generated configure file
+
+NEW in 2.28.0:
+==============
+
+Fixed bugs:
+
+ - #594633, Remove libwnck from Requires in .pc file
+ - #595567, devhelp launches along with a spurious empty browser window
+
+Updated translations: bg, cs, da, fi, gl, hu, mai, ro, sl, sr@latin,
+sr, th, uk, zh_CN, zh_HK, zh_TW
+
+Many thanks to all contributors: Gabor Kelemen, Lucas Lommer, Branko
+Kokanović, Rajesh Ranjan, Alexander Shopov, Ilkka Tuohela, Ask H. Larsen,
+Fran Diéguez, Yanko Kaneti, Theppitak Karoonboonyanan, Matej Urbančič,
+Adi Roiban, Aron Xu, Chao-Hsiung Liao, Maxim V. Dziumanenko
+
+NEW in 2.27.92:
+===============
+
+New maintainer (to Richard, thanks for everything).
+
+Fixed bugs:
+
+ - #517003, Translated strings are not being used in gedit's plugin
+ - #552640, New tabs should not steal focus
+ - #563036, Desensitize zoom items when non applicable
+ - #566117, Book titles should be forced to be single line
+ - #566459, generate Enumeration and Flag Types
+ - #568172, Wrong management of fonts
+ - #571626, Space should scroll down
+ - #578964, Make Ctrl+C copy the symbol name in the symbol listing pane
+ - #579539, New tabs don't suit a window well
+ - #585110, Use accessor functions instead direct access
+ - #585670, Blank Screen on DevHelp Assistant
+ - #587984, emacs devhelp-word-at-point clobbers global "w"
+ - #587986, html2xml.py does not close <sub>
+ - #587999, Page sensitive searches have been broken.
+ - #588655, Work around deprecated g_mapped_file_free()
+ - #588850, Installs empty images dir
+ - #590207, link in About dialog is out of date
+ - #590209, toolbar actions could use some is_important love
+ - #591046, Assistant window resizes automatically
+ - #592157, Application name is desktop file and main window is not
+            translatable
+ - #592712, build fails using automake 1.11
+ - #592750, Support silent build rules with automake 1.11
+ - #593174, Incredibly small string fix
+
+Updated translations: ar, de, en_GB, et, fr, hu, it, nb, pl, pt_BR,
+pt, sv, tr
+
+Many thanks to all contributors: Duarte Loreto, Michael Gratton, Kjartan
+Maraas, Ivar Smolin, Khaled Hosny, Baris Cicek, Daniel Nylander, Mario
+Blättermann, Luca Ferretti, Tomasz Dominikowski, Claude Paroz, Bruce Cowan,
+Richard Cohen, Javier Jardón, Gabor Kelemen, Gustavo Noronha Silva, Og B.
+Maciel
+
+NEW in 0.23.1:
+==============
+
+This is a build fix release for latest glib and a translation update.
+The updated translations are:
+
+Updated translations: ca, ko, sv, es, cs, el, it, ja, ga, pt_BR, uk,
+et, fr, se, zh_CN, zh_HK, bg, ge, he
+
+Many thanks to the translators: Gil Forcada, Changwoo Ryu,
+Jani Monoses, Daniel Nylander, Jorge Gonzalez Gonzalez, Petr Kovar,
+Jennie Petoumenou, Francesco Marletta, Yair Hershkovitz,
+Takeshi Aihana, Ignacio Casal Quinteiro, Miquel Esplà,
+Leonardo Ferreira Fontenelle, Matej Urban, Ihar Hrachyshka,
+Maxim V. Dziumanenko, Maxim V. Dziumanenko, Socratis Vavilis,
+Antón Méixome, Βασίλης Κοντογιάνης, Mattias Põldaru, Kjartan Maraas,
+Claude Paroz, Chao-Hsiung Liao, Theppitak Karoonboonyanan,
+Ivar Smolin, Yavor Doganov, Christian Kirbach
+
+NEW in 0.23:
+============
+
+This is a translation update. The updated translations are:
+
+Updated translations: hu, nb, pt_BR, zh_CN, th, sl, et, sv
+
+Many thanks to the translators: Gabor Kelemen, Kjartan Maraas, Taylon
+Silmer, Deng Xiyue, Visal Srivisal, Matej Urbančič, Mattias Põldaru,
+Daniel Nylander
+
+
+NEW in 0.22:
+============
+
+This is the first release from the WebKit branch. Many thanks to Alp
+Toker, Frederic Peters and Jan Alonzo for the initial patches.
+
+Updated translations: ar, be@latin, bg, bn_IN, ca, cs, da, de, en_GB,
+es, et, fi, fr, gl, he, hr, hu, it, ja, ko, lt, mk, nb, ne, nl, nn,
+oc, pl, ps, pt, pt_BR, ru, sq, sv, th, tr, uk, vi, zh_TW
+
+Many thanks to the translators: Alexander Shopov, Arangel Angov, Artur
+Flinta, Baris Cicek, Changwoo Ryu, Claude Paroz, Clytie Siddall,
+Daniel Nylander, David Lodge, Djihed Afifi, Duarte Loreto, Eskild
+Hustvedt, Gabor Kelemen, Gil Forcada, Gintautas Miliauskas, Hong Kong,
+Ignacio Casal Quinteiro, Ihar Hrachyshka, Ilkka Tuohela, Jonh Wendell,
+Jorge Gonzalez, Jovan Naumovski, Kenneth Nielsen, Kjartan Maraas,
+Laurent Dhima, Leonardo Ferreira Fontenelle, Luca Ferretti, Maxim
+Dziumanenko, Pawan Chitrakar, Petr Kovar, Philipp Kerling, Priit Laes,
+Richard Hult, Robert Sedak, Runa Bhattacharjee, Takeshi AIHANA,
+Theppitak Karoonboonyanan, Wouter Bolsterlee, Yair Hershkovitz, Yannig
+Marchegay, Yuri Kozlov.
+
+
+NEW in 0.19:
+============
+
+- Specify an icon for the GEdit plugin (bug #512000)
+- Updated translations: ar, be@latin, ca, nl, pt_BR, pt
+
+Many thanks to the translators: Leonardo Ferreira Fontenelle, Pedro de
+Medeiros, Og Maciel, Wouter Bolsterlee, Duarte Loreto, Khaled Hosny,
+Ihar Hrachyshka, Joan Duran, Djihed Afifi.
+
+
+NEW in 0.18:
+============
+
+- Use proper size icon for close buttons in tabs (bug #510984, Luca Ferretti)
+- Polish the new Zoom UI (bugs #508510 and #508513, Wouter Bolsterlee)
+- Updated translations: be, ca, de, es, et, gl, he, ja, nb, sv, th, uk 
+
+Many thanks to the translators: Ihar Hrachyshka, Gil Forcada, Andre
+Klapper, Jorge Gonzalez, Priit Laes, Ignacio Casal Quinteiro, Yair
+Hershkovitz, Takeshi AIHANA, Kjartan Maraas, Daniel Nylander,
+Theppitak Karoonboonyanan, Maxim Dziumanenko.
+
+
+NEW in 0.17:
+============
+
+- Devhelp doesn't run new instance on new display (bug #354895)
+- New icons from Andreas Nilsson (bug #463131)
+- Add zoom actions (bug #144517, Cosimo Cecchi)
+- Add close buttons to tabs (bug #479306, Cosimo Cecchi)
+- Fix build against xyulrunner 1.9 (bug #499050, Matthias Clasen)
+- Remove obsolete dependencies (libgnomeui and gnome-vfs, bug #484896)
+  and make libwnck optional
+- Use po/LINGUAS (bug #464108, Gilles Dartiguelongue)
+- Updated and new translations: ar, be@latin, es, et, gl, nb, oc, sl,
+  sv, ta, vi
+
+Many thanks to all the translators: Djihed Afifi, Sohaib Afifi, Ihar
+Hrachyshka, Jorge Gonzalez, Priit Laes, Ignacio Casal Quinteiro,
+Kjartan Maraas, Yannig Marchegay, Matej Urbančič, I. Felix, Clytie
+Siddall
+
+
+NEW in 0.16.1:
+==============
+
+Updated translations: ru, fr, bg, nl, be@latin, pt, sq, bn, de, ko,
+it, hu, lt, ar, et, ca, ja, pl
+
+Many thanks to all the translators: Nickolay V. Shmyrev, Stéphane
+Raimbault, Alexander Shopov, Wouter Bolsterlee, Ihar Hrachyshka,
+Duarte Loreto, Laurent Dhima, Khandakar Mujahidul Islam, Jamil Ahmed,
+Hendrik Richter, Changwoo Ryu, Luca Ferretti, Gabor Kelemen, Gintautas
+Miliauskas, Djihed Afifi, Priit Laes, Gil Forcada, Takeshi AIHANA,
+Artur Flinta
+
+
+NEW in 0.16:
+============
+
+- Changed keybinding in GEdit plugin from F7 to F2 to avoid a conflict
+  with GTK+ 2.12
+
+Translations:
+- Updated gu: Ankit Patel
+- Updated vi: Clytie Siddall, Nguyễn Thái Ngọc Duy
+- Updated fi: Ilkka Tuohela
+- Updated et: Priit Laes
+- Updated gl: Ignacio Casal Quinteiro
+- Updated es: Jorge Gonzalez
+- Updated bn_IN: Runa Bhattacharjee
+- Updated sr.po, sr@Latn: Goran Rakić
+- Updated pt: Duarte Loreto
+- Updated nb: Kjartan Maraas
+- Updated tr: Baris Cicek
+- Updated th: Theppitak Karoonboonyanan
+- Updated te: Sunil Mohan Adapa
+- Updated en_CA: Adam Weinberger
+- Updated fr: Stéphane Raimbault
+- Updated bg: Alexander Shopov
+- Updated pt_BR: Raphael Higino
+- Updated de: Johannes Schmid
+- Updated da: Kenneth Nielsen
+- Updated nl: Wouter Bolsterlee
+- Updated hu: Gabor Kelemen
+- Updated zh_CN: Funda Wang
+- Updated sv: Daniel Nylander
+- Updated mk: Jovan Naumovski  <jovan@lugola.net>
++
+- Updated uk: Maxim Dziumanenko
+- Updated sl: Matic Žgur
+
+
+NEW in 0.15:
+============
+
+- Fix build on Solaris (bug #439054)
+- Don't hardcode the png extension in desktop file (bug #440434, Loïc Minier)
+
+Translations:
+- Updated ja: Takeshi AIHANA
+- Updated th: Theppitak Karoonboonyanan
+
+
+NEW in 0.14:
+============
+
+- Use theme colors for gecko 1.9 and later (bug #347967)
+- Call g_thread_init (bug #414221, Mikael Hallendal)
+- Add --focus-search command line option (bug #409182, Ryan Lortie)
+- Add typeahead searching (bug #116322, Huang Peng)
+- Update information about where books should be installed (bug #411748)
+- Add missing mnemonics (bug #411376, Mariano Suárez-Alvarez)
+- GNOME Goal #3: Remove "Application" category (bug #417613, Kamil Páral)
+
+Translations:
+- Updated el: Simos Xenitellis
+- Updated gu: Ankit Patel
+- Updated vi: Nguyễn Thái Ngọc Duy
+- Updated it: Luca Ferretti
+- Updated ar: Theppitak Karoonboonyanan
+- Updated et: Priit Laes
+- Updated gl: Ignacio Casal Quinteiro
+- Updated es: Jorge Gonzalez, Vincent van Adrighem
+- Updated bn_IN: Runa Bhattacharjee
+- Updated ru: Nickolay V. Shmyrev
+- Updated rw: Ihar Hrachyshka
+- Updated nl: Wouter Bolsterlee
+- Updated pt: Vincent van Adrighem
+- Updated nb: Kjartan Maraas
+- Updated zh_HK.po, zh_TW: Abel Cheung
+- Updated lv: Vincent van Adrighem
+- Updated lt: Gintautas Miliauskas
+- Updated th: Theppitak Karoonboonyanan
+- Updated pl: Artur Flinta
+- Updated be: Ihar Hrachyshka
+- Updated fr: shortcuts
+- Updated pt_BR: Leonardo Ferreira Fontenelle, Raphael Higino, Ihar Hrachyshka, Vincent van Adrighem
+- Updated hr: Ihar Hrachyshka
+- Updated da: Peter Bach
+- Updated dz: Pema Geyleg
+- Updated hu: Gabor Kelemen
+- Updated ja: Takeshi AIHANA
+- Updated be@latin: Ihar Hrachyshka
+- Updated zh_CN: Funda Wang
+- Updated ml: Ani Peter
+- Updated sq: Laurent Dhima
+- Updated sv: Richard Hult
+- Updated en_GB: David Lodge
+- Updated uk: Maxim Dziumanenko
+- Updated or: Subhransu Behera
+
+
+NEW in 0.13:
+============
+
+- Revert theme change since it breaks gecko < 1.9
+- Make deprecated keywords grey
+- Only search for books in the XDG data/home directories
+- Fixed #310542, Improve the gtk-doc devhelp format (Richard)
+- Fixed #349229, Documentation page header is transparent (Richard)
+- Fixed #349352, GConf schema has wrong key (Jonathon Jongsma)
+- Fixed #349880, add a generic name to the .desktop file (Matthias Clasen)
+- Fixed #341170, Added gecko_home variable to .pc file (Naba Kumar)
+- Fixed #334867, Initialize the HTML view to display about:blank (David Trowbridge)
+
+Translations:
+- Updated el: Kostas Papadimas
+- Updated fr: Christophe Merlet
+- Updated bg: Alexander Shopov
+- Updated sv: Richard Hult
+- Updated pt: Duarte Loreto
+- Updated vi: Clytie Siddall
+- Updated nb: Kjartan Maraas
+- Updated de: Hendrik Richter
+- Updated ko: Changwoo Ryu
+- Updated ne: Pawan Chitrakar
+- Updated it: Alessio Frusciante
+- Updated ar: Djihed Afifi
+- Updated es: Francisco Javier F. Serrador
+- Updated sl: Matic Zgur
+- Updated et: Priit Laes
+- Updated hu: Gabor Kelemen
+- Updated gl: Ignacio Casal Quinteiro
+- Updated ca: Josep Puigdemont i Casamajó
+- Updated en_GB: David Lodge
+
+
+Devhelp 0.12:
+-------------
+
+* Add advanced (book/page) search options (Tristan Van Berkom)
+* Improve libdevhelp (Tristan, Johannes Schmid)
+* Add --version option (Tristan)
+* Fix mnemomics (Wouter Bolsterlee)
+* Add a very simple gedit plugin (Richard)
+* Add quit menu item (Richard)
+* Build fixes and clean ups (Behdad Esfahbod)
+* Lots of Gecko build fixes and improvements (Christian Persch)
+* Open external links in browser (Christian)
+* UI tweaks (Christian)
+* Shiny new icon (Marcus Leyman, Behdad)
+* Read books installed in XDG data dirs (Antoine Dopffer, Behdad)
+* Use correct category in desktop file (Stephane Loeuillet)
+* Translations (Miloslav Trmac, Xavier Conde, Ilkka Tuohela, Francisco
+  Javier F. Serrador, Gabor Kelemen, Ignacio Casal Quinteiro, Vincent
+  van Adrighem, Takeshi AIHANA, Daniel Nylander, Sergey Al. Safonov,
+  Clytie Siddall, Chao-Hsiung Liao)
+
+
+Devhelp 0.11:
+-------------
+* Tab support (based on patch from Brent Smith)
+* Support for multiple windows (based on patch from Nirmal Kumar)
+* Parse the new gtk-doc format (Richard)
+* Reuse devhelp windows from the current workspace only (Richard)
+* Sync the contents tree with the actual selection (Richard)
+* Smart case searching (Ruben Vermeersch)
+* Use book title + html title as window title (Tommi Komulainen)
+* Improve build against various mozilla-derivates (Peter Volkov,
+  Christian Persch, Robert O'Callahan)
+* General UI tweaks and bug fixes (Richard, Mikael, Christian, Paolo
+  Borelli, Pedro Villavicencio)
+* New and updated translations: bg, cs, de, en_CA, es, fi, gl, hu, it,
+  ja, nb, ne, nl, no, sk, sv, vi, zh_TW
+
+Devhelp 0.10:
+-------------
+* Added third party contributed scripts for generating Devhelp books.
+* Mozilla build fixes (Christian Persch)
+* Improved Bug Buddy support (Christoffer Olsen)
+* Fix to not have the HTML widget steal focus (Tommi Komulainen)
+* Ported to GTK+ 2.6 and removed libgnomeui depdendency. (Kristof Vansant)
+* Window presentation fixes for new Metacity (Richard Hult)
+* Fixed crash when searching (Ray Strode)
+* Plugged memory leak in the gecko bindings (Paolo Borelli)
+* New translations (hu, rw)
+* Updated translations 
+  (el, en_CA, de, cs, ca, sk, sv, en_GB)
+
+Devhelp 0.9.3:
+--------------
+* Compiling against firefox (Christian Persch)
+* Get rid of startup script (Christian Persch)
+* Fixed font sizes
+* Render scrollbars with GTK theme
+* Updated translations (de)
+
+Devhelp 0.9.2:
+--------------
+* Added accelerators for back and forward    (Johan Svedberg)
+* Bacon-love for IPC
+* Support searching for substrings "gtk new" (Nickolay V. Shmyrev)
+* New translations (nb, gu, mk)
+* Updated translations 
+  (sq, no, fi, pt, sq, da, be, nb, fr, it, zh_TW)
+
+Devhelp 0.9.1:
+--------------
+* Save maximized state
+* Support for Mozilla 1.7
+* Show direct hits directly.
+* Make sure that the window has a minimum width even if GConf setup isn't 
+  working properly.
+* Make sure user installed documentation is shown before system installed.
+* New translations (en_GB, en_CA)
+* Updated translations 
+  (ja, cs, nl, hr, sk, sr, es, en_GB, uk, is, pt_BR, sv,fi, es, sq)
+
+Devhelp 0.9:
+------------
+* Depending on Mozilla for HTML rendering
+* Depending on GTK 2.3/2.4
+* Fixed History support
+* Fixed a number of bugs related to Gtkhtml2
+* Added support for customized fonts
+* Saves window layout/geometry/location
+* New translations (pa)
+* Updated translations
+  (ja, hi, fr, nl, it, da, no, pt_BR, zh_CN, sv)
+
+Devhelp 0.8:
+------------
+* Installs a library and header files to embed Devhelp widgets
+  into a program. Used by Anjuta.
+* Build fix for FreeBSD
+* New translations (tr, ca)
+* Updated translations 
+  (cs, sv, ja, sk, nl, de, es, pl, is, ms, pt, no, da, fr, az)
+
+Devhelp 0.7:
+------------
+* Crash fix                                         (Ross)
+* Better error handling                             (Ross)
+* Plug memory leak                                  (Mikael)
+* Usability fixes                                   (Richard)
+* Dist the emacs and vim scripts                    (Richard)
+* Added --geometry                                  (Richard)
+* UI fixes                                          (Richard)
+* Listen to GConf toolbar and menu settings         (Richard)
+* Fixed bug #114558                                 (Mike Harn,
+                                                     Richard)
+
+
+Devhelp 0.6:
+------------
+* Added both html widget implementations to tarball (Mikael)
+* Lots of work on error handling                    (Ross)
+* Fixes to searched paths                           (Ross)
+* Added gnome-vfs MIME support                      (Ross)
+* New and updated translations, thanks to Kang Jeong-Hee, Vincent van Adrighem,
+  Duarte Loreto, Zbigniew Chyla, Takeshi AIHANA, Metin Amiroff, 
+  Samúel Jón Gunnarsson, Guntupalli Karunakar.
+
+Devhelp 0.5:
+------------
+* GNOME 2 port             (Mikael, Richard)
+* LOTS of code cleanups    (Mikael)
+* Support gzipped books    (Ross Burton)
+* Better activation        (Richard)
+* Support for gtk-doc built .devhelp files (Mikael)
+  (Thanks Jamesh!!)
+
+Devhelp 0.4: 
+------------
+* Raise minimized window (Richard)
+* Bug fixes              (Mikael, Richard)
+* Limit history length   (Nils O. Selåsdal)
+* Saner installdirs      (Mikael)
+
+Devhelp 0.3:
+------------
+* Lots of bugfixes. (Johan, Mikael, Richard)
+* Debian and Red Hat packages now availible. (Johan)
+* Devhelp can now handle different versions of the same book
+  much better. (Johan)
+* New and updated translations, Thanks goes to Ismael Olea, 
+  Joe Man, Marcel Telka, Alessio Frusciante, Kjartan Maraas, 
+  Christophe Fergeau, Zbigniew Chyla, Ole Laursen and
+  Christian Rose.
+
+Devhelp 0.2:
+------------
+* New maintainer: Mikael Hallendal <micke@codefactory.se> is now
+  maintainer Devhelp.
+* Bonobization: To make it easier to embedd Devhelp in IDE's (like
+  gIDE and Anjuta) Devhelp now consists of a couple of controlls which
+  can be used in other applications. (Mikael Hallendal)
+* Code-cleanups, Cleaned up the code to make it more
+  maintainable. (Mikael Hallendal).
+
+Devhelp 0.1.1: 
+--------------
+* A few bugfixes. Should compile with non cvs version of libxml now.
+
+Devhelp 0.1.0:
+--------------
+* Initial release.

@@ -1,0 +1,46 @@
+Devhelp information
+===================
+
+The following packages are required to compile Devhelp:
+
+glib 2.10.0 (or greater)
+gtk+ 2.10.0 (or greater)
+libwnck 2.10.0 (or greater, only for X11 build)
+gconf 2.6.0 (or greater, only for X11 build)
+webkit
+
+Devhelp's primary goal is to be an API documentation browser for
+GNOME. When you build (or install) a GNOME library, it will build an
+API reference for you and install it into:
+
+  $datadir/gtk-doc/html/$PACKAGE. 
+
+Along with the HTML files, a .devhelp and/or .devhelp2 index file is
+also generated automatically. Thus Devhelp can simply scan that folder
+for those index files and display the books they represent.
+
+Devhelp uses the "XDG Base Directory Specification" to find
+documentation. You can read more about that specification here:
+
+  http://standards.freedesktop.org/basedir-spec/latest/
+
+The list of locations searched for devhelp books is:
+
+$XDG_DATA_HOME/devhelp/books
+   e.g. /home/ross/.local/share/devhelp/books/glib-2.0/glib-2.0.devhelp
+
+$XDG_DATA_HOME/gtk-doc/html
+   e.g. /home/ross/.local/share/gtk-doc/html/glib-2.0/glib-2.0.devhelp
+
+$XDG_DATA_DIRS/devhelp/books
+   e.g. /usr/local/share/devhelp/books/glib-2.0/glib-2.0.devhelp
+
+$XDG_DATA_DIRS/gtk-doc/html
+   e.g. /usr/local/share/gtk-doc/html/glib-2.0/glib-2.0.devhelp
+
+Note that the two latter consist of: separated lists of directories to
+look for. Those environment variables are normally set up by the
+desktop environment or distribution.
+
+Note that the name of the directory the .devhelp file is in and the
+name of the .devhelp file (minus the extension) must match.

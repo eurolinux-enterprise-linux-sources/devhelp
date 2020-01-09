@@ -1,0 +1,474 @@
+# Ukrainian translation of devhelp module.
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# This file is distributed under the same license as the devhelp package.
+# Yuriy Syrota <rasta@cvs.gnome.org>, 2003.
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2007-2008
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: devhelp\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-16 15:56+0300\n"
+"PO-Revision-Date: 2009-09-16 03:23--500\n"
+"Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
+"Language-Team: Ukrainian <linux@linux.org.ua>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/devhelp.desktop.in.in.h:1
+msgid "Developer's Help program"
+msgstr "Програма довідки для розробників"
+
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/devhelp.desktop.in.in.h:2 ../src/dh-main.c:235
+#: ../src/dh-window.c:438 ../src/dh-window.c:734 ../src/dh-window.c:1398
+msgid "Devhelp"
+msgstr "Devhelp"
+
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "Перегляд документації"
+
+#: ../data/devhelp.schemas.in.h:1
+msgid "Font for fixed width text"
+msgstr "Шрифт для фіксованого тексту"
+
+#: ../data/devhelp.schemas.in.h:2
+msgid "Font for text"
+msgstr "Шрифт для тексту"
+
+#: ../data/devhelp.schemas.in.h:3
+msgid "Font for text with fixed width, such as code examples."
+msgstr "Шрифт для тексту із фіксованою шириною, для прикладів програм."
+
+#: ../data/devhelp.schemas.in.h:4
+msgid "Font for text with variable width."
+msgstr "Шрифт для тексту із змінною шириною."
+
+#: ../data/devhelp.schemas.in.h:5
+msgid "Height of assistant window"
+msgstr "Висота вікна помічника"
+
+#: ../data/devhelp.schemas.in.h:6
+msgid "Height of main window"
+msgstr "Висота головного вікна"
+
+#: ../data/devhelp.schemas.in.h:7
+msgid "Main window maximized state"
+msgstr "Головне вікно у розгорнутому вигляді"
+
+#: ../data/devhelp.schemas.in.h:8
+msgid "Selected tab, \"content\" or \"search\""
+msgstr "Вибрана вкладка, «зміст» чи «пошук»"
+
+#: ../data/devhelp.schemas.in.h:9
+msgid "The X position of the assistant window."
+msgstr "Горизонтальна позиція вікна помічника."
+
+#: ../data/devhelp.schemas.in.h:10
+msgid "The X position of the main window."
+msgstr "Горизонтальна позиція головного вікна."
+
+#: ../data/devhelp.schemas.in.h:11
+msgid "The Y position of the assistant window."
+msgstr "Вертикальна позиція вікна помічника."
+
+#: ../data/devhelp.schemas.in.h:12
+msgid "The Y position of the main window."
+msgstr "Вертикальна позиція головного вікна."
+
+#: ../data/devhelp.schemas.in.h:13
+msgid "The height of the assistant window."
+msgstr "Висота вікна помічника."
+
+#: ../data/devhelp.schemas.in.h:14
+msgid "The height of the main window."
+msgstr "Висота головного вікна."
+
+#: ../data/devhelp.schemas.in.h:15
+msgid "The width of the assistant window."
+msgstr "Ширина вікна помічника."
+
+#: ../data/devhelp.schemas.in.h:16
+msgid "The width of the index and search pane."
+msgstr "Ширина панелі змісту та пошуку."
+
+#: ../data/devhelp.schemas.in.h:17
+msgid "The width of the main window."
+msgstr "Ширина головного вікна"
+
+#: ../data/devhelp.schemas.in.h:18
+msgid "Use system fonts"
+msgstr "Використовувати системні шрифти"
+
+#: ../data/devhelp.schemas.in.h:19
+msgid "Use the system default fonts."
+msgstr "Використовувати системні типові шрифти."
+
+#: ../data/devhelp.schemas.in.h:20
+msgid "Whether the main window should start maximized or not."
+msgstr "Чи розгортати головне вікно на старті."
+
+#: ../data/devhelp.schemas.in.h:21
+msgid "Which of the tabs that is selected, \"content\" or \"search\"."
+msgstr "Яка з закладок вибрана, «зміст» чи «пошук»."
+
+#: ../data/devhelp.schemas.in.h:22
+msgid "Width of the assistant window"
+msgstr "Ширина допоміжного вікна"
+
+#: ../data/devhelp.schemas.in.h:23
+msgid "Width of the index and search pane"
+msgstr "Ширина панелі змісту та пошуку"
+
+#: ../data/devhelp.schemas.in.h:24
+msgid "Width of the main window"
+msgstr "Ширина головного вікна"
+
+#: ../data/devhelp.schemas.in.h:25
+msgid "X position of assistant window"
+msgstr "Горизонтальна позиція допоміжного вікна"
+
+#: ../data/devhelp.schemas.in.h:26
+msgid "X position of main window"
+msgstr "Горизонтальна позиція головного вікна"
+
+#: ../data/devhelp.schemas.in.h:27
+msgid "Y position of assistant window"
+msgstr "Вертикальна позиція допоміжного вікна"
+
+#: ../data/devhelp.schemas.in.h:28
+msgid "Y position of main window"
+msgstr "Вертикальна позиція головного вікна"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+msgid "Devhelp support"
+msgstr "Підказки Devhelp"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "Викликати Devhelp при натисканні F2 для слова під курсором"
+
+#: ../misc/gedit-plugin/devhelp/devhelp.py:38
+msgid "Show API Documentation"
+msgstr "Показати документацію з API"
+
+#: ../misc/gedit-plugin/devhelp/devhelp.py:40
+msgid "Show API Documentation for the word at the cursor"
+msgstr "Показати документацію з API для слова під курсором"
+
+#. i18n: Please don't translate "Devhelp".
+#: ../src/dh-assistant.c:74
+msgid "Devhelp - Assistant"
+msgstr "Devhelp - Помічник"
+
+#: ../src/dh-assistant-view.c:319
+msgid "Book:"
+msgstr "Книга:"
+
+#. i18n: a documentation book
+#: ../src/dh-link.c:255
+msgid "Book"
+msgstr "Книга"
+
+#. i18n: a "page" in a documentation book
+#: ../src/dh-link.c:258
+msgid "Page"
+msgstr "Сторінка"
+
+#. i18n: a search hit in the documentation, could be a
+#. * function, macro, struct, etc
+#: ../src/dh-link.c:262
+msgid "Keyword"
+msgstr "Ключове слово"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:267
+msgid "Function"
+msgstr "Функція"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:272
+msgid "Struct"
+msgstr "Структура"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:277
+msgid "Macro"
+msgstr "Макрос"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:282
+msgid "Enum"
+msgstr "Enum"
+
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:287
+msgid "Type"
+msgstr "Тип"
+
+#: ../src/dh-main.c:175
+msgid "Search for a keyword"
+msgstr "Знайти ключове слово"
+
+#: ../src/dh-main.c:180
+msgid "Quit any running Devhelp"
+msgstr "Вийти з Devhelp"
+
+#: ../src/dh-main.c:185
+msgid "Display the version and exit"
+msgstr "Вивести версію та завершити виконання"
+
+#: ../src/dh-main.c:190
+msgid "Focus the Devhelp window with the search field active"
+msgstr "Передати фокус вікну розробки та активувати поле пошуку"
+
+#: ../src/dh-main.c:195
+msgid "Search and display any hit in the assistant window"
+msgstr "Шукати та показувати будь-які відповідності у вікні помічника"
+
+#: ../src/dh-parser.c:81 ../src/dh-parser.c:178 ../src/dh-parser.c:242
+#: ../src/dh-parser.c:252
+#, c-format
+msgid "Expected '%s' got '%s' at line %d, column %d"
+msgstr "Очікувалось \"%s\", а отримано \"%s\" в рядку %d, позиція %d"
+
+#: ../src/dh-parser.c:98
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "Неправильний простір назв \"%s\" в рядку %d, позиція %d"
+
+#: ../src/dh-parser.c:129
+#, c-format
+msgid ""
+"\"title\", \"name\", and \"link\" elements are required at line %d, column %d"
+msgstr ""
+"Елементи \"title\", \"name\", та \"link\" є обов'язковими в рядку line %d, "
+"позиція %d"
+
+#: ../src/dh-parser.c:197
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside <sub> on line %d, column %"
+"d"
+msgstr ""
+"Елементи \"name\" та \"link\" є обов'язковими  у <sub> в рядку %d, позиція %d"
+
+#: ../src/dh-parser.c:277
+#, c-format
+msgid ""
+"\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
+msgstr ""
+"Елементи \"name\" та \"link\" є обов'язковими  у '%s' в рядку %d, позиція %d"
+
+#: ../src/dh-parser.c:290
+#, c-format
+msgid "\"type\" element is required inside <keyword> on line %d, column %d"
+msgstr ""
+"Елемент \"type\" є обов'язковим всередині <keyword> в рядку %d, позиція %d"
+
+#: ../src/dh-parser.c:495
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "Не вдалось розтиснути книгу \"%s\": %s"
+
+#: ../src/dh-search.c:503
+msgid "All books"
+msgstr "Усі книги"
+
+#: ../src/dh-search.c:581
+msgid "Search in:"
+msgstr "Знайти у:"
+
+#: ../src/dh-window.c:82
+msgid "50%"
+msgstr "50%"
+
+#: ../src/dh-window.c:83
+msgid "75%"
+msgstr "75%"
+
+#: ../src/dh-window.c:84
+msgid "100%"
+msgstr "100%"
+
+#: ../src/dh-window.c:85
+msgid "125%"
+msgstr "125%"
+
+#: ../src/dh-window.c:86
+msgid "150%"
+msgstr "150%"
+
+#: ../src/dh-window.c:87
+msgid "175%"
+msgstr "175%"
+
+#: ../src/dh-window.c:88
+msgid "200%"
+msgstr "200%"
+
+#: ../src/dh-window.c:89
+msgid "300%"
+msgstr "300%"
+
+#: ../src/dh-window.c:90
+msgid "400%"
+msgstr "400%"
+
+#: ../src/dh-window.c:433
+msgid "translator_credits"
+msgstr ""
+"Yuriy Syrota <rasta@cvs.gnome.org>\n"
+"Maxim Dziumanenko <dziumanenko@gmail.com>"
+
+#: ../src/dh-window.c:440
+msgid "A developer's help browser for GNOME"
+msgstr "Програма перегляду довідки для розробників GNOME"
+
+#: ../src/dh-window.c:470
+msgid "_File"
+msgstr "_Файл"
+
+#: ../src/dh-window.c:471
+msgid "_Edit"
+msgstr "_Правка"
+
+#: ../src/dh-window.c:472
+msgid "_View"
+msgstr "_Вигляд"
+
+#: ../src/dh-window.c:473
+msgid "_Go"
+msgstr "_Перейти"
+
+#: ../src/dh-window.c:474
+msgid "_Help"
+msgstr "_Довідка"
+
+#. File menu
+#: ../src/dh-window.c:477
+msgid "_New Window"
+msgstr "_Створити вікно"
+
+#: ../src/dh-window.c:479
+msgid "New _Tab"
+msgstr "Створити _вкладку"
+
+#: ../src/dh-window.c:481
+msgid "_Print..."
+msgstr "Д_рук..."
+
+#: ../src/dh-window.c:493 ../src/eggfindbar.c:342
+msgid "Find Next"
+msgstr "Зайти наступне"
+
+#: ../src/dh-window.c:495 ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "Знайти попереднє"
+
+#: ../src/dh-window.c:502
+msgid "Go to the previous page"
+msgstr "Перейти до попередньої сторінки"
+
+#: ../src/dh-window.c:505
+msgid "Go to the next page"
+msgstr "Перейти до наступної сторінки"
+
+#: ../src/dh-window.c:508
+msgid "_Contents Tab"
+msgstr "_Зміст"
+
+#: ../src/dh-window.c:511
+msgid "_Search Tab"
+msgstr "З_найти"
+
+#. View menu
+#: ../src/dh-window.c:515
+msgid "_Larger Text"
+msgstr "_Більший шрифт"
+
+#: ../src/dh-window.c:516
+msgid "Increase the text size"
+msgstr "Збільшити розмір тексту"
+
+#: ../src/dh-window.c:518
+msgid "S_maller Text"
+msgstr "_Менший шрифт"
+
+#: ../src/dh-window.c:519
+msgid "Decrease the text size"
+msgstr "Зменшити розмір тексту"
+
+#: ../src/dh-window.c:521
+msgid "_Normal Size"
+msgstr "_Звичайний розмір"
+
+#: ../src/dh-window.c:522
+msgid "Use the normal text size"
+msgstr "Текст звичайного розміру"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:647
+msgid "Larger"
+msgstr "Більший шрифт"
+
+#. Translators: This refers to text size
+#: ../src/dh-window.c:650
+msgid "Smaller"
+msgstr "Менший шрифт"
+
+#. i18n: please don't translate
+#. * "Devhelp", it's a name, not a
+#. * generic word.
+#: ../src/dh-window.c:789
+msgid "About Devhelp"
+msgstr "Про Devhelp"
+
+#: ../src/dh-window.c:794
+msgid "Preferences..."
+msgstr "Параметри..."
+
+#: ../src/dh-window.c:837
+msgid "Contents"
+msgstr "Зміст"
+
+#: ../src/dh-window.c:847
+msgid "Search"
+msgstr "Пошук"
+
+#: ../src/dh-window.c:1216 ../src/dh-window.c:1425
+msgid "Empty Page"
+msgstr "Порожня сторінка"
+
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "Знайти:"
+
+#: ../src/eggfindbar.c:333 ../src/eggfindbar.c:336
+msgid "Find previous occurrence of the search string"
+msgstr "Знайти попереднє місце знаходження рядка"
+
+#: ../src/eggfindbar.c:346 ../src/eggfindbar.c:349
+msgid "Find next occurrence of the search string"
+msgstr "Знайти наступне місце знаходження рядка"
+
+#: ../src/eggfindbar.c:358
+msgid "C_ase Sensitive"
+msgstr "В_раховувати регістр"
+
+#: ../src/eggfindbar.c:362 ../src/eggfindbar.c:365
+msgid "Toggle case sensitive search"
+msgstr "Перемикає чутливість до регістру літер"

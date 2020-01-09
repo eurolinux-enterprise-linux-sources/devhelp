@@ -1,0 +1,119 @@
+dh-marshal.h: dh-marshal.list
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=_dh_marshal dh-marshal.list > $@
+
+dh-marshal.c: dh-marshal.list
+	$(AM_V_GEN) echo "#include \"dh-marshal.h\"" > $@ && \
+	$(GLIB_GENMARSHAL) $< --body --prefix=_dh_marshal dh-marshal.list >> $@
+
+BUILT_SOURCES = 		\
+	dh-marshal.h		\
+	dh-marshal.c		\
+	dh-enum-types.h		\
+	dh-enum-types.c		\
+	$(NULL)
+
+EXTRA_DIST =			\
+	dh-marshal.list		\
+	dh-enum-types.c.template \
+	dh-enum-types.h.template \
+	$(NULL)
+
+AM_CPPFLAGS = 						\
+	-I$(top_srcdir)					\
+	-DLOCALEDIR=\""$(datadir)/locale"\" 	  	\
+	-DDATADIR=\""$(datadir)"\"                      \
+	-DG_LOG_DOMAIN=\"Devhelp\"			\
+	-DG_DISABLE_DEPRECATED				\
+	-DGDK_DISABLE_DEPRECATED			\
+	-DGTK_DISABLE_DEPRECATED			\
+	$(WARN_CFLAGS)
+
+bin_PROGRAMS = devhelp
+
+devhelp_SOURCES =					\
+	dh-main.c
+
+devhelp_CPPFLAGS =					\
+	$(AM_CPPFLAGS)
+
+devhelp_CFLAGS =					\
+	$(DEVHELP_CFLAGS)
+
+devhelp_LDADD = 					\
+        $(DEVHELP_LIBS)					\
+        libdevhelp-1.la
+
+lib_LTLIBRARIES = libdevhelp-1.la
+
+INST_H_FILES = 						\
+	dh-assistant.h					\
+	dh-assistant-view.h				\
+	dh-base.h					\
+	dh-book-tree.h					\
+	dh-error.h					\
+	dh-keyword-model.h				\
+	dh-link.h					\
+	dh-search.h					\
+	dh-window.h
+
+devhelpincludedir = $(includedir)/devhelp-1.0/devhelp
+devhelpinclude_HEADERS = $(INST_H_FILES)
+
+libdevhelp_1_la_SOURCES =				\
+	dh-marshal.c					\
+	dh-marshal.h					\
+	dh-enum-types.c					\
+	dh-enum-types.h					\
+	dh-assistant.c					\
+	dh-assistant-view.c				\
+	dh-base.c					\
+	dh-book-tree.c					\
+	dh-error.c					\
+	dh-keyword-model.c				\
+	dh-link.c					\
+	dh-search.c					\
+	dh-parser.c					\
+	dh-preferences.c				\
+	dh-util.c					\
+	dh-window.c					\
+	dh-parser.h					\
+	dh-preferences.h                                \
+	dh-util.h					\
+	eggfindbar.c					\
+	eggfindbar.h					\
+	ige-conf.c					\
+	ige-conf.h					\
+	ige-conf-private.h				\
+	$(conf_platform_sources)
+
+libdevhelp_1_la_CPPFLAGS =				\
+	$(AM_CPPFLAGS)					\
+	$(ZLIB_CPPFLAGS)
+
+libdevhelp_1_la_CFLAGS =				\
+	$(LIBDEVHELP_CFLAGS)
+
+libdevhelp_1_la_LIBADD =				\
+	$(LIBDEVHELP_LIBS)				\
+	$(ZLIB_LIBS)
+
+libdevhelp_1_la_LDFLAGS =				\
+	-no-undefined					\
+	-version-info ${LIBDEVHELP_CURRENT}:${LIBDEVHELP_REVISION}:${LIBDEVHELP_AGE} \
+	-export-symbols-regex ^dh_ \
+	$(ZLIB_LDFLAGS)
+
+dh-enum-types.h: dh-enum-types.h.template $(INST_H_FILES) $(GLIB_MKENUMS)
+	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template dh-enum-types.h.template $(INST_H_FILES)) > $@
+
+dh-enum-types.c: dh-enum-types.c.template $(INST_H_FILES) $(GLIB_MKENUMS)
+	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template dh-enum-types.c.template $(INST_H_FILES)) > $@
+
+if HAVE_PLATFORM_OSX
+conf_platform_sources = ige-conf-mac.c
+libdevhelp_1_la_CPPFLAGS += -xobjective-c
+endif
+if HAVE_PLATFORM_X11
+conf_platform_sources = ige-conf-gconf.c
+endif
+

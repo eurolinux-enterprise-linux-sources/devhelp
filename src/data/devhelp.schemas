@@ -1,0 +1,3606 @@
+<gconfschemafile>
+  <schemalist>
+
+    <schema>
+      <key>/schemas/apps/devhelp/state/main/window/maximized</key>
+      <applyto>/apps/devhelp/state/main/window/maximized</applyto>
+      <owner>devhelp</owner>
+      <type>bool</type>
+      <default>false</default>
+      <locale name="C">
+         <short>Main window maximized state</short>
+         <long>Whether the main window should start maximized or not.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>حالة تكبير النافذة الرئيسيّة</short>
+         <long>ما إذا ستبدأ النافذة الرئيسية مكبّرة أم لا.</long>
+      </locale>
+
+      <locale name="be">
+         <short>Найбольшы памер вакна</short>
+         <long>Ці мусіць стартаваць вакно ў найбольшаным стане.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Maksymalizavany stan hałoŭnaha akna</short>
+         <long>Akreślivaje, ci maksymalizavać hałoŭnaje akno pry ŭruchomleńni.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Степен на уголемяване на главния прозорец</short>
+         <long>Дали главният прозорец да се стартира максимизиран.</long>
+      </locale>
+
+      <locale name="bn">
+         <short>সর্বোচ্চ মাপে প্রধান উইন্ডো</short>
+         <long>প্রধান উইন্ডোটি সর্বোচ্চ মাপে আরম্ভ করা হবে কি না।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>সর্বোচ্চ মাপে প্রধান উইন্ডো</short>
+         <long>প্রধান উইন্ডোটি সর্বোচ্চ মাপে আরম্ভ করা হবে কি না।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Estat maximitzat de la finestra principal</short>
+         <long>Si la finestra principal s&apos;ha d&apos;iniciar maximitzada.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Estat maximitzat de la finestra principal</short>
+         <long>Si la finestra principal s&apos;ha d&apos;iniciar maximitzada.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Stav maximalizace hlavního okna</short>
+         <long>Jestli má hlavní okno být po spuštění maximalizované.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Hovedvindue i maksimeret tilstand</short>
+         <long>Om hovedvinduet skal åbne maksimeret eller ej.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Hauptfenstermaximierungsstatus</short>
+         <long>Legt fest, ob das Hauptfenster beim Start maximiert ist.</long>
+      </locale>
+
+      <locale name="dz">
+         <short>ཝིན་ཌོ་གཙོ་བོ་གི་སྦོོམ་བཟོ་ཡོད་མི་གནས་ལུགས།</short>
+         <long>ཝིནཌོ་གཙོ་བོ་འདི་མང་མཐའ་འགོ་བཙུགས་དགོཔ་ཨིན་ན་མེན་ན།</long>
+      </locale>
+
+      <locale name="el">
+         <short>Κατάσταση μεγιστοποίησης κύριου παραθύρου</short>
+         <long>Μεγιστοποίηση ή ελαχιστοποίηση του κύριου παραθύρου κατά την εκκίνηση.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>Main window maximized state</short>
+         <long>Whether the main window should start maximized or not.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Main window maximised state</short>
+         <long>Whether the main window should start maximised.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Estado maximizado de la ventana principal</short>
+         <long>Indica si la ventana principal debería iniciar maximizada o no.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Peaakna maksimeeritud olek</short>
+         <long>Kas peaaken peab käivitamisel saama maksimeeritud või mitte.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Pääikkunan suurennettu tila</short>
+         <long>Näytetäänkö pääikkuna käynnistettäessä suurennettuna.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>État maximisée de la fenêtre principale</short>
+         <long>Indique si la fenêtre principale devrait démarrer maximisée ou non.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Estado maximizado da xanela principal</short>
+         <long>Indica se a xanela principal se debería iniciar maximizada ou non.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>મુખ્ય વિન્ડોની મહત્તમ સ્થિતિ</short>
+         <long>શું મુખ્ય વિન્ડો મહત્તમ સ્થિતિમાં શરુ થશે કે નહિં.</long>
+      </locale>
+
+      <locale name="he">
+         <short>Main window maximized state</short>
+         <long>Whether the main window should start maximized or not.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Főablak maximalizált állapota</short>
+         <long>A főablak teljes méretben induljon-e?</long>
+      </locale>
+
+      <locale name="is">
+         <short>Hámörkunargildi aðalglugga</short>
+         <long>Hvort aðalgluggi eigi að ræsast hámarkaður eða ekki.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Stato di massimizzazione della finestra principale</short>
+         <long>Indica se la finestra principale deve essere avviata massimizzata o no.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>メイン・ウィンドウの最大化</short>
+         <long>メイン・ウィンドウを最大サイズで起動するかどうかです。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>메인 창의 최대화 상태</short>
+         <long>시작할 때 메인 창을 최대화할 지 여부.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Pagrindinio lango būsena</short>
+         <long>Ar paleidžiant Devhelp pagrindinis langas turėtų būti išdidintas.</long>
+      </locale>
+
+      <locale name="mk">
+         <short>Максимизирана состојба на главниот прозорец</short>
+         <long>Дали главниот прозорец да се подигне како максимизиран или не.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>പ്റധാന ജാലകം ഏറ്റവും കൂടുതല്‍ വലിപ്പത്തില്‍</short>
+         <long>പ്റധാനപ്പെട്ട ജാലകം വലുതായി ആരംഭിക്കണമോ എന്ന്.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Maksimert tilstand for hovedvinduet</short>
+         <long>Om hovedvinduet skal startes maksimert eller ikke.</long>
+      </locale>
+
+      <locale name="ne">
+         <short>मुख्य सञ्झ्यालको अधिकतम स्थिति</short>
+         <long>मुख्य सञ्झ्याल बढाइएकोमा सुरु हुन्छ वा हुँदैन ।</long>
+      </locale>
+
+      <locale name="nl">
+         <short>Hoofdvenster gemaximaliseerde status</short>
+         <long>Of het hoofdvenster gemaximaliseerd moet starten of niet.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Maksimert tilstand for hovudvindauget</short>
+         <long>Om hovudvindauget skal startast maksimert eller ikkje.</long>
+      </locale>
+
+      <locale name="or">
+         <short>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ବୃହତ୍ତମ ଅବସ୍ଥା</short>
+         <long>ମୂଖ୍ଯ ୱିଣ୍ଡୋକୁ ବଡ କରାଯିବ କି ନାହିଁ।</long>
+      </locale>
+
+      <locale name="pa">
+         <short>ਮੁੱਖ ਝਰੋਖੇ ਦੀ ਵੱਧੋ-ਵੱਧ ਸਥਿਤੀ</short>
+         <long>ਕੀ ਮੁੱਖ ਝਰੋਖੇ ਚੱਲਣ ਸਮੇਂ ਅਧਿਕਤਮ ਹੋਵੇ ਜਾਂ ਨਾ ?</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Główne okno zmaksymalizowane</short>
+         <long>Określa, czy główne okno powinno być uruchomione zmaksymalizowane.</long>
+      </locale>
+
+      <locale name="ps">
+         <short>د ارې کړکۍ لوی شوی انکړ</short>
+         <long>.اره کړکۍ لويه پېلول پکار دي که نه</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Estado de maximização da janela principal</short>
+         <long>Se a janela principal deverá ou não iniciar maximizada.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Estado maximizado da janela principal</short>
+         <long>Se a janela principal deve iniciar maximizada ou não.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Starea ferestrei principale maximizate</short>
+         <long>Dacă fereastra principală va fi sau nu pornită maximizat.</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Главное окно в развернутом состоянии</short>
+         <long>Разворачивать главное окно при старте или нет</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Maximalizovaný stav hlavného okna</short>
+         <long>Či sa má hlavné okno spustiť maximalizované, alebo nie.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Razprto glavno okno</short>
+         <long>Ali naj bo glavno okno ob zagonu razprto.</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Gjendja e maksimizimit të dritares qendrore</short>
+         <long>Nëse dritarja qendrore duhet të hapet e maksimizuar apo jo.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Стање увећања главног прозора</short>
+         <long>Да ли се главни прозор покреће увећан или не.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Stanje uvećanja glavnog prozora</short>
+         <long>Da li se glavni prozor pokreće uvećan ili ne.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Maximerat tillstånd för huvudfönstret</short>
+         <long>Huruvida huvudfönstret ska starta maximerat eller inte.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>முக்கிய சாளரம் விரிந்த நிலையில்</short>
+         <long>முக்கிய சாளரம் வரிந்த நிலையில் தொடங்கியதா அல்லது இல்லையா?. </long>
+      </locale>
+
+      <locale name="te">
+         <short>మూల గవాక్షం పెద్దదిచేయబడిన స్థితి</short>
+         <long>మూల గవాక్షం ప్రారంభించ వలెను సూక్ష్మీకరించబడనదా లేదా.</long>
+      </locale>
+
+      <locale name="th">
+         <short>สถานะขยายเต็มของหน้าต่างหลัก</short>
+         <long>กำหนดว่าควรเปิดหน้าต่างหลักแบบขยายเต็มจอหรือไม่</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Ana pencerenin büyültülmüş durumu</short>
+         <long>Ana pencerenin büyültülmüş olarak başlatılması.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Головне вікно у розгорнутому вигляді</short>
+         <long>Чи розгортати головне вікно на старті.</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Tình trạng được cực đại hóa của cửa sổ chính</short>
+         <long>Khi nào cửa sổ chính bắt đầu với kích cỡ lớn nhất hoặc không.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>主窗口最大化</short>
+         
+      </locale>
+
+      <locale name="zh_HK">
+         <short>視窗最大化</short>
+         <long>程式啟動時視窗應否成為最大化的狀態。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>視窗最大化</short>
+         <long>程式啟動時視窗應否成為最大化的狀態。</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/devhelp/state/main/window/width</key>
+      <applyto>/apps/devhelp/state/main/window/width</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>700</default>
+      <locale name="C">
+         <short>Width of the main window</short>
+         <long>The width of the main window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>عرض النّافذة الرّئيسيّة</short>
+         <long>عرض النّافذة الرّئيسيّة.</long>
+      </locale>
+
+      <locale name="be">
+         <short>Шырыня галоўнага вакна</short>
+         <long>Шырыня галоўнага вакна.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Šyrynia hałoŭnaha akna</short>
+         <long>Šyrynia hałoŭnaha akna.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Широчина на главния прозорец</short>
+         <long>Широчината на главния прозорец.</long>
+      </locale>
+
+      <locale name="bn">
+         <short>প্রধান উইন্ডোর প্রস্থ</short>
+         <long>প্রধান উইন্ডোর প্রস্থ।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>প্রধান উইন্ডোর প্রস্থ</short>
+         <long>প্রধান উইন্ডোর প্রস্থ।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Amplada de la finestra principal</short>
+         <long>L&apos;amplada de la finestra principal.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Amplada de la finestra principal</short>
+         <long>L&apos;amplada de la finestra principal.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Šířka hlavního okna</short>
+         <long>Šířka hlavního okna.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Hovedvinduets bredde</short>
+         <long>Hovedvinduets bredde.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Breite des Hauptfensters</short>
+         <long>Die Breite des Hauptfensters.</long>
+      </locale>
+
+      <locale name="dz">
+         <short>ཝིནཌོ་གཙོ་བོ་གི་རྒྱ་ཚད།</short>
+         <long>ཝིན་ཌོ་གཙོ་བོ་གི་རྒྱ་ཚད་འདི།</long>
+      </locale>
+
+      <locale name="el">
+         <short>Το πλάτος του κύριου παραθύρου</short>
+         <long>Πλάτος κύριου παραθύρου.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>Width of the main window</short>
+         <long>The width of the main window.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Width of the main window</short>
+         <long>The width of the main window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Anchura de la ventana principal</short>
+         <long>La anchura de la ventana principal.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Peaakna laius.</short>
+         <long>Peaakna laius.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Pääikkunan leveys</short>
+         <long>Pääikkunan leveys.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Largeur de la fenêtre principale</short>
+         <long>La largeur de la fenêtre principale.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>A largura da xanela principal</short>
+         <long>A largura da xanela principal.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>મુખ્ય વિન્ડોની પહોળાઈ</short>
+         <long>મુખ્ય વિન્ડોની પહોળાઈ.</long>
+      </locale>
+
+      <locale name="he">
+         <short>Width of the main window</short>
+         <long>The width of the main window.</long>
+      </locale>
+
+      <locale name="hr">
+         
+         <long>Širina glavnog prozora.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Főablak szélessége</short>
+         <long>A főablak szélessége.</long>
+      </locale>
+
+      <locale name="is">
+         <short>Breidd aðalglugga</short>
+         <long>Breidd aðalglugga.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Larghezza della finestra principale</short>
+         <long>La larghezza della finestra principale.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>メイン・ウィンドウの幅</short>
+         <long>メイン・ウィンドウの幅です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>메인 창의 너비</short>
+         <long>메인 창의 너비.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Pagrindinio lango plotis</short>
+         <long>Pagrindinio lango plotis.</long>
+      </locale>
+
+      <locale name="mai">
+         <short>मुख्य विंडो क&apos; चओड़ाइ.</short>
+         <long>मुख्य विंडो क&apos; चओड़ाइ.</long>
+      </locale>
+
+      <locale name="mk">
+         <short>Широчина на главниот прозорец</short>
+         <long>Широчината на главниот прозорец.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>പ്റധാന ജാലകത്തിന്‍റെ വീതി</short>
+         <long>പ്റധാന ജാലകത്തിന്‍റെ വീതി.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Bredde på hovedvinduet</short>
+         <long>Bredde på hovedvinduet.</long>
+      </locale>
+
+      <locale name="ne">
+         <short>मुख्य सञ्झ्यालको चौडाइ</short>
+         <long>मुख्य सञ्झ्यालको चौडाइ ।</long>
+      </locale>
+
+      <locale name="nl">
+         <short>Breedte van het hoofdvenster</short>
+         <long>De breedte van het hoofdvenster.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Breidd på hovudvindauget</short>
+         <long>Breidd på hovudvindauget.</long>
+      </locale>
+
+      <locale name="oc">
+         <short>Largor de la fenèstra principala</short>
+         <long>La largor de la fenèstra principala.</long>
+      </locale>
+
+      <locale name="or">
+         <short>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ଓସାର</short>
+         <long>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ଓସାର।</long>
+      </locale>
+
+      <locale name="pa">
+         <short>ਮੁੱਖ ਝਰੋਖੇ ਦੀ ਚੌੜਾਈ</short>
+         <long>ਮੁੱਖ ਝਰੋਖੇ ਦੀ ਚੌੜਾਈ</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Szerokość głównego okna</short>
+         <long>Szerokość głównego okna</long>
+      </locale>
+
+      <locale name="ps">
+         <short>د ارې کړکۍ پلنوالی</short>
+         <long>.د ارې کړکۍ پلنوالی</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Largura da janela principal</short>
+         <long>A largura da janela principal.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Largura da janela principal</short>
+         <long>A largura da janela principal.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Lățimea ferestrei principale</short>
+         <long>Lățimea ferestrei principale</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Ширина главного окна</short>
+         <long>Ширина главного окна</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Šírka hlavného okna</short>
+         <long>Šírka hlavného okna.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Širina glavnega okna</short>
+         <long>Širina glavnega okna.</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Gjerësia e dritares qendrore</short>
+         <long>Gjerësia e dritares kryesore.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Ширина главног прозора</short>
+         <long>Ширина главног прозора.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Širina glavnog prozora</short>
+         <long>Širina glavnog prozora.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Bredd på huvudfönstret</short>
+         <long>Bredden på huvudfönstret.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>முக்கிய சாளரத்தின் குறுக்களவு</short>
+         <long>முக்கிய சாளரத்தின் குறுக்களவு.</long>
+      </locale>
+
+      <locale name="te">
+         <short>మూల గవాక్షం యొక్క పొడవు</short>
+         <long>మూల గవాక్షం యొక్క పొడవు.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ความกว้างของหน้าต่างหลัก</short>
+         <long>ความกว้างของหน้าต่างหลัก</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Ana pencerenin genişliği</short>
+         <long>Ana pencerenin genişliği.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Ширина головного вікна</short>
+         <long>Ширина головного вікна</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Độ rộng của cửa sổ chính</short>
+         <long>Độ rộng của cửa sổ chính.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>主窗口宽度</short>
+         <long>主窗口宽度。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>主視窗闊度</short>
+         <long>主視窗的闊度。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>主視窗寬度</short>
+         <long>主視窗的寬度。</long>
+      </locale>
+    </schema>
+                                                                                
+    <schema>
+      <key>/schemas/apps/devhelp/state/main/window/height</key>
+      <applyto>/apps/devhelp/state/main/window/height</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>500</default>
+      <locale name="C">
+         <short>Height of main window</short>
+         <long>The height of the main window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>ارتفاع النّافذة الرّئيسيّة</short>
+         <long>ارتفاع النّافذة الرّئيسيّة.</long>
+      </locale>
+
+      <locale name="be">
+         <short>Вышыня галоўнага вакна</short>
+         <long>Вышыня галоўнага вакна.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Vyšynia hałoŭnaha akna</short>
+         <long>Vyšynia hałoŭnaha akna.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Височина на главния прозорец</short>
+         <long>Височината на главния прозорец.</long>
+      </locale>
+
+      <locale name="bn">
+         <short>প্রধান উইন্ডোর উচ্চতা</short>
+         <long>প্রধান উইন্ডোর উচ্চতা।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>প্রধান উইন্ডোর উচ্চতা</short>
+         <long>প্রধান উইন্ডোর উচ্চতা।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Alçada de la finestra principal</short>
+         <long>Alçada de la finestra principal.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Alçada de la finestra principal</short>
+         <long>Alçada de la finestra principal.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Výška hlavního okna</short>
+         <long>Výška hlavního okna.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Højde af hovedvinduet</short>
+         <long>Hovedvinduets højde.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Höhe des Hauptfensters</short>
+         <long>Die Höhe des Hauptfensters.</long>
+      </locale>
+
+      <locale name="dz">
+         <short>ཝིན་ཌོ་གཙོ་བོ་གི་མཐོ་ཚད།</short>
+         <long>ཝིན་ཌོ་གཙོ་བོ་གི་ཐོ་ཚད།</long>
+      </locale>
+
+      <locale name="el">
+         <short>Ύψος κύριου παραθύρου</short>
+         <long>Ύψος κύριου παραθύρου.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>Height of main window</short>
+         <long>The height of the main window.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Height of main window</short>
+         <long>The height of the main window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Altura de la ventana principal</short>
+         <long>La altura de la ventana principal.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Peaakna kõrgus</short>
+         <long>Peaakna kõrgus.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Pääikkunan korkeus</short>
+         <long>Pääikkunan korkeus.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>La hauteur de la fenêtre principale</short>
+         <long>La hauteur de la fenêtre principale.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Altura da xanela principal</short>
+         <long>A altura da xanela principal.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>મુખ્ય વિન્ડોની ઊંચાઈ</short>
+         <long>મુખ્ય વિન્ડોની ઊંચાઈ.</long>
+      </locale>
+
+      <locale name="he">
+         <short>Height of main window</short>
+         <long>The height of the main window.</long>
+      </locale>
+
+      <locale name="hr">
+         
+         <long>Visina glavnog prozora.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Főablak magassága</short>
+         <long>A főablak magassága.</long>
+      </locale>
+
+      <locale name="is">
+         <short>Hæð aðalglugga</short>
+         <long>Hæð aðalglugga</long>
+      </locale>
+
+      <locale name="it">
+         <short>Altezza della finestra principale</short>
+         <long>L&apos;altezza della finestra principale.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>メイン・ウィンドウの高さ</short>
+         <long>メイン・ウィンドウの高さです。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>메인 창의 높이</short>
+         <long>메인 창의 높이.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Pagrindinio lango aukštis</short>
+         <long>Pagrindinio lango aukštis.</long>
+      </locale>
+
+      <locale name="mai">
+         
+         <long>मुख्य विंडो क&apos; उँचाइ.</long>
+      </locale>
+
+      <locale name="mk">
+         <short>Висина на главен прозорец</short>
+         <long>Височината на главниот прозорец.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>പ്റധാന ജാലകത്തിന്‍റെ ഉയരം</short>
+         <long>പ്റധാന ജാലകത്തിന്‍റെ ഉയരം.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Høyde for hovedvinduet</short>
+         <long>Høyde på hovedvinduet.</long>
+      </locale>
+
+      <locale name="ne">
+         <short>मुख्य सञ्झ्यालको उचाइ</short>
+         <long>मुख्य सञ्झ्यालको उचाइ ।</long>
+      </locale>
+
+      <locale name="nl">
+         <short>Hoogte van hoofdvenster</short>
+         <long>De hoogte van het hoofdvenster.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Storleik for hovudvindauget</short>
+         <long>Storleik på hovudvindauget.</long>
+      </locale>
+
+      <locale name="oc">
+         <short>Nautor de la fenèstra principala</short>
+         <long>La nautor de la fenèstra principala.</long>
+      </locale>
+
+      <locale name="or">
+         <short>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ଉଚ୍ଛତା</short>
+         <long>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ଉଚ୍ଛତା।</long>
+      </locale>
+
+      <locale name="pa">
+         <short>ਮੁੱਖ ਝਰੋਖੇ ਲਈ ਉਚਾਈ</short>
+         <long>ਮੁੱਖ ਝਰੋਖੇ ਦੀ ਉਚਾਈ</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Wysokość głównego okna</short>
+         <long>Wysokość głównego okna.</long>
+      </locale>
+
+      <locale name="ps">
+         <short>د ارې کړکۍ اوږدوالی</short>
+         <long>.د ارې کړکۍ اوږدوالی</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Altura da janela principal</short>
+         <long>A altura da janela principal.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Altura da janela principal</short>
+         <long>A altura da janela principal.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Înălțime ferestră principală</short>
+         <long>Înălțimea ferestrei principale</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Высота главного окна</short>
+         <long>Высота главного окна</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Výška hlavného okna</short>
+         <long>Výška hlavného okna.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Višina glavnega okna</short>
+         <long>Višina glavnega okna.</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Lartësia e dritares qendrore</short>
+         <long>Lartësia e dritares kryesore.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Висина главног прозора</short>
+         <long>Висина главног прозора.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Visina glavnog prozora</short>
+         <long>Visina glavnog prozora.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Höjd på huvudfönstret</short>
+         <long>Höjden på huvudfönstret.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>முக்கிய சாளரத்தின் உயரம்</short>
+         <long>முக்கிய சாளரத்தின் உயரம்</long>
+      </locale>
+
+      <locale name="te">
+         <short>మూల గవాక్షం యొక్క ఎత్తు</short>
+         <long>మూల గవాక్షం యొక్క ఎత్తు.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ความสูงของหน้าต่างหลัก</short>
+         <long>ความสูงของหน้าต่างหลัก</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Ana pencerenin yüksekliği</short>
+         <long>Ana pencerenin yüksekliği.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Висота головного вікна</short>
+         <long>Висота головного вікна.</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Độ cao của cửa sổ chính</short>
+         <long>Độ cao của cửa sổ chính.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>主窗口高度</short>
+         <long>主窗口高度。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>主視窗高度</short>
+         <long>主視窗的高度。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>主視窗高度</short>
+         <long>主視窗的高度。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/state/main/window/x_position</key>
+      <applyto>/apps/devhelp/state/main/window/x_position</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>100</default>
+      <locale name="C">
+         <short>X position of main window</short>
+         <long>The X position of the main window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>الموضع السيني للنافذة الرئيسية</short>
+         <long>الموضع السيني للنافذة الرئيسية.</long>
+      </locale>
+
+      <locale name="be">
+         <short>Пазыцыя галоўнага вакна па X</short>
+         <long>Пазыцыя галоўнага вакна па X.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Pałažeńnie hałoŭnaha akna pa vosi X</short>
+         <long>Pałažeńnie hałoŭnaha akna pa vosi X.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Позиция на главния прозорец по хоризонтала</short>
+         <long>Позиция на главния прозорец по хоризонтала.</long>
+      </locale>
+
+      <locale name="bn">
+         <short>প্রধান উইন্ডোর X অবস্থান</short>
+         <long>প্রধান উইন্ডোর X অবস্থান।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>প্রধান উইন্ডোর X অবস্থান</short>
+         <long>প্রধান উইন্ডোর X অবস্থান।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Posició X de la finestra principal</short>
+         <long>La posició X de la finestra principal.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Posició X de la finestra principal</short>
+         <long>La posició X de la finestra principal.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Pozice X hlavního okna</short>
+         <long>Souřadnice X pro hlavní okno.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Hovedvinduets x-position</short>
+         <long>Hovedvinduets x-position.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Horizontale Position des Hauptfensters</short>
+         <long>Die horizontale Position des Hauptfensters.</long>
+      </locale>
+
+      <locale name="dz">
+         <short>ཝིནཌོ་གཙོ་བོ་གི་གནས་ས་ཨེགསི།</short>
+         <long>ཝིན་ཌོ་་གཙོ་བོ་འདི་གིགནས་ས་་ཨེགསི་འདི།</long>
+      </locale>
+
+      <locale name="el">
+         <short>Θέση Χ του κύριου παραθύρου</short>
+         <long>Θέση Χ κύριου παραθύρου.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>X position of main window</short>
+         <long>The X position of the main window.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>X position of main window</short>
+         <long>The X position of the main window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Posición X de la ventana principal</short>
+         <long>La posición X de la ventana principal.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Peaakna asukoht X-teljel</short>
+         <long>Peaakna asukoht X-teljel.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Pääikkunan X-koordinaatti</short>
+         <long>Pääikkunan X-koordinaatti.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Position X de la fenêtre principale</short>
+         <long>La position X the la fenêtre principale.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Posición X da xanela principal</short>
+         <long>A posición X da xanela principal.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>મુખ્ય વિન્ડોની X સ્થિતિ</short>
+         <long>મુખ્ય વિન્ડોની X સ્થિતિ.</long>
+      </locale>
+
+      <locale name="he">
+         <short>X position of main window</short>
+         <long>The X position of the main window.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Főablak X-pozíciója</short>
+         <long>A főablak X-pozíciója.</long>
+      </locale>
+
+      <locale name="is">
+         <short>X staðsetning aðalglugga</short>
+         <long>X staðsetning aðalglugga</long>
+      </locale>
+
+      <locale name="it">
+         <short>Posizione X della finestra principale</short>
+         <long>La posizione X della finestra principale.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>メイン・ウィンドウの位置Ｘ</short>
+         <long>メイン・ウィンドウを表示するＹ座標です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>메인 창의 가로 위치</short>
+         <long>메인 창의 가로 위치.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Pagrindinio lango X koordinatė</short>
+         <long>Pagrindinio lango X koordinatė</long>
+      </locale>
+
+      <locale name="mk">
+         <short>X позицијата на главниот прозорец</short>
+         <long>X позицијата на главниот прозорец.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>പ്റധാന ജാലകത്തിന്‍റെ X സ്ഥാനം</short>
+         <long>പ്റധാന ജാലകത്തിന്‍റെ X സ്ഥാനം.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Horisontal posisjon for hovedvinduet</short>
+         <long>Horisontal posisjon for hovedvinduet.</long>
+      </locale>
+
+      <locale name="ne">
+         <short>मुख्य सञ्झ्यालको X स्थान</short>
+         <long>मुख्य सञ्झ्यालको X स्थान ।</long>
+      </locale>
+
+      <locale name="nl">
+         <short>X-positie van hoofdvenster</short>
+         <long>De X-positie van het hoofdvenster.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Horisontal posisjon for hovudvindauget</short>
+         <long>Horisontal posisjon for hovudvindauget.</long>
+      </locale>
+
+      <locale name="or">
+         <short>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ଏକ୍ସ ଅବସ୍ଥାନ</short>
+         <long>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ଏକ୍ସ ଅବସ୍ଥାନ।</long>
+      </locale>
+
+      <locale name="pa">
+         <short>ਮੁੱਖ ਝਰੋਖੇ ਦੀ X ਸਥਿਤੀ</short>
+         <long>ਮੁੱਖ ਝਰੋਖੇ ਦੀ X ਸਥਿਤੀ</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Pozycja pozioma głównego okna</short>
+         <long>Pozycja pozioma głównego okna.</long>
+      </locale>
+
+      <locale name="ps">
+         <short>ځايونه X د ارې کړکۍ</short>
+         <long>.ځايونه X د ارې کړکۍ</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Posição X da janela principal</short>
+         <long>A posição X da janela principal.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Posição X da janela principal</short>
+         <long>A posição X da janela principal.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Coordonata X a ferestrei principale</short>
+         <long>Coordonata X a ferestrei principale</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Позиция главного окна по X</short>
+         <long>Позиция главного окна по X</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Umiestnenie hlavného okna v smere osi X</short>
+         <long>Umiestnenie hlavného okna v smere osi X.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>X lega glavnega okna</short>
+         <long>X lega glavnega okna</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Pozicioni X i dritares qendrore</short>
+         <long>Pozicioni X i dritares qendrore.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Водоравни положај главног прозора</short>
+         <long>X (водораван) положај главног прозора.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Vodoravni položaj glavnog prozora</short>
+         <long>X (vodoravan) položaj glavnog prozora.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>X-position för huvudfönstret</short>
+         <long>X-positionen för huvudfönstret.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>முக்கிய சாளரத்தின் X நிலை</short>
+         <long>முக்கிய சாளரத்தின் X நிலை</long>
+      </locale>
+
+      <locale name="te">
+         <short>మూల గవాక్షం యొక్క X స్థానము</short>
+         <long>మూల గవాక్షం యొక్క X స్థానం.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ตำแหน่ง X ของหน้าต่างหลัก</short>
+         <long>ตำแหน่ง X ของหน้าต่างหลัก</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Ana pencerenin X konumu</short>
+         <long>Ana pencerenin X pozisyonu.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Горизонтальна позиція головного вікна</short>
+         <long>Горизонтальна позиція головного вікна.</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Vị trí X của cửa sổ chính</short>
+         <long>Vị trí X của cửa sổ chính.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>主窗口的 X 坐标</short>
+         <long>主窗口的 X 坐标。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>主視窗水平位置</short>
+         <long>主視窗的水平位置。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>主視窗水平位置</short>
+         <long>主視窗的水平位置。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/state/main/window/y_position</key>
+      <applyto>/apps/devhelp/state/main/window/y_position</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>100</default>
+      <locale name="C">
+         <short>Y position of main window</short>
+         <long>The Y position of the main window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>الموضع الصادي للنافذة الرئيسية</short>
+         <long>الموضع الصادي للنافذة الرئيسية.</long>
+      </locale>
+
+      <locale name="be">
+         <short>Пазыцыя галоўнага вакна па Y</short>
+         <long>Пазыцыя галоўнага вакна па Y.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Pałažeńnie hałoŭnaha akna pa vosi Y</short>
+         <long>Pałažeńnie hałoŭnaha akna pa vosi Y.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Позиция на главния прозорец по вертикала</short>
+         <long>Позиция на главния прозорец по вертикала.</long>
+      </locale>
+
+      <locale name="bn">
+         <short>প্রধান উইন্ডোর Y অবস্থান</short>
+         <long>প্রধান উইন্ডোর Y অবস্থান।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>প্রধান উইন্ডোর Y অবস্থান</short>
+         <long>প্রধান উইন্ডোর Y অবস্থান।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Posició Y de la finestra principal</short>
+         <long>La posició Y de la finestra principal.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Posició Y de la finestra principal</short>
+         <long>La posició Y de la finestra principal.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Pozice Y hlavního okna</short>
+         <long>Souřadnice Y pro hlavní okno.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Hovedvinduets y-position</short>
+         <long>Hovedvinduets y-position.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Vertikale Position des Hauptfensters</short>
+         <long>Die vertikale Position des Hauptfensters.</long>
+      </locale>
+
+      <locale name="dz">
+         <short>ཝིནཌོ་གཙོ་བོ་གི་གནས་ས་ཝའི། </short>
+         <long>ཝིན་ཌོ་གཙོ་བོ་འདི་གི་གནས་་སཝའི་འདི། </long>
+      </locale>
+
+      <locale name="el">
+         <short>Θέση Y του κύριου παραθύρου</short>
+         <long>Θέση Y κύριου παραθύρου.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>Y position of main window</short>
+         <long>The Y position of the main window.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Y position of main window</short>
+         <long>The Y position of the main window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Posición Y de la ventana principal</short>
+         <long>La posición Y de la ventana principal.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Peaakna asukoht Y-teljel</short>
+         <long>Peaakna asukoht Y-teljel.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Pääikkunan Y-koordinaatti</short>
+         <long>Pääikkunan Y-koordinaatti.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Position Y the la fenêtre principale</short>
+         <long>La position Y de la fenêtre principale.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Posición Y da xanela principal</short>
+         <long>A posición Y da xanela principal.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>મુખ્ય વિન્ડોની Y સ્થિતિ</short>
+         <long>મુખ્ય વિન્ડોની Y સ્થિતિ.</long>
+      </locale>
+
+      <locale name="he">
+         <short>Y position of main window</short>
+         <long>The Y position of the main window.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Főablak Y-pozíciója</short>
+         <long>A főablak Y-pozíciója.</long>
+      </locale>
+
+      <locale name="is">
+         <short>Y staðsetning aðalglugga</short>
+         <long>Y staðsetning aðalglugga.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Posizione Y della finestra principale</short>
+         <long>La posizione Y della finestra principale.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>メイン・ウィンドウの位置Ｙ</short>
+         <long>メイン・ウィンドウを表示するＹ座標です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>메인 창의 세로 위치</short>
+         <long>메인 창의 세로 위치.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Pagrindinio lango X koordinatė</short>
+         <long>Pagrindinio lango Y koordinatė</long>
+      </locale>
+
+      <locale name="mk">
+         <short>Y позицијата на главниот прозорец</short>
+         <long>Y позицијата на главниот прозорец.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>പ്റധാന ജാലകത്തിന്‍റെ Y സ്ഥാനം</short>
+         <long>പ്റധാന ജാലകത്തിന്‍റെ Y സ്ഥാനം.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Vertikal posisjon for hovedvinduet</short>
+         <long>Vertikal posisjon for hovedvinduet.</long>
+      </locale>
+
+      <locale name="ne">
+         <short>मुख्य सञ्झ्यालको Y स्थान</short>
+         <long>मुख्य सञ्झ्यालको Y स्थान</long>
+      </locale>
+
+      <locale name="nl">
+         <short>Y-positie van hoofdvenster</short>
+         <long>De Y-positie van het hoofdvenster.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Vertikal posisjon for hovudvindauget</short>
+         <long>Vertikal posisjon for hovudvindauget.</long>
+      </locale>
+
+      <locale name="or">
+         <short>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ୟାଈ ଅବସ୍ଥାନ</short>
+         <long>ମୂଖ୍ଯ ୱିଣ୍ଡୋର ୟାଈ ଅବସ୍ଥାନ।</long>
+      </locale>
+
+      <locale name="pa">
+         <short>ਮੁੱਖ ਝਰੋਖੇ ਦੀ Y ਸਥਿਤੀ</short>
+         <long>ਮੁੱਖ ਝਰੋਖੇ ਦੀ Y ਸਥਿਤੀ</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Pozycja pionowa głównego okna</short>
+         <long>Pozycja pionowa głównego okna.</long>
+      </locale>
+
+      <locale name="ps">
+         <short>ځايونه Y د ارې کړکۍ</short>
+         <long>.ځايونه Y د ارې کړکۍ</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Posição Y da janela principal</short>
+         <long>A posição Y da janela principal.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Posição Y da janela principal</short>
+         <long>A posição Y da janela principal.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Coordonata Y a ferestrei principale</short>
+         <long>Coordonata Y a ferestrei principale</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Позиция главного окна по Y</short>
+         <long>Позиция главного окна по Y</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Umiestnenie hlavného okna v smere osi Y</short>
+         <long>Umiestnenie hlavného okna v smere osi Y.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Y lega glavnega okna</short>
+         <long>X lega glavnega okna</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Pozicioni Y i dritares qendrore</short>
+         <long>Pozicioni Y i dritares qendrore.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Усправни положај главног прозора</short>
+         <long>Y (усправан) положај главног прозора.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Uspravni položaj glavnog prozora</short>
+         <long>Y (uspravan) položaj glavnog prozora.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Y-position för huvudfönstret</short>
+         <long>Y-positionen för huvudfönstret.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>முக்கிய சாளரத்தின் Y நிலை</short>
+         <long>முக்கிய சாளரத்தின் Y நிலை</long>
+      </locale>
+
+      <locale name="te">
+         <short>మూల గవాక్షం యొక్క Y స్థానము</short>
+         <long>మూల గవాక్షం యొక్క Y స్థానం.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ตำแหน่ง Y ของหน้าต่างหลัก</short>
+         <long>ตำแหน่ง Y ของหน้าต่างหลัก</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Ana pencerenin Y konumu</short>
+         <long>Ana pencerenin Y pozisyonu.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Вертикальна позиція головного вікна</short>
+         <long>Вертикальна позиція головного вікна.</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Vị trí Y của cửa sổ chính</short>
+         <long>Vị trí Y của cửa sổ chính.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>主窗口的 Y 坐标</short>
+         <long>主窗口的 Y 坐标。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>主視窗垂直位置</short>
+         <long>主視窗垂直位置。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>主視窗垂直位置</short>
+         <long>主視窗垂直位置。</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/devhelp/state/assistant/window/width</key>
+      <applyto>/apps/devhelp/state/assistant/window/width</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>350</default>
+      <locale name="C">
+         <short>Width of the assistant window</short>
+         <long>The width of the assistant window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>عرض النّافذة الفرعية</short>
+         <long>عرض النّافذة الفرعية.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Šyrynia dapamožnaha akna</short>
+         <long>Šyrynia dapamožnaha akna.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Широчина на спомагателния прозорец</short>
+         <long>Широчината на спомагателния прозорец.</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Amplada de la finestra auxiliar</short>
+         <long>L&apos;amplada de la finestra auxiliar.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Šířka asistenčního okna</short>
+         <long>Šířka asistenčního okna.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Hjælpervinduets bredde</short>
+         <long>Hjælpervinduets bredde.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Breite des Zusatzfensters</short>
+         <long>Die Breite des Zusatzfensters.</long>
+      </locale>
+
+      <locale name="el">
+         <short>Πλάτος του βοηθητικού παραθύρου</short>
+         <long>Το πλάτος κύριου βοηθητικού παραθύρου.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Width of the assistant window</short>
+         <long>The width of the assistant window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Anchura de la ventana del asistente</short>
+         <long>La anchura de la ventana del asistente.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Assistendiakna laius.</short>
+         <long>Assistendiakna laius.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Apulaisikkunan leveys</short>
+         <long>Apulaisikkunan leveys.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Largeur de la fenêtre de l&apos;assistant</short>
+         <long>La largeur de la fenêtre de l&apos;assistant.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>A largura da xanela do asistente</short>
+         <long>A largura da xanela do asistente.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Asszisztensablak szélessége</short>
+         <long>Az asszisztensablak szélessége.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Larghezza della finestra assistente</short>
+         <long>La larghezza della finestra assistente.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>アシスタント・ウィンドウの幅</short>
+         <long>アシスタント・ウィンドウの幅です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>도우미 창의 너비</short>
+         <long>도우미 창의 너비.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Bredde på assistentvinduet</short>
+         <long>Bredde på assistentvinduet.</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Szerokość okna asystenta</short>
+         <long>Szerokość okna asystenta.</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Largura da janela do assistente</short>
+         <long>A largura da janela do assistente.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Largura da janela do assistente</short>
+         <long>A largura da janela do assistente.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Lățime ferestră asistent</short>
+         <long>Lățime ferestrei asistent.</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Ширина окна помощника</short>
+         <long>Ширина окна помощника</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Širina okna pomočnika</short>
+         <long>Širina okna pomočnika.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Ширина прозора асистента</short>
+         <long>Ширина прозора асистента.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Širina prozora asistenta</short>
+         <long>Širina prozora asistenta.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Bredd på assistentfönstret</short>
+         <long>Bredden på assistentfönstret.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ความกว้างของหน้าต่างผู้ช่วย</short>
+         <long>ความกว้างของหน้าต่างผู้ช่วย</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Yardımcı pencerenin genişliği</short>
+         <long>Yardımcı pencerenin genişliği.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Ширина допоміжного вікна</short>
+         <long>Ширина вікна помічника.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>辅助窗口宽度</short>
+         <long>辅助窗口宽度。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>助理視窗闊度</short>
+         <long>助理視窗的闊度。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>助理視窗寬度</short>
+         <long>助理視窗的寬度。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/state/assistant/window/height</key>
+      <applyto>/apps/devhelp/state/assistant/window/height</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>400</default>
+      <locale name="C">
+         <short>Height of assistant window</short>
+         <long>The height of the assistant window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>ارتفاع النّافذة الفرعية</short>
+         <long>ارتفاع النّافذة الفرعية.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Vyšynia dapamožnaha akna</short>
+         <long>Vyšynia dapamožnaha akna.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Височина на спомагателния прозорец</short>
+         <long>Височината на спомагателния прозорец.</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Alçada de la finestra auxiliar.</short>
+         <long>Alçada de la finestra auxiliar.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Výška asistenčního okna</short>
+         <long>Výška asistenčního okna.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Højde af hjælpervinduet</short>
+         <long>Hjælpervinduets højde.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Höhe des Zusatzfensters</short>
+         <long>Die Höhe des Zusatzfensters.</long>
+      </locale>
+
+      <locale name="el">
+         <short>Ύψος βοηθητικού παραθύρου</short>
+         <long>Το ύψος του βοηθητικού παραθύρου.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Height of assistant window</short>
+         <long>The height of the assistant window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Altura de la ventana del asistente</short>
+         <long>La altura de la ventana del asistente.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Assistendiakna kõrgus</short>
+         <long>Assistendiakna kõrgus.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Apulaisikkunan korkeus</short>
+         <long>Apulaisikkunan korkeus.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>La hauteur de la fenêtre de l&apos;assistant</short>
+         <long>La hauteur de la fenêtre de l&apos;assistant.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Altura da xanela do asistente</short>
+         <long>A altura da xanela do asistente.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Asszisztensablak magassága</short>
+         <long>Az asszisztensablak magassága.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Altezza della finestra assistente</short>
+         <long>L&apos;altezza della finestra assistente.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>アシスタント・ウィンドウの高さ</short>
+         <long>アシスタント・ウィンドウの高さです。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>도우미 창의 높이</short>
+         <long>도우미 창의 높이.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Høyde på veiviservinduet</short>
+         <long>Høyde på assistentvinduet.</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Wysokość okna asystenta</short>
+         <long>Wysokość okna asystenta.</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Altura da janela do assistente</short>
+         <long>A altura da janela do assistente.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Altura da janela do assistente</short>
+         <long>A altura da janela do assistente.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Înălțime ferestră asistent</short>
+         <long>Înălțimea ferestrei asistent.</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Высота окна помощника</short>
+         <long>Высота окна помощника</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Višina okna pomočnika</short>
+         <long>Višina okna pomočnika.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Висина прозора асистента</short>
+         <long>Висина прозора асистента.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Visina prozora asistenta</short>
+         <long>Visina prozora asistenta.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Höjd på assistentfönstret</short>
+         <long>Höjden på assistentfönstret.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ความสูงของหน้าต่างผู้ช่วย</short>
+         <long>ความสูงของหน้าต่างผู้ช่วย</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Yardımcı pencerenin yüksekliği</short>
+         <long>Yardımcı pencerenin yüksekliği.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Висота вікна помічника</short>
+         <long>Висота вікна помічника.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>辅助窗口高度</short>
+         <long>辅助窗口高度。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>助理視窗高度</short>
+         <long>助理視窗的高度。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>助理視窗高度</short>
+         <long>助理視窗的高度。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/state/assistant/window/x_position</key>
+      <applyto>/apps/devhelp/state/assistant/window/x_position</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>0</default>
+      <locale name="C">
+         <short>X position of assistant window</short>
+         <long>The X position of the assistant window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>الموضع السيني للنافذة الفرعية</short>
+         <long>الموضع السيني للنافذة الفرعية.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Pałažeńnie dapamožnaha akna pa vosi X</short>
+         <long>Pałažeńnie dapamožnaha akna pa vosi X.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Позиция на спомагателния прозорец по хоризонтала</short>
+         <long>Позиция на спомагателния прозорец по хоризонтала.</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Posició X de la finestra auxiliar</short>
+         <long>La posició X de la finestra auxiliar.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Pozice X asistenčního okna</short>
+         <long>Souřadnice X pro asistenční okno.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Hjælpervinduets x-position</short>
+         <long>Hjælpervinduets x-position.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Horizontale Position des Zusatzfensters</short>
+         <long>Die horizontale Position des Zusatzfensters.</long>
+      </locale>
+
+      <locale name="el">
+         <short>Θέση Χ του βοηθητικού παραθύρου</short>
+         <long>Η θέση Χ του βοηθητικού παραθύρου.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>X position of assistant window</short>
+         <long>The X position of the assistant window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Posición X de la ventana del asistente</short>
+         <long>La posición X de la ventana del asistente.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Assistendiakna asukoht X-teljel</short>
+         <long>Assistendiakna asukoht X-teljel.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Apulaisikkunan X-koordinaatti</short>
+         <long>Apulaisikkunan X-koordinaatti.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Position X de la fenêtre de l&apos;assistant</short>
+         <long>La position X the la fenêtre de l&apos;assistant.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Posición X da xanela do asistente</short>
+         <long>A posición X da xanela do asistente.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Asszisztensablak X-pozíciója</short>
+         <long>Az asszisztensablak X-pozíciója.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Posizione X della finestra assistente</short>
+         <long>La posizione X della finestra assistente.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>アシスタント・ウィンドウの位置Ｘ</short>
+         <long>アシスタント・ウィンドウを表示するＸ座標です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>도우미 창의 가로 위치</short>
+         <long>도우미 창의 가로 위치.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>X-posisjon for assistentvinduet</short>
+         <long>X-posisjon for veiviservinduet.</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Pozycja pozioma okna asystenta</short>
+         <long>Pozycja pozioma okna asystenta.</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Posição X da janela do assistente</short>
+         <long>A posição X da janela do assistente.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Posição X da janela do assistente</short>
+         <long>A posição X da janela do assistente.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Poziție X fereastră asistent</short>
+         <long>Poziția X a ferestrei asistent.</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Позиция окна помощника по X</short>
+         <long>Позиция окна помощника по X</long>
+      </locale>
+
+      <locale name="sl">
+         <short>X lega okna pomočnika</short>
+         <long>X lega okna pomočnika</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Водоравни положај прозора асистента</short>
+         <long>X (водораван) положај прозора асистента.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Vodoravni položaj prozora asistenta</short>
+         <long>X (vodoravan) položaj prozora asistenta.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>X-position för assistentfönstret</short>
+         <long>X-positionen för assistentfönstret.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ตำแหน่ง X ของหน้าต่างผู้ช่วย</short>
+         <long>ตำแหน่ง X ของหน้าต่างผู้ช่วย</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Yardımcı pencerenin X konumu</short>
+         <long>Yardımcı pencerenin X pozisyonu.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Горизонтальна позиція допоміжного вікна</short>
+         <long>Горизонтальна позиція вікна помічника.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>辅助窗口的 X 坐标</short>
+         <long>辅助窗口的 X 坐标。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>助理視窗的 X 位置</short>
+         <long>助理視窗的 X 位置。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>助理視窗的 X 位置</short>
+         <long>助理視窗的 X 位置。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/state/assistant/window/y_position</key>
+      <applyto>/apps/devhelp/state/assistant/window/y_position</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>0</default>
+      <locale name="C">
+         <short>Y position of assistant window</short>
+         <long>The Y position of the assistant window.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>الموضع الصادي للنافذة الفرعية</short>
+         <long>الموضع الصادي للنافذة الفرعية.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Pałažeńnie dapamožnaha akna pa vosi Y</short>
+         <long>Pałažeńnie dapamožnaha akna pa vosi Y.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Позиция на спомагателния прозорец по вертикала</short>
+         <long>Позиция на спомагателния прозорец по вертикала.</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Posició Y de la finestra auxiliar</short>
+         <long>La posició Y de la finestra auxiliar.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Pozice Y asistenčního okna</short>
+         <long>Souřadnice Y pro asistenční okno.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Hjælpervinduets y-position</short>
+         <long>Hjælpervinduets y-position.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Vertikale Position des Zusatzfensters</short>
+         <long>Die vertikale Position des Zusatzfensters.</long>
+      </locale>
+
+      <locale name="el">
+         <short>Θέση Y του βοηθητικού παραθύρου</short>
+         <long>Η θέση Y του βοηθητικού παραθύρου.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Y position of assistant window</short>
+         <long>The Y position of the assistant window.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Posición Y de la ventana del asistente</short>
+         <long>La posición Y de la ventana del asistente.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Assistendiakna asukoht Y-teljel</short>
+         <long>Assistendiakna asukoht Y-teljel.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Apulaisikkunan Y-koordinaatti</short>
+         <long>Apulaisikkunan Y-koordinaatti.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Position Y the la fenêtre de l&apos;assistant</short>
+         <long>La position Y de la fenêtre de l&apos;assistant.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Posición Y da xanela do asistente</short>
+         <long>A posición Y da xanela do asistente.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Asszisztensablak Y-pozíciója</short>
+         <long>Az asszisztensablak Y-pozíciója.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Posizione Y della finestra assistente</short>
+         <long>La posizione Y della finestra assistente.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>アシスタント・ウィンドウの位置Ｙ</short>
+         <long>アシスタント・ウィンドウを表示するＹ座標です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>도우미 창의 세로 위치</short>
+         <long>도우미 창의 세로 위치.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Vertikal posisjon for hovedvinduet</short>
+         <long>Y-posisjon for veiviservinduet.</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Pozycja pionowa okna asystenta</short>
+         <long>Pozycja pionowa okna asystenta.</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Posição Y da janela do assistente</short>
+         <long>A posição Y da janela do assistente.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Posição Y da janela do assistente</short>
+         <long>A posição Y da janela do assistente.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Poziție Y fereastră asistent</short>
+         <long>Poziția Y a ferestrei asistent.</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Позиция окна помощника по Y</short>
+         <long>Позиция окна помощника по Y</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Y lega okna pomočnika</short>
+         <long>Y lega okna pomočnika</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Усправни положај прозора асистента</short>
+         <long>Y (усправан) положај прозора асистента.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Uspravni položaj prozora asistenta</short>
+         <long>Y (uspravan) položaj prozora asistenta.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Y-position för assistentfönstret</short>
+         <long>Y-positionen för assistantfönstret.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ตำแหน่ง Y ของหน้าต่างผู้ช่วย</short>
+         <long>ตำแหน่ง Y ของหน้าต่างผู้ช่วย</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Yardımcı pencerenin Y konumu</short>
+         <long>Yardımcı pencerenin Y pozisyonu.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Вертикальна позиція допоміжного вікна</short>
+         <long>Вертикальна позиція вікна помічника.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>辅助窗口的 Y 坐标</short>
+         <long>辅助窗口的 Y 坐标。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>助理視窗的 Y 位置</short>
+         <long>助理視窗的 Y 位置。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>助理視窗的 Y 位置</short>
+         <long>助理視窗的 Y 位置。</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/devhelp/state/main/paned/position</key>
+      <applyto>/apps/devhelp/state/main/paned/position</applyto>
+      <owner>devhelp</owner>
+      <type>int</type>
+      <default>250</default>
+      <locale name="C">
+         <short>Width of the index and search pane</short>
+         <long>The width of the index and search pane.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>عرض لوح الفهرس والبحث</short>
+         <long>عرض لوح الفهرس والبحث.</long>
+      </locale>
+
+      <locale name="be">
+         <short>Шырыня панэлі зьместу і пошуку</short>
+         <long>Шырыня панэлі зьместу і пошуку.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Šyrynia paneli źmieściva i pošuku</short>
+         <long>Šyrynia paneli źmiestu i pošuku.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Широчина на панела за съдържание и търсене</short>
+         <long>Широчината на панела със съдържание и търсене</long>
+      </locale>
+
+      <locale name="bn">
+         <short>সূচি ও অনুসন্ধানের পেইনের প্রস্থ</short>
+         <long>সূচি ও অনুসন্ধানের পেইনের প্রস্থ।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>সূচি ও অনুসন্ধানের পেইনের প্রস্থ</short>
+         <long>সূচি ও অনুসন্ধানের পেইনের প্রস্থ।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Amplada de la subfinestra d&apos;índex i cerca</short>
+         <long>L&apos;amplada de la subfinestra d&apos;índex i cerca.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Amplada de la subfinestra d&apos;índex i cerca</short>
+         <long>L&apos;amplada de la subfinestra d&apos;índex i cerca.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Šířka panelu rejstříku a hledání</short>
+         <long>Šířka panelu rejstříku a hledání.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Bredden af indeks- og søgepanelerne</short>
+         <long>Bredden af indeks- og søgepanelerne.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Breite des Index- und Sucheabschnitts</short>
+         <long>Die Breite des Index- und Sucheabschnitts</long>
+      </locale>
+
+      <locale name="dz">
+         <short>ཟུར་ཐོ་འདི་དང་འཚོལ་ཞིབ་པེན་གྱི་འདི་གི་རྒྱ་ཚད།</short>
+         <long>ཟུར་ཐོ་དང་ཚུལ་ཞིབ་པེན་གྱི་རྒྱ་ཚད་འདི།</long>
+      </locale>
+
+      <locale name="el">
+         <short>Το πλάτος των πλαισίων του καταλόγου και της αναζήτησης</short>
+         <long>Το πλάτος των πλαισίων του καταλόγου και της αναζήτησης.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>Width of the index and search pane</short>
+         <long>The width of the index and search pane.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Width of the index and search pane</short>
+         <long>The width of the index and search pane.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Anchura del índice de panel de búsqueda</short>
+         <long>La anchura del índice y el panel lateral de búsqueda.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Indeksi- ja otsimispaani laius</short>
+         <long>Indeksi- ja otsimispaani laius.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Indeksi- ja hakupaneelin leveys</short>
+         <long>Indeksi- ja hakupaneelin leveys.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Largeur de l&apos;index et du panneau de recherche</short>
+         <long>La largeur de l&apos;index et du panneau de recherche.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Largura do índice e do panel de busca</short>
+         <long>A largura do índice e do panel de busca.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>અનુક્રમણિકાની પહોળાઈ અને શોધ તકતી</short>
+         <long>અનુક્રમણિકાની પહોળાઈ અને શોધ તકતી.</long>
+      </locale>
+
+      <locale name="he">
+         <short>Width of the index and search pane</short>
+         <long>The width of the index and search pane.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Az index és a kereső oldalsáv szélessége</short>
+         <long>Az index és a kereső oldalsáv szélessége.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Larghezza del riquadro di ricerca e indicizzazione</short>
+         <long>La larghezza del riquadro di ricerca e indicizzazione.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>目次と検索ウィンドウの幅</short>
+         <long>目次と検索ウィンドウの幅です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>색인 및 찾기 창의 너비</short>
+         <long>색인 및 찾기 창의 너비.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Paieškos ir turinio pulto plotis</short>
+         <long>Indekso ir paieškos pulto plotis.</long>
+      </locale>
+
+      <locale name="mk">
+         <short>Широчина на индексот и просторот за пребарување.</short>
+         <long>Широчината на индексот и просторот за пребарување.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>ഇന്‍ഡക്സിന്‍റേയും തിരച്ചില്‍ പാളിയുടേയും വീതി</short>
+         <long>ഇന്‍ഡക്സിന്‍റേയും തിരച്ചില്‍ പാളിയുടേയും വീതി.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Bredde på indeks og hovedvinduet</short>
+         <long>Bredde på indeks og søkevinduet.</long>
+      </locale>
+
+      <locale name="ne">
+         <short>अनुक्रमणिका र खोजी फलकको चौडाइ</short>
+         <long>अनुक्रमणिका वा खोजी फलकको चौडाइ ।</long>
+      </locale>
+
+      <locale name="nl">
+         <short>Breedte van het inhoud- en zoekvenster</short>
+         <long>De breedte van het inhoud- en zoekvenster.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Breidd på indeks og hovudvindauget</short>
+         <long>Breidd på indeks og søkjevindauget.</long>
+      </locale>
+
+      <locale name="or">
+         <short>ଅନୁକ୍ରମଣିକା ଏବଂ ସନ୍ଧାନ ଫଳକର ଓସାର</short>
+         <long>ଅନୁକ୍ରମଣିକା ଏବଂ ସନ୍ଧାନ ଫଳକର ଓସାର।</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Szerokość indeksu i panelu wyszukiwania</short>
+         <long>Szerokość indeksu i panelu wyszukiwania.</long>
+      </locale>
+
+      <locale name="ps">
+         <short>د لړيال او د پلټون چوکاټ پلنوالی</short>
+         <long>.د لړيال او د پلټون چوکاټ پلنوالی</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Largura dos painéis de índice e procura</short>
+         <long>A largura dos painéis de índice e procura.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Largura do painel de índice e de pesquisa</short>
+         <long>A largura do painel de índice e pesquisa.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Lățimea panoului de indexare și de căutare</short>
+         <long>Lățimea panoului pentru index și căutare</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Ширина панели содержания и поиска</short>
+         <long>Ширина панели содержания и поиска</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Šírka indexu a vyhľadávacieho panelu</short>
+         <long>Šírka indexu a vyhľadávacieho panelu.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Širina indeksa in iskalnega pladnja.</short>
+         <long>Širina indeksa in iskalnega pladnja.</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Gjerësia e treguesit dhe panelit të kërkimit</short>
+         <long>Gjerësia e treguesit dhe panelit të kërkimit.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Ширина главног прозора</short>
+         <long>Ширина панела за садржај и претрагу.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Širina glavnog prozora</short>
+         <long>Širina panela za sadržaj i pretragu.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Bredd på index- och sökpanelen</short>
+         <long>Bredden på index- och sökpanelen.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>அட்டவணை குறி மற்றும் சாளரப்பலகை தேடியின் குறுக்களவு</short>
+         <long>அட்டவணை குறி மற்றும் சாளரப்பலகை தேடியின் குறுக்களவு</long>
+      </locale>
+
+      <locale name="te">
+         <short>వెతుకు అస్థిత్వం మరియు సూచి యొక్క పొడవు</short>
+         <long>వెతుకు అస్థిత్వం మరియు చూచి యొక్క పొడవు.</long>
+      </locale>
+
+      <locale name="th">
+         <short>ความกว้างของช่องดัชนีและค้นหา</short>
+         <long>ความกว้างของช่องดัชนีและค้นหา</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Dizin ve arama panelinin genişliği</short>
+         <long>Dizin ve arama panelinin genişliği.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Ширина панелі змісту та пошуку</short>
+         <long>Ширина панелі змісту та пошуку.</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Độ rộng của mục lục và ô tìm kiếm</short>
+         <long>Độ rộng của mục lục và ô tìm kiếm.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>索引和搜索面板宽度</short>
+         <long>索引和搜索面板宽度。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>索引及搜尋窗格闊度。</short>
+         <long>索引及搜尋窗格闊度。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>索引及搜尋窗格寬度。</short>
+         <long>索引及搜尋窗格寬度。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/state/main/search_notebook/selected_tab</key>
+      <applyto>/apps/devhelp/state/main/search_notebook/selected_tab</applyto>
+      <owner>devhelp</owner>
+      <type>string</type>
+      <default>content</default>
+      <locale name="C">
+         <short>Selected tab, "content" or "search"</short>
+         <long>Which of the tabs that is selected, "content" or "search".</long>
+      </locale>
+
+      <locale name="ar">
+         <short>اختر لسان، &quot;content&quot; أو &quot;search&quot;</short>
+         <long>ما المختار من الألسنة، &quot;content&quot; أو &quot;search&quot;. </long>
+      </locale>
+
+      <locale name="be">
+         <short>Выбраная картка, &quot;зьмест&quot; альбо &quot;пошук&quot;</short>
+         <long>Якая картка выбраная, &quot;зьмест&quot; альбо &quot;пошук&quot;.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Dziejnaja kartka, &quot;źmieściva&quot; albo &quot;šukaj&quot;</short>
+         <long>Akreślivaje dziejnuju kartku, &quot;źmieściva&quot; albo &quot;šukaj&quot;.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Избран подпрозорец, „content“ или „search“</short>
+         <long>Кой от подпрозорците да бъде избран, „content“ (Съдържание) или „search“ (Търсене).</long>
+      </locale>
+
+      <locale name="bn">
+         <short>নির্বাচিত ট্যাব, &quot;বিষয়বস্তু&quot; অথবা &quot;অনুসন্ধান&quot;</short>
+         <long>কোন ট্যাবটি নির্বাচন করা হবে, &quot;বিষয়বস্তু&quot; অথবা &quot;অনুসন্ধান&quot;।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>নির্বাচিত ট্যাব, &quot;বিষয়বস্তু&quot; অথবা &quot;অনুসন্ধান&quot;</short>
+         <long>কোন ট্যাবটি নির্বাচন করা হবে, &quot;বিষয়বস্তু&quot; অথবা &quot;অনুসন্ধান&quot;।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Pestanya seleccionada, «content» (continguts) o «search» (cerca)</short>
+         <long>Quina pestanya està seleccionada, «content» (continguts) o «search» (cerca).</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Pestanya seleccionada, «content» (continguts) o «search» (cerca)</short>
+         <long>Quina pestanya està seleccionada, «content» (continguts) o «search» (cerca).</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Vybraná karta, &quot;content&quot; nebo &quot;search&quot;</short>
+         <long>Která z karet je vybrána, &quot;content&quot; nebo &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Valgt faneblad, &quot;indhold&quot; eller &quot;søg&quot;</short>
+         <long>Hvilket af fanebladene der er valgt, &quot;indhold&quot; eller &quot;søg&quot;.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Ausgewählter Reiter, »content« (Inhalt) oder »search« (Suche)</short>
+         <long>Welcher der Reiter aktuell ausgewählt ist, »content« (Inhalt) oder »search« (Suche).</long>
+      </locale>
+
+      <locale name="dz">
+         <short>སེལ་འཐུ་འབད་ཡོད་མི་མཆོང་ལྡེ་&quot;content&quot; ཡང &quot;search&quot;</short>
+         <long>སེལ་འཐུ་འབད་ཡོད་མི་མཆོང་ལྡེ་ཚུ་་&quot;content&quot; ཡང་ན་ &quot;search&quot;ག་ཨིན་སྨོ།</long>
+      </locale>
+
+      <locale name="el">
+         <short>Επιλεγμένη καρτέλα, &quot;περιεχόμενα&quot; ή &quot;αναζήτηση&quot;</short>
+         <long>Καρτέλες οι οποίες είναι επιλεγμένες, &quot;περιεχόμενα&quot; ή &quot;αναζήτηση&quot;.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>Selected tab (&quot;content&quot; or &quot;search&quot;)</short>
+         <long>Which of the tabs is selected, &quot;content&quot; or &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Selected tab: &quot;content&quot; or &quot;search&quot;</short>
+         <long>Which of the tabs is selected: &quot;content&quot; or &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Solapa seleccionada, &quot;content&quot; (contenido) o &quot;search&quot; (búsqueda)</short>
+         <long>Cual de las solapas está seleccionada,  «contenido» o «búsqueda».</long>
+      </locale>
+
+      <locale name="et">
+         <short>Valitud kaart, &quot;content&quot; (sisukord) või &quot;search&quot; (otsing)</short>
+         <long>Milline kaart on valitud, kas &quot;content&quot; (sisukord) või &quot;search&quot; (otsing)</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Valittu välilehti, joko &quot;sisältö&quot; tai &quot;haku&quot;</short>
+         <long>Mikä välilehdistä on valittuna, &quot;sisältö&quot; vai &quot;haku&quot;</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Onglet sélectionné, « contenu » ou « recherche »</short>
+         <long>L&apos;onglet qui est sélectionné, « contenu » ou  « recherche ».</long>
+      </locale>
+
+      <locale name="gl">
+         <short>O separador seleccionado: &quot;content&quot; ou &quot;search&quot;</short>
+         <long>O separador que está seleccionado: &quot;content&quot; ou &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>પસંદ થયેલ ટેબ, &quot;સમાવિષ્ટ&quot; અથવા &quot;શોધ&quot;</short>
+         <long>ટેબોમાંની કઈ કે જે પસંદ થયેલ છે, &quot;સમાવિષ્ટ&quot; અથવા &quot;શોધ&quot;.</long>
+      </locale>
+
+      <locale name="he">
+         <short>Selected tab, &quot;content&quot; or &quot;search&quot;</short>
+         <long>Which of the tabs that is selected, &quot;content&quot; or &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Kiválasztott lap, „content” (tartalom) vagy „search” (keresés)</short>
+         <long>Melyik lap van kiválasztva, „content” (tartalom) vagy „search” (keresés).</long>
+      </locale>
+
+      <locale name="it">
+         <short>Scheda selezionata, &quot;content&quot; (contenuto) o &quot;search&quot; (ricerca)</short>
+         <long>Quale delle schede è selezionata, &quot;content&quot; (contenuto) o &quot;search&quot; (ricerca).</long>
+      </locale>
+
+      <locale name="ja">
+         <short>選択したタブ (&quot;content&quot; または &quot;search&quot;)</short>
+         <long>選択したタブの種類 (&quot;content&quot; または &quot;search&quot;) です。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>선택한 탭, &quot;content&quot; 혹은 &quot;search&quot;</short>
+         <long>어느 탭을 선택할 지 지정, &quot;content&quot; 혹은 &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Pasirinkta kortelė, „turinys“ ar „paieška“</short>
+         <long>Kuri iš kortelių pasirinkta, „turinys“ ar „paieška“.</long>
+      </locale>
+
+      <locale name="mk">
+         <short>Избран таб, &quot;содржина&quot; или &quot;пребарување&quot;</short>
+         <long>Кои табови се избрани, &quot;содржина&quot; или &quot;пребарување&quot;.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>&quot;content&quot; അല്ലെങ്കില്‍ &quot;search&quot; ടാബ് തിരഞ്ഞെടുത്തിരിക്കുന്നു</short>
+         <long>ഏത് ടാബ് തിരഞ്ഞെടുത്തിരിക്കുന്നു, &quot;content&quot; അല്ലെങ്കില്‍ &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Valgt fane, «content» eller «search»</short>
+         <long>Hvilken fane er valgt; «content» eller «search».</long>
+      </locale>
+
+      <locale name="ne">
+         <short>चयन गरिएको ट्याब, &quot;विषय&quot; वा &quot;खोजी&quot;</short>
+         <long>कुन ट्याब चयन गरियो, &quot;विषय&quot; वा &quot;खोजी&quot;</long>
+      </locale>
+
+      <locale name="nl">
+         <short>Geselecteerde tabblad, ‘content’ of ‘search’</short>
+         <long>Welk tabblad geselecteerd is, ‘content’ of ‘search’.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Vald fane, «content» eller «search»</short>
+         <long>Kva fane er vald; «content» eller «search».</long>
+      </locale>
+
+      <locale name="or">
+         <short>ଚୟିତ ଟ୍ଯାବ, &quot;ସୂଚୀପତ୍ର&quot; କିମ୍ବା &quot;ସନ୍ଧାନ&quot;</short>
+         <long>ଏହି ଦୁଇଟି ଟ୍ଯାବ ମଧ୍ଯରୁ କାହାକୁ ଚୟନ କରାଯାଇଛି, &quot;ସୂଚୀପତ୍ର&quot; କିମ୍ବା &quot;ସନ୍ଧାନ&quot;।</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Wybrana karta - &quot;content&quot; lub &quot;search&quot;</short>
+         <long>Określa aktywną kartę - &quot;content&quot; lub &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="ps">
+         <short>&quot;منځپانګه&quot; يا &quot;پلټون&quot; ‎ټاکل شوی ټوپ</short>
+         
+      </locale>
+
+      <locale name="pt">
+         <short>Separador seleccionado, &quot;content&quot; ou &quot;search&quot;</short>
+         <long>Qual dos separadores está seleccionado, &quot;content&quot; ou &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Aba selecionada, &quot;conteúdo&quot; ou &quot;pesquisar&quot;</short>
+         <long>Qual das abas está selecionada, &quot;conteúdo&quot; ou &quot;pesquisar&quot;.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Tab selectat, „content” sau „search”</short>
+         <long>Care din taburile alese, „content” sau „search”.</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Выбранная закладка, «содержание» или «поиск»</short>
+         <long>Какая из закладок выбрана, «содержание» или «поиск».</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Zvolená záložka, &quot;obsah&quot; alebo &quot;hľadať&quot;</short>
+         <long>Ktorá zo zvolených záložiek, &quot;obsah&quot; alebo &quot;hľadať&quot;.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Izbrani zavihek &quot;vsebina&quot; ali &quot;iskanje&quot;</short>
+         <long>Kateri zavihek je izbran: &quot;vsebina&quot; ali &quot;iskanje&quot;</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Skeda e zgjedhur, &quot;përmbajtja&quot; ose &quot;kërko&quot;</short>
+         <long>Cila nga skedat është zgjedhur &quot;përmbajtja&quot; ose &quot;kërko&quot;.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Одабрани лист — „content“ (садржај) или „search“ (претрага)</short>
+         <long>Одређује који лист ће бити одабрана, „content“ (садржај) или „search“ (претрага).</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Odabrani list — „content“ (sadržaj) ili „search“ (pretraga)</short>
+         <long>Određuje koji list će biti odabrana, „content“ (sadržaj) ili „search“ (pretraga).</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Vald flik, &quot;content&quot; eller &quot;search&quot;</short>
+         <long>Vilken av flikarna som är vald, &quot;content&quot; eller &quot;search&quot;.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>தேர்ந்தெடுக்கப்பட்ட பலக இடம் &quot;உள்ளடக்கம்&quot; அல்லது &quot;தேடு&quot;</short>
+         <long>எந்த பலக இடம் தேர்ந்தெடுக்கப்பட்டது, &quot;உள்ளுள்ள&quot; அல்லது &quot;தேடு&quot;.</long>
+      </locale>
+
+      <locale name="te">
+         <short>నెట్టులలో ఏది ఎంచుకొనబడినది, &quot;సారము&quot; లేదా &quot;వెతుకు&quot;.</short>
+         <long>నెట్టులలో ఏది ఎంచుకొనబడినది, &quot;సారము&quot; లేదా &quot;వెతుకు&quot;.</long>
+      </locale>
+
+      <locale name="th">
+         <short>แท็บที่เลือก, &quot;content&quot; หรือ &quot;search&quot;</short>
+         <long>แท็บไหนที่เลือกอยู่, &quot;content&quot; หรือ &quot;search&quot;</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Seçili sekme, &quot;content&quot; (içerik) ya da &quot;search&quot; (arama)</short>
+         <long>Seçili olan sekmelerin hangisi olacağı, &quot;content&quot; (içerik) ya da &quot;search&quot; (arama).</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Вибрана вкладка, «зміст» чи «пошук»</short>
+         <long>Яка з закладок вибрана, «зміст» чи «пошук».</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Thanh đã chọn, &quot;nội dung&quot; hoặc &quot;tìm kiếm&quot;</short>
+         <long>Đối với thanh đã chọn, &apos;nội dung&apos; hoặc &apos;tìm kiếm&apos;.</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>選擇分頁：「內容」或「搜尋」</short>
+         <long>選擇何種分頁？「內容」還是「搜尋」。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>選擇分頁：「內容」或「搜尋」</short>
+         <long>選擇何種分頁？「內容」還是「搜尋」。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/ui/use_system_fonts</key>
+      <applyto>/apps/devhelp/ui/use_system_fonts</applyto>
+      <owner>devhelp</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+        <short>Use system fonts</short>
+	<long>
+	  Use the system default fonts.
+	</long>
+      </locale>
+
+      <locale name="ar">
+        <short>استخدم خطوط النّظام</short>
+	<long>استخدم خطوط النظام المبدئية.</long>
+      </locale>
+
+      <locale name="be">
+        <short>Выкарыстоўваць сыстэмныя шрыфты</short>
+	<long>Выкарыстоўваць прадвызначаныя сыстэмныя шрыфты.</long>
+      </locale>
+
+      <locale name="be@latin">
+        <short>Užyj systemnyja šryfty</short>
+	<long>Užyj systemnyja zmoŭčanyja šryfty.</long>
+      </locale>
+
+      <locale name="bg">
+        <short>Използване на системни шрифтове</short>
+	<long>Използване на стандартните системни шрифтове.</long>
+      </locale>
+
+      <locale name="bn">
+        <short>সিস্টেমের ফন্ট ব্যবহৃত হবে</short>
+	<long>সিস্টেমের ডিফল্ট ফন্ট ব্যবহৃত হবে।</long>
+      </locale>
+
+      <locale name="bn_IN">
+        <short>সিস্টেমের ফন্ট ব্যবহৃত হবে</short>
+	<long>সিস্টেমের ডিফল্ট ফন্ট ব্যবহৃত হবে।</long>
+      </locale>
+
+      <locale name="ca">
+        <short>Utilitza els tipus de lletra del sistema</short>
+	<long>Utilitza els tipus de lletra predeterminats del sistema.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+        <short>Utilitza els tipus de lletra del sistema</short>
+	<long>Utilitza els tipus de lletra predeterminats del sistema.</long>
+      </locale>
+
+      <locale name="cs">
+        <short>Používat systémová písma</short>
+	<long>Používat výchozí písma systému.</long>
+      </locale>
+
+      <locale name="da">
+        <short>Brug systemskrifttyper</short>
+	<long>Brug systemets standard-skrifttyper.</long>
+      </locale>
+
+      <locale name="de">
+        <short>Systemschrift verwenden</short>
+	<long>Die vom System vorgegebenen Schriften verwenden.</long>
+      </locale>
+
+      <locale name="dz">
+        <short>རིམ་ལུགས་ཡིག་བཟོ་ཚུ་ལག་ལེན་འཐབ།</short>
+	<long>རིམ་ལུགས་སྔོན་སྒྲིག་གི་ཡིག་གཟུགས་ཚུ་ལག་ལེན་འཐབ།</long>
+      </locale>
+
+      <locale name="el">
+        <short>Χρήση γραμματοσειρών συστήματος</short>
+	<long>Χρήση προεπιλεγμένων γραμματοσειρών συστήματος.</long>
+      </locale>
+
+      <locale name="en_CA">
+        <short>Use system fonts</short>
+	<long>Use the system default fonts.</long>
+      </locale>
+
+      <locale name="en_GB">
+        <short>Use system fonts</short>
+	<long>Use the system&apos;s default fonts.</long>
+      </locale>
+
+      <locale name="es">
+        <short>Usar tipografía del sistema</short>
+	<long>Usar la tipografía predeterminada del sistema.</long>
+      </locale>
+
+      <locale name="et">
+        <short>Süsteemsete kirjatüüpide kasutamine</short>
+	<long>Süsteemsete vaikimisi kirjatüüpide kasutamine</long>
+      </locale>
+
+      <locale name="fi">
+        <short>Käytä järjestelmän kirjasimia</short>
+	<long>Käytä järjestelmän oletuskirjasimia.</long>
+      </locale>
+
+      <locale name="fr">
+        <short>Utiliser les polices de caractères du système</short>
+	<long>Utiliser les polices de caractères par défaut du système.</long>
+      </locale>
+
+      <locale name="gl">
+        <short>Usar os tipos de letra do sistema</short>
+	<long>Usar os tipos de letra predefinidos do sistema.</long>
+      </locale>
+
+      <locale name="gu">
+        <short>સિસ્ટમ ફોન્ટ વાપરો</short>
+	<long>સિસ્ટમના મૂળભુત ફોન્ટ વાપરો.</long>
+      </locale>
+
+      <locale name="he">
+        <short>Use system fonts</short>
+	<long>Use the system default fonts.</long>
+      </locale>
+
+      <locale name="hu">
+        <short>A rendszer betűkészletének használata</short>
+	<long>A rendszer alapértelmezett betűkészleteinek használata.</long>
+      </locale>
+
+      <locale name="is">
+        <short>Nota letur kerfis</short>
+	<long>Nota sjálfgefið letur kerfis.</long>
+      </locale>
+
+      <locale name="it">
+        <short>Usa i tipi di carattere di sistema</short>
+	<long>Usa i tipi di carattere di sistema predefiniti.</long>
+      </locale>
+
+      <locale name="ja">
+        <short>システム・フォントを使うかどうか</short>
+	<long>デスクトップで設定したデフォルトのフォントを使用します。</long>
+      </locale>
+
+      <locale name="ko">
+        <short>시스템 글꼴 사용</short>
+	<long>시스템 기본 글꼴을 사용합니다.</long>
+      </locale>
+
+      <locale name="lt">
+        <short>Naudoti sisteminius šriftus</short>
+	<long>Naudoti sistemos standartinius šriftus.</long>
+      </locale>
+
+      <locale name="mai">
+        <short>सिस्टम फाँट क&apos; प्रयोग करू </short>
+	
+      </locale>
+
+      <locale name="mk">
+        <short>Користи системски фонтови</short>
+	<long>Користи системски стандардни фонтови.</long>
+      </locale>
+
+      <locale name="ml">
+        <short>സിസ്റ്റമിലുളള ലിപികള്‍ ഉപയോഗിക്കുക.</short>
+	<long>സിസ്റ്റമില്‍ ഡീഫോള്‍ട്ടായുളള ലിപികള്‍ ഉപയോഗിക്കുക.</long>
+      </locale>
+
+      <locale name="nb">
+        <short>Bruk systemets skrifter</short>
+	<long>Bruk systemets forvalgte skrifter.</long>
+      </locale>
+
+      <locale name="ne">
+        <short>प्रणाली फन्ट प्रयोग गर्नुहोस्</short>
+	<long>प्रणालीको पूर्वनिर्धारित फन्ट प्रयोग गर्नुहोस् ।</long>
+      </locale>
+
+      <locale name="nl">
+        <short>Systeemlettertypen gebruiken</short>
+	<long>De systeemlettertypen gebruiken.</long>
+      </locale>
+
+      <locale name="nn">
+        <short>Bruk systemets skrifter</short>
+	<long>Bruk systemets forvalgte skrifter.</long>
+      </locale>
+
+      <locale name="oc">
+        <short>Utilizar las poliças del sistèma</short>
+	
+      </locale>
+
+      <locale name="or">
+        <short>ତନ୍ତ୍ର ଅକ୍ଷରରୂପ ବ୍ଯବହାର କରନ୍ତୁ</short>
+	<long>ତନ୍ତ୍ରର ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ମାନଙ୍କୁ ବ୍ଯବହାର କରନ୍ତୁ।</long>
+      </locale>
+
+      <locale name="pa">
+        <short>ਸਿਸਟਮ ਫੋਟ ਵਰਤੋਂ</short>
+	<long>ਮੂਲ ਸਿਸਟਮ ਫੋਟ ਵਰਤੋਂ</long>
+      </locale>
+
+      <locale name="pl">
+        <short>Użycie czcionek systemowych</short>
+	<long>Użycie domyślnych czcionek systemu.</long>
+      </locale>
+
+      <locale name="ps">
+        <short>غونډال ليکبڼې کارول</short>
+	<long>.د غونډال تلواله ليکبڼې کارول</long>
+      </locale>
+
+      <locale name="pt">
+        <short>Utilizar as fontes do sistema</short>
+	<long>Utilizar as fontes por omissão do sistema.</long>
+      </locale>
+
+      <locale name="pt_BR">
+        <short>Usar fontes do sistema</short>
+	<long>Usa as fontes padrão do sistema.</long>
+      </locale>
+
+      <locale name="ro">
+        <short>Folosește fonturile sistemului</short>
+	<long>Folosește setul de fonturi implicit al sistemului.</long>
+      </locale>
+
+      <locale name="ru">
+        <short>Использовать системные шрифты</short>
+	<long>Использовать системные шрифты по умолчанию</long>
+      </locale>
+
+      <locale name="sk">
+        <short>Použiť systémové písma</short>
+	<long>Použiť štandardné systémové písma.</long>
+      </locale>
+
+      <locale name="sl">
+        <short>Uporabi sistemske pisave</short>
+	<long>Uporabi privzete sistemske pisave</long>
+      </locale>
+
+      <locale name="sq">
+        <short>Përdor gërmat e sistemit</short>
+	<long>Përdor gërmat e prezgjedhura të sistemit.</long>
+      </locale>
+
+      <locale name="sr">
+        <short>Користи фонтове окружења</short>
+	<long>Користи подразумеване фонтове из окружења.</long>
+      </locale>
+
+      <locale name="sr@latin">
+        <short>Koristi fontove okruženja</short>
+	<long>Koristi podrazumevane fontove iz okruženja.</long>
+      </locale>
+
+      <locale name="sv">
+        <short>Använd systemtypsnitt</short>
+	<long>Använd systemets standardtypsnitt.</long>
+      </locale>
+
+      <locale name="ta">
+        <short>கணினி எழுத்துருக்களை பயன்படுத்து</short>
+	<long>கணினியின் கொடா எழுத்துருக்களை பயன்படுத்து.</long>
+      </locale>
+
+      <locale name="te">
+        <short>వ్యవస్థ అక్షరశైలి వాడుము</short>
+	<long>వ్యవస్థల అప్రమేయ అక్షరశైలిలను వాడుము.</long>
+      </locale>
+
+      <locale name="th">
+        <short>ใช้แบบอักษรของระบบ</short>
+	<long>ใช้แบบอักษรปริยายของระบบ</long>
+      </locale>
+
+      <locale name="tr">
+        <short>Sistem yazıtiplerini kullan</short>
+	<long>Sistem öntanımlı yazıtiplerini kullan.</long>
+      </locale>
+
+      <locale name="uk">
+        <short>Використовувати системні шрифти</short>
+	<long>Використовувати системні типові шрифти.</long>
+      </locale>
+
+      <locale name="vi">
+        <short>Dùng phông hệ thống</short>
+	<long>Sử dụng các phông mặc định của hệ thống.</long>
+      </locale>
+
+      <locale name="zh_CN">
+        <short>使用系统字体</short>
+	<long>使用系统默认字体。</long>
+      </locale>
+
+      <locale name="zh_HK">
+        <short>使用系統字型</short>
+	<long>使用系統預設字型。</long>
+      </locale>
+
+      <locale name="zh_TW">
+        <short>使用系統字型</short>
+	<long>使用系統預設字型。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/ui/variable_font</key>
+      <applyto>/apps/devhelp/ui/variable_font</applyto>
+      <owner>devhelp</owner>
+      <type>string</type>
+      <default>Sans 12</default>
+      <locale name="C">
+         <short>Font for text</short>
+         <long>Font for text with variable width.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>خطّ النّصّ</short>
+         <long>خطّ نصّ متغيّر العرض.</long>
+      </locale>
+
+      <locale name="be">
+         <short>Шрыфт тэксту</short>
+         <long>Шрыфт тэксту зь пераменнай шырынёй.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Šryft dla tekstu</short>
+         <long>Šryft dla tekstu źmiennaj šyryni.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Шрифт за текст</short>
+         <long>Шрифт за текст с променлива широчина.</long>
+      </locale>
+
+      <locale name="bn">
+         <short>টেক্সটে ব্যবহৃত ফন্ট</short>
+         <long>পরিবর্তনযোগ্য প্রস্থের টেক্সটে ব্যবহৃত ফন্ট।</long>
+      </locale>
+
+      <locale name="bn_IN">
+         <short>টেক্সটে ব্যবহৃত ফন্ট</short>
+         <long>পরিবর্তনযোগ্য প্রস্থের টেক্সটে ব্যবহৃত ফন্ট।</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Tipus de lletra per al text</short>
+         <long>Tipus de lletra per al text d&apos;amplada variable.</long>
+      </locale>
+
+      <locale name="ca@valencia">
+         <short>Tipus de lletra per al text</short>
+         <long>Tipus de lletra per al text d&apos;amplada variable.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Písmo pro text</short>
+         <long>Písmo pro text s proměnnou šířkou.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Skrifttype for tekst</short>
+         <long>Skrifttype til tekst med variabel bredde.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Textschrift</short>
+         <long>Schrift für Text variabler Schriftzeichenbreite</long>
+      </locale>
+
+      <locale name="dz">
+         <short>ཡིག་ཚིག་གི་དོན་ལུ་ཡིག་གཟུགས།</short>
+         <long>ཚིག་ཡིག་དང་གཅིག་ཁར་འགྱུར་ཅན་རྒྱ་ཚད་ཀྱི་དོན་ལུ་ཡིག་གཟུགས།</long>
+      </locale>
+
+      <locale name="el">
+         <short>Γραμματοσειρά κειμένου</short>
+         <long>Γραμματοσειρά κειμένου μεταβλητού πλάτους.</long>
+      </locale>
+
+      <locale name="en_CA">
+         <short>Font for text</short>
+         <long>Font for text with variable width.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Font for text</short>
+         <long>Font for text with variable width.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Tipografía para el texto</short>
+         <long>Tipografía para el texto con ancho variable.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Teksti kirjatüüp</short>
+         <long>Muutuva laiusega teksti korral kasutatav kirjatüüp.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Tekstin kirjasin</short>
+         <long>Kirjasin tekstille vaihtelevan levyisillä kirjasimilla.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Police de caractères</short>
+         <long>Police de caractères à largeur variable.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Tipo de letra para o texto</short>
+         <long>Tipo de letra para o texto de largura variábel.</long>
+      </locale>
+
+      <locale name="gu">
+         <short>લખાણ માટે ફોન્ટ</short>
+         <long>લખાણ માટે ચલિત પહોળાઈવાળા ફોન્ટ.</long>
+      </locale>
+
+      <locale name="he">
+         <short>Font for text</short>
+         <long>Font for text with variable width.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Szöveg betűkészlete</short>
+         <long>Változó szélességű szöveg betűkészlete.</long>
+      </locale>
+
+      <locale name="is">
+         <short>Leturgerð fyrir texta</short>
+         
+      </locale>
+
+      <locale name="it">
+         <short>Tipo di carattere per il testo</short>
+         <long>Tipo di carattere per il testo ad ampiezza variabile.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>文章のフォント</short>
+         <long>可変幅の文を表示する際に使用するフォントです。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>텍스트에 사용할 글꼴</short>
+         <long>가변폭의 텍스트에 사용할 글꼴.</long>
+      </locale>
+
+      <locale name="lt">
+         <short>Šriftas tekstui</short>
+         <long>Šriftas kintamo pločio tekstui.</long>
+      </locale>
+
+      <locale name="mai">
+         <short>पाठ क&apos;लेल फाँट</short>
+         <long>परिवर्तनशील चओड़ाइ क&apos; सँग पाठ क&apos;लेल फाँट</long>
+      </locale>
+
+      <locale name="mk">
+         <short>Фонт за текст</short>
+         <long>Фонт за текст со променлива широчина.</long>
+      </locale>
+
+      <locale name="ml">
+         <short>ടെക്സ്റ്റിനുളള ലിപി</short>
+         <long>വിവിധ വീതിയുളള ടെക്സ്റ്റിനുളള ലിപി.</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Skrift for tekst</short>
+         <long>Skrift for tekst med variabel bredde.</long>
+      </locale>
+
+      <locale name="ne">
+         <short>पाठका लागि फन्ट</short>
+         <long>अनिश्चित चौडाइ भएको पाठका लागि फन्ट</long>
+      </locale>
+
+      <locale name="nl">
+         <short>Lettertype voor tekst</short>
+         <long>Lettertype voor tekst met variabele breedte.</long>
+      </locale>
+
+      <locale name="nn">
+         <short>Skrift for tekst</short>
+         <long>Skrift for tekst med variabel breidd.</long>
+      </locale>
+
+      <locale name="oc">
+         <short>Poliça pel tèxt</short>
+         
+      </locale>
+
+      <locale name="or">
+         <short>ପାଠ୍ଯ ପାଇଁ ଅକ୍ଷରରୂପ</short>
+         <long>ପାଠ୍ଯ ପାଇଁ ଅନିର୍ଦ୍ଦିଷ୍ଟ ଓସାର ବିଶିଷ୍ଟ ଅକ୍ଷରରୂପ।</long>
+      </locale>
+
+      <locale name="pa">
+         <short>ਪਾਠ ਲਈ ਫੋਟ</short>
+         <long>ਅਸਥਿਰ ਚੌੜਾਈ ਨਾਲ ਪਾਠ ਲਈ ਫੋਟ</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Czcionka tekstu</short>
+         <long>Czcionka tekstu o zmiennej szerokości.</long>
+      </locale>
+
+      <locale name="ps">
+         <short>د ليکنې ليکبڼه</short>
+         <long>.د هغو ليکنو ليکبڼه چې بدلېدونکی پلنوالی ولري</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Fonte para o texto</short>
+         <long>Fonte para o texto de largura variável.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Fonte para texto</short>
+         <long>Fonte para texto com largura variável.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Font pentru text</short>
+         <long>Font pentru text cu lățime variabilă</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Шрифт для текста</short>
+         <long>Шрифт для текста с переменной шириной</long>
+      </locale>
+
+      <locale name="sk">
+         <short>Písmo pre text</short>
+         <long>Písmo pre text s premenlivou šírkou.</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Pisava za besedilo</short>
+         <long>Pisava za besedilo s spremenljivo širino.</long>
+      </locale>
+
+      <locale name="sq">
+         <short>Lloji i gërmave për tekstin</short>
+         <long>Lloji i gërmave për tekstin me gjerësi të ndryshueshme.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Фонт за текст</short>
+         <long>Фонт за текст променљиве ширине.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Font za tekst</short>
+         <long>Font za tekst promenljive širine.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Typsnitt för text</short>
+         <long>Typsnitt för text med variabel bredd.</long>
+      </locale>
+
+      <locale name="ta">
+         <short>உரைக்கான எழுத்துரு</short>
+         <long>உரைக்கான எழுத்துருவின் நிலைமாறும் குறுக்களவு,</long>
+      </locale>
+
+      <locale name="te">
+         <short>పాఠం కొరకు అక్షరశైలి</short>
+         <long>చలరాశి పొడవు తో పాఠం కొరకు అక్షరశైలి.</long>
+      </locale>
+
+      <locale name="th">
+         <short>แบบอักษรสำหรับข้อความ</short>
+         <long>แบบอักษรสำหรับข้อความที่ใช้อักษรความกว้างไม่คงที่</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Metin için yazıtipi</short>
+         <long>Değişken genişlikli metin için yazıtipi.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Шрифт для тексту</short>
+         <long>Шрифт для тексту із змінною шириною.</long>
+      </locale>
+
+      <locale name="vi">
+         <short>Phông cho văn bản</short>
+         <long>Phông cho văn bản có độ rộng thay đổi.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>普通文本字体</short>
+         <long>变动宽度文本使用的字体。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>普通文字字型</short>
+         <long>可變闊度文字所使用的字型。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>普通文字字型</short>
+         <long>可變寬度文字所使用的字型。</long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/apps/devhelp/ui/fixed_font</key>
+      <applyto>/apps/devhelp/ui/fixed_font</applyto>
+      <owner>devhelp</owner>
+      <type>string</type>
+      <default>Monospace 12</default>
+      <locale name="C">
+         <short>Font for fixed width text</short>
+         <long>Font for text with fixed width, such as code examples.</long>
+      </locale>
+
+      <locale name="ar">
+         <short>خطّ النّص ثابت العرض</short>
+         <long>خطّ النص ثابت العرض، كأمثلة الكود.</long>
+      </locale>
+
+      <locale name="be@latin">
+         <short>Šryft dla tekstu stałaj šyryni</short>
+         <long>Šryft dla tekstu stałaj šyryni, naprykład, uzoraŭ kodu.</long>
+      </locale>
+
+      <locale name="bg">
+         <short>Шрифт за текст с фиксирана широчина</short>
+         <long>Шрифт за текст с фиксирана широчина, като примери с програмен код.</long>
+      </locale>
+
+      <locale name="ca">
+         <short>Tipus de lletra per al text de mida fixa</short>
+         <long>Tipus de lletra per al text d&apos;amplada fixa, com ara en els exemples de codi.</long>
+      </locale>
+
+      <locale name="cs">
+         <short>Písmo pro text s pevnou šířkou</short>
+         <long>Písmo pro text s pevnou šířkou, například ukázky kódu.</long>
+      </locale>
+
+      <locale name="da">
+         <short>Skrifttype for tekst med fast bredde</short>
+         <long>Skrifttype til tekst med fast bredde, såsom kodeeksempler.</long>
+      </locale>
+
+      <locale name="de">
+         <short>Schrift für dicktengleichen Text</short>
+         <long>Schrift für Text gleicher Schriftzeichenbreite wie z.B. Programmcode.</long>
+      </locale>
+
+      <locale name="el">
+         <short>Γραμματοσειρά για κείμενο σταθερού πλάτους</short>
+         <long>Γραμματοσειρά κειμένου με σταθερό πλάτος, όπως τα παραδείγματα κώδικα.</long>
+      </locale>
+
+      <locale name="en_GB">
+         <short>Font for fixed width text</short>
+         <long>Font for text with fixed width, such as code examples.</long>
+      </locale>
+
+      <locale name="es">
+         <short>Tipografía para el texto de anchura fija</short>
+         <long>Tipografía para el texto con anchura fija, tal como los ejemplos de código.</long>
+      </locale>
+
+      <locale name="et">
+         <short>Määratud laiusega teksti kirjatüüp</short>
+         <long>Määratud laiusega teksti, nagu koodilõigud, korral kasutatav kirjatüüp.</long>
+      </locale>
+
+      <locale name="fi">
+         <short>Tasalevyisen tekstin kirjasin</short>
+         <long>Kirjasin tekstille tasalevyisillä kirjasimilla, esimerkiksi koodiesimerkit.</long>
+      </locale>
+
+      <locale name="fr">
+         <short>Police de caractères à chasse fixe</short>
+         <long>Police pour les caractères à largeur fixe, comme pour les exemples de code.</long>
+      </locale>
+
+      <locale name="gl">
+         <short>Tipo de letra para o texto fixo</short>
+         <long>Tipo de letra para o texto de largura fixa, como os exemplos de código.</long>
+      </locale>
+
+      <locale name="hu">
+         <short>Rögzített szélességű szöveg betűkészlete</short>
+         <long>Rögzített szélességű szöveg, mint a példakódok betűkészlete.</long>
+      </locale>
+
+      <locale name="it">
+         <short>Tipo di carattere per testo ad ampiezza fissa</short>
+         <long>Tipo di carattere per il testo ad ampiezza fissa, come esempi di codice.</long>
+      </locale>
+
+      <locale name="ja">
+         <short>等幅のフォント</short>
+         <long>等幅 (固定幅) のフォントで、主にサンプル・コードで使用します。</long>
+      </locale>
+
+      <locale name="ko">
+         <short>고정폭 텍스트에 사용할 글꼴</short>
+         <long>고정폭 텍스트에 사용할 글꼴 (코드 예제 등).</long>
+      </locale>
+
+      <locale name="nb">
+         <short>Skrift for tekst med fast størrelse</short>
+         <long>Skrift for tekst med fast bredde som f.eks kodeeksempler.</long>
+      </locale>
+
+      <locale name="pl">
+         <short>Czcionka tekstu o stałej szerokości</short>
+         <long>Czcionka tekstu o stałej szerokości, takiego jak przykłady kodu źródłowego.</long>
+      </locale>
+
+      <locale name="pt">
+         <short>Fonte para o texto de largura fixa</short>
+         <long>Fonte para o texto de largura fixa, como por exemplo código-fonte.</long>
+      </locale>
+
+      <locale name="pt_BR">
+         <short>Fonte para texto com largura fixa</short>
+         <long>Fonte para texto com largura fixa, assim como os códigos de exemplo.</long>
+      </locale>
+
+      <locale name="ro">
+         <short>Font pentru text cu lățime fixă</short>
+         <long>Font pentru text cu lățime fixă, cum ar fi exemplele de cod.</long>
+      </locale>
+
+      <locale name="ru">
+         <short>Шрифт для текста фиксированной ширины</short>
+         <long>Шрифт для текста с фиксированной шириной, такого как пример исходного кода</long>
+      </locale>
+
+      <locale name="sl">
+         <short>Pisava z določeno širino</short>
+         <long>Pisava za besedilo z določeno širino, kot so vzorci kode.</long>
+      </locale>
+
+      <locale name="sr">
+         <short>Фонт за текст утврђене ширине</short>
+         <long>Фонт за текст утврђене ширине, као што су примери програмског кода.</long>
+      </locale>
+
+      <locale name="sr@latin">
+         <short>Font za tekst utvrđene širine</short>
+         <long>Font za tekst utvrđene širine, kao što su primeri programskog koda.</long>
+      </locale>
+
+      <locale name="sv">
+         <short>Typsnitt för text med fast bredd</short>
+         <long>Typsnitt för text med fast bredd, som kodexampel.</long>
+      </locale>
+
+      <locale name="th">
+         <short>แบบอักษรสำหรับอักษรความกว้างคงที่</short>
+         <long>แบบอักษรสำหรับข้อความที่ใช้อักษรความกว้างคงที่ เช่น ตัวอย่างโค้ด</long>
+      </locale>
+
+      <locale name="tr">
+         <short>Sabit genişlikli metin için yazıtipi</short>
+         <long>Sabit genişlikli metin, örneğin kod örnekleri, için yazıtipi.</long>
+      </locale>
+
+      <locale name="uk">
+         <short>Шрифт для фіксованого тексту</short>
+         <long>Шрифт для тексту із фіксованою шириною, для прикладів програм.</long>
+      </locale>
+
+      <locale name="zh_CN">
+         <short>固定宽度文本字体</short>
+         <long>固定宽度文本使用的字体，例如示例代码。</long>
+      </locale>
+
+      <locale name="zh_HK">
+         <short>固定闊度字型</short>
+         <long>固定闊度文字所使用的字型，例如原始碼範例。</long>
+      </locale>
+
+      <locale name="zh_TW">
+         <short>固定寬度字型</short>
+         <long>固定寬度文字所使用的字型，例如原始碼範例。</long>
+      </locale>
+    </schema>
+
+   </schemalist>
+</gconfschemafile>

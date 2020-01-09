@@ -1,0 +1,432 @@
+# translation of sss.txt.po to Hebrew
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sss.txt\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=devhelp&component=general\n"
+"POT-Creation-Date: 2009-02-17 13:18+0000\n"
+"PO-Revision-Date: 2009-03-09 15:30+0200\n"
+"Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
+"Language-Team: Hebrew <he@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0\n"
+
+#: ../data/devhelp.desktop.in.in.h:1
+msgid "Developer's Help program"
+msgstr "תוכנת עזרה למפתחים"
+
+#: ../data/devhelp.desktop.in.in.h:2 ../data/ui/devhelp.glade.h:4
+#: ../src/dh-main.c:151 ../src/dh-window.c:790
+msgid "Devhelp"
+msgstr "DevHelp"
+
+# בכל מקרה עם י כי המילה המקורית מופיע עם חיריק ודגש ב־ת
+#: ../data/devhelp.desktop.in.in.h:3
+msgid "Documentation Browser"
+msgstr "דפדפן תיעוד"
+
+#: ../data/devhelp.schemas.in.h:1
+msgid "Font for fixed text"
+msgstr "Font for fixed text"
+
+#: ../data/devhelp.schemas.in.h:2
+msgid "Font for text"
+msgstr "Font for text"
+
+#: ../data/devhelp.schemas.in.h:3
+msgid "Font for text with fixed width."
+msgstr "Font for text with fixed width.Search for a function"
+
+#: ../data/devhelp.schemas.in.h:4
+msgid "Font for text with variable width."
+msgstr "Font for text with variable width."
+
+#: ../data/devhelp.schemas.in.h:5
+msgid "Height of main window"
+msgstr "Height of main window"
+
+#: ../data/devhelp.schemas.in.h:6
+msgid "Main window maximized state"
+msgstr "Main window maximized state"
+
+#: ../data/devhelp.schemas.in.h:7
+msgid "Selected tab, \"content\" or \"search\""
+msgstr "Selected tab, \"content\" or \"search\""
+
+#: ../data/devhelp.schemas.in.h:8
+msgid "Show advanced search options"
+msgstr "Show advanced search options"
+
+#: ../data/devhelp.schemas.in.h:9
+msgid "The X position of the main window."
+msgstr "The X position of the main window."
+
+#: ../data/devhelp.schemas.in.h:10
+msgid "The Y position of the main window."
+msgstr "The Y position of the main window."
+
+#: ../data/devhelp.schemas.in.h:11
+msgid "The height of the main window."
+msgstr "The height of the main window."
+
+#: ../data/devhelp.schemas.in.h:12
+msgid "The width of the index and search pane."
+msgstr "The width of the index and search pane."
+
+#: ../data/devhelp.schemas.in.h:13
+msgid "The width of the main window."
+msgstr "The width of the main window."
+
+#: ../data/devhelp.schemas.in.h:14
+msgid "Use system fonts"
+msgstr "Use system fonts"
+
+#: ../data/devhelp.schemas.in.h:15
+msgid "Use the system default fonts."
+msgstr "Use the system default fonts."
+
+#: ../data/devhelp.schemas.in.h:16
+msgid "Whether the advanced search options are shown."
+msgstr "Whether the advanced search options are shown."
+
+#: ../data/devhelp.schemas.in.h:17
+msgid "Whether the main window should start maximized or not."
+msgstr "Whether the main window should start maximized or not."
+
+#: ../data/devhelp.schemas.in.h:18
+msgid "Which of the tabs that is selected, \"content\" or \"search\"."
+msgstr "Which of the tabs that is selected, \"content\" or \"search\"."
+
+#: ../data/devhelp.schemas.in.h:19
+msgid "Width of the index and search pane"
+msgstr "Width of the index and search pane"
+
+#: ../data/devhelp.schemas.in.h:20
+msgid "Width of the main window"
+msgstr "Width of the main window"
+
+#: ../data/devhelp.schemas.in.h:21
+msgid "X position of main window"
+msgstr "X position of main window"
+
+#: ../data/devhelp.schemas.in.h:22
+msgid "Y position of main window"
+msgstr "Y position of main window"
+
+#: ../data/ui/devhelp.glade.h:1
+msgid "<b>Fonts</b>"
+msgstr "<b>גופנים</b>"
+
+#: ../data/ui/devhelp.glade.h:2
+msgid "<b>Searching</b>"
+msgstr "<b>חיפוש</b>"
+
+#: ../data/ui/devhelp.glade.h:3 ../src/dh-window.c:519
+msgid "Contents"
+msgstr "תכנים"
+
+#: ../data/ui/devhelp.glade.h:5
+msgid "Preferences"
+msgstr "העדפות"
+
+#: ../data/ui/devhelp.glade.h:6
+msgid "_Back"
+msgstr "_אחורה"
+
+#: ../data/ui/devhelp.glade.h:7
+msgid "_Fixed width:"
+msgstr "_רוחב קבוע:"
+
+#: ../data/ui/devhelp.glade.h:8
+msgid "_Forward"
+msgstr "_קדימה"
+
+#: ../data/ui/devhelp.glade.h:9 ../src/dh-window.c:190
+msgid "_Go"
+msgstr "_לך"
+
+#: ../data/ui/devhelp.glade.h:10
+msgid "_Show advanced search options"
+msgstr "הצג אפשרויות חיפוש _מתקדמות"
+
+#: ../data/ui/devhelp.glade.h:11
+msgid "_Use system fonts"
+msgstr "השתמש ב_גופני המערכת"
+
+#: ../data/ui/devhelp.glade.h:12
+msgid "_Variable width: "
+msgstr "רוחב _משתנה: "
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+msgid "Devhelp support"
+msgstr "תמיכת Devhelp"
+
+#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+msgid "Makes F2 bring up Devhelp for the word at the cursor"
+msgstr "גורם ל־F2 לעלות את Devhelp עבור המילה תחת הסמן"
+
+#: ../misc/gedit-plugin/devhelp/devhelp.py:36
+msgid "Show API Documentation"
+msgstr "הצג תיעוד API"
+
+#: ../misc/gedit-plugin/devhelp/devhelp.py:38
+msgid "Show API Documentation for the word at the cursor"
+msgstr "הצג תיעוד API עבור המילה שתחת הסמן"
+
+#: ../src/dh-main.c:100
+msgid "Search for a function"
+msgstr "Search for a function"
+
+#: ../src/dh-main.c:109
+msgid "Quit any running Devhelp"
+msgstr "Quit any running Devhelp"
+
+#: ../src/dh-main.c:118
+msgid "Display the version and exit"
+msgstr "Display the version and exit"
+
+#: ../src/dh-main.c:127
+msgid "Focus the devhelp window with the search field active"
+msgstr "Focus the devhelp window with the search field active"
+
+#: ../src/dh-parser.c:110 ../src/dh-parser.c:194 ../src/dh-parser.c:271
+#, c-format
+msgid "Expected '%s' got '%s' at line %d, column %d"
+msgstr "Expected '%s' got '%s' at line %d, column %d"
+
+#: ../src/dh-parser.c:128
+#, c-format
+msgid "Invalid namespace '%s' at line %d, column %d"
+msgstr "Invalid namespace '%s' at line %d, column %d"
+
+#: ../src/dh-parser.c:158
+#, c-format
+msgid "title, name, and link elements are required at line %d, column %d"
+msgstr "title, name, and link elements are required at line %d, column %d"
+
+#: ../src/dh-parser.c:215
+#, c-format
+msgid "name and link elements are required inside <sub> on line %d, column %d"
+msgstr "name and link elements are required inside <sub> on line %d, column %d"
+
+#: ../src/dh-parser.c:297
+#, c-format
+msgid ""
+"name and link elements are required inside <function> on line %d, column %d"
+msgstr ""
+"name and link elements are required inside <function> on line %d, column %d"
+
+#: ../src/dh-parser.c:420 ../src/dh-parser.c:515
+#, c-format
+msgid "Could not create book parser"
+msgstr "Could not create book parser"
+
+#: ../src/dh-parser.c:436 ../src/dh-parser.c:525
+#, c-format
+msgid "Could not create markup parser"
+msgstr "Could not create markup parser"
+
+#: ../src/dh-parser.c:578
+#, c-format
+msgid "Cannot uncompress book '%s': %s"
+msgstr "Cannot uncompress book '%s': %s"
+
+#: ../src/dh-parser.c:603
+#, c-format
+msgid "Devhelp is not built with zlib support"
+msgstr "Devhelp is not built with zlib support"
+
+#: ../src/dh-search.c:621
+msgid "_Book:"
+msgstr "_ספר:"
+
+#: ../src/dh-search.c:641
+msgid "_Page:"
+msgstr "_עמוד:"
+
+#: ../src/dh-window.c:70
+msgid "50%"
+msgstr "50%"
+
+#: ../src/dh-window.c:71
+msgid "75%"
+msgstr "75%"
+
+#: ../src/dh-window.c:72
+msgid "100%"
+msgstr "100%"
+
+#: ../src/dh-window.c:73
+msgid "125%"
+msgstr "125%"
+
+#: ../src/dh-window.c:74
+msgid "150%"
+msgstr "150%"
+
+#: ../src/dh-window.c:75
+msgid "175%"
+msgstr "175%"
+
+#: ../src/dh-window.c:76
+msgid "200%"
+msgstr "200%"
+
+#: ../src/dh-window.c:77
+msgid "300%"
+msgstr "300%"
+
+#: ../src/dh-window.c:78
+msgid "400%"
+msgstr "400%"
+
+#: ../src/dh-window.c:187
+msgid "_File"
+msgstr "_קובץ"
+
+#: ../src/dh-window.c:188
+msgid "_Edit"
+msgstr "_עריכה"
+
+#: ../src/dh-window.c:189
+msgid "_View"
+msgstr "_תצוגה"
+
+#: ../src/dh-window.c:191
+msgid "_Help"
+msgstr "_עזרה"
+
+#. File menu
+#: ../src/dh-window.c:194
+msgid "_New Window"
+msgstr "_חלון _חדש"
+
+#: ../src/dh-window.c:196
+msgid "New _Tab"
+msgstr "_לשונית חדשה"
+
+#: ../src/dh-window.c:208 ../src/eggfindbar.c:337
+msgid "Find Next"
+msgstr "חפש את הבא"
+
+#: ../src/dh-window.c:210 ../src/eggfindbar.c:329
+msgid "Find Previous"
+msgstr "חפש את הקודם"
+
+#: ../src/dh-window.c:217
+msgid "Go to the previous page"
+msgstr "לך אל הדף הקודם"
+
+#: ../src/dh-window.c:220
+msgid "Go to the next page"
+msgstr "לך אל הדף הבא"
+
+#: ../src/dh-window.c:223
+msgid "_Contents Tab"
+msgstr "לשונית _תכנים"
+
+#: ../src/dh-window.c:226
+msgid "_Search Tab"
+msgstr "לשונית _חיפוש"
+
+#. View menu
+#: ../src/dh-window.c:230
+msgid "_Larger Text"
+msgstr "_הגדל טקסט"
+
+#: ../src/dh-window.c:231
+msgid "Increase the text size"
+msgstr "הגדל את גודל הטקסט"
+
+#: ../src/dh-window.c:233
+msgid "S_maller Text"
+msgstr "ה_קטן טקסט"
+
+#: ../src/dh-window.c:234
+msgid "Decrease the text size"
+msgstr "הקטן את גודל הטקסט"
+
+#: ../src/dh-window.c:236
+msgid "_Normal size"
+msgstr "_גודל רגיל"
+
+#: ../src/dh-window.c:237
+msgid "Use the normal text size"
+msgstr "השתמש בגודל הטקסט הרגיל"
+
+#: ../src/dh-window.c:529
+msgid "Search"
+msgstr "חיפוש"
+
+#: ../src/dh-window.c:787
+msgid "translator_credits"
+msgstr ""
+"יאיר הרשקוביץ  <yairhr@gmail.com>\n"
+"Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"\n"
+"פרוייקט תרגום GNOME לעברית:\n"
+"‏http://gnome-il.berlios.de"
+
+#: ../src/dh-window.c:792
+msgid "A developer's help browser for GNOME 2"
+msgstr "דפדפן עזרה למפתחים בעבור GNOME 2"
+
+#: ../src/dh-window.c:1186 ../src/dh-window.c:1381
+msgid "Empty Page"
+msgstr "דף ריק"
+
+#: ../src/eggfindbar.c:320
+msgid "Find:"
+msgstr "חפש:"
+
+#: ../src/eggfindbar.c:332
+msgid "Find previous occurrence of the search string"
+msgstr "חפש את המופע הקודם של מחרוזת החיפוש"
+
+#: ../src/eggfindbar.c:340
+msgid "Find next occurrence of the search string"
+msgstr "חפש את המופע הבא של מחרוזת החיפוש"
+
+#: ../src/eggfindbar.c:348
+msgid "Case Sensitive"
+msgstr "תלוי רשיות"
+
+#: ../src/eggfindbar.c:351
+msgid "Toggle case sensitive search"
+msgstr "הפעל/כבה חיפוש תלוי רשיות"
+
+#~ msgid "Section"
+#~ msgstr "חלק"
+
+#~ msgid "_Search for:"
+#~ msgstr "_חפש בעבור:"
+
+#~ msgid "_About"
+#~ msgstr "_אודות"
+
+#~ msgid ""
+#~ "Select a subject in the contents to the left or switch to the search pane "
+#~ "to find what you are looking for.<p>Use <b>Shift Up/Down</b> to navigate "
+#~ "the tree to the left, and <b>Shift Left/Right</b> to expand and collapse "
+#~ "the books in the tree."
+#~ msgstr ""
+#~ "בחר נושא בתכנים בצד שמאל או החלף לחלונית החיפוש כדי למצוא את מה שאתה מחפש."
+#~ "<p>השתמש ב <b>Shift Up/Down</b> כדי לנווט בעץ בצד שמאל, ו <b>Shift Left/"
+#~ "Right</b> כדי להרחיב או לצמצם את הספרים בעץ."
+
+#~ msgid ""
+#~ "<b>Could not read all books</b>\n"
+#~ "\n"
+#~ "The following errors occured whilst reading the books:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "<b>לא ניתן לקרוא את כל הספרים</b>\n"
+#~ "\n"
+#~ "השגיאות הבאות ארעו בזמן קריאת הספרים:\n"
+#~ "%s"

@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: devhelp
+Description: devhelp
+Requires: gtk+-2.0
+Requires.private: @REQUIRES_LIBWNCK@
+Version: @VERSION@
+Libs: -L${libdir} -ldevhelp-1
+Cflags: -I${includedir}/devhelp-1.0
