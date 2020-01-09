@@ -20,13 +20,12 @@
  */
 
 #include "config.h"
-#include <string.h>
+#include "dh-book.h"
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 
 #include "dh-link.h"
 #include "dh-parser.h"
-#include "dh-book.h"
 #include "dh-util.h"
 
 /* Timeout to wait for new events in the book so that
@@ -37,9 +36,9 @@
 enum {
         BOOK_ENABLED,
         BOOK_DISABLED,
-	BOOK_UPDATED,
+        BOOK_UPDATED,
         BOOK_DELETED,
-	BOOK_LAST_SIGNAL
+        BOOK_LAST_SIGNAL
 };
 
 typedef enum {
@@ -50,44 +49,60 @@ typedef enum {
 
 /* Structure defining basic contents to store about every book */
 typedef struct {
-        /* File path of the book */
         gchar        *path;
-        /* Enable or disabled? */
-        gboolean      enabled;
-        /* Book name */
         gchar        *name;
-        /* Book title */
         gchar        *title;
-        /* Book language */
         gchar        *language;
-        /* Generated book tree */
+
+        /* The book tree of DhLink* */
         GNode        *tree;
-        /* Generated list of keywords in the book */
+
+        /* List of DhLink* */
         GList        *keywords;
-        /* Generated list of keyword completions in the book */
+
+        /* Generated list of keyword completions (gchar*) in the book */
         GList        *completions;
 
         /* Monitor of this specific book */
         GFileMonitor *monitor;
+
         /* Last received event */
         DhBookMonitorEvent monitor_event;
+
         /* ID of the event source */
         guint         monitor_event_timeout_id;
+
+        guint         enabled : 1;
 } DhBookPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (DhBook, dh_book, G_TYPE_OBJECT);
 
-static void    dh_book_init          (DhBook            *book);
-static void    dh_book_class_init    (DhBookClass       *klass);
 static void    book_monitor_event_cb (GFileMonitor      *file_monitor,
                                       GFile             *file,
                                       GFile             *other_file,
                                       GFileMonitorEvent  event_type,
-                                      gpointer	         user_data);
+                                      gpointer           user_data);
 static void    unref_node_link       (GNode             *node,
                                       gpointer           data);
 
 static guint signals[BOOK_LAST_SIGNAL] = { 0 };
+
+static void
+dh_book_dispose (GObject *object)
+{
+        DhBookPrivate *priv;
+
+        priv = dh_book_get_instance_private (DH_BOOK (object));
+
+        g_clear_object (&priv->monitor);
+
+        if (priv->monitor_event_timeout_id != 0) {
+                g_source_remove (priv->monitor_event_timeout_id);
+                priv->monitor_event_timeout_id = 0;
+        }
+
+        G_OBJECT_CLASS (dh_book_parent_class)->dispose (object);
+}
 
 static void
 dh_book_finalize (GObject *object)
@@ -110,8 +125,6 @@ dh_book_finalize (GObject *object)
 
         g_list_free_full (priv->completions, g_free);
 
-        g_clear_object (&priv->monitor);
-
         g_free (priv->language);
 
         g_free (priv->title);
@@ -128,48 +141,49 @@ dh_book_class_init (DhBookClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
+        object_class->dispose = dh_book_dispose;
         object_class->finalize = dh_book_finalize;
 
-	signals[BOOK_ENABLED] =
-		g_signal_new ("enabled",
-		              G_TYPE_FROM_CLASS (klass),
-		              G_SIGNAL_RUN_LAST,
-		              0,
-		              NULL, NULL,
+        signals[BOOK_ENABLED] =
+                g_signal_new ("enabled",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
                               g_cclosure_marshal_VOID__VOID,
-		              G_TYPE_NONE,
+                              G_TYPE_NONE,
                               0);
 
-	signals[BOOK_DISABLED] =
-		g_signal_new ("disabled",
-		              G_TYPE_FROM_CLASS (klass),
-		              G_SIGNAL_RUN_LAST,
-		              0,
-		              NULL, NULL,
+        signals[BOOK_DISABLED] =
+                g_signal_new ("disabled",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
                               g_cclosure_marshal_VOID__VOID,
-		              G_TYPE_NONE,
+                              G_TYPE_NONE,
                               0);
 
 
-	signals[BOOK_UPDATED] =
-		g_signal_new ("updated",
-		              G_TYPE_FROM_CLASS (klass),
-		              G_SIGNAL_RUN_LAST,
-		              0,
-		              NULL, NULL,
+        signals[BOOK_UPDATED] =
+                g_signal_new ("updated",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
                               g_cclosure_marshal_VOID__VOID,
-		              G_TYPE_NONE,
+                              G_TYPE_NONE,
                               0);
 
-	signals[BOOK_DELETED] =
-		g_signal_new ("deleted",
-		              G_TYPE_FROM_CLASS (klass),
-		              G_SIGNAL_RUN_LAST,
-		              0,
-		              NULL, NULL,
+        signals[BOOK_DELETED] =
+                g_signal_new ("deleted",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
                               g_cclosure_marshal_VOID__VOID,
-		              G_TYPE_NONE,
-		              0);
+                              G_TYPE_NONE,
+                              0);
 }
 
 static void
@@ -219,7 +233,7 @@ dh_book_new (const gchar *book_path)
                                    &priv->keywords,
                                    &error)) {
                 g_warning ("Failed to read '%s': %s",
-                           priv->path, error->message);
+                           book_path, error->message);
                 g_error_free (error);
 
                 /* Deallocate the book, as we are not going to add it
@@ -263,39 +277,41 @@ dh_book_new (const gchar *book_path)
 }
 
 static gboolean
-book_monitor_event_timeout_cb  (gpointer data)
+book_monitor_event_timeout_cb (gpointer data)
 {
-        DhBook     *book = data;
+        DhBook *book = data;
         DhBookPrivate *priv = dh_book_get_instance_private (book);
+        DhBookMonitorEvent monitor_event = priv->monitor_event;
+
+        /* Reset event */
+        priv->monitor_event = BOOK_MONITOR_EVENT_NONE;
+        priv->monitor_event_timeout_id = 0;
 
         /* We'll get either is_deleted OR is_updated,
          * not possible to have both or none */
-        switch (priv->monitor_event)
+        switch (monitor_event)
         {
         case BOOK_MONITOR_EVENT_DELETED:
                 /* Emit the signal, but make sure we hold a reference
                  * while doing it */
                 g_object_ref (book);
-		g_signal_emit (book, signals[BOOK_DELETED], 0);
+                g_signal_emit (book, signals[BOOK_DELETED], 0);
                 g_object_unref (book);
                 break;
         case BOOK_MONITOR_EVENT_UPDATED:
                 /* Emit the signal, but make sure we hold a reference
                  * while doing it */
                 g_object_ref (book);
-		g_signal_emit (book, signals[BOOK_UPDATED], 0);
+                g_signal_emit (book, signals[BOOK_UPDATED], 0);
                 g_object_unref (book);
                 break;
         default:
                 break;
         }
 
-        /* Reset event */
-        priv->monitor_event = BOOK_MONITOR_EVENT_NONE;
+        /* book can be destroyed here */
 
-        /* Destroy the reference we got in the timeout */
-        g_object_unref (book);
-        return FALSE;
+        return G_SOURCE_REMOVE;
 }
 
 static void
@@ -303,7 +319,7 @@ book_monitor_event_cb (GFileMonitor      *file_monitor,
                        GFile             *file,
                        GFile             *other_file,
                        GFileMonitorEvent  event_type,
-                       gpointer	          user_data)
+                       gpointer           user_data)
 {
         DhBook     *book = user_data;
         DhBookPrivate *priv = dh_book_get_instance_private (book);
@@ -335,7 +351,7 @@ book_monitor_event_cb (GFileMonitor      *file_monitor,
                 }
                 priv->monitor_event_timeout_id = g_timeout_add_seconds (EVENT_MERGE_TIMEOUT_SECS,
                                                                         book_monitor_event_timeout_cb,
-                                                                        g_object_ref (book));
+                                                                        book);
         }
 }
 
@@ -486,25 +502,27 @@ dh_book_cmp_by_path (DhBook *a,
         DhBookPrivate *priv_a;
         DhBookPrivate *priv_b;
 
+        if (a == NULL || b == NULL)
+                return -1;
+
         priv_a = dh_book_get_instance_private (a);
         priv_b = dh_book_get_instance_private (b);
 
-        return ((a && b) ?
-                g_strcmp0 (priv_a->path, priv_b->path) :
-                -1);
+        return g_strcmp0 (priv_a->path, priv_b->path);
 }
 
 gint
-dh_book_cmp_by_path_str (DhBook *a,
-                         const gchar  *b_path)
+dh_book_cmp_by_path_str (DhBook      *a,
+                         const gchar *b_path)
 {
         DhBookPrivate *priv_a;
 
+        if (a == NULL)
+                return -1;
+
         priv_a = dh_book_get_instance_private (a);
 
-        return ((a && b_path) ?
-                g_strcmp0 (priv_a->path, b_path) :
-                -1);
+        return g_strcmp0 (priv_a->path, b_path);
 }
 
 gint
@@ -514,25 +532,33 @@ dh_book_cmp_by_name (DhBook *a,
         DhBookPrivate *priv_a;
         DhBookPrivate *priv_b;
 
+        if (a == NULL || b == NULL)
+                return -1;
+
         priv_a = dh_book_get_instance_private (a);
         priv_b = dh_book_get_instance_private (b);
 
-        return ((a && b) ?
-                g_ascii_strcasecmp (priv_a->name, priv_b->name) :
-                -1);
+        if (priv_a->name == NULL || priv_b->name == NULL)
+                return -1;
+
+        return g_ascii_strcasecmp (priv_a->name, priv_b->name);
 }
 
 gint
-dh_book_cmp_by_name_str (DhBook *a,
-                         const gchar  *b_name)
+dh_book_cmp_by_name_str (DhBook      *a,
+                         const gchar *b_name)
 {
         DhBookPrivate *priv_a;
 
+        if (a == NULL)
+                return -1;
+
         priv_a = dh_book_get_instance_private (a);
 
-        return ((a && b_name) ?
-                g_ascii_strcasecmp (priv_a->name, b_name) :
-                -1);
+        if (priv_a->name == NULL || b_name == NULL)
+                return -1;
+
+        return g_ascii_strcasecmp (priv_a->name, b_name);
 }
 
 gint
@@ -542,10 +568,14 @@ dh_book_cmp_by_title (DhBook *a,
         DhBookPrivate *priv_a;
         DhBookPrivate *priv_b;
 
+        if (a == NULL || b == NULL)
+                return -1;
+
         priv_a = dh_book_get_instance_private (a);
         priv_b = dh_book_get_instance_private (b);
 
-        return ((a && b) ?
-                g_utf8_collate (priv_a->title, priv_b->title) :
-                -1);
+        if (priv_a->title == NULL || priv_b->title == NULL)
+                return -1;
+
+        return g_utf8_collate (priv_a->title, priv_b->title);
 }

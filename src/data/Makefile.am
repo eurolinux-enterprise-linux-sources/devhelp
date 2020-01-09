@@ -14,7 +14,7 @@ gsettings_SCHEMAS = org.gnome.devhelp.gschema.xml
 gsettingsconvertdir = $(datadir)/GConf/gsettings
 gsettingsconvert_DATA = devhelp.convert
 
-app_data_in_files = devhelp.appdata.xml.in
+app_data_in_files = org.gnome.Devhelp.appdata.xml.in
 app_data_files = $(app_data_in_files:.xml.in=.xml)
 
 appdatadir = $(datadir)/appdata
@@ -26,8 +26,19 @@ appdata_DATA = $(app_data_files)
 @INTLTOOL_DESKTOP_RULE@
 
 desktopdir = $(datadir)/applications
-desktop_in_files = devhelp.desktop.in
+desktop_in_files = org.gnome.Devhelp.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+
+dbusservicedir = $(datadir)/dbus-1/services
+dbusservice_DATA = org.gnome.Devhelp.service
+
+org.gnome.Devhelp.service: Makefile
+	$(AM_V_GEN) (echo '[D-BUS Service]'; \
+		     echo 'Name=org.gnome.Devhelp'; \
+		     echo 'Exec=${bindir}/devhelp --gapplication-service') > $@.tmp && \
+		     mv $@.tmp $@
+
+man_MANS = devhelp.1
 
 EXTRA_DIST =			\
 	libdevhelp-3.0.pc.in    \
@@ -35,6 +46,7 @@ EXTRA_DIST =			\
 	$(gsettings_SCHEMAS)    \
 	devhelp.convert \
 	$(assistant_DATA) \
+	$(man_MANS) \
 	$(app_data_in_files)
 
 CLEANFILES =			\
@@ -43,4 +55,5 @@ CLEANFILES =			\
 
 DISTCLEANFILES =		\
 	$(desktop_DATA) \
+	$(dbusservice_DATA)	\
 	$(app_data_files)

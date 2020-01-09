@@ -21,27 +21,16 @@
 #define __DH_UTIL_H__
 
 #include <gtk/gtk.h>
-#include <gio/gio.h>
 #include <webkit2/webkit2.h>
 #include "dh-link.h"
 
 G_BEGIN_DECLS
 
-GtkBuilder * dh_util_builder_get_file             (const gchar *filename,
-                                                   const gchar *root,
-                                                   const gchar *domain,
-                                                   const gchar *first_required_widget,
-                                                   ...);
-void         dh_util_builder_connect              (GtkBuilder  *gui,
-                                                   gpointer     user_data,
-                                                   gchar       *first_widget,
-                                                   ...);
 gchar *      dh_util_build_data_filename          (const gchar *first_part,
                                                    ...);
-gint         dh_util_cmp_book                     (DhLink *a,
-                                                   DhLink *b);
 
 void         dh_util_ascii_strtitle               (gchar *str);
+
 gchar       *dh_util_create_data_uri_for_filename (const gchar *filename,
                                                    const gchar *mime_type);
 
@@ -56,6 +45,9 @@ void         dh_util_window_settings_save         (GtkWindow *window,
 void         dh_util_window_settings_restore      (GtkWindow *window,
                                                    GSettings *settings,
                                                    gboolean has_maximize);
+
+void         dh_util_queue_concat                 (GQueue *q1,
+                                                   GQueue *q2);
 
 G_END_DECLS
 

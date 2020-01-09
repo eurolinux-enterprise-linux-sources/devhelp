@@ -12,4 +12,5 @@ StartupNotify=true
 X-GNOME-Bugzilla-Bugzilla=GNOME
 X-GNOME-Bugzilla-Product=devhelp
 X-GNOME-Bugzilla-Component=General
-X-GNOME-Bugzilla-Version=3.14.0
+X-GNOME-Bugzilla-Version=3.22.0
+DBusActivatable=true

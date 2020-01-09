@@ -1,4 +1,250 @@
 ==============
+Version 3.22.0
+==============
+
+No changes.
+
+
+===============
+Version 3.21.92
+===============
+
+Fixed bugs:
+
+ - #771327, dh-window: do not disable javascript.
+
+Updated translations: es, fur, pl
+
+Many thanks to all contributors: Jeremy Bicha, Fabio Tomat, Mathieu
+Duponchelle, Piotr Drąg
+
+
+===============
+Version 3.21.91
+===============
+
+Updated translations: en_GB, fi, pl, sl
+
+Many thanks to all contributors: Matej Urbančič, Jiri Grönroos, David
+King, Piotr Drąg
+
+
+===============
+Version 3.21.90
+===============
+
+Fixed bugs:
+
+ - #763942, Let Control+scroll change the zoom level
+ - #769606, 3 trivial commits
+
+Updated translations: eu, id, it, nb, oc, pt, th
+
+Many thanks to all contributors: Ernestas Kulik, Andika Triwidada, Sébastien
+Wilmet, Piotr Drąg, Theppitak Karoonboonyanan, Inaki Larranaga Murgoitio,
+Kjartan Maraas, Cédric Valmary, Milo Casagrande
+
+
+==============
+Version 3.20.0
+==============
+
+Updated translations: da, ru, sr
+
+Many thanks to all contributors: Ask Hjorth Larsen, Марко Костић,
+Yuri Myasoedov
+
+
+===============
+Version 3.19.92
+===============
+
+Updated translations: ca, cs, fi, fr, gl, he, ko, lt, oc, sr@latin,
+sr, sv, zh_CN, zh_TW
+
+Many thanks to all contributors: Changwoo Ryu, Chao-Hsiung Liao, Fran
+Dieguez, Мирослав Николић, Guillaume Bernard, Marek
+Černocký, Jordi Mas, Aurimas Černius, Anders Jonsson, Yosef Or Boczko,
+Cédric Valmary, Jiri Grönroos, Mingye Wang (Arthur2e5), Sébastien Wilmet
+
+
+===============
+Version 3.19.90
+===============
+
+Fixed bugs:
+
+ - #645620, Mis-handling of external-URL <book base=> in .devhelp2
+ - #696904, each class name is listed twice
+ - #723135, Ctrl-K shortcut is not discoverable
+ - #741806, Add support for XF86Back/XF86Forward keys
+ - #743704, Add "Ctrl =" keyboard shortcut for zoom in
+ - #757177, Add keyboard shortcuts for switching tabs (Ctrl+PgUp/PgDn)
+ - #757877, Provide a shortcuts window
+ - #758141, Misc code enhancements
+ - #759691, Search problem: do not jump to the exact link if another link
+            with a longer name exists
+ - #759692, Search: a trailing space is sometimes added to the entry
+ - #761407, Add context to strings in the shortcut window
+
+Updated translations: de, el, es, hu, lt, lv, pl, pt_BR, sk
+
+Many thanks to all contributors: Balázs Meskó, Tom Tryfonidis, Rafael
+Fontenelle, Sébastien Wilmet, Richard Hughes, Mario Blättermann, Piotr
+Drąg, Aurimas Černius, Nirbheek Chauhan, Daniel Mustieles, Rūdolfs
+Mazurs, Dušan Kazik
+
+
+==============
+Version 3.19.3
+==============
+
+Fixed bugs:
+
+ - #709658, gedit plugin: too many .plugin files (some generated, some
+            weird)
+ - #755872, Sometimes a page doesn't get opened
+ - #756341, Various code improvements and bug fixes
+
+Updated translations: eu, pt, th, zh_CN
+
+Many thanks to all contributors: Pedro Albuquerque, Sébastien Wilmet, Akom
+Chotiphantawanon, Inaki Larranaga Murgoitio, YunQiang Su
+
+
+==============
+Version 3.18.1
+==============
+
+Updated translations: eo, sr@latin, sr
+
+Many thanks to all contributors: Kristjan SCHMIDT, Милош
+Поповић, Марко Костић
+
+
+==============
+Version 3.18.0
+==============
+
+Updated translations: da, de, fa, fi, it, ja, ko, lt, lv, pt_BR, sl,
+tr
+
+Many thanks to all contributors: Changwoo Ryu, Paul Seyfert, Muhammet Kara,
+Rafael Fontenelle, Arash Mousavi, Milo Casagrande, Ask Hjorth Larsen, Matej
+Urbančič, Aurimas Černius, Jiro Matsuzawa, Rūdolfs Mazurs, Jiri
+Grönroos
+
+
+===============
+Version 3.17.91
+===============
+
+Fixed bugs:
+
+ - #704833, books sidebar shouldn't have type ahead find
+ - #727243, gedit plugin needs to be ported to new menu API
+ - #749797, Misc code improvements
+ - #751446, AppData file needs updating for new desktop file name
+
+Updated translations: cs, el, es, fr, gl, he, hu, id, nb, pl, pt, sk,
+sv, zh_TW
+
+Many thanks to all contributors: Balázs Úr, Andika Triwidada, Alexandre
+Franke, Fran Dieguez, Anders Jonsson, Richard Hughes, Piotr Drąg, Daniel
+Mustieles, Pedro Albuquerque, Kjartan Maraas, Yosef Or Boczko, Marek
+Černocký, Chao-Hsiung Liao, Dušan Kazik, Tom Tryfonidis
+
+
+==============
+Version 3.17.3
+==============
+
+Fixed bugs:
+
+ - #593267, devhelp manpage
+ - #728384, Make DBus-activatable
+ - #749452, Misc maintenance stuff
+ - #749797, Misc code improvements
+
+Updated translations: oc, uk
+
+Many thanks to all contributors: Sébastien Wilmet, Cédric Valmary,
+Matthias Clasen, Colin Walters
+
+
+==============
+Version 3.16.1
+==============
+
+Fixed bugs:
+
+ - Update list of official developer documentation sites
+ - #747016, icon: provide a symbolic variant of the app icon
+
+Many thanks to all contributors: Jakub Steiner, Alexandre Franke
+
+
+==============
+Version 3.16.0
+==============
+
+Fixed bugs:
+
+ - #746609, Fix warning when book cannot be read
+
+Updated translations: bs
+
+Many thanks to all contributors: Michael Catanzaro, Kalev Lember
+
+
+===============
+Version 3.15.92
+===============
+
+Fixed bugs:
+
+ - #746166, Disable some WebKit features we don't need
+
+Updated translations: bs
+
+Many thanks to all contributors: Michael Catanzaro, Samir Ribic, Sebastien
+Lafargue
+
+
+===============
+Version 3.15.91
+===============
+
+Fixed bugs:
+
+ - #745256, Update font size automatically when Xft resolution changes
+
+Updated translations: sv
+
+Many thanks to all contributors: Mario Sanchez Prada, Anders Jonsson
+
+
+===============
+Version 3.15.90
+===============
+
+Fixed bugs:
+
+ - #728916, Can't find "_" in the results
+ - #741806, Added support for XF86Back/XF86Forward keys
+ - #742447, devhelp crashes with empty documentation file
+ - #742457, Typo in GSettings conversion file causes gsettings-data-convert
+            to crash
+ - #742687, DevHelpBookTree is wider when searching
+
+Updated translations: fi, it, ja, sl, tr
+
+Many thanks to all contributors: Muhammet Kara, Necdet Yücel, Timo Jyrinki,
+Milo Casagrande, Jiri Horner, Matej Urbančič, Trinh Anh Ngoc, Jiro
+Matsuzawa, Debarshi Ray, Aleksander Morgado
+
+
+==============
 Version 3.14.0
 ==============
 

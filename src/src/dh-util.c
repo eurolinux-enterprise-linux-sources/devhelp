@@ -2,6 +2,7 @@
 /*
  * Copyright (C) 2001      Mikael Hallendal <micke@imendio.com>
  * Copyright (C) 2004,2008 Imendio AB
+ * Copyright (C) 2015      Sébastien Wilmet <swilmet@gnome.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -18,102 +19,11 @@
  */
 
 #include "config.h"
+#include "dh-util.h"
 #include <string.h>
 #include <stdlib.h>
 #include <gtk/gtk.h>
 #include <math.h>
-#include "dh-util.h"
-
-
-static GtkBuilder *
-get_builder_file (const gchar *filename,
-                  const gchar *root,
-                  const gchar *domain,
-                  const gchar *first_required_widget,
-                  va_list args)
-{
-        GtkBuilder  *builder;
-        const char  *name;
-        GObject    **object_ptr;
-        GError      *error = NULL;
-
-        builder = gtk_builder_new ();
-
-        if (!gtk_builder_add_from_resource (builder, "/org/gnome/devhelp/devhelp.ui", &error)) {
-                g_warning ("Couldn't add resource: %s", error ? error->message : "unknown");
-                g_object_unref (builder);
-                g_clear_error (&error);
-                return NULL;
-        }
-
-        for (name = first_required_widget; name; name = va_arg (args, char *)) {
-                object_ptr = va_arg (args, void *);
-                *object_ptr = gtk_builder_get_object (builder, name);
-
-                if (!*object_ptr) {
-                        g_warning ("UI file '%s' is missing widget '%s'.",
-                                   filename, name);
-                        continue;
-                }
-        }
-
-        return builder;
-}
-
-GtkBuilder *
-dh_util_builder_get_file (const gchar *filename,
-                          const gchar *root,
-                          const gchar *domain,
-                          const gchar *first_required_widget,
-                          ...)
-{
-        va_list     args;
-        GtkBuilder *builder;
-
-        va_start (args, first_required_widget);
-        builder = get_builder_file (filename,
-                                    root,
-                                    domain,
-                                    first_required_widget,
-                                    args);
-        va_end (args);
-
-        return builder;
-}
-
-void
-dh_util_builder_connect (GtkBuilder *builder,
-                         gpointer    user_data,
-                         gchar     *first_widget,
-                         ...)
-{
-        va_list      args;
-        const gchar *name;
-        const gchar *signal;
-        GObject     *object;
-        gpointer    *callback;
-
-        va_start (args, first_widget);
-
-        for (name = first_widget; name; name = va_arg (args, char *)) {
-                signal = va_arg (args, void *);
-                callback = va_arg (args, void *);
-
-                object = gtk_builder_get_object (builder, name);
-                if (!object) {
-                        g_warning ("UI file is missing widget '%s', aborting",
-                                   name);
-                        continue;
-                }
-
-                g_signal_connect (object,
-                                  signal,
-                                  G_CALLBACK (callback),
-                                  user_data);
-        }
-
-        va_end (args);
-}
 
 gchar *
 dh_util_build_data_filename (const gchar *first_part,
@@ -152,43 +62,6 @@ dh_util_build_data_filename (const gchar *first_part,
         va_end (args);
 
         return ret;
-}
-
-gint
-dh_util_cmp_book (DhLink *a, DhLink *b)
-{
-        const gchar *name_a;
-        const gchar *name_b;
-        gchar       *name_a_casefold;
-        gchar       *name_b_casefold;
-        int          rc;
-
-        name_a = dh_link_get_name (a);
-        if (!name_a) {
-                name_a = "";
-        }
-
-        name_b = dh_link_get_name (b);
-        if (!name_b) {
-                name_b = "";
-        }
-
-        if (g_ascii_strncasecmp (name_a, "the ", 4) == 0) {
-                name_a += 4;
-        }
-        if (g_ascii_strncasecmp (name_b, "the ", 4) == 0) {
-                name_b += 4;
-        }
-
-        name_a_casefold = g_utf8_casefold (name_a, -1);
-        name_b_casefold = g_utf8_casefold (name_b, -1);
-
-        rc = strcmp (name_a_casefold, name_b_casefold);
-
-        g_free (name_a_casefold);
-        g_free (name_b_casefold);
-
-        return rc;
 }
 
 /* We're only going to expect ASCII strings here, so there's no point in
@@ -241,10 +114,17 @@ dh_util_create_data_uri_for_filename (const gchar *filename,
 static gdouble
 get_screen_dpi (GdkScreen *screen)
 {
-        gdouble dpi;
+        GtkSettings *settings = NULL;
+        gdouble dpi = -1;
         gdouble dp, di;
+        gint gtk_xft_dpi;
 
-        dpi = gdk_screen_get_resolution (screen);
+        settings = gtk_settings_get_for_screen (screen);
+        if (settings != NULL) {
+                g_object_get (settings, "gtk-xft-dpi", &gtk_xft_dpi, NULL);
+                dpi = (gtk_xft_dpi != -1) ? gtk_xft_dpi / 1024.0 : -1;
+        }
+
         if (dpi != -1)
                 return dpi;
 
@@ -371,4 +251,43 @@ dh_util_window_settings_restore (GtkWindow *window,
                         gtk_window_maximize (window);
                 }
         }
+}
+
+/* Adds q2 onto the end of q1, and frees q2. */
+void
+dh_util_queue_concat (GQueue *q1,
+                      GQueue *q2)
+{
+        g_return_if_fail (q1 != NULL);
+
+        if (q2 == NULL)
+                return;
+
+        if (q1->head == NULL) {
+                g_assert_cmpint (q1->length, ==, 0);
+                g_assert (q1->tail == NULL);
+
+                q1->head = q2->head;
+                q1->tail = q2->tail;
+                q1->length = q2->length;
+        } else if (q2->head != NULL) {
+                g_assert_cmpint (q1->length, >, 0);
+                g_assert_cmpint (q2->length, >, 0);
+                g_assert (q1->tail != NULL);
+                g_assert (q2->tail != NULL);
+
+                q1->tail->next = q2->head;
+                q2->head->prev = q1->tail;
+
+                q1->tail = q2->tail;
+                q1->length += q2->length;
+        } else {
+                g_assert_cmpint (q2->length, ==, 0);
+                g_assert (q2->tail == NULL);
+        }
+
+        q2->head = NULL;
+        q2->tail = NULL;
+        q2->length = 0;
+        g_queue_free (q2);
 }

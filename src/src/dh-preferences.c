@@ -19,10 +19,12 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
-#include <string.h>
-#include "dh-util.h"
 #include "dh-preferences.h"
+
+#include <string.h>
+
+#include "dh-book.h"
+#include "dh-util.h"
 #include "dh-app.h"
 #include "dh-settings.h"
 

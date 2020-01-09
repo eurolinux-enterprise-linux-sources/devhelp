@@ -8,26 +8,39 @@
 # Niklas Laxström
 #
 # Lasse Liehu <lasse.liehu@gmail.com>, 2014.
-# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2012, 2013, 2014.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2012, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: devhelp\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=devhelp&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-07 15:11+0000\n"
-"PO-Revision-Date: 2014-09-07 19:22+0300\n"
+"product=devhelp&keywords=I18N+L10N&component=General\n"
+"POT-Creation-Date: 2016-08-15 08:52+0000\n"
+"PO-Revision-Date: 2016-08-19 19:26+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
-"Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
+"Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-POT-Import-Date: 2012-02-19 15:17:00+0000\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/devhelp.appdata.xml.in.h:1
+#. i18n: Please don't translate "Devhelp" (it's marked as translatable
+#. * for transliteration only)
+#: ../data/org.gnome.Devhelp.appdata.xml.in.h:1
+#: ../data/org.gnome.Devhelp.desktop.in.in.h:1 ../src/dh-app.c:249
+#: ../src/dh-app.c:559 ../src/dh-window.c:793
+msgid "Devhelp"
+msgstr "Devhelp"
+
+#: ../data/org.gnome.Devhelp.appdata.xml.in.h:2
+#: ../data/org.gnome.Devhelp.desktop.in.in.h:2
+msgid "Developer's Help program"
+msgstr "Kehittäjien ohje"
+
+#: ../data/org.gnome.Devhelp.appdata.xml.in.h:3
 msgid ""
 "Devhelp is an API documentation browser. It provides an easy way to navigate "
 "through libraries, search by function, struct, or macro. It provides a "
@@ -38,36 +51,17 @@ msgstr ""
 "struct ja macro. Käyttöliittymä tukee välilehtiä ja mahdollistaa "
 "tulostamisen."
 
-#: ../data/devhelp.appdata.xml.in.h:2
+#: ../data/org.gnome.Devhelp.appdata.xml.in.h:4
 msgid ""
 "Devhelp integrates with other applications such as Glade, Anjuta, or Geany."
 msgstr ""
 "Devhelp integroituu muihin sovelluksiin, kuten Gladeen, Anjutaan ja Geanyyn."
 
-#: ../data/devhelp.appdata.xml.in.h:3
-msgid ""
-"https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
-"target=devhelp.png"
-msgstr ""
-"https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
-"target=devhelp.png"
-
-#. i18n: Please don't translate "Devhelp" (it's marked as translatable
-#. * for transliteration only)
-#: ../data/devhelp.desktop.in.in.h:1 ../src/dh-app.c:212 ../src/dh-app.c:399
-#: ../src/dh-window.c:659
-msgid "Devhelp"
-msgstr "Devhelp"
-
-#: ../data/devhelp.desktop.in.in.h:2
-msgid "Developer's Help program"
-msgstr "Kehittäjien ohje"
-
-#: ../data/devhelp.desktop.in.in.h:3
+#: ../data/org.gnome.Devhelp.desktop.in.in.h:3
 msgid "Documentation Browser"
 msgstr "Dokumentaatioselain"
 
-#: ../data/devhelp.desktop.in.in.h:4
+#: ../data/org.gnome.Devhelp.desktop.in.in.h:4
 msgid "documentation;information;manual;developer;api;"
 msgstr ""
 "documentation;information;manual;developer;api;dokumentaatio;käsikirja;ohje;"
@@ -211,11 +205,11 @@ msgstr ""
 "Fontti tasalevyistä fonttia käyttäville teksteille kuten esimerkiksi "
 "koodiesimerkeille."
 
-#: ../misc/gedit-plugin/devhelp.desktop.in.h:1
+#: ../misc/gedit-plugin/devhelp.plugin.desktop.in.h:1
 msgid "Devhelp support"
 msgstr "Devhelp-tuki"
 
-#: ../misc/gedit-plugin/devhelp.desktop.in.h:2
+#: ../misc/gedit-plugin/devhelp.plugin.desktop.in.h:2
 msgid "Makes F2 bring up Devhelp for the word at the cursor"
 msgstr "Avaa devhelpin kohdistimen kohdalla olevalle sanalle F2-näppäimestä"
 
@@ -233,31 +227,134 @@ msgid "_Preferences"
 msgstr "_Asetukset"
 
 #: ../src/devhelp-menu.ui.h:3
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanpääimet"
+
+#: ../src/devhelp-menu.ui.h:4
 msgid "_About"
 msgstr "_Tietoja"
 
-#: ../src/devhelp-menu.ui.h:4 ../src/dh-window.ui.h:11
+#: ../src/devhelp-menu.ui.h:5 ../src/dh-window.ui.h:11
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: ../src/dh-app.c:204
-msgid "translator-credits"
-msgstr ""
-"Jiri Grönroos 2012-2014\n"
-"Tommi Vainikainen, 2010-2011.\n"
-"Ilkka Tuohela, 2004-2005.\n"
-"\n"
-"http://gnome.fi/"
+#: ../src/help-overlay.ui.h:1
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Yleiset"
 
-#: ../src/dh-app.c:214
+#: ../src/help-overlay.ui.h:2
+msgctxt "shortcut window"
+msgid "Focus global search"
+msgstr "Kohdista yleishakuun"
+
+#: ../src/help-overlay.ui.h:3
+msgctxt "shortcut window"
+msgid "Find in current page"
+msgstr "Etsi nykyiseltä sivulta"
+
+#: ../src/help-overlay.ui.h:4
+msgctxt "shortcut window"
+msgid "Open a new window"
+msgstr "Avaa uusi ikkuna"
+
+#: ../src/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Open a new tab"
+msgstr "Avaa uusi välilehti"
+
+#: ../src/help-overlay.ui.h:6
+msgctxt "shortcut window"
+msgid "Toggle sidebar visibility"
+msgstr "Sivupalkki päällä/pois"
+
+#: ../src/help-overlay.ui.h:7
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr "Siirry taaksepäin"
+
+#: ../src/help-overlay.ui.h:8
+msgctxt "shortcut window"
+msgid "Go forward"
+msgstr "Siirry eteenpäin"
+
+#: ../src/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Print"
+msgstr "Tulosta"
+
+#: ../src/help-overlay.ui.h:10
+msgctxt "shortcut window"
+msgid "Close the current window"
+msgstr "Sulje nykyinen ikkuna"
+
+#: ../src/help-overlay.ui.h:11
+msgctxt "shortcut window"
+msgid "Close all windows"
+msgstr "Sulje kaikki ikkunat"
+
+#: ../src/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Zoom"
+msgstr "Mittakaava"
+
+#: ../src/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Lähennä"
+
+#: ../src/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Loitonna"
+
+#: ../src/help-overlay.ui.h:15
+msgctxt "shortcut window"
+msgid "Reset Zoom"
+msgstr "Palauta mittakaava"
+
+#: ../src/dh-app.c:251
 msgid "A developers' help browser for GNOME"
 msgstr "Gnomen ohjeselain kehittäjille"
 
-#: ../src/dh-app.c:222
-msgid "DevHelp Website"
-msgstr "Devhelp-sivusto"
+#: ../src/dh-app.c:253
+msgid "translator-credits"
+msgstr ""
+"Jiri Grönroos 2012-2016\n"
+"Tommi Vainikainen, 2010-2011\n"
+"Ilkka Tuohela, 2004-2005\n"
+"\n"
+"https://l10n.gnome.org/teams/fi/"
 
-#. Please don't translate "Devhelp"
+#: ../src/dh-app.c:255
+msgid "Devhelp Website"
+msgstr "Devhelp-verkkosivusto"
+
+#: ../src/dh-app.c:484
+msgid "Opens a new Devhelp window"
+msgstr "Avaa uuden Devhelp-ikkunan"
+
+#: ../src/dh-app.c:489
+msgid "Search for a keyword"
+msgstr "Etsi avainsanalla"
+
+#: ../src/dh-app.c:490 ../src/dh-app.c:495
+msgid "KEYWORD"
+msgstr "AVAINSANA"
+
+#: ../src/dh-app.c:494
+msgid "Search and display any hit in the assistant window"
+msgstr "Etsi ja näytä osumat apuikkunassa"
+
+#: ../src/dh-app.c:499
+msgid "Display the version and exit"
+msgstr "Näytä versio ja lopeta"
+
+#: ../src/dh-app.c:504
+msgid "Quit any running Devhelp"
+msgstr "Sulje avoinna olevat Devhelp-ohjelmat"
+
+#. Please don
 #: ../src/dh-assistant.ui.h:2
 msgid "Devhelp — Assistant"
 msgstr "Devhelp — apuikkuna"
@@ -266,109 +363,99 @@ msgstr "Devhelp — apuikkuna"
 msgid "Book:"
 msgstr "Kirja:"
 
-#: ../src/dh-book.c:240
+#: ../src/dh-book.c:254
 #, c-format
 msgid "Language: %s"
 msgstr "Kieli: %s"
 
-#: ../src/dh-book.c:241
+#: ../src/dh-book.c:255
 msgid "Language: Undefined"
 msgstr "Kieli: määrittelemätön"
 
 #. i18n: a documentation book
-#: ../src/dh-link.c:270
+#: ../src/dh-link.c:289
 msgid "Book"
 msgstr "Kirja"
 
 #. i18n: a "page" in a documentation book
-#: ../src/dh-link.c:273
+#: ../src/dh-link.c:292
 msgid "Page"
 msgstr "Sivu"
 
 #. i18n: a search hit in the documentation, could be a
 #. * function, macro, struct, etc
-#: ../src/dh-link.c:277
+#: ../src/dh-link.c:296
 msgid "Keyword"
 msgstr "Avainsana"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: ../src/dh-link.c:282
+#: ../src/dh-link.c:301
 msgid "Function"
 msgstr "Funktio"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: ../src/dh-link.c:287
+#: ../src/dh-link.c:306
 msgid "Struct"
 msgstr "Struct"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: ../src/dh-link.c:292
+#: ../src/dh-link.c:311
 msgid "Macro"
 msgstr "Macro"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: ../src/dh-link.c:297
+#: ../src/dh-link.c:316
 msgid "Enum"
 msgstr "Enum"
 
 #. i18n: in the programming language context, if you don't
 #. * have an ESTABLISHED term for it, leave it
 #. * untranslated.
-#: ../src/dh-link.c:302
+#: ../src/dh-link.c:321
 msgid "Type"
 msgstr "Type"
 
-#: ../src/dh-main.c:41
-msgid "Opens a new Devhelp window"
-msgstr "Avaa uuden Devhelp-ikkunan"
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:326
+msgid "Property"
+msgstr "Ominaisuus"
 
-#: ../src/dh-main.c:46
-msgid "Search for a keyword"
-msgstr "Etsi avainsanalla"
+#. i18n: in the programming language context, if you don't
+#. * have an ESTABLISHED term for it, leave it
+#. * untranslated.
+#: ../src/dh-link.c:331
+msgid "Signal"
+msgstr "Signaali"
 
-#: ../src/dh-main.c:47 ../src/dh-main.c:52
-msgid "KEYWORD"
-msgstr "AVAINSANA"
-
-#: ../src/dh-main.c:51
-msgid "Search and display any hit in the assistant window"
-msgstr "Etsi ja näytä osumat apuikkunassa"
-
-#: ../src/dh-main.c:56
-msgid "Display the version and exit"
-msgstr "Näytä versio ja lopeta"
-
-#: ../src/dh-main.c:61
-msgid "Quit any running Devhelp"
-msgstr "Sulje avoinna olevat Devhelp-ohjelmat"
-
-#: ../src/dh-parser.c:95 ../src/dh-parser.c:196 ../src/dh-parser.c:260
-#: ../src/dh-parser.c:270
+#: ../src/dh-parser.c:96 ../src/dh-parser.c:197 ../src/dh-parser.c:261
+#: ../src/dh-parser.c:271
 #, c-format
 msgid "Expected '%s', got '%s' at line %d, column %d"
 msgstr "Oletettiin ”%s”, saatiin ”%s” rivillä %d, sarakkeessa %d"
 
-#: ../src/dh-parser.c:112
+#: ../src/dh-parser.c:113
 #, c-format
 msgid "Invalid namespace '%s' at line %d, column %d"
 msgstr "Virheellinen nimiavaruus ”%s” rivillä %d, sarakkeessa %d"
 
-#: ../src/dh-parser.c:141
+#: ../src/dh-parser.c:142
 #, c-format
 msgid ""
 "\"title\", \"name\" and \"link\" elements are required at line %d, column %d"
 msgstr ""
 "”title”-, ”name”- ja ”link”-elementit vaaditaan rivillä %d, sarakkeessa %d"
 
-#: ../src/dh-parser.c:215
+#: ../src/dh-parser.c:216
 #, c-format
 msgid ""
 "\"name\" and \"link\" elements are required inside <sub> on line %d, column "
@@ -377,7 +464,7 @@ msgstr ""
 "”name” ja ”link” -elementit vaaditaan elementin <sub> sisällä rivillä %d, "
 "sarakkeessa %d"
 
-#: ../src/dh-parser.c:295
+#: ../src/dh-parser.c:296
 #, c-format
 msgid ""
 "\"name\" and \"link\" elements are required inside '%s' on line %d, column %d"
@@ -385,14 +472,14 @@ msgstr ""
 "”name” ja ”link” -elementit vaaditaan elementin ”%s” sisällä rivillä %d, "
 "sarakkeessa %d"
 
-#: ../src/dh-parser.c:308
+#: ../src/dh-parser.c:309
 #, c-format
 msgid "\"type\" element is required inside <keyword> on line %d, column %d"
 msgstr ""
 "”type”-elementti vaaditaan elementin <keyword> sisällä rivillä %d, "
 "sarakkeessa %d"
 
-#: ../src/dh-parser.c:511
+#: ../src/dh-parser.c:516
 #, c-format
 msgid "Cannot uncompress book '%s': %s"
 msgstr "Kirjan ”%s” pakkausta ei voitu avata: %s"
@@ -433,51 +520,51 @@ msgstr "_Tasalevyinen:"
 msgid "Fonts"
 msgstr "Fontit"
 
-#: ../src/dh-window.c:81
+#: ../src/dh-window.c:76
 msgid "50%"
 msgstr "50 %"
 
-#: ../src/dh-window.c:82
+#: ../src/dh-window.c:77
 msgid "75%"
 msgstr "75 %"
 
-#: ../src/dh-window.c:83
+#: ../src/dh-window.c:78
 msgid "100%"
 msgstr "100 %"
 
-#: ../src/dh-window.c:84
+#: ../src/dh-window.c:79
 msgid "125%"
 msgstr "125 %"
 
-#: ../src/dh-window.c:85
+#: ../src/dh-window.c:80
 msgid "150%"
 msgstr "150 %"
 
-#: ../src/dh-window.c:86
+#: ../src/dh-window.c:81
 msgid "175%"
 msgstr "175 %"
 
-#: ../src/dh-window.c:87
+#: ../src/dh-window.c:82
 msgid "200%"
 msgstr "200 %"
 
-#: ../src/dh-window.c:88
+#: ../src/dh-window.c:83
 msgid "300%"
 msgstr "300 %"
 
-#: ../src/dh-window.c:89
+#: ../src/dh-window.c:84
 msgid "400%"
 msgstr "400 %"
 
-#: ../src/dh-window.c:868
+#: ../src/dh-window.c:1020
 msgid "Error opening the requested link."
 msgstr "Linkin avaaminen epäonnistui."
 
-#: ../src/dh-window.c:1126
+#: ../src/dh-window.c:1337
 msgid "_Close"
 msgstr "_Sulje"
 
-#: ../src/dh-window.c:1154 ../src/dh-window.c:1327
+#: ../src/dh-window.c:1355 ../src/dh-window.c:1529
 msgid "Empty Page"
 msgstr "Tyhjä sivu"
 
@@ -520,3 +607,10 @@ msgstr "Edellinen"
 #: ../src/dh-window.ui.h:13
 msgid "Forward"
 msgstr "Seuraava"
+
+#~ msgid ""
+#~ "https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
+#~ "target=devhelp.png"
+#~ msgstr ""
+#~ "https://wiki.gnome.org/Apps/Devhelp?action=AttachFile&#x26;do=view&#x26;"
+#~ "target=devhelp.png"

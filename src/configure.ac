@@ -1,6 +1,6 @@
 AC_PREREQ([2.64])
 AC_INIT([Devhelp],
-        [3.14.0],
+        [3.22.0],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=devhelp],
         [devhelp],
         [https://wiki.gnome.org/Apps/Devhelp])
@@ -47,25 +47,17 @@ GNOME_COMPILE_WARNINGS([maximum])
 AC_CHECK_LIBM
 AC_SUBST(LIBM)
 
-# Pick from supported API versions of WebKit2
-PKG_CHECK_EXISTS([webkit2gtk-4.0], [
-	WEBKIT_PKGCONFIG=webkit2gtk-4.0
-], [
-	WEBKIT_PKGCONFIG=webkit2gtk-3.0
-])
-AC_SUBST(WEBKIT_PKGCONFIG)
-
 PKG_CHECK_MODULES(DEVHELP, [
   gthread-2.0 >= 2.10.0
-  gtk+-3.0 >= 3.13.4
-  $WEBKIT_PKGCONFIG >= 2.0.0
+  gtk+-3.0 >= 3.19.3
+  webkit2gtk-4.0 >= 2.6.0
   gio-2.0 >= 2.37.3
 ])
 
 PKG_CHECK_MODULES(LIBDEVHELP, [
   gtk+-3.0 >= 3.12.0
   gio-2.0 >= 2.37.3
-  $WEBKIT_PKGCONFIG >= 2.0.0
+  webkit2gtk-4.0 >= 2.6.0
 ])
 
 AC_ARG_WITH(zlib, [  --with-zlib=DIR         use zlib in DIR], zlibdir=$with_zlib)
@@ -103,7 +95,7 @@ po/Makefile.in
 src/Makefile
 data/Makefile
 data/libdevhelp-3.0.pc
-data/devhelp.desktop.in
+data/org.gnome.Devhelp.desktop.in
 data/icons/Makefile
 data/dtd/Makefile
 misc/Makefile

@@ -18,10 +18,10 @@
  */
 
 #include "config.h"
+#include "dh-link.h"
 #include <string.h>
 #include <glib-object.h>
 #include <glib/gi18n-lib.h>
-#include "dh-link.h"
 
 struct _DhLink {
         /* FIXME: Those two could exist only for book to save some
@@ -118,6 +118,7 @@ dh_link_compare (gconstpointer a,
         DhLink *la = (DhLink *) a;
         DhLink *lb = (DhLink *) b;
         gint    flags_diff;
+        gint    diff;
 
         /* Sort deprecated hits last. */
         flags_diff = (la->flags & DH_LINK_FLAGS_DEPRECATED) -
@@ -132,8 +133,26 @@ dh_link_compare (gconstpointer a,
         if (G_UNLIKELY (!lb->name_collation_key))
                 lb->name_collation_key = g_utf8_collate_key (lb->name, -1);
 
-        return strcmp (la->name_collation_key,
+        diff = strcmp (la->name_collation_key,
                        lb->name_collation_key);
+
+        /* For the same names, sort page links before other links. The page is
+         * more important than a symbol (typically contained in that page).
+         */
+        if (diff == 0) {
+                if (la->type == lb->type)
+                        return 0;
+
+                if (la->type == DH_LINK_TYPE_PAGE)
+                        return -1;
+
+                if (lb->type == DH_LINK_TYPE_PAGE)
+                        return 1;
+
+                return 0;
+        }
+
+        return diff;
 }
 
 DhLink *
@@ -300,6 +319,16 @@ dh_link_get_type_as_string (DhLink *link)
                  * have an ESTABLISHED term for it, leave it
                  * untranslated. */
                 return _("Type");
+        case DH_LINK_TYPE_PROPERTY:
+                /* i18n: in the programming language context, if you don't
+                 * have an ESTABLISHED term for it, leave it
+                 * untranslated. */
+                return _("Property");
+        case DH_LINK_TYPE_SIGNAL:
+                /* i18n: in the programming language context, if you don't
+                 * have an ESTABLISHED term for it, leave it
+                 * untranslated. */
+                return _("Signal");
         }
 
         return "";

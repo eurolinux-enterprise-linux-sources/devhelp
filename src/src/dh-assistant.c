@@ -17,14 +17,10 @@
  */
 
 #include "config.h"
-#include <string.h>
-#include <glib/gi18n-lib.h>
-#include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
+#include "dh-assistant.h"
 #include "dh-window.h"
 #include "dh-util.h"
 #include "dh-assistant-view.h"
-#include "dh-assistant.h"
 #include "dh-settings.h"
 
 typedef struct {
@@ -54,7 +50,7 @@ dh_assistant_key_press_event (GtkWidget   *widget,
 {
         if (event->keyval == GDK_KEY_Escape) {
                 gtk_widget_destroy (widget);
-                return TRUE;
+                return GDK_EVENT_STOP;
         }
 
         return GTK_WIDGET_CLASS (dh_assistant_parent_class)->key_press_event (widget, event);
